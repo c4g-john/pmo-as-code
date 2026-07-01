@@ -281,7 +281,7 @@ button { font-family: inherit; }
     <span class="logo-icon"><span class="logo-dot"></span></span>
     <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
   </a>
-  <span class="version-badge mono">pmo/v1</span>
+  <span class="version-badge mono">v1</span>
   <div class="spacer"></div>
   <div class="search-box" id="search-box">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -291,7 +291,7 @@ button { font-family: inherit; }
   <button class="icon-btn" id="theme-btn" title="Toggle theme">
     <span class="theme-glyph" id="theme-glyph">☾</span>
   </button>
-  <a class="icon-btn" href="https://github.com" target="_blank" rel="noopener" title="GitHub">
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
   </a>
 </header>
@@ -370,13 +370,13 @@ const ANCHORS = {
   '/': [['thesis','Thesis'],['manifesto-strip','The manifesto'],['reveal','Declared → derived'],['thread','The traceability thread'],['proof','A running instance']],
   '/manifesto': [['values','The five value-pairs'],['deepdives','The two that carry weight'],['layers','Three layers']],
   '/rosetta': [['intro','The mapping'],['rows','Traditional → as-code']],
-  '/concepts': [['model','The object model'],['kinds','The kinds'],['audit','Where audit lives']],
+  '/concepts': [['model','A document, not a database'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Nineteen kinds']],
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
   '/quickstart': [['qs-install','1 · Get docunit'],['qs-author','2 · Author'],['qs-test','3 · Unit-test'],['qs-gate','4 · Gate on PR'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix']],
-  '/guides': [['guide-status','Status automation'],['guide-policy','Policy-as-code'],['guide-roadmap','Roadmaps'],['guide-audit','Audit & event log']],
-  '/reference': [['ref-portfolio','Portfolio'],['ref-program','Program'],['ref-project','Project'],['ref-charter','Charter'],['ref-milestone','Milestone'],['ref-raid','RAID'],['ref-decision','Decision'],['ref-policy','Policy'],['ref-status','Status'],['ref-eventlog','EventLog']],
+  '/guides': [['guide-convert','Convert a Word doc'],['guide-trace','Author linked requirements'],['guide-gate','Gate documents in CI'],['guide-kind','Add a document kind']],
+  '/reference': [['ref-shape','The shared shape'],['ref-items','Items & links'],['ref-kinds','The 19 kinds']],
   '/integrations': [['int-actions','GitHub Actions'],['int-protection','Branch protection'],['int-ai','Anthropic API'],['int-skills','Skills & templates']],
   '/profiles': [['what-profile','What a profile contains'],['available-profiles','Available profiles'],['author-profile','Author your own']],
   '/adoption': [['crawl','Crawl'],['walk','Walk'],['run','Run']],
@@ -385,27 +385,27 @@ const ANCHORS = {
 };
 
 const ROSETTA_ROWS = [
-  { before: 'Status deck', after: 'Dashboard generated from real signals',
-    yaml: `<span class="ck">apiVersion</span>: pmo/v1\n<span class="ck">kind</span>: <span class="cv">Status</span>\n<span class="ck">metadata</span>:\n  <span class="ck">id</span>: <span class="cv">status-aurora</span>\n<span class="ck">spec</span>:\n  <span class="ck">health</span>: <span class="cv">derived</span>  <span class="cc"># never typed</span>\n  <span class="ck">source</span>: <span class="cs">jira://CUST-PLATFORM</span>`,
-    output: `<div style="display:flex;align-items:center;gap:9px;margin-bottom:10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);"></span><strong style="color:var(--warn);">At risk</strong></div><div style="font-size:13px;color:var(--muted);">Schedule · Budget · 2 open SEV-2s<br>Last derived: 2 min ago</div>` },
-  { before: 'RAID log in Excel', after: 'RAID entries in Git, reviewed by PR',
-    yaml: `<span class="ck">apiVersion</span>: pmo/v1\n<span class="ck">kind</span>: <span class="cv">RAID</span>\n<span class="ck">metadata</span>:\n  <span class="ck">id</span>: <span class="cv">risk-data-migration</span>\n<span class="ck">spec</span>:\n  <span class="ck">type</span>: <span class="cv">risk</span>\n  <span class="ck">severity</span>: <span class="cv">high</span>\n  <span class="ck">status</span>: <span class="cv">accepted</span>\n  <span class="ck">decision</span>: <span class="cs">ADR-014</span>`,
-    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bad);margin-bottom:6px;">● risk · high · accepted</div><div style="font-size:13px;color:var(--muted);">PR #42 · reviewed by jordan.lee<br>Linked: ADR-014, proj-aurora</div>` },
-  { before: 'Charter in Word', after: 'charter.yaml validated against schema',
-    yaml: `<span class="ck">apiVersion</span>: pmo/v1\n<span class="ck">kind</span>: <span class="cv">Charter</span>\n<span class="ck">metadata</span>:\n  <span class="ck">id</span>: <span class="cv">charter-aurora</span>\n<span class="ck">spec</span>:\n  <span class="ck">objective</span>: Onboarding 14d → 2d\n  <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>\n  <span class="ck">successCriteria</span>:\n    - onboarding-p50 < 48h`,
-    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · pmo/v1</div><div style="font-size:13px;color:var(--muted);">Sponsor: jordan.lee · Signed in PR #12<br>1 success criterion · 2 milestones</div>` },
-  { before: 'Steering approval email', after: 'A signed-off PR / policy gate',
-    yaml: `<span class="ck">apiVersion</span>: pmo/v1\n<span class="ck">kind</span>: <span class="cv">Policy</span>\n<span class="ck">metadata</span>:\n  <span class="ck">id</span>: <span class="cv">gate-build</span>\n<span class="ck">spec</span>:\n  <span class="ck">gate</span>: <span class="cv">build</span>\n  <span class="ck">requires</span>:\n    - <span class="cs">approved-charter</span>\n    - <span class="cs">security-review</span>`,
-    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ gate: build · passed</div><div style="font-size:13px;color:var(--muted);">approved-charter ✓ · security-review ✓<br>Audit: commit a1f3c9d · 2026-06-14</div>` },
-  { before: 'Manual RAG status', after: 'Derived health score',
-    yaml: `<span class="ck">status</span>:  <span class="cc"># GENERATED — never typed</span>\n  <span class="ck">health</span>: <span class="cv">derived</span>\n  <span class="ck">inputs</span>: [schedule, budget, incidents]\n  <span class="ck">result</span>: <span class="cv">at-risk</span>\n  <span class="ck">signals</span>: <span class="cv">3</span>`,
-    output: `<div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);"></span><strong style="color:var(--warn);">At risk</strong></div><div style="font-size:13px;color:var(--muted);">Nobody picked amber. The record did.</div>` },
-  { before: 'Roadmap in PowerPoint', after: 'Gantt rendered from milestones',
-    yaml: `<span class="ck">spec</span>:\n  <span class="ck">milestones</span>:\n    - <span class="ck">id</span>: <span class="cv">m1</span>\n      <span class="ck">name</span>: <span class="cv">MVP</span>\n      <span class="ck">due</span>: <span class="cv">2026-09-30</span>\n    - <span class="ck">id</span>: <span class="cv">m2</span>\n      <span class="ck">name</span>: <span class="cv">GA</span>\n      <span class="ck">due</span>: <span class="cv">2026-12-15</span>`,
-    output: `<div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;">proj-aurora · Q3→Q4 2026</div><div style="height:8px;background:var(--border);border-radius:4px;margin-bottom:6px;overflow:hidden;"><div style="height:100%;width:62%;background:var(--accent);border-radius:4px;"></div></div><div style="font-size:12px;color:var(--muted);">MVP: Sep 30 · GA: Dec 15</div>` },
-  { before: 'Stage-gate checklist', after: 'A policy check in CI',
-    yaml: `<span class="ck">apiVersion</span>: pmo/v1\n<span class="ck">kind</span>: <span class="cv">Policy</span>\n<span class="ck">spec</span>:\n  <span class="ck">gate</span>: <span class="cv">production</span>\n  <span class="ck">checks</span>:\n    - <span class="cs">schema-valid</span>\n    - <span class="cs">security-review</span>\n    - <span class="cs">budget-approved</span>`,
-    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">CI · pmoctl policy check</div><div style="font-size:12px;color:var(--muted);">schema-valid ✓ · security-review ✓<br>budget-approved ✓ · gate passed</div>` },
+  { before: 'Status deck', after: 'Audit result, posted on every PR',
+    yaml: `<span class="cc">---</span>\n<span class="ck">kind</span>: <span class="cv">charter</span>\n<span class="ck">id</span>: <span class="cv">aurora</span>\n<span class="ck">status</span>: <span class="cv">approved</span>\n<span class="cc">---</span>\n<span class="cv">## Objective</span>\nOnboarding 14d → under 2d`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ all checks passed</div><div style="font-size:13px;color:var(--muted);">frontmatter · sections · criteria<br>clear to merge</div>` },
+  { before: 'RAID log in Excel', after: 'Risk register in Git, checked on PR',
+    yaml: `<span class="ck">kind</span>: <span class="cv">risk-register</span>\n<span class="cv">## Risks</span>\n- <span class="ck">**RISK-001**</span> (<span class="cv">threatens</span>: BR-001):\n  … Probability: High. Impact: High.\n  Owner: alex.kim. Response: dual-run.`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ risk-items-complete</div><div style="font-size:13px;color:var(--muted);">PR #42 · reviewed by jordan.lee<br>threatens BR-001</div>` },
+  { before: 'Charter in Word', after: 'charter.md validated on every change',
+    yaml: `<span class="cc">---</span>\n<span class="ck">kind</span>: <span class="cv">charter</span>\n<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>\n<span class="cc">---</span>\n<span class="cv">## Success Criteria</span>\n- p50 onboarding below 48h`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · 6 sections</div><div style="font-size:13px;color:var(--muted);">measurable criteria ✓<br>signed off in PR #12</div>` },
+  { before: 'Steering approval email', after: 'A merged PR with a named reviewer',
+    yaml: `<span class="cc"># branch protection</span>\n<span class="ck">required_status_checks</span>:\n  <span class="ck">contexts</span>:\n    - <span class="cs">audit</span>\n    - <span class="cs">consistency</span>`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ PR #12 · approved</div><div style="font-size:13px;color:var(--muted);">reviewer: jordan.lee<br>audit ✓ · consistency ✓</div>` },
+  { before: 'Manual RAG status', after: 'Deterministic checks, not opinions',
+    yaml: `<span class="cv">## Success Criteria</span>\n- Onboarding p50 below 48 hours.\n- Support tickets fall by at least 80%.\n- CSAT rises above 4.5 / 5.`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Nobody argues about "done".<br>The checks decide.</div>` },
+  { before: 'Requirements that drift across docs', after: 'One generated traceability matrix',
+    yaml: `<span class="ck">**BR-001**</span>: reduce onboarding time\n<span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): self-serve flow\n<span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): …\n<span class="ck">**TC-001**</span> (<span class="cv">tests</span>: AC-001): …`,
+    output: `<div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;">Requirements Traceability Matrix</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);">BR-001 → PR-014 → AC-001 → TC-001</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">generated from the links</div>` },
+  { before: 'Stage-gate checklist', after: 'A required check in CI',
+    yaml: `<span class="ck">on</span>: [pull_request]\n<span class="ck">jobs</span>:\n  <span class="ck">audit</span>: docunit validate\n  <span class="ck">consistency</span>: docunit consistency`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">CI · audit ✓ · consistency ✓</div><div style="font-size:12px;color:var(--muted);">merge blocked until green<br>on every pull request</div>` },
 ];
 
 // ─── Rendering helpers ────────────────────────────────────────────────────────
@@ -448,33 +448,27 @@ function pageNavHtml(route) {
 }
 
 // ─── Page renderers ───────────────────────────────────────────────────────────
-function renderHome() {
-  const revealedHtml = state.revealed ? `
+const REVEAL_PASS = `
     <div>
-      <div class="status-pill" style="background:color-mix(in srgb, var(--warn) 16%, transparent);border:1px solid color-mix(in srgb, var(--warn) 45%, transparent);margin-bottom:16px;">
-        <span class="status-dot" style="background:var(--warn);box-shadow:0 0 0 3px color-mix(in srgb,var(--warn) 22%,transparent);"></span>
-        <span style="color:var(--warn);">At risk</span>
+      <div class="status-pill" style="background:color-mix(in srgb, var(--ok) 16%, transparent);border:1px solid color-mix(in srgb, var(--ok) 45%, transparent);margin-bottom:16px;">
+        <span class="status-dot" style="background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 22%,transparent);"></span>
+        <span style="color:var(--ok);">All checks passed</span>
       </div>
       <div class="signal-list">
-        <div class="signal-item">
-          <span class="signal-dot" style="background:var(--warn);"></span>
-          <div class="signal-text"><strong>Schedule</strong> — MVP milestone slipping 6d</div>
-        </div>
-        <div class="signal-item">
-          <span class="signal-dot" style="background:var(--warn);"></span>
-          <div class="signal-text"><strong>Budget</strong> — 78% burned at 60% of timeline</div>
-        </div>
-        <div class="signal-item">
-          <span class="signal-dot" style="background:var(--bad);"></span>
-          <div class="signal-text"><strong>Incidents</strong> — 2 open SEV-2, unresolved 4d</div>
-        </div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Schema</strong> — frontmatter valid, all sections present</div></div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Criteria</strong> — every success criterion is measurable</div></div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Links</strong> — every requirement traces to a test</div></div>
       </div>
-      <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">3 signals → health = <span style="color:var(--warn);">at-risk</span></div>
-    </div>` : `
+      <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">6 checks → <span style="color:var(--ok);">clear to merge</span></div>
+    </div>`;
+const REVEAL_COMPUTING = `
     <div style="display:flex;align-items:center;gap:11px;padding:6px 0 20px;">
       <span class="spinner"></span>
-      <span class="mono" style="font-size:13px;color:var(--muted);">computing from signals<span class="blink">…</span></span>
+      <span class="mono" style="font-size:13px;color:var(--muted);">running checks<span class="blink">…</span></span>
     </div>`;
+
+function renderHome() {
+  const revealedHtml = state.revealed ? REVEAL_PASS : REVEAL_COMPUTING;
 
   return `
     <div>
@@ -526,74 +520,76 @@ function renderHome() {
         <section class="thread-section" id="reveal">
           <span class="thread-node"></span>
           <div class="eyebrow">The core beat</div>
-          <h2 class="h2">Declared, then derived.</h2>
-          <p class="body">You author the <em style="font-style:normal;color:var(--ink);">definition</em>. Status is never typed by hand. It's computed from real signals, every time. Watch it resolve:</p>
+          <h2 class="h2">Declared, then checked.</h2>
+          <p class="body">You author the <em style="font-style:normal;color:var(--ink);">document</em>. The pipeline checks it — every field, every section, every requirement link — on every change. Watch it run:</p>
           <div class="reveal-grid">
             <div class="code-block">
               <div class="code-titlebar">
                 <span class="traffic-light" style="background:#ff5f57;"></span>
                 <span class="traffic-light" style="background:#febc2e;"></span>
                 <span class="traffic-light" style="background:#28c840;"></span>
-                <span class="code-filename">aurora.yaml</span>
+                <span class="code-filename">documents/charters/aurora.md</span>
               </div>
-              <pre class="code-pre"><span class="ck">spec</span>:
-  <span class="ck">charter</span>:
-    <span class="ck">objective</span>: Onboarding 14d → 2d
-<span class="ck">status</span>:        <span class="cc"># GENERATED — never typed</span>
-  <span class="ck">health</span>: <span class="cv">derived</span>
-  <span class="ck">source</span>: <span class="cs">jira://CUST-PLATFORM</span>
-  <span class="ck">inputs</span>: [schedule, budget, incidents]</pre>
+              <pre class="code-pre"><span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">id</span>: <span class="cv">aurora</span>
+<span class="ck">status</span>: <span class="cv">approved</span>
+<span class="cc">---</span>
+<span class="cv">## Objective</span>
+Cut onboarding from 14 days to under 2.
+<span class="cv">## Success Criteria</span>
+- Onboarding p50 below 48 hours.</pre>
             </div>
             <div class="reveal-panel">
               <div class="reveal-header">
-                <span class="mono" style="font-size:12px;color:var(--muted);">proj-aurora · health</span>
-                <button class="rederive-btn" id="rederive-btn">↻ re-derive</button>
+                <span class="mono" style="font-size:12px;color:var(--muted);">docunit validate</span>
+                <button class="rederive-btn" id="rederive-btn">↻ run audit</button>
               </div>
               <div id="reveal-output">${revealedHtml}</div>
             </div>
           </div>
-          <p class="caption">Nobody picked amber. The record did. RAG status stops being a claim and becomes a result.</p>
+          <p class="caption">Nobody argues about whether it's "done". The checks decide — the same way, every time.</p>
         </section>
 
         <section class="thread-section" id="thread">
           <span class="thread-node"></span>
           <div class="eyebrow">The signature concept</div>
-          <h2 class="h2">Follow the thread: <span style="color:var(--accent);">why is Aurora red?</span></h2>
-          <p class="body">The unit of value is the <em style="font-style:normal;color:var(--ink);">link</em>, not the document. Thin artifacts, richly connected, so any status walks back to the decision that caused it.</p>
+          <h2 class="h2">Follow the thread: <span style="color:var(--accent);">why does this test exist?</span></h2>
+          <p class="body">The unit of value is the <em style="font-style:normal;color:var(--ink);">link</em>, not the document. Thin artifacts, richly connected, so any test walks back to the business reason it exists.</p>
 
           <div style="position:relative;padding-left:32px;border-left:2px solid var(--accent-line);">
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-lg"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Status</span><span style="width:8px;height:8px;border-radius:50%;background:var(--bad);"></span><strong style="color:var(--bad);font-size:14px;">At risk</strong></div>
-                <div style="font-size:14px;color:var(--ink-2);">Aurora's derived health is red.</div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Test Case</span><span class="mono" style="font-size:11px;color:var(--muted);">TC-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">Complete the self-serve wizard → account active, zero support tickets.</div>
               </div>
             </div>
-            <div class="thread-connector">↑ derived from</div>
+            <div class="thread-connector">↑ tests</div>
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">EventLog</span></div>
-                <div style="font-size:14px;color:var(--ink-2);">A signal: 2 open SEV-2 incidents on the platform, unresolved 4 days.</div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Acceptance Criterion</span><span class="mono" style="font-size:11px;color:var(--muted);">AC-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">A new customer completes setup with no support ticket created.</div>
               </div>
             </div>
-            <div class="thread-connector">↑ raised as</div>
+            <div class="thread-connector">↑ verifies</div>
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">RAID</span><span class="mono" style="font-size:11px;color:var(--muted);">risk · data-migration</span></div>
-                <div style="font-size:14px;color:var(--ink-2);">Risk of data-migration delay — <span style="color:var(--ink);">accepted</span>, not mitigated.</div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Product Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">PR-014</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">The product shall provide a self-serve onboarding flow.</div>
               </div>
             </div>
-            <div class="thread-connector">↑ accepted by</div>
+            <div class="thread-connector">↑ traces to</div>
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Decision</span><span class="mono" style="font-size:11px;color:var(--muted);">ADR-014</span></div>
-                <div style="font-size:14px;color:var(--ink-2);">"Ship MVP with a manual onboarding fallback." Signed off by the sponsor in a PR.</div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Business Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">BR-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">Reduce median customer onboarding time to under 2 days.</div>
               </div>
             </div>
-            <div class="thread-connector">↑ which threatens</div>
+            <div class="thread-connector">↑ which serves</div>
             <div style="position:relative;">
               <span class="thread-node-lg"></span>
               <div style="background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:11px;padding:14px 16px;">
@@ -602,7 +598,7 @@ function renderHome() {
               </div>
             </div>
           </div>
-          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. The thread is the manifesto made visible: traceability you can see and follow, not prose you have to read.</p>
+          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. And this walk is generated from the links, not drawn by hand — it's the traceability matrix the pipeline builds.</p>
         </section>
 
         <section class="thread-section" id="proof">
@@ -729,18 +725,16 @@ function renderAutomation() {
             <span class="traffic-light" style="background:#ff5f57;"></span>
             <span class="traffic-light" style="background:#febc2e;"></span>
             <span class="traffic-light" style="background:#28c840;"></span>
-            <span class="code-filename">policy/gate-build.yaml</span>
+            <span class="code-filename">.github/workflows/audit.yml</span>
           </div>
-          <pre class="code-pre"><span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Policy</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">gate-build</span>
-<span class="ck">spec</span>:
-  <span class="ck">gate</span>: <span class="cv">build</span>
-  <span class="ck">requires</span>:
-    - <span class="cs">approved-charter</span>
-    - <span class="cs">security-review</span>
-  <span class="ck">on-fail</span>: <span class="cv">block-merge</span>  <span class="cc"># recorded in the commit log</span></pre>
+          <pre class="code-pre"><span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:
+    <span class="ck">steps</span>:
+      - <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span>
+  <span class="ck">consistency</span>:
+    <span class="ck">steps</span>:
+      - <span class="ck">run</span>: <span class="cs">docunit consistency</span>   <span class="cc"># broken traces block the merge</span></pre>
         </div>
       </div>
 
@@ -776,14 +770,14 @@ function renderTraceability() {
 
       <div id="thread-ex" style="margin-bottom:48px;">
         <h2 class="h2-sm">The thread, made concrete.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question: "why is Aurora red?" Every hop is a typed reference, queryable from any compliant tool.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question: "does every requirement get tested?" Every hop is a typed link, checked on every pull request.</p>
         <div style="position:relative;padding-left:28px;border-left:2px solid var(--accent-line);display:grid;gap:2px;">
           ${[
-            ['Status', 'proj-aurora', 'health = at-risk', 'derived from →'],
-            ['EventLog', 'signal-sev2-infra', '2 open SEV-2, unresolved 4d', 'raised as →'],
-            ['RAID', 'risk-data-migration', 'risk · high · accepted', 'accepted by →'],
-            ['Decision', 'ADR-014', 'Ship MVP with manual fallback', 'which threatens →'],
-            ['Charter', 'charter-aurora', 'objective: Onboarding 14d → 2d', null],
+            ['Test Case', 'TC-001', 'wizard → account active, zero tickets', 'tests →'],
+            ['Acceptance Criterion', 'AC-001', 'new customer set up, no support ticket', 'verifies →'],
+            ['Product Requirement', 'PR-014', 'self-serve onboarding flow', 'traces to →'],
+            ['Business Requirement', 'BR-001', 'onboarding under 2 days', 'which serves →'],
+            ['Charter', 'aurora', 'objective: 14 days → under 2', null],
           ].map(([kind, id, desc, link], i, arr) => `
             <div style="position:relative;padding:10px 0 ${link ? '6px' : '0'};">
               <span style="position:absolute;left:-36px;top:14px;width:${i===0||i===arr.length-1?'13':'11'}px;height:${i===0||i===arr.length-1?'13':'11'}px;border-radius:50%;background:${i===0||i===arr.length-1?'var(--accent)':'var(--bg)'};border:${i===0||i===arr.length-1?'0':'2px solid var(--accent)'};box-shadow:${i===0||i===arr.length-1?'0 0 0 3px var(--bg),0 0 0 5px var(--accent-soft)':'none'};"></span>
@@ -798,23 +792,21 @@ function renderTraceability() {
 
       <div id="schema" style="margin-bottom:48px;">
         <h2 class="h2-sm">This is a schema requirement, not a writing style.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind in the object model has a stable ID and typed references. The lineage is a queryable graph, not a convention buried in prose. You can ask: "what decisions are referenced by risks linked to Aurora?" and get an answer from a tool, not a human who's read every document.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links. The lineage is a queryable graph, checked in CI, not a convention buried in prose. You can ask "which requirements have no test?" and get an answer from the tool, not a person who has read every document.</p>
         <div class="code-block">
           <div class="code-titlebar">
             <span class="traffic-light" style="background:#ff5f57;"></span>
             <span class="traffic-light" style="background:#febc2e;"></span>
             <span class="traffic-light" style="background:#28c840;"></span>
-            <span class="code-filename">raid/risk-data-migration.yaml</span>
+            <span class="code-filename">documents/prds/onboarding.md</span>
           </div>
-          <pre class="code-pre"><span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">RAID</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">risk-data-migration</span>   <span class="cc"># stable, queryable</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>      <span class="cc"># typed reference</span>
-<span class="ck">spec</span>:
-  <span class="ck">type</span>: <span class="cv">risk</span>
-  <span class="ck">decision</span>: <span class="cs">ADR-014</span>         <span class="cc"># typed reference → Decision kind</span>
-  <span class="ck">status</span>: <span class="cv">accepted</span></pre>
+          <pre class="code-pre"><span class="cv">## Product Requirements</span>
+- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): the product shall
+  provide a self-serve onboarding flow.
+
+<span class="cv">## Acceptance Criteria</span>
+- <span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): a new customer
+  completes setup with no support ticket created.</pre>
         </div>
       </div>
 
@@ -877,76 +869,80 @@ function renderConcepts() {
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Core Concepts.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">The object model and how the kinds relate: modeled Kubernetes-style, legible to engineers and clean for everyone.</p>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Everything is a Markdown document with YAML frontmatter and defined sections. Requirements are authored as linked items — which is what makes the whole set testable and traceable.</p>
 
       <div id="model" style="margin-bottom:52px;">
-        <h2 class="h2-sm">The object model.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every artifact in PMO as Code follows the same envelope: <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">apiVersion</code>, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">kind</code>, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">metadata</code>, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">spec</code>, and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">status</code>. The spec is authored; the status is always derived.</p>
-        <div class="code-block">
-          <div class="code-titlebar">
-            <span class="traffic-light" style="background:#ff5f57;"></span>
-            <span class="traffic-light" style="background:#febc2e;"></span>
-            <span class="traffic-light" style="background:#28c840;"></span>
-            <span class="code-filename">projects/aurora.yaml</span>
+        <h2 class="h2-sm">A document, not a database.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind shares one shape: <strong style="font-weight:600;color:var(--ink);">frontmatter</strong> (typed metadata a JSON Schema checks) and <strong style="font-weight:600;color:var(--ink);">required sections</strong> (the audit checks they're present and complete). Plain Markdown a person can read and a diff can review.</p>
+        ${cb('documents/charters/aurora.md', `<span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">id</span>: <span class="cv">aurora</span>
+<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
+<span class="ck">status</span>: <span class="cv">approved</span>
+<span class="cc">---</span>
+
+<span class="cv">## Objective</span>
+Cut median onboarding time from 14 days to under 2 days.
+
+<span class="cv">## Success Criteria</span>
+- Median onboarding time drops below 48 hours.
+- Manual setup tickets fall by at least 80%.`)}
+      </div>
+
+      <div id="items" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Requirements are linked items.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The unit of traceability is the <em style="font-style:normal;color:var(--ink);">item</em>: a bullet with a stable ID and typed links to what it depends on. That turns a pile of documents into a queryable graph.</p>
+        ${cb('the chain, across four documents', `<span class="ck">**BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+<span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): The product shall provide a self-serve flow.
+<span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): Given a new customer…, then an active account exists.
+<span class="ck">**TC-001**</span> (<span class="cv">tests</span>: AC-001): Complete the wizard → account active, zero tickets.`)}
+        <p class="caption">BR → PR → FR/NFR → AC → TC. Every hop is a typed link the pipeline checks: broken references block, and the matrix is generated from them.</p>
+      </div>
+
+      <div id="checks" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Two tiers of checks.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The same split runs on every document and across the whole graph.</p>
+        <div class="grid-2">
+          <div class="card" style="border-left:3px solid var(--ok);">
+            <div class="card-title">Structural — deterministic, blocking</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge.</div>
           </div>
-          <pre class="yaml-full"><span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Project</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">proj-aurora</span>
-  <span class="ck">portfolio</span>: <span class="cs">digital-transformation</span>
-  <span class="ck">program</span>: <span class="cs">customer-platform</span>
-<span class="ck">spec</span>:
-  <span class="ck">charter</span>:
-    <span class="ck">objective</span>: Cut customer onboarding from 14 days to 2
-    <span class="ck">successCriteria</span>: [onboarding-p50 &lt; 48h, csat &gt; 4.5]
-    <span class="ck">sponsor</span>: jordan.lee
-  <span class="ck">budget</span>: { <span class="ck">approved</span>: 1.2M, <span class="ck">currency</span>: USD }
-  <span class="ck">milestones</span>:
-    - { <span class="ck">id</span>: m1, <span class="ck">name</span>: MVP, <span class="ck">due</span>: 2026-09-30 }
-  <span class="ck">governance</span>:
-    <span class="ck">gate</span>: build
-    <span class="ck">requires</span>: [approved-charter, security-review]
-<span class="ck">status</span>:        <span class="cc"># GENERATED — never typed by hand</span>
-  <span class="ck">health</span>: <span class="cv">derived</span>
-  <span class="ck">source</span>: <span class="cs">jira://CUST-PLATFORM</span></pre>
+          <div class="card" style="border-left:3px solid var(--l2);">
+            <div class="card-title">Semantic — AI-graded, advisory</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does PR-014 actually fulfil BR-001? Scored via the Anthropic API and posted to the PR — but never blocking.</div>
+          </div>
         </div>
       </div>
 
       <div id="kinds" style="margin-bottom:52px;">
-        <h2 class="h2-sm">The ten kinds.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind has a stable ID and typed references, so lineage is a queryable graph, not a convention buried in prose.</p>
+        <h2 class="h2-sm">Nineteen kinds, one pattern.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind is a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">template</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">schema</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">criteria</code> trio. Adding one is adding a trio — no code for the common cases.</p>
         <div class="kind-grid">
           ${[
-            ['Portfolio', 'The top-level container. Holds programs and projects.'],
-            ['Program', 'A grouping of related projects with a shared outcome.'],
-            ['Project', 'A bounded initiative with a charter, budget, and milestones.'],
-            ['Charter', 'The contract: objective, success criteria, sponsor.'],
-            ['Milestone', 'A dated, verifiable event in a project timeline.'],
-            ['RAID', 'Risks, assumptions, issues, and dependencies, tracked in Git.'],
-            ['Decision', 'A portfolio-level ADR: the decision, the context, the record.'],
-            ['Policy', 'Governance gates as code: a check that runs in CI.'],
-            ['Status', 'Derived health. Never authored, always computed.'],
-            ['EventLog', 'Runtime signals from integrations: Jira, budget, incidents.'],
+            ['charter', 'Objective, measurable success criteria, sponsor, budget.'],
+            ['business-case', 'Problem, options, recommendation, costs, benefits.'],
+            ['brd', 'Business requirements as BR items.'],
+            ['prd', 'Product requirements (PR) + acceptance criteria (AC).'],
+            ['frnfr', 'Functional (FR) & non-functional (NFR) requirements.'],
+            ['user-story', 'Stories (US) in "As a… I want…" form.'],
+            ['test-cases', 'Test cases (TC) that verify acceptance criteria.'],
+            ['adr', 'Architecture decisions with a recorded status.'],
+            ['risk-register', 'Risks with probability, impact, owner, response.'],
+            ['raci-stakeholder', 'Roles matrix — one Accountable per activity.'],
+            ['qa-test-plan', 'Scope, environments, measurable exit criteria.'],
+            ['data-migration-plan', 'Sources, field mapping, validation, cutover.'],
+            ['release-cutover-plan', 'Ordered cutover steps and a rollback trigger.'],
+            ['rollback-plan', 'Trigger conditions and ordered rollback steps.'],
+            ['hypercare-plan', 'Support window, severities, measurable exit.'],
+            ['runbook', 'Operational procedures, monitoring, escalation.'],
+            ['status-report', 'Period, RAG, cites risks from the register.'],
+            ['post-implementation-review', 'Outcomes vs objectives, lessons, actions.'],
+            ['benefits-realization', 'Measurable benefits vs the business case.'],
           ].map(([name, desc]) => `
             <div class="kind-card">
               <div class="kind-name">${name}</div>
               <div class="kind-desc">${desc}</div>
             </div>`).join('')}
-        </div>
-      </div>
-
-      <div id="audit" style="margin-bottom:52px;">
-        <h2 class="h2-sm">Where audit lives.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit lives in two places, because the most important signals don't all originate in Git.</p>
-        <div class="grid-2">
-          <div class="card" style="border-left:3px solid var(--l2);">
-            <div class="card-title">Git history</div>
-            <div class="card-body" style="margin-top:4px;">Every change to every definition. Who changed what, when, and why, right there in the commit message. Immutable, distributed, free.</div>
-          </div>
-          <div class="card" style="border-left:3px solid var(--l3);">
-            <div class="card-title">EventLog kind</div>
-            <div class="card-body" style="margin-top:4px;">Runtime signals from integrations: Jira tickets closed, budget thresholds crossed, incidents opened. The audit trail for things that don't live in Git.</div>
-          </div>
         </div>
       </div>
 
@@ -1203,10 +1199,10 @@ function renderGuides() {
 
     <div style="display:grid;gap:10px;margin-bottom:48px;">
       ${[
-        ['Status automation', 'guide-status', 'Configure sources, understand the signal pipeline, commit derived health.'],
-        ['Policy-as-code governance', 'guide-policy', 'Write a Policy kind, wire it to CI, replace an approval email chain.'],
-        ['Roadmaps from milestones', 'guide-roadmap', 'Define milestones, generate a Gantt view, track slippage automatically.'],
-        ['The audit & event log', 'guide-audit', 'What goes in Git vs EventLog, how to query lineage, how to export for auditors.'],
+        ['Convert a Word document', 'guide-convert', 'Bring an existing doc in with the doc-to-pmo skill — gaps flagged, not invented.'],
+        ['Author linked requirements', 'guide-trace', 'Write BR → PR → AC → TC as items, and let consistency check the chain.'],
+        ['Gate documents in CI', 'guide-gate', 'Run the audit and consistency jobs on every PR; make the gate binding.'],
+        ['Add a new document kind', 'guide-kind', 'A template + schema + criteria trio — usually no code at all.'],
       ].map(([title, id, desc]) => `
         <a href="#${id}" data-anchor="${id}" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
           <div style="flex:1;">
@@ -1217,128 +1213,78 @@ function renderGuides() {
         </a>`).join('')}
     </div>
 
-    <div id="guide-status" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+    <div id="guide-convert" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
       <div class="eyebrow" style="margin-top:20px;">Guide 01</div>
-      <h2 class="h2-sm" style="margin-top:8px;">Status automation.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">How signals flow from your tools into derived health, and how to configure what matters to your portfolio.</p>
+      <h2 class="h2-sm" style="margin-top:8px;">Convert a Word document.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Bring an existing charter, business case, or BRD into the pipeline without retyping it.</p>
 
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">The signal pipeline</h3>
-      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every status derivation follows the same path: source → EventLog entry → health rule → Status kind.</p>
-      <div style="position:relative;padding-left:24px;border-left:2px solid var(--thread-dim);display:grid;gap:10px;margin-bottom:24px;">
-        ${['Source (Jira, PagerDuty, finance CSV)', 'pmoctl fetches signals on schedule or trigger', 'Signals written to EventLog kind (immutable, timestamped)', 'Health rules evaluate all signals for the project', 'Status kind updated in the YAML file', 'Git commit captures the result and the timestamp'].map((s,i) => `
-          <div style="position:relative;padding:4px 0;">
-            <span style="position:absolute;left:-32px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg);"></span>
-            <span style="font-size:14px;color:var(--ink-2);"><span class="mono" style="font-size:11px;color:var(--faint);margin-right:8px;">${String(i+1).padStart(2,'0')}</span>${s}</span>
-          </div>`).join('')}
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Extract the source text</h3>
+      ${cb('terminal', `pip install ".[convert]"
+python tools/extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf / .md / .txt</span>`)}
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Let the skill map it</h3>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source, and <em>flags what the source didn't supply rather than inventing it</em>.</p>
+      ${cb('documents/charters/aurora.md (first pass)', `<span class="cv">## Success Criteria</span>
+- TODO: source says "faster onboarding" — add a measurable target.
+
+<span class="cv">## Risks</span>
+- Migration may slip. (TODO: assign an Owner and a Mitigation.)`)}
+      <div class="card" style="margin-top:14px;border-left:3px solid var(--warn);">
+        <div class="card-title">Faithful over passing</div>
+        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that honestly fails the audit — with the exact gaps to fill. That is the pipeline working, not a bug.</div>
       </div>
-
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Configuring health rules</h3>
-      ${cb('.pmoctl.yaml', `<span class="ck">rules</span>:
-  proj-aurora:
-    <span class="ck">schedule-slip-days</span>:
-      <span class="ck">warn</span>: <span class="cv">5</span>
-      <span class="ck">bad</span>: <span class="cv">14</span>
-    <span class="ck">budget-burn-pct</span>:          <span class="cc"># burn vs % timeline elapsed</span>
-      <span class="ck">warn</span>: <span class="cv">1.15</span>               <span class="cc"># 15% over-paced</span>
-      <span class="ck">bad</span>: <span class="cv">1.35</span>
-    <span class="ck">open-incidents</span>:
-      <span class="ck">sev1</span>: <span class="cv">bad</span>               <span class="cc"># any open SEV-1 = bad</span>
-      <span class="ck">sev2-unresolved-days</span>: <span class="cv">3</span>  <span class="cc"># 3+ days = bad</span>
-  <span class="ck">aggregation</span>: <span class="cv">worst-wins</span>     <span class="cc"># options: worst-wins | weighted | custom</span>`)}
     </div>
 
-    <div id="guide-policy" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+    <div id="guide-trace" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
       <div class="eyebrow" style="margin-top:20px;">Guide 02</div>
-      <h2 class="h2-sm" style="margin-top:8px;">Policy-as-code governance.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Replace an approval email chain with a Policy kind that runs in CI and writes its own audit trail.</p>
+      <h2 class="h2-sm" style="margin-top:8px;">Author linked requirements.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Write each requirement as an item with a stable ID and a typed link to what it refines.</p>
+      ${cb('across four documents', `<span class="cc"># brd.md</span>
+- <span class="ck">**BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+<span class="cc"># prd.md</span>
+- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): The product shall provide a self-serve flow.
+- <span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): Given a new customer…, then an active account exists.
+<span class="cc"># test-cases.md</span>
+- <span class="ck">**TC-001**</span> (<span class="cv">tests</span>: AC-001): Complete the wizard → account active, zero tickets.`)}
+      ${cb('terminal', `docunit consistency
 
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Write the policy</h3>
-      ${cb('policies/gate-build.yaml', `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Policy</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">gate-build</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">gate</span>: <span class="cv">build</span>
-  <span class="ck">description</span>: Before starting build phase, verify charter is approved and security review is complete.
-  <span class="ck">requires</span>:
-    - <span class="ck">check</span>: <span class="cs">charter-approved</span>
-      <span class="ck">evidence</span>: <span class="cs">charters/aurora.yaml</span>     <span class="cc"># must exist and be signed</span>
-    - <span class="ck">check</span>: <span class="cs">security-review</span>
-      <span class="ck">evidence</span>: <span class="cs">reviews/security-aurora.yaml</span>
-  <span class="ck">on-fail</span>: <span class="cv">block-merge</span>`)}
-
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Add it to CI</h3>
-      ${cb('.github/workflows/pmo.yml', `<span class="ck">name</span>: PMO policy check
-<span class="ck">on</span>: [pull_request]
-<span class="ck">jobs</span>:
-  <span class="ck">policy</span>:
-    <span class="ck">runs-on</span>: ubuntu-latest
-    <span class="ck">steps</span>:
-      - <span class="ck">uses</span>: actions/checkout@v4
-      - <span class="ck">run</span>: <span class="cs">pmoctl validate && pmoctl policy check</span>`)}
-
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">When a human signature is required</h3>
-      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Some regulatory contexts require a named individual's sign-off. Model it explicitly. The signature event lands in the EventLog and the audit trail still writes itself.</p>
-      ${cb('policies/gate-regulatory.yaml', `<span class="ck">spec</span>:
-  <span class="ck">gate</span>: <span class="cv">regulatory-sign-off</span>
-  <span class="ck">requires</span>:
-    - <span class="ck">check</span>: <span class="cs">human-signature</span>
-      <span class="ck">role</span>: <span class="cs">compliance-officer</span>
-      <span class="ck">record-in</span>: <span class="cs">eventlog</span>  <span class="cc"># timestamped, immutable</span>
-  <span class="ck">on-fail</span>: <span class="cv">block-merge</span>`)}
+<span class="cs">  ✓ referential-integrity: all references resolve
+  ✓ coverage: all approved items are covered</span>
+  <span class="cc"># broken links block; the AI advises on whether each link truly holds</span>`)}
     </div>
 
-    <div id="guide-roadmap" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+    <div id="guide-gate" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
       <div class="eyebrow" style="margin-top:20px;">Guide 03</div>
-      <h2 class="h2-sm" style="margin-top:8px;">Roadmaps from milestones.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Define milestones in YAML. pmoctl renders a Gantt. Slippage is detected automatically from your project tracker.</p>
-      ${cb('projects/aurora.yaml (spec.milestones)', `<span class="ck">milestones</span>:
-  - <span class="ck">id</span>: <span class="cv">m1</span>
-    <span class="ck">name</span>: <span class="cv">MVP</span>
-    <span class="ck">due</span>: <span class="cv">2026-09-30</span>
-    <span class="ck">criteria</span>:
-      - All P0 features shipped
-      - Load test passing at 10k rps
-  - <span class="ck">id</span>: <span class="cv">m2</span>
-    <span class="ck">name</span>: <span class="cv">GA</span>
-    <span class="ck">due</span>: <span class="cv">2026-12-15</span>
-    <span class="ck">depends-on</span>: <span class="cs">m1</span>
-    <span class="ck">criteria</span>:
-      - Onboarding p50 < 48h
-      - CSAT > 4.5`)}
-      <div class="card" style="margin-top:18px;">
-        <div class="card-title">Slippage detection</div>
-        <div class="card-body" style="margin-top:4px;line-height:1.6;">pmoctl compares milestone due dates against open issues in your linked project tracker (Jira fixVersion, GitHub milestone). When the burndown trend projects a late delivery, the milestone gets a slippage signal that feeds into derived health automatically, without anyone updating a spreadsheet.</div>
-      </div>
+      <h2 class="h2-sm" style="margin-top:8px;">Gate documents in CI.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Two jobs run on every pull request; branch protection makes them binding.</p>
+      ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span> }]
+  <span class="ck">consistency</span>:  <span class="cc"># check the whole traceability graph</span>
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit consistency</span> }]`)}
+      ${cb('terminal', `<span class="cc"># require both checks before a PR can merge</span>
+gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'
+{ <span class="ck">"required_status_checks"</span>: { <span class="ck">"strict"</span>: true, <span class="ck">"contexts"</span>: [<span class="cs">"audit"</span>, <span class="cs">"consistency"</span>] } }
+JSON`)}
     </div>
 
-    <div id="guide-audit" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
+    <div id="guide-kind" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
       <div class="eyebrow" style="margin-top:20px;">Guide 04</div>
-      <h2 class="h2-sm" style="margin-top:8px;">The audit &amp; event log.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Audit lives in two places. Understanding which belongs where is load-bearing for the whole framework.</p>
-      <div class="grid-2" style="margin-bottom:22px;">
-        <div class="card" style="border-top:2px solid var(--l2);">
-          <div class="card-title">Git history</div>
-          <div class="card-body" style="margin-top:4px;">Every change to every definition file. Immutable. Who changed what, when, and why, in the commit message. Free. Already there if you're using Git.</div>
-        </div>
-        <div class="card" style="border-top:2px solid var(--l3);">
-          <div class="card-title">EventLog kind</div>
-          <div class="card-body" style="margin-top:4px;">Runtime signals from integrations. A Jira ticket closed, a budget threshold crossed, an incident opened, a human approval recorded. Things that happen <em>outside</em> Git but matter to the audit trail.</div>
-        </div>
+      <h2 class="h2-sm" style="margin-top:8px;">Add a new document kind.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">A kind is a trio: a template, a JSON Schema for its frontmatter, and a criteria file listing the checks. Most kinds need no new code.</p>
+      ${cb('criteria/decision-log.criteria.yaml', `<span class="ck">kind</span>: <span class="cv">decision-log</span>
+<span class="ck">required_sections</span>: [Overview, Decisions]
+<span class="ck">item_sections</span>:
+  - { <span class="ck">section</span>: Decisions, <span class="ck">prefix</span>: <span class="cv">DEC</span> }
+<span class="ck">checks</span>:
+  - { <span class="ck">id</span>: frontmatter-schema, <span class="ck">blocking</span>: true }
+  - { <span class="ck">id</span>: required-sections, <span class="ck">blocking</span>: true }
+  - { <span class="ck">id</span>: items-well-formed, <span class="ck">blocking</span>: true }`)}
+      <div class="card" style="margin-top:14px;">
+        <div class="card-title">Config-driven checks</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">Some checks are reusable via config: <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable_sections</code> makes bullets in a section require a threshold; <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">steps_sections</code> requires an ordered list. New kinds reuse them with zero code.</div>
       </div>
-      ${cb('eventlog/2026-07-01.yaml', `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">EventLog</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">evt-20260701-001</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">timestamp</span>: <span class="cv">2026-07-01T08:14:22Z</span>
-  <span class="ck">source</span>: <span class="cs">pagerduty</span>
-  <span class="ck">type</span>: <span class="cv">incident.opened</span>
-  <span class="ck">severity</span>: <span class="cv">SEV-2</span>
-  <span class="ck">description</span>: Customer data migration timeout on prod
-  <span class="ck">affects</span>: <span class="cs">m1</span>  <span class="cc"># milestone reference</span>`)}
     </div>
 
     ${pageNavHtml('/guides')}
@@ -1348,157 +1294,97 @@ function renderGuides() {
 
 function renderReference() {
   const kinds = [
-    { name: 'Portfolio', desc: 'The top-level container. Groups programs and projects under a shared strategic intent.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Portfolio</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">digital-transformation</span>     <span class="cc"># required · stable slug</span>
-  <span class="ck">name</span>: <span class="cv">Digital Transformation</span>
-<span class="ck">spec</span>:
-  <span class="ck">owner</span>: <span class="cs">jordan.lee</span>               <span class="cc"># required · typed ref</span>
-  <span class="ck">objective</span>: Modernise customer-facing systems by 2027
-  <span class="ck">programs</span>: []                   <span class="cc"># typed refs → Program</span>
-  <span class="ck">projects</span>: []                   <span class="cc"># typed refs → Project</span>`, },
-    { name: 'Program', desc: 'A grouping of related projects with a shared outcome. Optional — not every portfolio needs programs.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Program</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">customer-platform</span>
-  <span class="ck">portfolio</span>: <span class="cs">digital-transformation</span>  <span class="cc"># typed ref</span>
-<span class="ck">spec</span>:
-  <span class="ck">objective</span>: Unified customer data and onboarding
-  <span class="ck">lead</span>: <span class="cs">alex.kim</span>
-  <span class="ck">projects</span>: []                          <span class="cc"># typed refs → Project</span>`, },
-    { name: 'Project', desc: 'A bounded initiative with a charter, budget, milestones, and a linked status source.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Project</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">proj-aurora</span>                     <span class="cc"># required</span>
-  <span class="ck">portfolio</span>: <span class="cs">digital-transformation</span>  <span class="cc"># typed ref</span>
-  <span class="ck">program</span>: <span class="cs">customer-platform</span>          <span class="cc"># optional typed ref</span>
-<span class="ck">spec</span>:
-  <span class="ck">charter</span>: <span class="cs">charter-aurora</span>           <span class="cc"># typed ref → Charter</span>
-  <span class="ck">budget</span>:
-    <span class="ck">approved</span>: <span class="cv">1200000</span>
-    <span class="ck">currency</span>: <span class="cv">USD</span>
-  <span class="ck">milestones</span>: []                    <span class="cc"># typed refs → Milestone</span>
-  <span class="ck">governance</span>:
-    <span class="ck">gate</span>: <span class="cv">build</span>
-    <span class="ck">requires</span>: [approved-charter, security-review]
-<span class="ck">status</span>:                            <span class="cc"># GENERATED — never authored</span>
-  <span class="ck">health</span>: <span class="cv">derived</span>
-  <span class="ck">source</span>: <span class="cs">jira://CUST-PLATFORM</span>`, },
-    { name: 'Charter', desc: 'The contract: objective, success criteria, sponsor. Must be approved before the project proceeds to build.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Charter</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">charter-aurora</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">objective</span>: Cut customer onboarding from 14 days to 2    <span class="cc"># required</span>
-  <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>                                   <span class="cc"># required</span>
-  <span class="ck">successCriteria</span>:                                       <span class="cc"># min 1 required</span>
-    - onboarding-p50 &lt; 48h
-    - csat &gt; 4.5
-  <span class="ck">approved</span>: <span class="cv">true</span>                                         <span class="cc"># set by policy check</span>
-  <span class="ck">approvedAt</span>: <span class="cv">2026-01-15</span>`, },
-    { name: 'Milestone', desc: 'A dated, verifiable event. Criteria-based — "shipped" means the criteria are met, not that a date passed.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Milestone</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">m1-aurora-mvp</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">name</span>: <span class="cv">MVP</span>
-  <span class="ck">due</span>: <span class="cv">2026-09-30</span>                  <span class="cc"># required</span>
-  <span class="ck">criteria</span>:                        <span class="cc"># what "done" means</span>
-    - All P0 features shipped
-    - Load test passing at 10k rps
-  <span class="ck">depends-on</span>: []                  <span class="cc"># optional milestone refs</span>
-  <span class="ck">tracker-link</span>: <span class="cs">jira://CUST-PLATFORM?fixVersion=MVP</span>`, },
-    { name: 'RAID', desc: 'Risks, assumptions, issues, and dependencies — each as a typed, linked object with a stable ID.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">RAID</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">risk-data-migration</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">type</span>: <span class="cv">risk</span>                <span class="cc"># risk | assumption | issue | dependency</span>
-  <span class="ck">severity</span>: <span class="cv">high</span>           <span class="cc"># low | medium | high | critical</span>
-  <span class="ck">status</span>: <span class="cv">accepted</span>         <span class="cc"># open | accepted | mitigated | closed</span>
-  <span class="ck">description</span>: Data migration may delay MVP if schema changes are large
-  <span class="ck">decision</span>: <span class="cs">ADR-014</span>        <span class="cc"># typed ref → Decision</span>
-  <span class="ck">owner</span>: <span class="cs">alex.kim</span>`, },
-    { name: 'Decision', desc: 'A portfolio-level Architectural Decision Record: the decision, the context, the options considered, the record of sign-off.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Decision</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">ADR-014</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">title</span>: Ship MVP with manual onboarding fallback
-  <span class="ck">status</span>: <span class="cv">accepted</span>         <span class="cc"># proposed | accepted | superseded | deprecated</span>
-  <span class="ck">context</span>: Data migration risk threatens MVP date. Automation is 3 weeks behind.
-  <span class="ck">decision</span>: Ship with a manual CSV import fallback for the MVP milestone.
-  <span class="ck">consequences</span>:
-    - Manual fallback adds 2 FTE weeks of support cost
-    - Onboarding p50 may be 72h instead of 48h at launch
-  <span class="ck">deciders</span>: [jordan.lee, alex.kim]
-  <span class="ck">date</span>: <span class="cv">2026-06-10</span>`, },
-    { name: 'Policy', desc: 'A governance gate as code. Runs in CI. Passes or fails. The result is in the commit log.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Policy</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">gate-build</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">gate</span>: <span class="cv">build</span>               <span class="cc"># named gate, referenced by Project.governance</span>
-  <span class="ck">requires</span>:
-    - <span class="ck">check</span>: <span class="cs">charter-approved</span>
-      <span class="ck">evidence</span>: <span class="cs">charters/aurora.yaml</span>
-    - <span class="ck">check</span>: <span class="cs">security-review</span>
-      <span class="ck">evidence</span>: <span class="cs">reviews/security-aurora.yaml</span>
-  <span class="ck">on-fail</span>: <span class="cv">block-merge</span>    <span class="cc"># block-merge | warn | notify</span>`, },
-    { name: 'Status', desc: 'Generated, never authored. The computed health of a project at a point in time. Committed to Git with a timestamp.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Status</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">status-aurora-20260701</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:                         <span class="cc"># GENERATED — do not author this block</span>
-  <span class="ck">health</span>: <span class="cv">at-risk</span>            <span class="cc"># ok | at-risk | bad</span>
-  <span class="ck">derivedAt</span>: <span class="cv">2026-07-01T08:04:22Z</span>
-  <span class="ck">signals</span>:
-    - <span class="ck">source</span>: <span class="cs">jira</span>            <span class="ck">result</span>: <span class="cv">at-risk</span>   <span class="ck">detail</span>: MVP slipping 6d
-    - <span class="ck">source</span>: <span class="cs">finance</span>        <span class="ck">result</span>: <span class="cv">at-risk</span>   <span class="ck">detail</span>: 78% burned at 60%
-    - <span class="ck">source</span>: <span class="cs">pagerduty</span>     <span class="ck">result</span>: <span class="cv">bad</span>       <span class="ck">detail</span>: 2 open SEV-2, 4d
-  <span class="ck">aggregation</span>: <span class="cv">worst-wins</span>`, },
-    { name: 'EventLog', desc: 'Runtime signals from integrations. The audit trail for things that happen outside Git — incidents, budget events, human approvals.', yaml: `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">EventLog</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">evt-20260701-001</span>         <span class="cc"># auto-generated, immutable</span>
-  <span class="ck">project</span>: <span class="cs">proj-aurora</span>
-<span class="ck">spec</span>:
-  <span class="ck">timestamp</span>: <span class="cv">2026-07-01T08:14:22Z</span>   <span class="cc"># required · UTC</span>
-  <span class="ck">source</span>: <span class="cs">pagerduty</span>               <span class="cc"># jira | pagerduty | finance | manual</span>
-  <span class="ck">type</span>: <span class="cv">incident.opened</span>
-  <span class="ck">severity</span>: <span class="cv">SEV-2</span>
-  <span class="ck">description</span>: Customer data migration timeout on prod
-  <span class="ck">affects</span>: [<span class="cs">m1-aurora-mvp</span>]      <span class="cc"># typed refs</span>`, },
+    { name: 'charter', desc: 'The contract for a piece of work.', extra: 'sponsor, budget, dates', sections: 'Objective · Success Criteria · Scope · Milestones · Risks · Approval', items: '', checks: 'measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent' },
+    { name: 'business-case', desc: 'The justification, upstream of the BRD.', extra: 'sponsor', sections: 'Problem Statement · Options Considered · Recommendation · Costs · Benefits', items: '', checks: 'required-sections' },
+    { name: 'brd', desc: 'Business requirements.', extra: 'owner', sections: 'Purpose · Business Requirements · Out of Scope', items: 'BR', checks: 'items-well-formed' },
+    { name: 'prd', desc: 'Product requirements and acceptance criteria.', extra: 'owner', sections: 'Overview · Product Requirements · Acceptance Criteria', items: 'PR (traces BR) · AC (verifies PR)', checks: 'items-well-formed' },
+    { name: 'frnfr', desc: 'Functional & non-functional requirements.', extra: 'owner', sections: 'Overview · Functional Requirements · Non-Functional Requirements', items: 'FR · NFR (trace PR)', checks: 'items-well-formed' },
+    { name: 'user-story', desc: 'User stories.', extra: 'owner', sections: 'Overview · User Stories', items: 'US (traces PR)', checks: 'story-format' },
+    { name: 'test-cases', desc: 'Test cases.', extra: 'owner', sections: 'Overview · Test Cases', items: 'TC (tests AC)', checks: 'items-well-formed' },
+    { name: 'adr', desc: 'Architecture decision log.', extra: 'owner', sections: 'Overview · Decisions', items: 'ADR (affects FR/NFR)', checks: 'adr-items-have-status' },
+    { name: 'risk-register', desc: 'The risk register.', extra: 'owner', sections: 'Overview · Risks', items: 'RISK (threatens BR/PR)', checks: 'risk-items-complete' },
+    { name: 'raci-stakeholder', desc: 'Roles and responsibilities.', extra: 'owner', sections: 'Stakeholders · RACI Matrix', items: '', checks: 'raci-one-accountable' },
+    { name: 'qa-test-plan', desc: 'Test strategy and gates.', extra: 'owner', sections: 'Scope · Test Approach · Environments · Entry Criteria · Exit Criteria', items: '', checks: 'measurable-exit-criteria' },
+    { name: 'data-migration-plan', desc: 'How data moves and is verified.', extra: 'owner', sections: 'Scope · Source Systems · Field Mapping · Validation · Cutover · Rollback', items: '', checks: 'mapping-table' },
+    { name: 'release-cutover-plan', desc: 'The go-live switch.', extra: 'owner', sections: 'Overview · Pre-Cutover Checklist · Cutover Steps · Verification · Rollback Trigger', items: '', checks: 'numbered-steps (Cutover Steps)' },
+    { name: 'rollback-plan', desc: 'The abort path.', extra: 'owner', sections: 'Overview · Trigger Conditions · Rollback Steps · Verification', items: '', checks: 'numbered-steps (Rollback Steps)' },
+    { name: 'hypercare-plan', desc: 'Heightened post-go-live support.', extra: 'owner', sections: 'Overview · Support Window · Severity Levels · Escalation · Exit Criteria', items: '', checks: 'measurable-exit-criteria' },
+    { name: 'runbook', desc: 'Operational procedures.', extra: 'owner', sections: 'Overview · Prerequisites · Procedures · Monitoring · Escalation', items: '', checks: 'numbered-steps (Procedures)' },
+    { name: 'status-report', desc: 'A point-in-time status.', extra: 'owner, period, rag', sections: 'Summary · Progress · Risks & Issues · Next Steps', items: '', checks: 'references-risk' },
+    { name: 'post-implementation-review', desc: 'Closure and lessons.', extra: 'owner', sections: 'Summary · Outcomes vs Objectives · What Went Well · What Could Improve · Lessons Learned · Follow-up Actions', items: '', checks: 'required-sections' },
+    { name: 'benefits-realization', desc: 'Benefits vs the business case.', extra: 'owner', sections: 'Overview · Benefits · Measurement · Realized Value', items: '', checks: 'measurable-items (Benefits)' },
   ];
-
+  const relations = [
+    ['traces', 'child requirement → the parent it refines', 'PR→BR · FR/NFR→PR · US→PR'],
+    ['verifies', 'acceptance criterion → the requirement it checks', 'AC→PR/FR'],
+    ['tests', 'test case → the acceptance criterion it exercises', 'TC→AC'],
+    ['threatens', 'risk → the item it endangers', 'RISK→BR/PR'],
+    ['affects', 'decision → the requirement it changes', 'ADR→FR/NFR'],
+  ];
   return `<div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
       <span class="layer-badge" style="background:var(--l2);">2</span>
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Schema reference.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The full schema for all ten kinds in pmo/v1. Every kind shares the same envelope: <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">apiVersion</code> · <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">kind</code> · <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">metadata</code> · <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">spec</code> · <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">status</code>.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Annotations in comments are part of the spec: <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;"># required</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;"># typed ref</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;"># GENERATED</code>.</p>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Reference.</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Every kind is a Markdown document with YAML frontmatter and required sections. The canonical JSON Schema and audit criteria for each live in the pipeline repo — this is the map.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">All kinds share <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">kind</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">id</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">title</code>, and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status</code>. The rest is per kind, below.</p>
 
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;">
-      ${kinds.map(k => `<a href="#ref-${k.name.toLowerCase()}" data-anchor="ref-${k.name.toLowerCase()}" style="font-family:'JetBrains Mono',monospace;font-size:12px;padding:4px 10px;background:var(--panel);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink-2);">${k.name}</a>`).join('')}
+    <div id="ref-shape" style="margin-bottom:44px;">
+      <h2 class="h2-sm">The shared shape.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Frontmatter is typed metadata (validated against a JSON Schema); sections carry the content (checked for presence and completeness).</p>
+      ${cb('any-document.md', `<span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">&lt;one of the 19 below&gt;</span>
+<span class="ck">id</span>: <span class="cv">unique-slug</span>
+<span class="ck">title</span>: Human-readable title
+<span class="ck">status</span>: <span class="cv">draft</span>   <span class="cc"># draft | proposed | approved | baselined</span>
+<span class="cc">---</span>
+
+<span class="cv">## A Required Section</span>
+Content — and, where the kind defines them, traceable items.`)}
     </div>
 
-    ${kinds.map(k => `
-    <div id="ref-${k.name.toLowerCase()}" style="margin-bottom:48px;">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;margin:0 0 6px;display:flex;align-items:center;gap:10px;">
-        <span class="kind-badge" style="font-size:12px;padding:3px 9px;">${k.name}</span>
-      </h2>
-      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">${k.desc}</p>
-      ${cb(`${k.name.toLowerCase()}.yaml`, k.yaml)}
-    </div>`).join('')}
+    <div id="ref-items" style="margin-bottom:44px;">
+      <h2 class="h2-sm">Item &amp; link syntax.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceable rows are bullets with a bold ID and optional typed links. Broken links always block; coverage of approved items is enforced.</p>
+      ${cb('convention', `- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001, BR-003): The product shall provide a self-serve flow.`)}
+      <div style="border:1px solid var(--border);border-radius:11px;overflow:hidden;margin-top:16px;">
+        <div style="display:grid;grid-template-columns:96px 1fr 168px;gap:12px;padding:9px 14px;background:var(--panel-2);font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);">
+          <span>relation</span><span>meaning</span><span>example</span>
+        </div>
+        ${relations.map(([r, meaning, eg]) => `
+        <div style="display:grid;grid-template-columns:96px 1fr 168px;gap:12px;padding:10px 14px;border-top:1px solid var(--border);align-items:baseline;">
+          <span class="mono" style="font-size:12.5px;font-weight:600;color:var(--accent);">${r}</span>
+          <span style="font-size:13.5px;color:var(--ink-2);">${meaning}</span>
+          <span class="mono" style="font-size:11px;color:var(--muted);">${eg}</span>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div id="ref-kinds" style="margin-bottom:24px;">
+      <h2 class="h2-sm">The nineteen kinds.</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 22px;">
+        ${kinds.map(k => `<a href="#ref-${k.name}" data-anchor="ref-${k.name}" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;background:var(--panel);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink-2);">${k.name}</a>`).join('')}
+      </div>
+      ${kinds.map(k => `
+      <div id="ref-${k.name}" style="border:1px solid var(--border);border-radius:11px;padding:13px 16px;margin-bottom:9px;">
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+          <span class="mono" style="font-size:13px;font-weight:600;color:var(--accent);">${k.name}</span>
+          <span style="font-size:13.5px;color:var(--ink-2);">${k.desc}</span>
+        </div>
+        <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.85;">
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, title, status, ${k.extra}</div>
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">sections</span>${k.sections}</div>
+          ${k.items ? `<div><span style="display:inline-block;width:74px;color:var(--faint);">items</span>${k.items}</div>` : ''}
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">checks</span>${k.checks}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div style="margin-top:8px;padding:18px 20px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
+      <p style="font-size:15px;color:var(--ink);margin:0 0 12px;max-width:60ch;">The full JSON Schema, audit criteria, and a runnable sample for every kind live in the pipeline repo. Fork them; add your own.</p>
+      <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">schema/ · criteria/ · templates/ →</a>
+    </div>
 
     ${pageNavHtml('/reference')}
     ${provenanceFooter('/reference')}
@@ -1575,62 +1461,52 @@ function renderProfiles() {
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 3 · Profiles</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Composable, named bundles.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Profiles are pre-configured implementations of the reference approach, tuned for specific contexts. They're independent of the reference approach, owned by the community, and designed to be forked.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Think: Agile Manifesto → Scrum/Kanban/SAFe. The manifesto doesn't change. The implementations diverge.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A profile is a fork of the templates and criteria, tuned for a context. Which kinds you use, which sections are required, how strict the checks are — all of it is just the library, adjusted.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Think: Agile Manifesto → Scrum / Kanban / SAFe. The manifesto doesn't change. The implementations diverge.</p>
 
     <div id="what-profile" style="margin-bottom:52px;">
-      <h2 class="h2-sm">What a profile contains.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A profile is a git repository that declares which pmo/v1 kinds it uses, what defaults it sets, what policies it ships pre-wired, and what integrations it expects.</p>
-      ${cb('profile.yaml (the declaration)', `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Profile</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">regulated-industry</span>
-  <span class="ck">version</span>: <span class="cv">1.2.0</span>
-  <span class="ck">author</span>: <span class="cs">community</span>
-<span class="ck">spec</span>:
-  <span class="ck">extends</span>: <span class="cs">pmo/v1-reference</span>        <span class="cc"># base: the reference approach</span>
-  <span class="ck">kinds</span>: [Portfolio, Program, Project, Charter, RAID, Decision, Policy, Status, EventLog]
-  <span class="ck">policies</span>:
-    - <span class="cs">policies/gate-regulatory-signoff.yaml</span>
-    - <span class="cs">policies/gate-data-classification.yaml</span>
-  <span class="ck">integrations</span>:
-    - <span class="cv">jira</span>
-    - <span class="cv">workday</span>
-    - <span class="cv">servicenow</span>
-  <span class="ck">audit</span>:
-    <span class="ck">human-signatures</span>: <span class="cv">required</span>
-    <span class="ck">retention-days</span>: <span class="cv">2555</span>           <span class="cc"># 7 years</span>`)}
+      <h2 class="h2-sm">What a profile is.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Nothing new to learn — a profile edits the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> files. Here a regulated-industry profile tightens the base charter: an extra required section and a required reviewer.</p>
+      ${cb('criteria/charter.criteria.yaml (regulated-industry)', `<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">required_sections</span>:
+  - Objective
+  - Success Criteria
+  - Risks
+  - Approval
+  - <span class="cv">Data Classification</span>     <span class="cc"># added by this profile</span>
+<span class="ck">checks</span>:
+  - { <span class="ck">id</span>: measurable-success-criteria, <span class="ck">blocking</span>: true }
+  - { <span class="ck">id</span>: risks-have-owner-and-mitigation, <span class="ck">blocking</span>: true }
+<span class="cc"># plus a required PR reviewer, via branch protection</span>`)}
     </div>
 
     <div id="available-profiles" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Available profiles.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Three profiles ship with pmoctl. Fork any of them as a starting point for your own.</p>
+      <h2 class="h2-sm">Example profiles.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Illustrations of the same library tuned three ways. Fork one as a starting point.</p>
       <div style="display:grid;gap:12px;">
         ${[
-          { id: 'regulated-industry', color: 'var(--warn)', title: 'regulated-industry', desc: 'For portfolios in finance, healthcare, or government. Pre-wires human-signature policies, 7-year audit retention, and SOX/HIPAA-friendly gate requirements. Integrates with Workday and ServiceNow by default.' },
-          { id: 'lean-startup', color: 'var(--ok)', title: 'lean-startup', desc: 'Minimal friction. One project kind, no programs, no portfolio layer until you need it. Status from GitHub milestones. No stage gates, just a CI schema check. Start here if you have fewer than 5 projects.' },
-          { id: 'agile-portfolio', color: 'var(--l2)', title: 'agile-portfolio', desc: 'For SAFe or LeSS shops. Maps PI objectives to project charters, ARTs to programs, trains to portfolios. Ships PI planning templates and quarterly roadmap rendering out of the box.' },
+          { id: 'regulated-industry', color: 'var(--warn)', title: 'regulated-industry', desc: 'All 19 kinds, strictest criteria. Adds a Data Classification section, requires a named reviewer on main, and keeps the full audit history for retention. For finance, healthcare, or government.' },
+          { id: 'lean-startup', color: 'var(--ok)', title: 'lean-startup', desc: 'A handful of kinds — charter, brd, prd, test-cases. Coverage stays advisory until you grow, so a small team is never blocked for unfinished downstream docs. Start here.' },
+          { id: 'agile-delivery', color: 'var(--l2)', title: 'agile-delivery', desc: 'User-story-centric. Stories carry acceptance criteria, every story traces to a product requirement, and every acceptance criterion needs a test case. For teams working in stories, not specs.' },
         ].map(p => `
           <div class="card" style="border-left:3px solid ${p.color};">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
               <span class="mono" style="font-size:13px;font-weight:600;color:var(--accent);">${p.title}</span>
             </div>
             <div class="card-body">${p.desc}</div>
-            <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);">pmoctl init --profile ${p.id}</div>
           </div>`).join('')}
       </div>
     </div>
 
     <div id="author-profile" style="margin-bottom:48px;">
-      <h2 class="h2-sm">Author your own profile.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Fork any existing profile, modify the declaration, and publish it to a git host. Anyone can reference it by URL.</p>
-      ${cb('terminal', `<span class="cc"># fork the lean-startup profile</span>
-pmoctl profile fork lean-startup my-profile
+      <h2 class="h2-sm">Author your own.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Fork the library, edit the criteria and templates to your standard, and publish it. Anyone can start from your fork.</p>
+      ${cb('terminal', `<span class="cc"># fork the reference library and make it yours</span>
+gh repo fork c4g-john/pmo-as-code-pipeline --clone
+cd pmo-as-code-pipeline
 
-<span class="cc"># edit profile.yaml, add your policies, adjust integration config</span>
-<span class="cc"># then reference it by URL in any portfolio</span>
-
-<span class="ck">profile</span>: <span class="cs">https://github.com/your-org/my-profile@v1.0.0</span>`)}
+<span class="cc"># edit criteria/ and templates/ to your standard, then commit</span>
+git commit -am "our-org profile: stricter charters, required reviewer"`)}
     </div>
 
     ${pageNavHtml('/profiles')}
@@ -1645,68 +1521,68 @@ function renderAdoption() {
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 3 · Profiles</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Adoption &amp; maturity model.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A staged path from first YAML file to fully derived portfolio. You don't need to do everything at once. Each stage delivers real value independently.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Most teams spend 2–4 weeks per stage. The crawl → walk transition is the biggest lift. Walk → run is mostly integration work.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A staged path from your first document to a fully traceable document set. You don't need to do everything at once. Each stage delivers real value independently.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Crawl is an afternoon. Walk is the habit shift — the gate on every PR. Run is turning on cross-document consistency across the whole set.</p>
 
     <div class="thread-rail">
 
       <section class="thread-section" id="crawl">
         <span class="thread-node"></span>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--ok);border:1px solid color-mix(in srgb, var(--ok) 40%, transparent);background:color-mix(in srgb, var(--ok) 12%, transparent);border-radius:999px;padding:4px 12px;margin-bottom:12px;">Stage 1 · Crawl</div>
-        <h2 class="h2-sm">One project in Git.</h2>
-        <p class="body">Pick one project. Author its <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.yaml</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">charter.yaml</code>. Validate them with <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">pmoctl validate</code> in CI. That's it for now. You have a single source of truth for one project's definition, in a place with history.</p>
+        <h2 class="h2-sm">One document, validated.</h2>
+        <p class="body">Pick one document. Author <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">documents/charters/aurora.md</code> — frontmatter and the required sections. Run <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit validate</code> locally. That's it. You have a versioned, schema-checked document in a place with history.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--ok);">
             <div class="card-title">What you get</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">A versioned project definition. Schema validation on every PR. A Git history of every change to the charter, milestones, and governance config. No more "which version of the charter is current?"</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">A versioned document. Structural validation you can run in one command. A Git history of every change to it. No more "which version of the charter is current?"</div>
           </div>
           <div class="card">
             <div class="card-title">What you skip</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Integrations. Derived status. Policy gates. All of that is optional at this stage. You're building the habit of truth-in-Git before you automate on top of it.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">CI, cross-document consistency, and the AI layer — all optional at this stage. You're building the habit of truth-in-Git before you automate on top of it.</div>
           </div>
         </div>
         <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);">
-          Checklist: <span style="color:var(--ok);">project.yaml ✓</span> · <span style="color:var(--ok);">charter.yaml ✓</span> · <span style="color:var(--ok);">pmoctl validate in CI ✓</span>
+          Checklist: <span style="color:var(--ok);">charter.md ✓</span> · <span style="color:var(--ok);">docunit validate ✓</span>
         </div>
       </section>
 
       <section class="thread-section" id="walk">
         <span class="thread-node"></span>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 40%, transparent);background:color-mix(in srgb, var(--warn) 12%, transparent);border-radius:999px;padding:4px 12px;margin-bottom:12px;">Stage 2 · Walk</div>
-        <h2 class="h2-sm">Derived status &amp; policy gates wired.</h2>
-        <p class="body">Wire at least one status source. Jira is the fastest start. Run <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">pmoctl status</code> on a schedule and commit the result. Add a Policy kind for your most important gate and add it to CI. Now status is derived, not self-reported, and governance is a CI check, not an email.</p>
+        <h2 class="h2-sm">Gated on every pull request.</h2>
+        <p class="body">Put <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit validate</code> in a GitHub Actions workflow and turn on branch protection. Add a few more kinds — a BRD, a PRD. Now a document that doesn't meet the standard cannot merge, and the reasons are posted on the PR.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--warn);">
             <div class="card-title">What you get</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Derived health. A timestamped audit trail in Git. One governance gate that runs automatically. The PMO starts looking like engineering, not administration.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">A binding gate. An audit result on every PR. More document kinds under the same standard. The PMO starts looking like engineering, not administration.</div>
           </div>
           <div class="card">
             <div class="card-title">Typical timeline</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">2–3 weeks to wire the first integration and write the first Policy. Most of that is getting API credentials and agreeing on health rules with stakeholders.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">About a day to wire the Action and require the check on <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code>. Most of the effort is agreeing the criteria with stakeholders.</div>
           </div>
         </div>
         <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);">
-          Checklist: <span style="color:var(--ok);">1+ signal source ✓</span> · <span style="color:var(--ok);">pmoctl status on schedule ✓</span> · <span style="color:var(--ok);">1+ Policy in CI ✓</span>
+          Checklist: <span style="color:var(--ok);">audit.yml ✓</span> · <span style="color:var(--ok);">branch protection ✓</span> · <span style="color:var(--ok);">3+ kinds ✓</span>
         </div>
       </section>
 
       <section class="thread-section" id="run">
         <span class="thread-node"></span>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:999px;padding:4px 12px;margin-bottom:12px;">Stage 3 · Run</div>
-        <h2 class="h2-sm">Full portfolio. Live audit. EventLog flowing.</h2>
-        <p class="body">Every project in Git. Status derived from real signals across the whole portfolio. All material governance gates as Policy kinds in CI. The EventLog capturing runtime signals — incidents, budget events, human approvals — so the audit trail is complete, not just the definition layer. A dashboard generated from the data, not from someone's summary of it.</p>
+        <h2 class="h2-sm">Full set. Consistency. Traceability matrix.</h2>
+        <p class="body">Every document kind in Git, with the cross-document <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">consistency</code> job enforcing traceability, the AI advisory layer on, and the RTM generated on every change. Requirements trace end to end; broken links block; the matrix is derived, not drawn.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--accent);">
             <div class="card-title">What you get</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">A portfolio where every status is derived. Every decision is traceable. Every governance event is auditable. The reporting layer is gone, replaced by a generated dashboard that's always current.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Every requirement traces to a test. Broken links are blocked. The AI flags weak links for review. A generated traceability matrix that's always current — no one maintains it by hand.</div>
           </div>
           <div class="card">
             <div class="card-title">The run claim</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">At run, the PMO can answer "why is X red?" in under 60 seconds from the Git log and EventLog, without calling anyone or reading a deck.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">At run, you can answer "which requirements have no test?" in seconds from the graph, without calling anyone or reading a deck.</div>
           </div>
         </div>
         <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);">
-          Checklist: <span style="color:var(--ok);">all projects in Git ✓</span> · <span style="color:var(--ok);">EventLog wired ✓</span> · <span style="color:var(--ok);">dashboard generated ✓</span>
+          Checklist: <span style="color:var(--ok);">consistency required ✓</span> · <span style="color:var(--ok);">AI advisory on ✓</span> · <span style="color:var(--ok);">RTM generated ✓</span>
         </div>
       </section>
 
@@ -1719,15 +1595,15 @@ function renderAdoption() {
 
 function renderVs() {
   const rows = [
-    { traditional: 'Status deck (weekly, manual)', ascode: 'Dashboard generated from real signals', win: 'ascode' },
-    { traditional: 'RAG: self-reported by the PM', ascode: 'Health: derived from configured sources', win: 'ascode' },
-    { traditional: 'Approval email chain', ascode: 'Policy kind passing in CI', win: 'ascode' },
-    { traditional: 'Charter in Word, v47_FINAL.docx', ascode: 'charter.yaml, versioned, schema-validated', win: 'ascode' },
-    { traditional: 'RAID log in Excel, shared drive', ascode: 'RAID entries in Git, reviewed by PR', win: 'ascode' },
-    { traditional: 'Roadmap in PowerPoint', ascode: 'Gantt rendered from milestone YAML', win: 'ascode' },
-    { traditional: '"Who approved this?" — email search', ascode: 'git log policies/gate-build.yaml', win: 'ascode' },
-    { traditional: 'PM headcount for reporting layer', ascode: 'One pmoctl status run on schedule', win: 'ascode' },
-    { traditional: 'Human signature required (regulatory)', ascode: 'Policy kind with human-signature check + EventLog', win: 'tie' },
+    { traditional: 'Status deck (weekly, manual)', ascode: 'Audit result, posted on every PR', win: 'ascode' },
+    { traditional: 'RAG self-reported by the PM', ascode: 'Deterministic checks decide pass/fail', win: 'ascode' },
+    { traditional: 'Approval email chain', ascode: 'A required check + a merged PR', win: 'ascode' },
+    { traditional: 'Charter in Word, v47_FINAL.docx', ascode: 'charter.md, versioned, schema-validated', win: 'ascode' },
+    { traditional: 'RAID log in Excel, shared drive', ascode: 'Risk register in Git, reviewed by PR', win: 'ascode' },
+    { traditional: 'Requirements drifting across 6 docs', ascode: 'One traceability graph, checked in CI', win: 'ascode' },
+    { traditional: '"Who approved this?" — email search', ascode: 'git log + the merged PR reviewer', win: 'ascode' },
+    { traditional: 'PM headcount for the reporting layer', ascode: 'One docunit run per pull request', win: 'ascode' },
+    { traditional: 'Human signature required (regulatory)', ascode: 'A required reviewer, recorded in Git', win: 'tie' },
     { traditional: 'Tool-trained PMs, high switching cost', ascode: 'Any compliant tool, vendor-neutral standard', win: 'ascode' },
   ];
 
@@ -1765,14 +1641,14 @@ function renderVs() {
         </div>
         <div class="card" style="border-left:3px solid var(--ok);">
           <div class="card-title">Regulated industries</div>
-          <div class="card-body" style="margin-top:4px;">An immutable audit trail in Git, plus an EventLog for runtime events, satisfies most audit requirements better than email threads can.</div>
+          <div class="card-body" style="margin-top:4px;">An immutable audit trail in Git — who changed what, when, and who approved it — satisfies most audit requirements better than email threads can.</div>
         </div>
       </div>
     </div>
 
     <div id="where-gates" style="margin-bottom:48px;">
       <h2 class="h2-sm">Where traditional gates still belong.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">We are not arguing that human judgment disappears. Some decisions genuinely require a named individual's sign-off: a legal filing, a board resolution, a contractual milestone payment. PMO as Code holds these gracefully: a Policy kind with <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">requires: [human-signature]</code>, and the event recorded in the EventLog.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">We are not arguing that human judgment disappears. Some decisions genuinely require a named individual's sign-off: a legal filing, a board resolution, a contractual milestone payment. PMO as Code holds these gracefully: require a named reviewer on the pull request, recorded immutably in the Git history — a stronger record than an approval email that no one can find later.</p>
       <div class="card" style="border-left:3px solid var(--warn);">
         <div class="card-title">The honest position</div>
         <div class="card-body" style="margin-top:4px;line-height:1.6;">Gates don't vanish. They get demoted from default to exception. The default posture is flow. The gate is the documented exception. When a human signature is genuinely required, it belongs in the framework as a first-class construct, not as an email chain that falls outside the audit trail.</div>
@@ -1930,27 +1806,11 @@ function render() {
   if (rederiveBtn) {
     rederiveBtn.addEventListener('click', () => {
       state.revealed = false;
-      document.getElementById('reveal-output').innerHTML = `
-        <div style="display:flex;align-items:center;gap:11px;padding:6px 0 20px;">
-          <span class="spinner"></span>
-          <span class="mono" style="font-size:13px;color:var(--muted);">computing from signals<span class="blink">…</span></span>
-        </div>`;
+      document.getElementById('reveal-output').innerHTML = REVEAL_COMPUTING;
       clearTimeout(window._rd);
       window._rd = setTimeout(() => {
         state.revealed = true;
-        document.getElementById('reveal-output').innerHTML = `
-          <div>
-            <div class="status-pill" style="background:color-mix(in srgb, var(--warn) 16%, transparent);border:1px solid color-mix(in srgb, var(--warn) 45%, transparent);margin-bottom:16px;">
-              <span class="status-dot" style="background:var(--warn);box-shadow:0 0 0 3px color-mix(in srgb,var(--warn) 22%,transparent);"></span>
-              <span style="color:var(--warn);">At risk</span>
-            </div>
-            <div class="signal-list">
-              <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Schedule</strong> — MVP milestone slipping 6d</div></div>
-              <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Budget</strong> — 78% burned at 60% of timeline</div></div>
-              <div class="signal-item"><span class="signal-dot" style="background:var(--bad);"></span><div class="signal-text"><strong>Incidents</strong> — 2 open SEV-2, unresolved 4d</div></div>
-            </div>
-            <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">3 signals → health = <span style="color:var(--warn);">at-risk</span></div>
-          </div>`;
+        document.getElementById('reveal-output').innerHTML = REVEAL_PASS;
       }, 1100);
     });
   }
@@ -2032,19 +1892,7 @@ window.addEventListener('hashchange', () => {
     state.revealed = true;
     const out = document.getElementById('reveal-output');
     if (out && state.route === '/') {
-      out.innerHTML = `
-        <div>
-          <div class="status-pill" style="background:color-mix(in srgb, var(--warn) 16%, transparent);border:1px solid color-mix(in srgb, var(--warn) 45%, transparent);margin-bottom:16px;">
-            <span class="status-dot" style="background:var(--warn);box-shadow:0 0 0 3px color-mix(in srgb,var(--warn) 22%,transparent);"></span>
-            <span style="color:var(--warn);">At risk</span>
-          </div>
-          <div class="signal-list">
-            <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Schedule</strong> — MVP milestone slipping 6d</div></div>
-            <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Budget</strong> — 78% burned at 60% of timeline</div></div>
-            <div class="signal-item"><span class="signal-dot" style="background:var(--bad);"></span><div class="signal-text"><strong>Incidents</strong> — 2 open SEV-2, unresolved 4d</div></div>
-          </div>
-          <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">3 signals → health = <span style="color:var(--warn);">at-risk</span></div>
-        </div>`;
+      out.innerHTML = REVEAL_PASS;
     }
   }, 500);
 });
@@ -2078,19 +1926,7 @@ setTimeout(() => {
   state.revealed = true;
   const out = document.getElementById('reveal-output');
   if (out && state.route === '/') {
-    out.innerHTML = `
-      <div>
-        <div class="status-pill" style="background:color-mix(in srgb, var(--warn) 16%, transparent);border:1px solid color-mix(in srgb, var(--warn) 45%, transparent);margin-bottom:16px;">
-          <span class="status-dot" style="background:var(--warn);box-shadow:0 0 0 3px color-mix(in srgb,var(--warn) 22%,transparent);"></span>
-          <span style="color:var(--warn);">At risk</span>
-        </div>
-        <div class="signal-list">
-          <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Schedule</strong> — MVP milestone slipping 6d</div></div>
-          <div class="signal-item"><span class="signal-dot" style="background:var(--warn);"></span><div class="signal-text"><strong>Budget</strong> — 78% burned at 60% of timeline</div></div>
-          <div class="signal-item"><span class="signal-dot" style="background:var(--bad);"></span><div class="signal-text"><strong>Incidents</strong> — 2 open SEV-2, unresolved 4d</div></div>
-        </div>
-        <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">3 signals → health = <span style="color:var(--warn);">at-risk</span></div>
-      </div>`;
+    out.innerHTML = REVEAL_PASS;
   }
 }, 600);
 </script>
