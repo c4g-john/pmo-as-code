@@ -63,11 +63,12 @@ export function renderHome() {
                 <span class="traffic-light" style="background:#ff5f57;"></span>
                 <span class="traffic-light" style="background:#febc2e;"></span>
                 <span class="traffic-light" style="background:#28c840;"></span>
-                <span class="code-filename">documents/charters/aurora.md</span>
+                <span class="code-filename">documents/PRJ-001-AUR/charter.md</span>
               </div>
               <pre class="code-pre"><span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">charter</span>
-<span class="ck">id</span>: <span class="cv">aurora</span>
+<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
+<span class="ck">id</span>: <span class="cv">AUR-charter</span>
 <span class="ck">status</span>: <span class="cv">approved</span>
 <span class="cc">---</span>
 <span class="cv">## Objective</span>
@@ -96,7 +97,7 @@ Cut onboarding from 14 days to under 2.
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-lg"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Test Case</span><span class="mono" style="font-size:11px;color:var(--muted);">TC-001</span></div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Test Case</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-TC-001</span></div>
                 <div style="font-size:14px;color:var(--ink-2);">Complete the self-serve wizard → account active, zero support tickets.</div>
               </div>
             </div>
@@ -104,7 +105,7 @@ Cut onboarding from 14 days to under 2.
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Acceptance Criterion</span><span class="mono" style="font-size:11px;color:var(--muted);">AC-001</span></div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Acceptance Criterion</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-AC-001</span></div>
                 <div style="font-size:14px;color:var(--ink-2);">A new customer completes setup with no support ticket created.</div>
               </div>
             </div>
@@ -112,7 +113,7 @@ Cut onboarding from 14 days to under 2.
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Product Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">PR-014</span></div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Product Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-PR-014</span></div>
                 <div style="font-size:14px;color:var(--ink-2);">The product shall provide a self-serve onboarding flow.</div>
               </div>
             </div>
@@ -120,7 +121,7 @@ Cut onboarding from 14 days to under 2.
             <div style="position:relative;margin-bottom:8px;">
               <span class="thread-node-sm"></span>
               <div class="card">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Business Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">BR-001</span></div>
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;"><span class="kind-badge">Business Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-BR-001</span></div>
                 <div style="font-size:14px;color:var(--ink-2);">Reduce median customer onboarding time to under 2 days.</div>
               </div>
             </div>
@@ -134,6 +135,34 @@ Cut onboarding from 14 days to under 2.
             </div>
           </div>
           <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. And this walk is generated from the links, not drawn by hand — it's the traceability matrix the pipeline builds.</p>
+        </section>
+
+        <section class="thread-section" id="portfolio">
+          <span class="thread-node"></span>
+          <div class="eyebrow">From one document to a portfolio</div>
+          <h2 class="h2">Every project has a unique ID — and its own live page.</h2>
+          <p class="body">Each project carries a stable identity — <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span> — that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides; every item says which project it belongs to. The pipeline then publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em> — one derived RAG card per project, each linking to its own always-current status page.</p>
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--panel-2);">
+              <span class="mono" style="font-size:12px;color:var(--muted);">docunit pages · portfolio</span>
+              <span class="mono" style="font-size:11px;color:var(--warn);">● AMBER</span>
+            </div>
+            ${[
+              ['AUR','Aurora — Customer Onboarding', 'PRJ-001-AUR', 'var(--warn)', 'AMBER', '20 docs · 2 open risks'],
+              ['ATL','Atlas — Partner Portal', 'PRJ-002-ATL', 'var(--ok)', 'GREEN', '5 docs · fully traced'],
+              ['PHX','Phoenix — Support Response', 'PRJ-004-PHX', 'var(--ok)', 'GREEN', 'charter · project'],
+            ].map(([code, name, pid, color, rag, stat]) => `
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 15px;border-top:1px solid var(--border);">
+                <span style="width:9px;height:9px;border-radius:50%;background:${color};flex:none;"></span>
+                <span class="mono" style="font-size:11px;color:var(--muted);background:var(--panel);border:1px solid var(--border);padding:2px 6px;border-radius:5px;flex:none;">${code}</span>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:14px;color:var(--ink);">${name}</div>
+                  <div class="mono" style="font-size:11px;color:var(--faint);">${pid} · ${stat}</div>
+                </div>
+                <span class="mono" style="font-size:11px;color:${color};flex:none;">${rag}</span>
+              </div>`).join('')}
+          </div>
+          <p class="caption">Each RAG is <em style="font-style:normal;color:var(--ink);">computed</em> from that project's own documents — coverage, open risks, failing audits — not typed in. <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">See the live dashboard →</a></p>
         </section>
 
         <section class="thread-section" id="proof">

@@ -36,26 +36,41 @@ export function renderReference() {
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Reference.</h1>
     <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Every kind is a Markdown document with YAML frontmatter and required sections. The canonical JSON Schema and audit criteria for each live in the pipeline repo — this is the map.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">All kinds share <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">kind</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">id</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">title</code>, and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status</code>. The rest is per kind, below.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">All document kinds share <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">kind</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">id</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project</code>, <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">title</code>, and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status</code>. The rest is per kind, below.</p>
 
     <div id="ref-shape" style="margin-bottom:44px;">
       <h2 class="h2-sm">The shared shape.</h2>
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Frontmatter is typed metadata (validated against a JSON Schema); sections carry the content (checked for presence and completeness).</p>
       ${cb('any-document.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">&lt;one of the 19 below&gt;</span>
-<span class="ck">id</span>: <span class="cv">unique-slug</span>
+<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>   <span class="cc"># the owning project's id</span>
+<span class="ck">id</span>: <span class="cv">AUR-brd</span>        <span class="cc"># &lt;CODE&gt;-&lt;slug&gt;, globally unique</span>
 <span class="ck">title</span>: Human-readable title
-<span class="ck">status</span>: <span class="cv">draft</span>   <span class="cc"># draft | proposed | approved | baselined</span>
+<span class="ck">status</span>: <span class="cv">draft</span>       <span class="cc"># draft | proposed | approved | baselined</span>
 <span class="cc">---</span>
 
 <span class="cv">## A Required Section</span>
 Content — and, where the kind defines them, traceable items.`)}
     </div>
 
+    <div id="ref-identity" style="margin-bottom:44px;">
+      <h2 class="h2-sm">Project identity.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents live in per-project folders. Each project is anchored by a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> (the 20th kind, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project</code>) whose id is the canonical <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-NNN-CODE</code>. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">CODE</code> namespaces every document id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-brd</code>) and item id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code>).</p>
+      ${cb('documents/PRJ-001-AUR/project.md', `<span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">project</span>
+<span class="ck">id</span>: <span class="cv">PRJ-001-AUR</span>    <span class="cc"># PRJ-&lt;NNN&gt;-&lt;CODE&gt;, unique across all projects</span>
+<span class="ck">code</span>: <span class="cv">AUR</span>            <span class="cc"># 2–6 letters; namespaces this project's ids</span>
+<span class="ck">name</span>: Aurora — Customer Onboarding Overhaul
+<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
+<span class="ck">status</span>: <span class="cv">active</span>         <span class="cc"># proposed | active | on-hold | closed</span>
+<span class="cc">---</span>`)}
+      <p style="font-size:14px;color:var(--muted);margin:14px 0 0;"><code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit projects</code> generates <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> from these anchors, and a CI check fails if it drifts or an id/code is duplicated. Checks: <span class="mono" style="font-size:12px;color:var(--muted);">project-id-format</span>.</p>
+    </div>
+
     <div id="ref-items" style="margin-bottom:44px;">
       <h2 class="h2-sm">Item &amp; link syntax.</h2>
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceable rows are bullets with a bold ID and optional typed links. Broken links always block; coverage of approved items is enforced.</p>
-      ${cb('convention', `- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001, BR-003): The product shall provide a self-serve flow.`)}
+      ${cb('convention', `- <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001, AUR-BR-003): The product shall provide a self-serve flow.`)}
       <div style="border:1px solid var(--border);border-radius:11px;overflow:hidden;margin-top:16px;">
         <div style="display:grid;grid-template-columns:96px 1fr 168px;gap:12px;padding:9px 14px;background:var(--panel-2);font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);">
           <span>relation</span><span>meaning</span><span>example</span>
@@ -70,7 +85,7 @@ Content — and, where the kind defines them, traceable items.`)}
     </div>
 
     <div id="ref-kinds" style="margin-bottom:24px;">
-      <h2 class="h2-sm">The nineteen kinds.</h2>
+      <h2 class="h2-sm">The nineteen document kinds.</h2>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 22px;">
         ${kinds.map(k => `<a href="#ref-${k.name}" data-anchor="ref-${k.name}" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;background:var(--panel);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink-2);">${k.name}</a>`).join('')}
       </div>
@@ -81,7 +96,7 @@ Content — and, where the kind defines them, traceable items.`)}
           <span style="font-size:13.5px;color:var(--ink-2);">${k.desc}</span>
         </div>
         <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.85;">
-          <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, title, status, ${k.extra}</div>
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, project, title, status, ${k.extra}</div>
           <div><span style="display:inline-block;width:74px;color:var(--faint);">sections</span>${k.sections}</div>
           ${k.items ? `<div><span style="display:inline-block;width:74px;color:var(--faint);">items</span>${k.items}</div>` : ''}
           <div><span style="display:inline-block;width:74px;color:var(--faint);">checks</span>${k.checks}</div>

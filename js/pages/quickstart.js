@@ -28,9 +28,10 @@ pip install -e ".[dev]"        <span class="cc"># add ".[ai]" for AI advisory ch
         <div class="eyebrow">Step 2</div>
         <h2 class="h2-sm">Author a document.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">A document is Markdown with YAML frontmatter and defined sections. Here's a charter. (Or convert an existing Word doc — see the guides.)</p>
-        ${cb('documents/charters/aurora.md', `<span class="cc">---</span>
+        ${cb('documents/PRJ-001-AUR/charter.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">charter</span>
-<span class="ck">id</span>: <span class="cv">aurora</span>
+<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
+<span class="ck">id</span>: <span class="cv">AUR-charter</span>
 <span class="ck">title</span>: Aurora — Customer Onboarding Overhaul
 <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
 <span class="ck">budget</span>: { <span class="ck">amount</span>: 1200000, <span class="ck">currency</span>: USD }
@@ -55,15 +56,15 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 3</div>
         <h2 class="h2-sm">Unit-test it.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge. AI checks (with a key) advise. This is the real output.</p>
-        ${cb('terminal', `docunit validate documents/charters/aurora.md
+        ${cb('terminal', `docunit validate documents/PRJ-001-AUR/charter.md
 
-<span class="cs">documents/charters/aurora.md
+<span class="cs">documents/PRJ-001-AUR/charter.md
   ✓ frontmatter-schema: valid against the schema
   ✓ required-sections: all 6 present and non-empty
   ✓ measurable-success-criteria: all 3 state a measurable threshold
   ✓ risks-have-owner-and-mitigation: all risks name an owner + mitigation
   ✓ dates-consistent: created 2026-01-15 → target 2026-12-15
-  ✓ unique-id: id 'aurora' is unique
+  ✓ unique-id: id 'AUR-charter' is unique
   ○ objective-is-specific: advisory (needs ANTHROPIC_API_KEY)
 
 ✓ All structural checks passed — clear to merge.</span>`)}
@@ -97,12 +98,12 @@ manual setup with a self-serve flow.
         ${cb('terminal', `docunit consistency
 
 <span class="cs">consistency (cross-document)
-  ✓ item-id-uniqueness: all 10 item IDs are unique
+  ✓ item-id-uniqueness: all 24 item IDs are unique
   ✓ referential-integrity: all references resolve
   ✓ required-links: all required upstream links present
   ✓ coverage: all approved items are covered</span>
   <span class="cc"># AI advisory, e.g.:</span>
-<span class="cs">  ● PR-015 —traces→ BR-002  score 0.40
+<span class="cs">  ● AUR-PR-015 —traces→ AUR-BR-002  score 0.40
     "progress emails don't obviously reduce support tickets"</span>`)}
       </section>
 
@@ -111,20 +112,37 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 6</div>
         <h2 class="h2-sm">Generate the traceability matrix.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Derived from the links, never authored by hand. Traceability you can see.</p>
-        ${cb('terminal', `docunit rtm
+        ${cb('terminal', `docunit rtm --project PRJ-001-AUR
 
-<span class="cs"># Requirements Traceability Matrix
-| Business Req | Product Req | Func/NFR | Acceptance | Test |
-|--------------|-------------|----------|------------|------|
-| BR-001       | PR-014      | FR-101   | AC-001     | TC-001 |
-| BR-002       | PR-015      | NFR-05   | AC-002     | TC-002 |</span>`)}
+<span class="cs"># Requirements Traceability Matrix — AUR
+| Business Req | Product Req | Func/NFR  | Acceptance | Test |
+|--------------|-------------|-----------|------------|------|
+| AUR-BR-001   | AUR-PR-014  | AUR-FR-101| AUR-AC-001 | AUR-TC-001 |
+| AUR-BR-002   | AUR-PR-015  | AUR-NFR-05| AUR-AC-002 | AUR-TC-002 |</span>`)}
+      </section>
+
+      <section class="thread-section" id="qs-pages">
+        <span class="thread-node"></span>
+        <div class="eyebrow">Step 7</div>
+        <h2 class="h2-sm">Publish a page per project.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Status is derived, never typed. Scope it to one project, or build the whole portfolio site — a landing index plus a discrete, always-current page for each project.</p>
+        ${cb('terminal', `docunit status --project PRJ-001-AUR   <span class="cc"># one project's derived RAG</span>
+docunit status --index                  <span class="cc"># the portfolio table</span>
+docunit pages --out _site               <span class="cc"># index.html + a page per project</span>
+
+<span class="cs"># Projects — AMBER
+| Project                 | Code | RAG   | Docs | Open risks |
+|-------------------------|------|-------|------|------------|
+| Aurora — Onboarding     | AUR  | AMBER | 20   | 2          |
+| Atlas — Partner Portal  | ATL  | GREEN | 5    | 0          |</span>`)}
+        <p style="font-size:14px;color:var(--muted);margin:14px 2px 0;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">status-pages</code> workflow runs <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">docunit pages</code> on every push to <span class="mono" style="font-size:13px;">main</span> — <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">see it live →</a></p>
       </section>
 
     </div>
 
     <div style="margin-top:48px;padding:22px 24px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
       <div class="eyebrow" style="margin-bottom:8px;">What's next</div>
-      <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">Convert an existing Word document with the <code class="mono" style="font-size:14px;background:var(--bg);padding:1px 5px;border-radius:3px;">doc-to-pmo</code> skill, turn on branch protection, or explore the 19 document kinds in the reference.</p>
+      <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">Convert an existing Word document with the <code class="mono" style="font-size:14px;background:var(--bg);padding:1px 5px;border-radius:3px;">doc-to-pmo</code> skill, turn on branch protection, or explore the document kinds in the reference.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
         <a class="btn-primary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">The pipeline repo →</a>
         <a class="btn-secondary" href="#/reference">The document kinds →</a>

@@ -15,6 +15,7 @@ export function renderGuides() {
         ['Author linked requirements', 'guide-trace', 'Write BR → PR → AC → TC as items, and let consistency check the chain.'],
         ['Gate documents in CI', 'guide-gate', 'Run the audit and consistency jobs on every PR; make the gate binding.'],
         ['Add a new document kind', 'guide-kind', 'A template + schema + criteria trio — usually no code at all.'],
+        ['Start a new project', 'guide-project', 'Give a project a unique ID, a folder, and its own derived status page.'],
       ].map(([title, id, desc]) => `
         <a href="#${id}" data-anchor="${id}" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
           <div style="flex:1;">
@@ -36,7 +37,7 @@ python tools/extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf /
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Let the skill map it</h3>
       <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source, and <em>flags what the source didn't supply rather than inventing it</em>.</p>
-      ${cb('documents/charters/aurora.md (first pass)', `<span class="cv">## Success Criteria</span>
+      ${cb('documents/PRJ-001-AUR/charter.md (first pass)', `<span class="cv">## Success Criteria</span>
 - TODO: source says "faster onboarding" — add a measurable target.
 
 <span class="cv">## Risks</span>
@@ -51,13 +52,13 @@ python tools/extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf /
       <div class="eyebrow" style="margin-top:20px;">Guide 02</div>
       <h2 class="h2-sm" style="margin-top:8px;">Author linked requirements.</h2>
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Write each requirement as an item with a stable ID and a typed link to what it refines.</p>
-      ${cb('across four documents', `<span class="cc"># brd.md</span>
-- <span class="ck">**BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+      ${cb('across four documents in documents/PRJ-001-AUR/', `<span class="cc"># brd.md</span>
+- <span class="ck">**AUR-BR-001**</span>: The business shall reduce onboarding time to under 2 days.
 <span class="cc"># prd.md</span>
-- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): The product shall provide a self-serve flow.
-- <span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): Given a new customer…, then an active account exists.
+- <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): The product shall provide a self-serve flow.
+- <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): Given a new customer…, then an active account exists.
 <span class="cc"># test-cases.md</span>
-- <span class="ck">**TC-001**</span> (<span class="cv">tests</span>: AC-001): Complete the wizard → account active, zero tickets.`)}
+- <span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): Complete the wizard → account active, zero tickets.`)}
       ${cb('terminal', `docunit consistency
 
 <span class="cs">  ✓ referential-integrity: all references resolve
@@ -96,6 +97,35 @@ JSON`)}
       <div class="card" style="margin-top:14px;">
         <div class="card-title">Config-driven checks</div>
         <div class="card-body" style="margin-top:4px;line-height:1.6;">Some checks are reusable via config: <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable_sections</code> makes bullets in a section require a threshold; <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">steps_sections</code> requires an ordered list. New kinds reuse them with zero code.</div>
+      </div>
+    </div>
+
+    <div id="guide-project" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 05</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Start a new project.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Give a project a unique identity, a folder, and its own always-current status page. Pick the next sequence number and a short code, and drop a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.md</code> anchor in its folder.</p>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Anchor the project</h3>
+      ${cb('documents/PRJ-002-ATL/project.md', `<span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">project</span>
+<span class="ck">id</span>: <span class="cv">PRJ-002-ATL</span>
+<span class="ck">code</span>: <span class="cv">ATL</span>
+<span class="ck">name</span>: Atlas — Partner Portal Modernization
+<span class="ck">sponsor</span>: <span class="cs">mia.chen</span>
+<span class="ck">status</span>: <span class="cv">proposed</span>
+<span class="cc">---</span>
+
+<span class="cv">## Overview</span>
+<span class="cv">## Scope</span>`)}
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Register it and see its page</h3>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Every document you add under <span class="mono" style="font-size:13px;">documents/PRJ-002-ATL/</span> uses the <span class="mono" style="font-size:13px;">ATL-</span> code — so its items (<span class="mono" style="font-size:13px;">ATL-BR-001</span>) never collide with any other project's.</p>
+      ${cb('terminal', `docunit projects --out projects.yaml     <span class="cc"># regenerate the registry</span>
+docunit status --project PRJ-002-ATL      <span class="cc"># this project's derived RAG</span>
+docunit pages --out _site                 <span class="cc"># adds PRJ-002-ATL.html to the portfolio</span>`)}
+      <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
+        <div class="card-title">Unique by construction</div>
+        <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code — so identity stays unambiguous as the portfolio grows.</div>
       </div>
     </div>
 

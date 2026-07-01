@@ -31,7 +31,7 @@ export function renderProfiles() {
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Illustrations of the same library tuned three ways. Fork one as a starting point.</p>
       <div style="display:grid;gap:12px;">
         ${[
-          { id: 'regulated-industry', color: 'var(--warn)', title: 'regulated-industry', desc: 'All 19 kinds, strictest criteria. Adds a Data Classification section, requires a named reviewer on main, and keeps the full audit history for retention. For finance, healthcare, or government.' },
+          { id: 'regulated-industry', color: 'var(--warn)', title: 'regulated-industry', desc: 'All 20 kinds, strictest criteria. Adds a Data Classification section, requires a named reviewer on main, and keeps the full audit history for retention. For finance, healthcare, or government.' },
           { id: 'lean-startup', color: 'var(--ok)', title: 'lean-startup', desc: 'A handful of kinds — charter, brd, prd, test-cases. Coverage stays advisory until you grow, so a small team is never blocked for unfinished downstream docs. Start here.' },
           { id: 'agile-delivery', color: 'var(--l2)', title: 'agile-delivery', desc: 'User-story-centric. Stories carry acceptance criteria, every story traces to a product requirement, and every acceptance criterion needs a test case. For teams working in stories, not specs.' },
         ].map(p => `

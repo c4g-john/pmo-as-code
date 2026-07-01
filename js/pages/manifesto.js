@@ -147,11 +147,11 @@ export function renderTraceability() {
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question: "does every requirement get tested?" Every hop is a typed link, checked on every pull request.</p>
         <div style="position:relative;padding-left:28px;border-left:2px solid var(--accent-line);display:grid;gap:2px;">
           ${[
-            ['Test Case', 'TC-001', 'wizard → account active, zero tickets', 'tests →'],
-            ['Acceptance Criterion', 'AC-001', 'new customer set up, no support ticket', 'verifies →'],
-            ['Product Requirement', 'PR-014', 'self-serve onboarding flow', 'traces to →'],
-            ['Business Requirement', 'BR-001', 'onboarding under 2 days', 'which serves →'],
-            ['Charter', 'aurora', 'objective: 14 days → under 2', null],
+            ['Test Case', 'AUR-TC-001', 'wizard → account active, zero tickets', 'tests →'],
+            ['Acceptance Criterion', 'AUR-AC-001', 'new customer set up, no support ticket', 'verifies →'],
+            ['Product Requirement', 'AUR-PR-014', 'self-serve onboarding flow', 'traces to →'],
+            ['Business Requirement', 'AUR-BR-001', 'onboarding under 2 days', 'which serves →'],
+            ['Charter', 'AUR-charter', 'objective: 14 days → under 2', null],
           ].map(([kind, id, desc, link], i, arr) => `
             <div style="position:relative;padding:10px 0 ${link ? '6px' : '0'};">
               <span style="position:absolute;left:-36px;top:14px;width:${i===0||i===arr.length-1?'13':'11'}px;height:${i===0||i===arr.length-1?'13':'11'}px;border-radius:50%;background:${i===0||i===arr.length-1?'var(--accent)':'var(--bg)'};border:${i===0||i===arr.length-1?'0':'2px solid var(--accent)'};box-shadow:${i===0||i===arr.length-1?'0 0 0 3px var(--bg),0 0 0 5px var(--accent-soft)':'none'};"></span>
@@ -172,14 +172,14 @@ export function renderTraceability() {
             <span class="traffic-light" style="background:#ff5f57;"></span>
             <span class="traffic-light" style="background:#febc2e;"></span>
             <span class="traffic-light" style="background:#28c840;"></span>
-            <span class="code-filename">documents/prds/onboarding.md</span>
+            <span class="code-filename">documents/PRJ-001-AUR/prd.md</span>
           </div>
           <pre class="code-pre"><span class="cv">## Product Requirements</span>
-- <span class="ck">**PR-014**</span> (<span class="cv">traces</span>: BR-001): the product shall
+- <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): the product shall
   provide a self-serve onboarding flow.
 
 <span class="cv">## Acceptance Criteria</span>
-- <span class="ck">**AC-001**</span> (<span class="cv">verifies</span>: PR-014): a new customer
+- <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): a new customer
   completes setup with no support ticket created.</pre>
         </div>
       </div>
