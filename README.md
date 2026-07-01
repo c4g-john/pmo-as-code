@@ -41,16 +41,36 @@ The `spec` is authored. The `status` block is always **derived** from real signa
 
 ## Running locally
 
-The site is a single self-contained `index.html` (vanilla JS, no build step). Serve it with any static file server:
+The site is plain HTML + CSS + native ES modules — **no build step**. Serve the
+folder with any static file server (ES modules need HTTP, not `file://`):
 
 ```bash
 python3 -m http.server 3131
 # then open http://localhost:3131
 ```
 
-## Site structure
+## Project structure
 
-Hash-based SPA covering: Home · Why PMO as Code · The Manifesto (+ Automation & Audit, Traceability deep-dives) · The Rosetta Stone · Core Concepts · Quickstart · Guides · Reference · Integrations · Profiles · Adoption & Maturity · vs Traditional PPM · FAQ.
+Hash-based SPA, split into discrete files for maintainability:
+
+```
+index.html          # shell: <link> styles.css + <script type="module"> js/app.js
+styles.css          # all styles (design tokens, components, responsive)
+js/
+  app.js            # entry: state wiring, render(), events, boot
+  router.js         # getPageHtml(route) → the right page renderer
+  data.js           # NAV, PAGE_META, ANCHORS, ROSETTA_ROWS, shared constants
+  state.js          # the mutable app state object
+  ui.js             # shared render helpers (cb, pageNav, sidebar, on-this-page)
+  pages/            # one module per page (home, concepts, reference, …)
+```
+
+To edit a page, open its file in `js/pages/`. To add a page: create the module,
+add its route to `js/router.js`, and add nav/anchors in `js/data.js`.
+
+Pages covered: Home · Why · The Manifesto (+ Automation & Audit, Traceability) ·
+Rosetta Stone · Core Concepts · Quickstart · Guides · Reference · Integrations ·
+Profiles · Adoption & Maturity · vs Traditional PPM · FAQ.
 
 ## Roadmap
 
