@@ -1,6 +1,6 @@
 # PMO as Code
 
-A documentation and framework site for **PMO as Code** — the practice of defining a portfolio's governance, structure, and operating model as declarative, version-controlled files, so status, roadmaps, risks, and decisions are *generated from a single source of truth* instead of hand-maintained in slides and spreadsheets.
+A documentation and framework site for **PMO as Code**, the practice of defining a portfolio's governance, structure, and operating model as declarative, version-controlled files, so status, roadmaps, risks, and decisions are *generated from a single source of truth* instead of hand-maintained in slides and spreadsheets.
 
 It takes the Infrastructure-as-Code / GitOps playbook and points it at the PMO.
 
