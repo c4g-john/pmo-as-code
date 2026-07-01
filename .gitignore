@@ -1,0 +1,13 @@
+# Design handoff source material — not published
+handoff/
+pmo-as-code-design-brief.md
+
+# Local tooling / editor config
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor cruft
+*.swp
+*~
