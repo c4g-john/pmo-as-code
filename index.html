@@ -374,10 +374,10 @@ const ANCHORS = {
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
-  '/quickstart': [['qs-install','1 · Install'],['qs-init','2 · Initialise'],['qs-author','3 · Author'],['qs-validate','4 · Validate'],['qs-wire','5 · Wire a source'],['qs-derive','6 · Derive status']],
+  '/quickstart': [['qs-install','1 · Get docunit'],['qs-author','2 · Author'],['qs-test','3 · Unit-test'],['qs-gate','4 · Gate on PR'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix']],
   '/guides': [['guide-status','Status automation'],['guide-policy','Policy-as-code'],['guide-roadmap','Roadmaps'],['guide-audit','Audit & event log']],
   '/reference': [['ref-portfolio','Portfolio'],['ref-program','Program'],['ref-project','Project'],['ref-charter','Charter'],['ref-milestone','Milestone'],['ref-raid','RAID'],['ref-decision','Decision'],['ref-policy','Policy'],['ref-status','Status'],['ref-eventlog','EventLog']],
-  '/integrations': [['int-jira','Jira & trackers'],['int-git','Git providers'],['int-finance','Finance & budget'],['int-incidents','Incident tooling']],
+  '/integrations': [['int-actions','GitHub Actions'],['int-protection','Branch protection'],['int-ai','Anthropic API'],['int-skills','Skills & templates']],
   '/profiles': [['what-profile','What a profile contains'],['available-profiles','Available profiles'],['author-profile','Author your own']],
   '/adoption': [['crawl','Crawl'],['walk','Walk'],['run','Run']],
   '/vs': [['comparison','The comparison'],['where-wins','Where as-code wins'],['where-gates','Where gates belong']],
@@ -1062,139 +1062,128 @@ function renderQuickstart() {
       <span class="layer-badge" style="background:var(--l2);">2</span>
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Define your first Project. Generate its status.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">pmoctl</code> as the example runner. The YAML concepts apply to any compliant tool.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Time to complete: ~15 minutes. Requires: git, a terminal.</p>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Author a document. Unit-test it. Merge it.</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docunit</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions — no other tools.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Time to complete: ~15 minutes. Requires: git, Python 3.10+, a terminal.</p>
 
     <div class="thread-rail">
 
       <section class="thread-section" id="qs-install">
         <span class="thread-node"></span>
         <div class="eyebrow">Step 1</div>
-        <h2 class="h2-sm">Install pmoctl.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The reference implementation. Validates schemas, derives status, and renders outputs from your YAML definitions.</p>
-        ${cb('terminal', `<span class="cc"># macOS / Linux</span>
-curl -sSL https://get.pmoctl.dev | sh
-
-<span class="cc"># or with Homebrew</span>
-brew install pmoctl
-
-<span class="cc"># verify</span>
-pmoctl version
-<span class="cs"># pmoctl v0.4.1 (pmo/v1)</span>`)}
-      </section>
-
-      <section class="thread-section" id="qs-init">
-        <span class="thread-node"></span>
-        <div class="eyebrow">Step 2</div>
-        <h2 class="h2-sm">Initialise a portfolio directory.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">A portfolio lives in a git repository. Each project gets its own YAML file.</p>
-        ${cb('terminal', `mkdir my-portfolio && cd my-portfolio
-git init
-pmoctl init
-
-<span class="cc"># creates:</span>
-<span class="cs">.
-├── portfolio.yaml
-├── projects/
-└── .pmoctl.yaml  ← tool config (not the schema)</span>`)}
+        <h2 class="h2-sm">Get docunit.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Clone the reference implementation. It validates documents, checks cross-document consistency, and generates the traceability matrix.</p>
+        ${cb('terminal', `git clone https://github.com/c4g-john/pmo-as-code-pipeline
+cd pmo-as-code-pipeline
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"        <span class="cc"># add ".[ai]" for AI advisory checks</span>`)}
       </section>
 
       <section class="thread-section" id="qs-author">
         <span class="thread-node"></span>
-        <div class="eyebrow">Step 3</div>
-        <h2 class="h2-sm">Author your first project.yaml.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">spec</code> is yours to write. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status</code> block is generated. Never type it by hand.</p>
-        ${cb('projects/aurora.yaml', `<span class="ck">apiVersion</span>: pmo/v1
-<span class="ck">kind</span>: <span class="cv">Project</span>
-<span class="ck">metadata</span>:
-  <span class="ck">id</span>: <span class="cv">proj-aurora</span>
-  <span class="ck">portfolio</span>: <span class="cs">my-portfolio</span>
-<span class="ck">spec</span>:
-  <span class="ck">charter</span>:
-    <span class="ck">objective</span>: Cut customer onboarding from 14 days to 2
-    <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
-    <span class="ck">successCriteria</span>:
-      - onboarding-p50 &lt; 48h
-      - csat &gt; 4.5
-  <span class="ck">budget</span>:
-    <span class="ck">approved</span>: 1200000
-    <span class="ck">currency</span>: USD
-  <span class="ck">milestones</span>:
-    - <span class="ck">id</span>: <span class="cv">m1</span>
-      <span class="ck">name</span>: <span class="cv">MVP</span>
-      <span class="ck">due</span>: <span class="cv">2026-09-30</span>
-    - <span class="ck">id</span>: <span class="cv">m2</span>
-      <span class="ck">name</span>: <span class="cv">GA</span>
-      <span class="ck">due</span>: <span class="cv">2026-12-15</span>
-<span class="cc"># no status block yet — pmoctl will generate it</span>`)}
+        <div class="eyebrow">Step 2</div>
+        <h2 class="h2-sm">Author a document.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">A document is Markdown with YAML frontmatter and defined sections. Here's a charter. (Or convert an existing Word doc — see the guides.)</p>
+        ${cb('documents/charters/aurora.md', `<span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">id</span>: <span class="cv">aurora</span>
+<span class="ck">title</span>: Aurora — Customer Onboarding Overhaul
+<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
+<span class="ck">budget</span>: { <span class="ck">amount</span>: 1200000, <span class="ck">currency</span>: USD }
+<span class="ck">dates</span>: { <span class="ck">created</span>: 2026-01-15, <span class="ck">target</span>: 2026-12-15 }
+<span class="ck">status</span>: <span class="cv">approved</span>
+<span class="cc">---</span>
+
+<span class="cv">## Objective</span>
+Cut median onboarding time from 14 days to under 2 days by replacing
+manual setup with a self-serve flow.
+
+<span class="cv">## Success Criteria</span>
+- Median onboarding time (p50) drops below 48 hours.
+- Onboarding CSAT rises above 4.5 / 5.
+- Manual setup tickets fall by at least 80%.
+
+<span class="cc"># … Scope, Milestones, Risks, Approval …</span>`)}
       </section>
 
-      <section class="thread-section" id="qs-validate">
+      <section class="thread-section" id="qs-test">
         <span class="thread-node"></span>
-        <div class="eyebrow">Step 4</div>
-        <h2 class="h2-sm">Validate against the schema.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Validation checks required fields, typed references, and structural rules defined in the pmo/v1 schema.</p>
-        ${cb('terminal', `pmoctl validate
+        <div class="eyebrow">Step 3</div>
+        <h2 class="h2-sm">Unit-test it.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge. AI checks (with a key) advise. This is the real output.</p>
+        ${cb('terminal', `docunit validate documents/charters/aurora.md
 
-<span class="cs">✓ projects/aurora.yaml — Project · pmo/v1
-  charter: valid · 2 success criteria · sponsor: jordan.lee
-  milestones: 2 (MVP 2026-09-30 · GA 2026-12-15)
-  budget: 1,200,000 USD approved
+<span class="cs">documents/charters/aurora.md
+  ✓ frontmatter-schema: valid against the schema
+  ✓ required-sections: all 6 present and non-empty
+  ✓ measurable-success-criteria: all 3 state a measurable threshold
+  ✓ risks-have-owner-and-mitigation: all risks name an owner + mitigation
+  ✓ dates-consistent: created 2026-01-15 → target 2026-12-15
+  ✓ unique-id: id 'aurora' is unique
+  ○ objective-is-specific: advisory (needs ANTHROPIC_API_KEY)
 
-All 1 object(s) valid.</span>`)}
+✓ All structural checks passed — clear to merge.</span>`)}
         <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
-          <div class="card-title">What validation checks</div>
-          <div class="card-body" style="margin-top:4px;">Required fields are present. IDs are unique within the portfolio. Typed references (sponsor, portfolio) resolve to real objects. Budget and dates are parseable. No status block was authored by hand.</div>
+          <div class="card-title">Why it fails when it should</div>
+          <div class="card-body" style="margin-top:4px;">A vague "make customers happier" success criterion has no measurable threshold, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable-success-criteria</code> blocks — with the exact reason. The gate is specific, not vibes.</div>
         </div>
       </section>
 
-      <section class="thread-section" id="qs-wire">
+      <section class="thread-section" id="qs-gate">
         <span class="thread-node"></span>
-        <div class="eyebrow">Step 5</div>
-        <h2 class="h2-sm">Wire a status source.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Status is derived from real signals. Tell pmoctl where Aurora's signals come from.</p>
-        ${cb('.pmoctl.yaml', `<span class="ck">sources</span>:
-  proj-aurora:
-    <span class="ck">schedule</span>:
-      <span class="ck">type</span>: <span class="cv">jira</span>
-      <span class="ck">project</span>: <span class="cs">CUST-PLATFORM</span>
-      <span class="ck">milestone-field</span>: <span class="cs">fixVersion</span>
-    <span class="ck">budget</span>:
-      <span class="ck">type</span>: <span class="cv">csv</span>
-      <span class="ck">path</span>: <span class="cs">finance/burn.csv</span>
-    <span class="ck">incidents</span>:
-      <span class="ck">type</span>: <span class="cv">pagerduty</span>
-      <span class="ck">service</span>: <span class="cs">customer-platform</span>`)}
+        <div class="eyebrow">Step 4</div>
+        <h2 class="h2-sm">Gate it on every PR.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">A GitHub Actions workflow runs the audit on each pull request and posts the result. With branch protection, a document that fails can't merge.</p>
+        ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:
+    <span class="ck">runs-on</span>: ubuntu-latest
+    <span class="ck">steps</span>:
+      - <span class="ck">uses</span>: actions/checkout@v4
+      - <span class="ck">uses</span>: actions/setup-python@v5
+      - <span class="ck">run</span>: <span class="cs">pip install -e ".[ai]"</span>
+      - <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span>`)}
       </section>
 
-      <section class="thread-section" id="qs-derive">
+      <section class="thread-section" id="qs-consistency">
+        <span class="thread-node"></span>
+        <div class="eyebrow">Step 5</div>
+        <h2 class="h2-sm">Check consistency across documents.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The differentiator. Requirements trace end to end; broken links block, and the AI judges whether each child genuinely fulfils its parent.</p>
+        ${cb('terminal', `docunit consistency
+
+<span class="cs">consistency (cross-document)
+  ✓ item-id-uniqueness: all 10 item IDs are unique
+  ✓ referential-integrity: all references resolve
+  ✓ required-links: all required upstream links present
+  ✓ coverage: all approved items are covered</span>
+  <span class="cc"># AI advisory, e.g.:</span>
+<span class="cs">  ● PR-015 —traces→ BR-002  score 0.40
+    "progress emails don't obviously reduce support tickets"</span>`)}
+      </section>
+
+      <section class="thread-section" id="qs-rtm">
         <span class="thread-node"></span>
         <div class="eyebrow">Step 6</div>
-        <h2 class="h2-sm">Derive status.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">pmoctl fetches the configured signals, evaluates health rules, and writes the generated status block back into the YAML.</p>
-        ${cb('terminal', `pmoctl status
+        <h2 class="h2-sm">Generate the traceability matrix.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Derived from the links, never authored by hand. Traceability you can see.</p>
+        ${cb('terminal', `docunit rtm
 
-<span class="cv">proj-aurora</span>
-  schedule  ● at-risk   MVP slipping 6d (Jira: CUST-72 open)
-  budget    ● at-risk   78% burned at 60% timeline
-  incidents ● bad       2 open SEV-2, unresolved 4d
-
-  health    ● at-risk   (3 signals · worst-wins)
-
-<span class="cc"># status block written to projects/aurora.yaml</span>
-<span class="cs">  Commit: pmoctl: derive status proj-aurora [2026-07-01T08:04]</span>`)}
-        <p style="font-size:13.5px;color:var(--muted);margin:14px 0 0;">The derived status block is now in <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">aurora.yaml</code>. Commit it. It's part of the audit trail: a timestamped, versioned record of what the portfolio health was and why.</p>
+<span class="cs"># Requirements Traceability Matrix
+| Business Req | Product Req | Func/NFR | Acceptance | Test |
+|--------------|-------------|----------|------------|------|
+| BR-001       | PR-014      | FR-101   | AC-001     | TC-001 |
+| BR-002       | PR-015      | NFR-05   | AC-002     | TC-002 |</span>`)}
       </section>
 
     </div>
 
     <div style="margin-top:48px;padding:22px 24px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
       <div class="eyebrow" style="margin-bottom:8px;">What's next</div>
-      <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">Add a RAID entry, write a Policy gate, or wire CI to run <code class="mono" style="font-size:14px;background:var(--bg);padding:1px 5px;border-radius:3px;">pmoctl validate</code> on every PR.</p>
+      <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">Convert an existing Word document with the <code class="mono" style="font-size:14px;background:var(--bg);padding:1px 5px;border-radius:3px;">doc-to-pmo</code> skill, turn on branch protection, or explore the 19 document kinds in the reference.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a class="btn-primary" href="#/guides">Read the guides →</a>
-        <a class="btn-secondary" href="#/reference">Schema reference →</a>
+        <a class="btn-primary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">The pipeline repo →</a>
+        <a class="btn-secondary" href="#/reference">The document kinds →</a>
       </div>
     </div>
 
@@ -1522,76 +1511,56 @@ function renderIntegrations() {
       <span class="layer-badge" style="background:var(--l2);">2</span>
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Integrations.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Where runtime signals come from. The EventLog kind gives audit a defined home for everything that happens outside Git.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Every integration writes to the EventLog. The EventLog feeds status derivation. The pattern is always the same.</p>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">GitHub-native by design.</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">There are no connectors to build or maintain. The whole pipeline is Git, GitHub Actions, and — only for the advisory layer — the Anthropic API. Nothing else to wire up, nothing else to break.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Feed Claude any source document; it maps it to the standard templates. From there it's version control the whole way down.</p>
 
-    <div id="int-jira" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Jira &amp; issue trackers.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The primary source of schedule signals. pmoctl watches fixVersions, epic progress, and open blocking issues.</p>
-      ${cb('.pmoctl.yaml (jira source)', `<span class="ck">sources</span>:
-  proj-aurora:
-    <span class="ck">schedule</span>:
-      <span class="ck">type</span>: <span class="cv">jira</span>
-      <span class="ck">server</span>: <span class="cs">https://your-org.atlassian.net</span>
-      <span class="ck">project</span>: <span class="cs">CUST-PLATFORM</span>
-      <span class="ck">milestone-field</span>: <span class="cs">fixVersion</span>   <span class="cc"># how milestones map to Jira</span>
-      <span class="ck">blocker-labels</span>: [blocker, mvp-risk]
-      <span class="ck">auth</span>: <span class="cs">env:JIRA_TOKEN</span>            <span class="cc"># never inline credentials</span>`)}
-      <div class="card" style="margin-top:14px;">
-        <div class="card-title">Also supported</div>
-        <div class="card-body" style="margin-top:4px;">Linear (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">type: linear</code>), GitHub Issues (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">type: github-issues</code>), GitLab Issues (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">type: gitlab-issues</code>). Field mappings are configurable.</div>
+    <div id="int-actions" style="margin-bottom:52px;">
+      <h2 class="h2-sm">GitHub Actions.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Two jobs run on every pull request: <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">audit</code> validates each changed document, and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">consistency</code> checks the whole traceability graph. Both post their results as a PR comment.</p>
+      ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:          <span class="cc"># validate each changed document</span>
+    <span class="ck">runs-on</span>: ubuntu-latest
+    <span class="ck">steps</span>:
+      - <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span>
+  <span class="ck">consistency</span>:    <span class="cc"># check the whole graph (a change can break links elsewhere)</span>
+    <span class="ck">runs-on</span>: ubuntu-latest
+    <span class="ck">steps</span>:
+      - <span class="ck">run</span>: <span class="cs">docunit consistency && docunit rtm --out RTM.md</span>`)}
+    </div>
+
+    <div id="int-protection" style="margin-bottom:52px;">
+      <h2 class="h2-sm">Branch protection.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Require both checks on <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code>. Now a document that fails validation — or a broken requirements trace — cannot merge. The gate is binding, not advisory.</p>
+      ${cb('terminal', `<span class="cc"># require both checks before a PR can merge</span>
+gh api -X PUT repos/OWNER/REPO/branches/main/protection \\
+  --input - &lt;&lt;'JSON'
+{ <span class="ck">"required_status_checks"</span>:
+    { <span class="ck">"strict"</span>: true, <span class="ck">"contexts"</span>: [<span class="cs">"audit"</span>, <span class="cs">"consistency"</span>] } }
+JSON`)}
+    </div>
+
+    <div id="int-ai" style="margin-bottom:52px;">
+      <h2 class="h2-sm">The Anthropic API.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The one external service, and only for the <em>advisory</em> layer: the AI reads a document (or a traceability link) and scores it. Set one repo secret to switch it on. It fails safe — no key, and the advisory checks simply skip; the deterministic gate is unaffected.</p>
+      ${cb('terminal', `<span class="cc"># enable AI advisory scoring (optional)</span>
+gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
+
+<span class="cc"># without it, advisory checks report:</span>
+<span class="cs">  ○ objective-is-specific: skipped — no ANTHROPIC_API_KEY (advisory only)</span>`)}
+    </div>
+
+    <div id="int-skills" style="margin-bottom:52px;">
+      <h2 class="h2-sm">The skills &amp; templates library.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The real "integration" is Claude itself. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill takes a Word doc, a PDF, or pasted text and maps it into the standard Markdown templates — flagging anything the source didn't supply rather than inventing it.</p>
+      <div class="card" style="border-left:3px solid var(--l3);">
+        <div class="card-title">Composable and public</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">The templates, the audit criteria, and the conversion skill live in the repo as a library you fork and extend. Any source in; standard, testable documents out.</div>
       </div>
-    </div>
-
-    <div id="int-git" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Git providers.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Git is the primary store for definitions. pmoctl reads directly from the repo, with no separate API needed for the definitions layer. The integration is for signals: PR merge rates, review latency, deployment frequency.</p>
-      ${cb('.pmoctl.yaml (github signals)', `<span class="ck">sources</span>:
-  proj-aurora:
-    <span class="ck">delivery</span>:
-      <span class="ck">type</span>: <span class="cv">github</span>
-      <span class="ck">repo</span>: <span class="cs">your-org/customer-platform</span>
-      <span class="ck">signals</span>:
-        - <span class="ck">type</span>: <span class="cv">deployment-frequency</span>
-          <span class="ck">environment</span>: <span class="cs">production</span>
-        - <span class="ck">type</span>: <span class="cv">pr-cycle-time</span>
-          <span class="ck">warn-days</span>: <span class="cv">5</span>
-      <span class="ck">auth</span>: <span class="cs">env:GITHUB_TOKEN</span>`)}
-    </div>
-
-    <div id="int-finance" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Finance &amp; budget.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Budget signals compare approved spend (in the spec) against actual burn (from a finance export). No write access to financial systems is needed: pmoctl reads a CSV or API endpoint.</p>
-      ${cb('.pmoctl.yaml (finance source)', `<span class="ck">sources</span>:
-  proj-aurora:
-    <span class="ck">budget</span>:
-      <span class="ck">type</span>: <span class="cv">csv</span>
-      <span class="ck">path</span>: <span class="cs">finance/burn-aurora.csv</span>
-      <span class="ck">columns</span>:
-        <span class="ck">date</span>: <span class="cs">Week</span>
-        <span class="ck">actual</span>: <span class="cs">Actual Spend (USD)</span>
-        <span class="ck">committed</span>: <span class="cs">Committed (USD)</span>
-
-<span class="cc"># Or use a direct finance API:</span>
-    <span class="ck">budget</span>:
-      <span class="ck">type</span>: <span class="cv">workday</span>
-      <span class="ck">cost-center</span>: <span class="cs">CC-4821</span>
-      <span class="ck">auth</span>: <span class="cs">env:WORKDAY_TOKEN</span>`)}
-    </div>
-
-    <div id="int-incidents" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Incident tooling.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Open incidents affecting the project flow into the EventLog. Severity and age both feed the health rules. This is where "SEV-2 unresolved 4 days" becomes an at-risk signal, automatically.</p>
-      ${cb('.pmoctl.yaml (pagerduty source)', `<span class="ck">sources</span>:
-  proj-aurora:
-    <span class="ck">incidents</span>:
-      <span class="ck">type</span>: <span class="cv">pagerduty</span>
-      <span class="ck">service</span>: <span class="cs">customer-platform</span>
-      <span class="ck">auth</span>: <span class="cs">env:PD_TOKEN</span>
-      <span class="ck">map-to-milestone</span>: <span class="cv">true</span>   <span class="cc"># link incidents to milestones they affect</span>
-
-<span class="cc"># Also supported: OpsGenie, Statuspage, custom webhooks</span>`)}
+      <div style="margin-top:16px;">
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">Browse the library →</a>
+      </div>
     </div>
 
     ${pageNavHtml('/integrations')}
@@ -1817,14 +1786,14 @@ function renderVs() {
 
 function renderFAQ() {
   const faqs = [
-    { q: 'Is this just another PPM tool?', a: 'No. PMO as Code is a vendor-neutral standard, not a product. It defines an object model, conventions, and schema. Any tool can implement it. pmoctl is a reference implementation to show the standard working end-to-end, but the standard itself is tool-agnostic. You could implement it in a spreadsheet if you wanted to (though you\'d lose most of the value).' },
-    { q: 'What about regulators who require a human signature?', a: 'The framework holds this gracefully. Model it as a Policy kind with requires: [human-signature]. The signature event is recorded in the EventLog: timestamped, immutable, and queryable. The audit trail still writes itself. The difference from an email chain is that the signature is now a first-class record in the framework, not something that lives outside it.' },
-    { q: 'Do we have to move everything to Git at once?', a: 'No. The adoption model is explicitly staged: crawl → walk → run. Start with one project\'s definition in Git. Validate it. Add derived status when you\'re ready. Wire CI for policy checks when you want the governance benefits. Most teams spend 2–4 weeks per stage and feel the value at each one independently.' },
-    { q: 'How is status actually derived?', a: 'You configure one or more sources per project: a Jira project for schedule, a finance CSV for budget burn, PagerDuty for incidents. pmoctl fetches signals from those sources on a schedule or trigger, writes them as EventLog entries, evaluates your health rules (which you configure, e.g. "warn if 5+ days of schedule slip, bad at 14"), and produces a Status kind with the result. The Status block is committed to Git, so every health reading is timestamped and versioned.' },
-    { q: 'What if my organisation doesn\'t use Git?', a: 'PMO as Code is designed for Git-based workflows, but the core principle — a single, versioned source of truth — can be approximated with other version-controlled stores. The immediate practical answer is: most organisations already have Git somewhere. Start there. The secondary answer is: if version control is genuinely absent, the adoption conversation starts upstream of this framework.' },
-    { q: 'How is this different from a spreadsheet with strict conventions?', a: 'Three things a spreadsheet can\'t do: schema validation (so conventions actually hold), typed references (so lineage is queryable, not manual), and integration with external systems for derived status. A spreadsheet with conventions is better than a spreadsheet without them, but it still requires a human to keep it current, still has no history of why, and still can\'t tell you automatically when a project is at risk.' },
-    { q: 'What is pmoctl, exactly?', a: 'pmoctl is the reference implementation: a CLI that can validate schemas, derive status from configured sources, run policy checks, generate roadmap views, and render dashboard outputs. It\'s the example of the standard in action, not the standard itself. If you build your own compliant tool, pmoctl\'s output format is what you\'re conforming to.' },
-    { q: 'Who owns the standard?', a: 'The standard is vendor-neutral and owned by no one, like the Agile Manifesto or HTTP. The reference implementation (pmoctl) and the reference approach (Layer 2) are maintained by this project. Profiles (Layer 3) are community-owned. The Manifesto (Layer 1) is the stable core that rarely changes.' },
+    { q: 'Is this just another PPM tool?', a: 'No. PMO as Code is a vendor-neutral standard: business documents as Markdown with defined schemas and audit criteria, validated in Git. docunit is a reference implementation that shows it working end to end, but any tool that reads the templates and criteria conforms. There is no product to buy.' },
+    { q: 'What about regulators who require a human signature?', a: 'A merged pull request with a named reviewer is the signature — timestamped and immutable in the Git history. Where a specific named sign-off is legally required, require that reviewer in branch protection, or add a signed-off field the audit checks for. The record writes itself, and it is far more auditable than an approval email no one can find.' },
+    { q: 'Do we have to move everything to Git at once?', a: 'No. Start with one document. Validate it locally. Add the GitHub Actions gate when you are ready, then turn on cross-document consistency. Crawl, walk, run — each stage delivers value on its own, and nothing forces a big-bang migration.' },
+    { q: 'Can the AI block a merge?', a: 'No — and that is deliberate. The deterministic structural checks (required fields, measurable success criteria, resolving requirement links) are what block a merge, because they are reliable. The AI checks are advisory: they score a document or a traceability link and post the reasoning to the pull request, but never gate it. They run via the Anthropic API and fail safe — with no key, they simply skip.' },
+    { q: 'What if my organisation doesn\'t use Git?', a: 'The whole model assumes version control, and in practice almost every organisation already has Git somewhere — start there. If version control is genuinely absent, that conversation happens upstream of this framework, because a single versioned source of truth is the entire premise.' },
+    { q: 'How is this different from a spreadsheet with strict conventions?', a: 'Three things a spreadsheet cannot do: schema validation (so the conventions actually hold), a queryable traceability graph across documents (so you can see that every requirement traces to a test), and a merge gate that blocks non-conforming changes before they land. A spreadsheet with conventions still relies on a human to keep it honest.' },
+    { q: 'What is docunit, exactly?', a: 'docunit is the reference implementation: a small Python CLI and GitHub Action that validates each document against its criteria, checks cross-document consistency, and generates the traceability matrix. It is the standard in action, not the product — its output format is what a compliant tool conforms to.' },
+    { q: 'Who owns the standard?', a: 'No one — it is vendor-neutral, like the Agile Manifesto or HTTP. The Manifesto (Layer 1) is the stable core. The reference approach and its templates, criteria, and conversion skill (Layer 2) are maintained here as a public library you can fork. Profiles (Layer 3) are community-owned.' },
   ];
 
   return `<div>
