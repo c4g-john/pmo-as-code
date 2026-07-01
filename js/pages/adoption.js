@@ -16,7 +16,7 @@ export function renderAdoption() {
         <span class="thread-node"></span>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--ok);border:1px solid color-mix(in srgb, var(--ok) 40%, transparent);background:color-mix(in srgb, var(--ok) 12%, transparent);border-radius:999px;padding:4px 12px;margin-bottom:12px;">Stage 1 · Crawl</div>
         <h2 class="h2-sm">One document, validated.</h2>
-        <p class="body">Pick one document. Author <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">documents/PRJ-001-AUR/charter.md</code> — frontmatter and the required sections. Run <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit validate</code> locally. That's it. You have a versioned, schema-checked document in a place with history.</p>
+        <p class="body">Pick one document. Author <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">documents/PRJ-001-AUR/charter.md</code> — frontmatter and the required sections. Run <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert validate</code> locally. That's it. You have a versioned, schema-checked document in a place with history.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--ok);">
             <div class="card-title">What you get</div>
@@ -28,7 +28,7 @@ export function renderAdoption() {
           </div>
         </div>
         <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);">
-          Checklist: <span style="color:var(--ok);">charter.md ✓</span> · <span style="color:var(--ok);">docunit validate ✓</span>
+          Checklist: <span style="color:var(--ok);">charter.md ✓</span> · <span style="color:var(--ok);">docassert validate ✓</span>
         </div>
       </section>
 
@@ -36,7 +36,7 @@ export function renderAdoption() {
         <span class="thread-node"></span>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 40%, transparent);background:color-mix(in srgb, var(--warn) 12%, transparent);border-radius:999px;padding:4px 12px;margin-bottom:12px;">Stage 2 · Walk</div>
         <h2 class="h2-sm">Gated on every pull request.</h2>
-        <p class="body">Put <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit validate</code> in a GitHub Actions workflow and turn on branch protection. Add a few more kinds — a BRD, a PRD. Now a document that doesn't meet the standard cannot merge, and the reasons are posted on the PR.</p>
+        <p class="body">Put <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert validate</code> in a GitHub Actions workflow and turn on branch protection. Add a few more kinds — a BRD, a PRD. Now a document that doesn't meet the standard cannot merge, and the reasons are posted on the PR.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--warn);">
             <div class="card-title">What you get</div>

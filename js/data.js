@@ -57,7 +57,7 @@ export const ANCHORS = {
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
-  '/quickstart': [['qs-install','1 · Get docunit'],['qs-project','2 · Anchor a project'],['qs-author','3 · Author a document'],['qs-test','4 · Unit-test'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Status & completeness'],['qs-gate','8 · Gate in CI']],
+  '/quickstart': [['qs-install','1 · Get docassert'],['qs-project','2 · Anchor a project'],['qs-author','3 · Author a document'],['qs-test','4 · Unit-test'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Status & completeness'],['qs-gate','8 · Gate in CI']],
   '/quickstart-claude': [['cc-prompt','The prompt'],['cc-need','What you need'],['cc-does','What it does'],['cc-more','More prompts']],
   '/guides': [['guide-convert','Convert a Word doc'],['guide-trace','Author linked requirements'],['guide-gate','Gate documents in CI'],['guide-kind','Add a document kind'],['guide-project','Start a new project']],
   '/reference': [['ref-shape','The shared shape'],['ref-identity','Project identity'],['ref-items','Items & links'],['ref-kinds','Document kinds']],
@@ -88,7 +88,7 @@ export const ROSETTA_ROWS = [
     yaml: `<span class="ck">**AUR-BR-001**</span>: reduce onboarding time\n<span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): self-serve flow\n<span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): …\n<span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): …`,
     output: `<div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;">Requirements Traceability Matrix</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);">AUR-BR-001 → AUR-PR-014 → AUR-AC-001 → AUR-TC-001</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">generated from the links</div>` },
   { before: 'Stage-gate checklist', after: 'A required check in CI',
-    yaml: `<span class="ck">on</span>: [pull_request]\n<span class="ck">jobs</span>:\n  <span class="ck">audit</span>: docunit validate\n  <span class="ck">consistency</span>: docunit consistency`,
+    yaml: `<span class="ck">on</span>: [pull_request]\n<span class="ck">jobs</span>:\n  <span class="ck">audit</span>: docassert validate\n  <span class="ck">consistency</span>: docassert consistency`,
     output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">CI · audit ✓ · consistency ✓</div><div style="font-size:12px;color:var(--muted);">merge blocked until green<br>on every pull request</div>` },
 ];
 

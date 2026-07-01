@@ -78,7 +78,7 @@ Cut onboarding from 14 days to under 2.
             </div>
             <div class="reveal-panel">
               <div class="reveal-header">
-                <span class="mono" style="font-size:12px;color:var(--muted);">docunit validate</span>
+                <span class="mono" style="font-size:12px;color:var(--muted);">docassert validate</span>
                 <button class="rederive-btn" id="rederive-btn">↻ run audit</button>
               </div>
               <div id="reveal-output">${revealedHtml}</div>
@@ -144,7 +144,7 @@ Cut onboarding from 14 days to under 2.
           <p class="body">Each project carries a stable identity — <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span> — that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides; every item says which project it belongs to. The pipeline then publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em> — one derived RAG card per project, each linking to its own always-current status page.</p>
           <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--panel-2);">
-              <span class="mono" style="font-size:12px;color:var(--muted);">docunit pages · portfolio</span>
+              <span class="mono" style="font-size:12px;color:var(--muted);">docassert pages · portfolio</span>
               <span class="mono" style="font-size:11px;color:var(--warn);">● AMBER</span>
             </div>
             ${[

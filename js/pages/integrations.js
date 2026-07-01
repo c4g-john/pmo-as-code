@@ -18,11 +18,11 @@ export function renderIntegrations() {
   <span class="ck">audit</span>:          <span class="cc"># validate each changed document</span>
     <span class="ck">runs-on</span>: ubuntu-latest
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span>
+      - <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span>
   <span class="ck">consistency</span>:    <span class="cc"># check the whole graph (a change can break links elsewhere)</span>
     <span class="ck">runs-on</span>: ubuntu-latest
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docunit consistency && docunit rtm --out RTM.md</span>`)}
+      - <span class="ck">run</span>: <span class="cs">docassert consistency && docassert rtm --out RTM.md</span>`)}
     </div>
 
     <div id="int-protection" style="margin-bottom:52px;">

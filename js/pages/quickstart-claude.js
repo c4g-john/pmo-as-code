@@ -1,30 +1,30 @@
 import { pageNavHtml, provenanceFooter } from '../ui.js';
 
-const HERO_PROMPT = `Set up "PMO as Code" in this repository using the docunit pipeline
+const HERO_PROMPT = `Set up "PMO as Code" in this repository using the docassert pipeline
 (reference: https://github.com/c4g-john/pmo-as-code-pipeline).
 
-1. Add the docunit tool and its GitHub Actions workflows — validate +
+1. Add the docassert tool and its GitHub Actions workflows — validate +
    consistency on every pull request, plus the status-pages dashboard.
 2. Create a project anchor at documents/PRJ-001-&lt;CODE&gt;/project.md with a
    unique id, a short CODE, a sponsor, and a profile (start with lean-startup).
 3. Turn my existing project docs into PMO-as-Code documents using the standard
    templates — charter, business requirements, product requirements, test cases.
    Flag anything the source doesn't cover as a TODO; never invent facts.
-4. Run docunit validate and docunit consistency, and fix whatever blocks.
-5. Show me docunit status --project PRJ-001-&lt;CODE&gt;, then tell me exactly what
+4. Run docassert validate and docassert consistency, and fix whatever blocks.
+5. Show me docassert status --project PRJ-001-&lt;CODE&gt;, then tell me exactly what
    to click to turn on branch protection and GitHub Pages.
 
 Start by asking me for the project name, sponsor, and any existing documents.`;
 
-const CONVERT_PROMPT = `Convert this Word document into a PMO-as-Code charter using the docunit
+const CONVERT_PROMPT = `Convert this Word document into a PMO-as-Code charter using the docassert
 templates (github.com/c4g-john/pmo-as-code-pipeline). Extract the text, map it
 to the charter template, and flag anything the source is missing as a TODO
-rather than inventing it. Then run docunit validate and show me what fails.`;
+rather than inventing it. Then run docassert validate and show me what fails.`;
 
-const ADD_PROJECT_PROMPT = `We already use the docunit pipeline. Add a new project: create
+const ADD_PROJECT_PROMPT = `We already use the docassert pipeline. Add a new project: create
 documents/PRJ-00N-&lt;CODE&gt;/project.md (pick the next free number and a short
 CODE), set a profile, regenerate projects.yaml, and scaffold its charter.
-Then run docunit consistency and docunit status --project for the new project.`;
+Then run docassert consistency and docassert status --project for the new project.`;
 
 function promptCard(id, badge, text, { primary = false } = {}) {
   const label = primary ? 'Copy prompt and open Claude Code ↗' : 'Copy prompt';
@@ -81,7 +81,7 @@ export function renderQuickstartClaude() {
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The same path as the manual quickstart — just driven for you, and it stops to ask whenever a decision is yours.</p>
       <div style="display:grid;gap:8px;">
         ${[
-          ['Add docunit + the CI workflows', 'the tool, plus audit / consistency / status-pages'],
+          ['Add docassert + the CI workflows', 'the tool, plus audit / consistency / status-pages'],
           ['Anchor your project', 'project.md with a unique id, code, and a profile'],
           ['Convert your documents', 'into the standard templates — gaps flagged, not invented'],
           ['Validate and check consistency', 'and fix whatever blocks a merge'],

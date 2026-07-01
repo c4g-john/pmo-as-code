@@ -64,7 +64,7 @@ Content — and, where the kind defines them, traceable items.`)}
 <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
 <span class="ck">status</span>: <span class="cv">active</span>         <span class="cc"># proposed | active | on-hold | closed</span>
 <span class="cc">---</span>`)}
-      <p style="font-size:14px;color:var(--muted);margin:14px 0 0;"><code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docunit projects</code> generates <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> from these anchors, and a CI check fails if it drifts or an id/code is duplicated. Checks: <span class="mono" style="font-size:12px;color:var(--muted);">project-id-format</span>.</p>
+      <p style="font-size:14px;color:var(--muted);margin:14px 0 0;"><code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert projects</code> generates <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> from these anchors, and a CI check fails if it drifts or an id/code is duplicated. Checks: <span class="mono" style="font-size:12px;color:var(--muted);">project-id-format</span>.</p>
     </div>
 
     <div id="ref-items" style="margin-bottom:44px;">

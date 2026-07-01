@@ -59,7 +59,7 @@ python tools/extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf /
 - <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): Given a new customer…, then an active account exists.
 <span class="cc"># test-cases.md</span>
 - <span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): Complete the wizard → account active, zero tickets.`)}
-      ${cb('terminal', `docunit consistency
+      ${cb('terminal', `docassert consistency
 
 <span class="cs">  ✓ referential-integrity: all references resolve
   ✓ coverage: all approved items are covered</span>
@@ -73,9 +73,9 @@ python tools/extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf /
       ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span> }]
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span> }]
   <span class="ck">consistency</span>:  <span class="cc"># check the whole traceability graph</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit consistency</span> }]`)}
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert consistency</span> }]`)}
       ${cb('terminal', `<span class="cc"># require both checks before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'
 { <span class="ck">"required_status_checks"</span>: { <span class="ck">"strict"</span>: true, <span class="ck">"contexts"</span>: [<span class="cs">"audit"</span>, <span class="cs">"consistency"</span>] } }
@@ -120,9 +120,9 @@ JSON`)}
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Register it and see its page</h3>
       <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Every document you add under <span class="mono" style="font-size:13px;">documents/PRJ-002-ATL/</span> uses the <span class="mono" style="font-size:13px;">ATL-</span> code — so its items (<span class="mono" style="font-size:13px;">ATL-BR-001</span>) never collide with any other project's.</p>
-      ${cb('terminal', `docunit projects --out projects.yaml     <span class="cc"># regenerate the registry</span>
-docunit status --project PRJ-002-ATL      <span class="cc"># this project's derived RAG</span>
-docunit pages --out _site                 <span class="cc"># adds PRJ-002-ATL.html to the portfolio</span>`)}
+      ${cb('terminal', `docassert projects --out projects.yaml     <span class="cc"># regenerate the registry</span>
+docassert status --project PRJ-002-ATL      <span class="cc"># this project's derived RAG</span>
+docassert pages --out _site                 <span class="cc"># adds PRJ-002-ATL.html to the portfolio</span>`)}
       <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
         <div class="card-title">Unique by construction</div>
         <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code — so identity stays unambiguous as the portfolio grows.</div>

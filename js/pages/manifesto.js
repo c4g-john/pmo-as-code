@@ -105,10 +105,10 @@ export function renderAutomation() {
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span>
+      - <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span>
   <span class="ck">consistency</span>:
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docunit consistency</span>   <span class="cc"># broken traces block the merge</span></pre>
+      - <span class="ck">run</span>: <span class="cs">docassert consistency</span>   <span class="cc"># broken traces block the merge</span></pre>
         </div>
       </div>
 

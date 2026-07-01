@@ -7,7 +7,7 @@ export function renderQuickstart() {
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Anchor a project. Author a document. Merge it.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docunit</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions — no other tools.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docassert</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions — no other tools.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 20px;">Time to complete: ~20 minutes. Requires: git, Python 3.10+, a terminal, and a GitHub repo.</p>
     <p style="font-size:14px;color:var(--ink-2);margin:0 0 36px;">Prefer to let Claude do it? See <a href="#/quickstart-claude" style="color:var(--accent);text-decoration:none;font-weight:600;">Quickstart with Claude Code →</a></p>
 
@@ -16,7 +16,7 @@ export function renderQuickstart() {
       <section class="thread-section" id="qs-install">
         <span class="thread-node"></span>
         <div class="eyebrow">Step 1</div>
-        <h2 class="h2-sm">Get docunit.</h2>
+        <h2 class="h2-sm">Get docassert.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Clone the reference implementation. It validates documents, checks cross-document consistency, generates the traceability matrix, and derives per-project status.</p>
         ${cb('terminal', `git clone https://github.com/c4g-john/pmo-as-code-pipeline
 cd pmo-as-code-pipeline
@@ -41,8 +41,8 @@ pip install -e ".[dev]"        <span class="cc"># add ".[ai]" for AI advisory ch
 
 <span class="cv">## Overview</span>
 <span class="cv">## Scope</span>`)}
-        ${cb('terminal', `docunit projects --out projects.yaml   <span class="cc"># generate the registry from the anchors</span>
-<span class="cs"># docunit: wrote projects.yaml (4 projects)</span>`)}
+        ${cb('terminal', `docassert projects --out projects.yaml   <span class="cc"># generate the registry from the anchors</span>
+<span class="cs"># docassert: wrote projects.yaml (4 projects)</span>`)}
         <div class="card" style="margin-top:14px;">
           <div class="card-title">Tip</div>
           <div class="card-body" style="margin-top:4px;">Keep a brand-new project <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> while you fill it in — its profile gaps stay advisory. Flip it to <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code> when you're ready for missing required docs to block.</div>
@@ -82,7 +82,7 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 4</div>
         <h2 class="h2-sm">Unit-test it.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge. AI checks (with a key) advise. This is the real output.</p>
-        ${cb('terminal', `docunit validate documents/PRJ-001-AUR/charter.md
+        ${cb('terminal', `docassert validate documents/PRJ-001-AUR/charter.md
 
 <span class="cs">documents/PRJ-001-AUR/charter.md
   ✓ frontmatter-schema: valid against the schema
@@ -105,7 +105,7 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 5</div>
         <h2 class="h2-sm">Check consistency across documents.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The differentiator. Requirements trace end to end, the registry stays fresh, and each profiled project carries its required documents. Broken links block; the AI judges whether each child genuinely fulfils its parent.</p>
-        ${cb('terminal', `docunit consistency
+        ${cb('terminal', `docassert consistency
 
 <span class="cs">consistency (cross-document)
   ✓ item-id-uniqueness: all 24 item IDs are unique
@@ -123,7 +123,7 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 6</div>
         <h2 class="h2-sm">Generate the traceability matrix.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Derived from the links, never authored by hand. Traceability you can see.</p>
-        ${cb('terminal', `docunit rtm --project PRJ-001-AUR
+        ${cb('terminal', `docassert rtm --project PRJ-001-AUR
 
 <span class="cs"># Requirements Traceability Matrix — AUR
 | Business Req | Product Req | Func/NFR  | Acceptance | Test |
@@ -137,9 +137,9 @@ manual setup with a self-serve flow.
         <div class="eyebrow">Step 7</div>
         <h2 class="h2-sm">Derive status — and see what's missing.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Status is derived, never typed. Scope it to one project, roll up the portfolio, or build the whole site. Because Aurora is on a profile, its page also shows which required documents are complete, incomplete, or missing.</p>
-        ${cb('terminal', `docunit status --project PRJ-001-AUR   <span class="cc"># one project's RAG + document set</span>
-docunit status --index                  <span class="cc"># the portfolio table</span>
-docunit pages --out _site               <span class="cc"># index.html + a page per project</span>
+        ${cb('terminal', `docassert status --project PRJ-001-AUR   <span class="cc"># one project's RAG + document set</span>
+docassert status --index                  <span class="cc"># the portfolio table</span>
+docassert pages --out _site               <span class="cc"># index.html + a page per project</span>
 
 <span class="cs"># Projects — AMBER
 | Project                | Code | RAG   | Docs | Required | Open risks |
@@ -160,9 +160,9 @@ docunit pages --out _site               <span class="cc"># index.html + a page p
         ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit validate documents/**/*.md</span> }]
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span> }]
   <span class="ck">consistency</span>:  <span class="cc"># the graph + registry + profile completeness</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docunit consistency</span> }]`)}
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert consistency</span> }]`)}
         <div style="height:14px;"></div>
         ${cb('terminal', `<span class="cc"># make both checks required before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'

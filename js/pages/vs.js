@@ -9,7 +9,7 @@ export function renderVs() {
     { traditional: 'RAID log in Excel, shared drive', ascode: 'Risk register in Git, reviewed by PR', win: 'ascode' },
     { traditional: 'Requirements drifting across 6 docs', ascode: 'One traceability graph, checked in CI', win: 'ascode' },
     { traditional: '"Who approved this?" — email search', ascode: 'git log + the merged PR reviewer', win: 'ascode' },
-    { traditional: 'PM headcount for the reporting layer', ascode: 'One docunit run per pull request', win: 'ascode' },
+    { traditional: 'PM headcount for the reporting layer', ascode: 'One docassert run per pull request', win: 'ascode' },
     { traditional: 'Human signature required (regulatory)', ascode: 'A required reviewer, recorded in Git', win: 'tie' },
     { traditional: 'Tool-trained PMs, high switching cost', ascode: 'Any compliant tool, vendor-neutral standard', win: 'ascode' },
   ];
