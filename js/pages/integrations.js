@@ -54,7 +54,7 @@ gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
         <div class="card-body" style="margin-top:4px;line-height:1.6;">The templates, the audit criteria, and the conversion skill live in the repo as a library you fork and extend. Any source in; standard, testable documents out.</div>
       </div>
       <div style="margin-top:16px;">
-        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">Browse the library →</a>
+        <a class="btn-secondary" href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">Browse the library →</a>
       </div>
     </div>
 

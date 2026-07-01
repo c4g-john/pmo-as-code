@@ -106,7 +106,7 @@ Content — and, where the kind defines them, traceable items.`)}
 
     <div style="margin-top:8px;padding:18px 20px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
       <p style="font-size:15px;color:var(--ink);margin:0 0 12px;max-width:60ch;">The full JSON Schema, audit criteria, and a runnable sample for every kind live in the pipeline repo. Fork them; add your own.</p>
-      <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener">schema/ · criteria/ · templates/ →</a>
+      <a class="btn-secondary" href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">schema/ · criteria/ · templates/ →</a>
     </div>
 
     ${pageNavHtml('/reference')}

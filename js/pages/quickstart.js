@@ -17,11 +17,10 @@ export function renderQuickstart() {
         <span class="thread-node"></span>
         <div class="eyebrow">Step 1</div>
         <h2 class="h2-sm">Get docassert.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Clone the reference implementation. It validates documents, checks cross-document consistency, generates the traceability matrix, and derives per-project status.</p>
-        ${cb('terminal', `git clone https://github.com/c4g-john/pmo-as-code-pipeline
-cd pmo-as-code-pipeline
-python3 -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"        <span class="cc"># add ".[ai]" for AI advisory checks</span>`)}
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Install it from PyPI. It validates documents, checks cross-document consistency, generates the traceability matrix, and derives per-project status.</p>
+        ${cb('terminal', `pipx install docassert          <span class="cc"># or: pip install docassert</span>
+docassert --version
+<span class="cc"># AI advisory extra:  pipx install "docassert[ai]"</span>`)}
       </section>
 
       <section class="thread-section" id="qs-project">

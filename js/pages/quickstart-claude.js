@@ -1,9 +1,9 @@
 import { pageNavHtml, provenanceFooter } from '../ui.js';
 
-const HERO_PROMPT = `Set up "PMO as Code" in this repository using the docassert pipeline
-(reference: https://github.com/c4g-john/pmo-as-code-pipeline).
+const HERO_PROMPT = `Set up "PMO as Code" in this repository using docassert
+(pip install docassert · https://github.com/c4g-john/docassert).
 
-1. Add the docassert tool and its GitHub Actions workflows — validate +
+1. Add docassert and its GitHub Actions workflows — validate +
    consistency on every pull request, plus the status-pages dashboard.
 2. Create a project anchor at documents/PRJ-001-&lt;CODE&gt;/project.md with a
    unique id, a short CODE, a sponsor, and a profile (start with lean-startup).
@@ -16,12 +16,12 @@ const HERO_PROMPT = `Set up "PMO as Code" in this repository using the docassert
 
 Start by asking me for the project name, sponsor, and any existing documents.`;
 
-const CONVERT_PROMPT = `Convert this Word document into a PMO-as-Code charter using the docassert
-templates (github.com/c4g-john/pmo-as-code-pipeline). Extract the text, map it
+const CONVERT_PROMPT = `Convert this Word document into a PMO-as-Code charter using docassert
+(pip install docassert · github.com/c4g-john/docassert). Extract the text, map it
 to the charter template, and flag anything the source is missing as a TODO
 rather than inventing it. Then run docassert validate and show me what fails.`;
 
-const ADD_PROJECT_PROMPT = `We already use the docassert pipeline. Add a new project: create
+const ADD_PROJECT_PROMPT = `We already use docassert. Add a new project: create
 documents/PRJ-00N-&lt;CODE&gt;/project.md (pick the next free number and a short
 CODE), set a profile, regenerate projects.yaml, and scaffold its charter.
 Then run docassert consistency and docassert status --project for the new project.`;
