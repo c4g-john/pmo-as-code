@@ -33,7 +33,7 @@ export function renderGuides() {
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Extract the source text</h3>
       ${cb('terminal', `pip install "docassert[convert]"
-python extract.py path/to/charter.docx   <span class="cc"># .docx / .pdf / .md / .txt — tools/ in the docassert repo</span>`)}
+docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md / .txt → plain text</span>`)}
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Let the skill map it</h3>
       <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source, and <em>flags what the source didn't supply rather than inventing it</em>.</p>
