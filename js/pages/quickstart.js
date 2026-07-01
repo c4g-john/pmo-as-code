@@ -40,7 +40,9 @@ docassert --version
 
 <span class="cv">## Overview</span>
 <span class="cv">## Scope</span>`)}
-        ${cb('terminal', `docassert projects --out projects.yaml   <span class="cc"># generate the registry from the anchors</span>
+        ${cb('terminal', `docassert new project --code AUR --name "Aurora — Customer Onboarding Overhaul"
+<span class="cs"># docassert: created documents/PRJ-001-AUR/project.md</span>   <span class="cc"># id auto-numbered</span>
+docassert projects --out projects.yaml   <span class="cc"># generate the registry from the anchors</span>
 <span class="cs"># docassert: wrote projects.yaml (4 projects)</span>`)}
         <div class="card" style="margin-top:14px;">
           <div class="card-title">Tip</div>
@@ -52,7 +54,10 @@ docassert --version
         <span class="thread-node"></span>
         <div class="eyebrow">Step 3</div>
         <h2 class="h2-sm">Author a document.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Author documents into the project folder. Each carries the project's id and a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">&lt;CODE&gt;-</code> namespaced id. Here's a charter. (Or convert an existing Word doc — see the guides.)</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Scaffold a document into the project folder — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert new</code> fills in the identity (and suggests the next free item ids). Then write the content. Here's a completed charter. (Or convert an existing Word doc — see the guides.)</p>
+        ${cb('terminal', `docassert new charter --project PRJ-001-AUR
+<span class="cs"># docassert: created documents/PRJ-001-AUR/charter.md</span>`)}
+        <div style="height:12px;"></div>
         ${cb('documents/PRJ-001-AUR/charter.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">charter</span>
 <span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
