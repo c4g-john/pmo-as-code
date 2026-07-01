@@ -9,6 +9,7 @@ export const NAV = [
     ['The Rosetta Stone', '/rosetta'],
     ['Core Concepts', '/concepts'],
     ['Quickstart', '/quickstart'],
+    ['Quickstart with Claude Code', '/quickstart-claude'],
     ['Guides', '/guides'],
     ['Reference', '/reference'],
     ['Integrations', '/integrations'],
@@ -32,6 +33,7 @@ export const PAGE_META = {
   '/rosetta':     { t: 'The Rosetta Stone',       src: 'content/rosetta.mdx' },
   '/concepts':    { t: 'Core Concepts',           src: 'content/concepts.mdx' },
   '/quickstart':  { t: 'Quickstart',              src: 'content/quickstart.mdx' },
+  '/quickstart-claude': { t: 'Quickstart with Claude Code', src: 'content/quickstart-claude.mdx' },
   '/guides':      { t: 'Guides',                  src: 'content/guides/index.mdx' },
   '/reference':   { t: 'Reference',               src: 'content/reference/index.mdx' },
   '/integrations':{ t: 'Integrations',            src: 'content/integrations.mdx' },
@@ -42,7 +44,7 @@ export const PAGE_META = {
 };
 
 export const ORDER = ['/','/why','/manifesto','/manifesto/automation','/manifesto/traceability',
-  '/rosetta','/concepts','/quickstart','/guides','/reference','/integrations',
+  '/rosetta','/concepts','/quickstart','/quickstart-claude','/guides','/reference','/integrations',
   '/profiles','/adoption','/vs','/faq'];
 
 export const SHELLS = {};
@@ -55,7 +57,8 @@ export const ANCHORS = {
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
-  '/quickstart': [['qs-install','1 · Get docunit'],['qs-author','2 · Author'],['qs-test','3 · Unit-test'],['qs-gate','4 · Gate on PR'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Per-project pages']],
+  '/quickstart': [['qs-install','1 · Get docunit'],['qs-project','2 · Anchor a project'],['qs-author','3 · Author a document'],['qs-test','4 · Unit-test'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Status & completeness'],['qs-gate','8 · Gate in CI']],
+  '/quickstart-claude': [['cc-prompt','The prompt'],['cc-need','What you need'],['cc-does','What it does'],['cc-more','More prompts']],
   '/guides': [['guide-convert','Convert a Word doc'],['guide-trace','Author linked requirements'],['guide-gate','Gate documents in CI'],['guide-kind','Add a document kind'],['guide-project','Start a new project']],
   '/reference': [['ref-shape','The shared shape'],['ref-identity','Project identity'],['ref-items','Items & links'],['ref-kinds','Document kinds']],
   '/integrations': [['int-actions','GitHub Actions'],['int-protection','Branch protection'],['int-ai','Anthropic API'],['int-skills','Skills & templates']],

@@ -94,6 +94,21 @@ function render() {
     });
   });
 
+  // Wire labeled "copy prompt" buttons (Quickstart with Claude Code)
+  document.querySelectorAll('.copy-prompt-btn').forEach(btn => {
+    const label = btn.dataset.label || btn.textContent;
+    btn.addEventListener('click', () => {
+      const pre = document.getElementById(btn.dataset.copyId);
+      if (!pre) return;
+      // open synchronously so the pop-up isn't blocked by the async copy
+      if (btn.dataset.open) window.open(btn.dataset.open, '_blank', 'noopener');
+      copyText(pre.innerText).then(ok => {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy failed — select manually';
+        setTimeout(() => { btn.textContent = label; }, 2000);
+      });
+    });
+  });
+
   // Wire FAQ accordion
   document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
