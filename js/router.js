@@ -5,6 +5,7 @@ import { renderManifesto, renderAutomation, renderTraceability } from './pages/m
 import { renderRosetta } from './pages/rosetta.js';
 import { renderConcepts } from './pages/concepts.js';
 import { renderWhy } from './pages/why.js';
+import { renderCaseStudy } from './pages/case-study.js';
 import { renderQuickstart } from './pages/quickstart.js';
 import { renderQuickstartClaude } from './pages/quickstart-claude.js';
 import { renderGuides } from './pages/guides.js';
@@ -48,6 +49,7 @@ export function getPageHtml(route) {
   if (route === '/rosetta') return renderRosetta();
   if (route === '/concepts') return renderConcepts();
   if (route === '/why') return renderWhy();
+  if (route === '/case-study') return renderCaseStudy();
   if (route === '/quickstart') return renderQuickstart();
   if (route === '/quickstart-claude') return renderQuickstartClaude();
   if (route === '/guides') return renderGuides();

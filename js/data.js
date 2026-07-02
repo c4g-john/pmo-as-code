@@ -1,5 +1,5 @@
 export const NAV = [
-  { title: 'Start here', items: [['Home', '/'], ['Why PMO as Code', '/why']] },
+  { title: 'Start here', items: [['Home', '/'], ['Why PMO as Code', '/why'], ['Case study: Refuge', '/case-study']] },
   { title: 'The Manifesto', layer: 1, color: 'var(--l1)', items: [
     ['The Manifesto', '/manifesto'],
     ['Automation & audit', '/manifesto/automation'],
@@ -27,6 +27,7 @@ export const NAV = [
 export const PAGE_META = {
   '/':            { t: 'Home',                    src: 'content/home.mdx' },
   '/why':         { t: 'Why PMO as Code',         src: 'content/why.mdx' },
+  '/case-study':  { t: 'Case study: Refuge for Humans', src: 'content/case-study.mdx' },
   '/manifesto':   { t: 'The Manifesto',           src: 'content/manifesto.mdx' },
   '/manifesto/automation':   { t: 'Automation & audit',   src: 'content/manifesto/automation.mdx' },
   '/manifesto/traceability': { t: 'Traceability',         src: 'content/manifesto/traceability.mdx' },
@@ -43,7 +44,7 @@ export const PAGE_META = {
   '/faq':         { t: 'FAQ',                     src: 'content/faq.mdx' },
 };
 
-export const ORDER = ['/','/why','/manifesto','/manifesto/automation','/manifesto/traceability',
+export const ORDER = ['/','/why','/case-study','/manifesto','/manifesto/automation','/manifesto/traceability',
   '/rosetta','/concepts','/quickstart','/quickstart-claude','/guides','/reference','/integrations',
   '/profiles','/adoption','/vs','/faq'];
 
@@ -56,6 +57,7 @@ export const ANCHORS = {
   '/concepts': [['model','A document, not a database'],['identity','Projects & identity'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Twenty kinds']],
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
+  '/case-study': [['cs-source','The source'],['cs-convert','The conversion'],['cs-findings','The findings'],['cs-loop','The feedback loop'],['cs-live','Live now']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
   '/quickstart': [['qs-install','1 · Get docassert'],['qs-project','2 · Anchor a project'],['qs-author','3 · Author a document'],['qs-test','4 · Unit-test'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Status & completeness'],['qs-gate','8 · Gate in CI']],
   '/quickstart-claude': [['cc-prompt','The prompt'],['cc-need','What you need'],['cc-does','What it does'],['cc-more','More prompts']],
