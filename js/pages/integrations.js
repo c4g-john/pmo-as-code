@@ -50,8 +50,8 @@ gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
       <h2 class="h2-sm">The skills &amp; templates library.</h2>
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The real "integration" is Claude itself. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill takes a Word doc, a PDF, or pasted text and maps it into the standard Markdown templates — flagging anything the source didn't supply rather than inventing it.</p>
       <div class="card" style="border-left:3px solid var(--l3);">
-        <div class="card-title">Composable and public</div>
-        <div class="card-body" style="margin-top:4px;line-height:1.6;">The templates, the audit criteria, and the conversion skill live in the repo as a library you fork and extend. Any source in; standard, testable documents out.</div>
+        <div class="card-title">Ships with the tool</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">The templates, the audit criteria, and the conversion skill all ship inside the <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert</code> package — <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert init</code> scaffolds them into your repo, including the skill into <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">.claude/skills/</code> where Claude Code discovers it. Any source in; standard, testable documents out.</div>
       </div>
       <div style="margin-top:16px;">
         <a class="btn-secondary" href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">Browse the library →</a>
