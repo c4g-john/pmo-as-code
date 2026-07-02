@@ -2,6 +2,7 @@ import { state } from './state.js';
 import { REVEAL_PASS, REVEAL_COMPUTING } from './data.js';
 import { renderSidebar, renderOnThisPage, scrollTo } from './ui.js';
 import { getPageHtml } from './router.js';
+import { initSearch } from './search.js';
 
 const $sidebar = document.getElementById('sidebar');
 const $content = document.getElementById('content');
@@ -166,6 +167,8 @@ document.addEventListener('click', e => {
     scrollTo(anchor.dataset.anchor);
   }
 });
+
+initSearch();
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 setTheme('dark');
