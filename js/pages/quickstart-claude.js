@@ -3,8 +3,10 @@ import { pageNavHtml, provenanceFooter } from '../ui.js';
 const HERO_PROMPT = `Set up "PMO as Code" in this repository using docassert
 (pip install docassert · https://github.com/c4g-john/docassert).
 
-1. Add docassert and its GitHub Actions workflows — validate +
-   consistency on every pull request, plus the status-pages dashboard.
+1. Add docassert and its GitHub Actions workflows — validate + consistency on
+   every pull request plus the status-pages dashboard, using
+   c4g-john/docassert-action@v1 (copy the workflows from
+   github.com/c4g-john/pmo-as-code-template).
 2. Create a project anchor at documents/PRJ-001-&lt;CODE&gt;/project.md with a
    unique id, a short CODE, a sponsor, and a profile (start with lean-startup).
 3. Turn my existing project docs into PMO-as-Code documents using the standard

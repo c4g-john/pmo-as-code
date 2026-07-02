@@ -9,7 +9,8 @@ export function renderQuickstart() {
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Anchor a project. Author a document. Merge it.</h1>
     <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docassert</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions — no other tools.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 20px;">Time to complete: ~20 minutes. Requires: git, Python 3.10+, a terminal, and a GitHub repo.</p>
-    <p style="font-size:14px;color:var(--ink-2);margin:0 0 36px;">Prefer to let Claude do it? See <a href="#/quickstart-claude" style="color:var(--accent);text-decoration:none;font-weight:600;">Quickstart with Claude Code →</a></p>
+    <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px;">Prefer to let Claude do it? See <a href="#/quickstart-claude" style="color:var(--accent);text-decoration:none;font-weight:600;">Quickstart with Claude Code →</a></p>
+    <p style="font-size:14px;color:var(--ink-2);margin:0 0 36px;">Starting a fresh repo? <a href="https://github.com/c4g-john/pmo-as-code-template" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">Use the template →</a> — steps 1–2 and 8 come pre-wired.</p>
 
     <div class="thread-rail">
 
@@ -164,9 +165,15 @@ docassert pages --out _site               <span class="cc"># index.html + a page
         ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span> }]
+    <span class="ck">steps</span>:
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span>, <span class="ck">with</span>: { <span class="ck">fetch-depth</span>: 0 } }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cv">validate</span>, <span class="ck">changed-only</span>: <span class="cv">'true'</span> }
   <span class="ck">consistency</span>:  <span class="cc"># the graph + registry + profile completeness</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert consistency</span> }]`)}
+    <span class="ck">steps</span>:
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span> }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cv">consistency</span> }`)}
         <div style="height:14px;"></div>
         ${cb('terminal', `<span class="cc"># make both checks required before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'
@@ -188,7 +195,8 @@ JSON`)}
       <div class="eyebrow" style="margin-bottom:8px;">What's next</div>
       <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">Let Claude Code scaffold the whole thing from one prompt, convert an existing Word document, or explore the document kinds in the reference.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a class="btn-primary" href="#/quickstart-claude">Quickstart with Claude Code →</a>
+        <a class="btn-primary" href="https://github.com/c4g-john/pmo-as-code-template" target="_blank" rel="noopener">Use the template →</a>
+        <a class="btn-secondary" href="#/quickstart-claude">Quickstart with Claude Code →</a>
         <a class="btn-secondary" href="#/guides">The guides →</a>
         <a class="btn-secondary" href="#/reference">The document kinds →</a>
       </div>
