@@ -12,7 +12,7 @@ export function renderHome() {
         A vendor-neutral standard · running live in two public deployments
       </div>
       <h1 class="h1">Run the PMO from version-controlled, declarative files.</h1>
-      <p class="lead">Define a portfolio's governance, structure, and operating model as declarative, version-controlled files, so status, roadmaps, risks, and decisions are <em style="color:var(--ink);font-style:normal;border-bottom:1px solid var(--accent-line);">generated from a single source of truth</em> instead of hand-maintained in slides and spreadsheets.</p>
+      <p class="lead">Define a portfolio's governance, structure, and operating model as plain files in Git, so status, roadmaps, risks, and decisions are <em style="color:var(--ink);font-style:normal;border-bottom:1px solid var(--accent-line);">generated from a single source of truth</em> instead of hand-maintained in slides and spreadsheets.</p>
       <p class="sub">It takes the Infrastructure-as-Code / GitOps playbook and points it at the PMO.</p>
       <div class="cta-row">
         <a class="btn-primary" href="#/rosetta">See the Rosetta Stone <span class="mono">→</span></a>
@@ -24,11 +24,11 @@ export function renderHome() {
         <section class="thread-section" id="thesis">
           <span class="thread-node"></span>
           <div class="eyebrow">The problem it answers</div>
-          <h2 class="h2">Stale on arrival, and no record of why.</h2>
+          <h2 class="h2">The reporting is stale and the reasoning is lost.</h2>
           <p class="body">Today's PMO runs on PowerPoint, Excel, SharePoint, and email. Nothing is authoritative, and nobody records <em style="font-style:italic;color:var(--ink);">why</em> decisions were made.</p>
           <div class="grid-2">
             <div class="card"><div class="card-title">Stale artifacts</div><div class="card-body">A deck is out of date the moment it's shared.</div></div>
-            <div class="card"><div class="card-title">RAG fiction</div><div class="card-body">Red / amber / green is self-reported, not measured.</div></div>
+            <div class="card"><div class="card-title">RAG fiction</div><div class="card-body">Red, amber, and green are whatever the PM reports.</div></div>
             <div class="card"><div class="card-title">Unauditable governance</div><div class="card-body">Approval is an email in an inbox no one can audit.</div></div>
             <div class="card"><div class="card-title">An army of PMs</div><div class="card-body">It takes a team just to keep the decks current.</div></div>
           </div>
@@ -84,14 +84,14 @@ Cut onboarding from 14 days to under 2.
               <div id="reveal-output">${revealedHtml}</div>
             </div>
           </div>
-          <p class="caption">Nobody argues about whether it's "done". The checks decide, the same way every time.</p>
+          <p class="caption">The checks decide what counts as done, the same way every time, and the same checks run for real in CI.</p>
         </section>
 
         <section class="thread-section" id="thread">
           <span class="thread-node"></span>
           <div class="eyebrow">The signature concept</div>
           <h2 class="h2">Follow the thread: <span style="color:var(--accent);">why does this test exist?</span></h2>
-          <p class="body">The unit of value is the <em style="font-style:normal;color:var(--ink);">link</em>, not the document. Thin artifacts, richly connected, so any test walks back to the business reason it exists.</p>
+          <p class="body">The links carry the value. Documents stay thin and richly connected, so any test walks back to the business reason it exists.</p>
 
           <div style="position:relative;padding-left:32px;border-left:2px solid var(--accent-line);">
             <div style="position:relative;margin-bottom:8px;">
@@ -134,17 +134,17 @@ Cut onboarding from 14 days to under 2.
               </div>
             </div>
           </div>
-          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. The pipeline generates this walk from the links; it is the same graph behind the traceability matrix. (Aurora is the fictional sample project used in examples across this site — its people are invented. The deployments below are real.)</p>
+          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. The pipeline generates this walk from the links; it is the same graph behind the traceability matrix. (Aurora is the fictional sample project used in examples across this site; its people are invented. The deployments below are real.)</p>
         </section>
 
         <section class="thread-section" id="portfolio">
           <span class="thread-node"></span>
           <div class="eyebrow">From one document to a portfolio</div>
-          <h2 class="h2">Every project has a unique ID — and its own live page.</h2>
+          <h2 class="h2">Every project has a unique ID and its own live page.</h2>
           <p class="body">Each project carries a stable identity, <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span>, that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides, and every item says which project it belongs to. The pipeline publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em>: one derived RAG card per project, each linking to that project's status page.</p>
           <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--panel-2);">
-              <span class="mono" style="font-size:12px;color:var(--muted);">docassert pages · portfolio</span>
+              <span class="mono" style="font-size:12px;color:var(--muted);">portfolio dashboard · illustrated</span>
               <span class="mono" style="font-size:11px;color:var(--warn);">● AMBER</span>
             </div>
             ${[
@@ -162,14 +162,14 @@ Cut onboarding from 14 days to under 2.
                 <span class="mono" style="font-size:11px;color:${color};flex:none;">${rag}</span>
               </div>`).join('')}
           </div>
-          <p class="caption">Each RAG is <em style="font-style:normal;color:var(--ink);">computed</em> from that project's own documents: coverage, open risks, failing audits. <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">See the live dashboard →</a></p>
+          <p class="caption">Each RAG is <em style="font-style:normal;color:var(--ink);">computed</em> from that project's own documents, using coverage, open risks, and failing audits. The panel above shows the format; the live dashboard has today's states. <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">See the live dashboard →</a></p>
         </section>
 
         <section class="thread-section" id="proof">
           <span class="thread-node"></span>
-          <div class="eyebrow">Show, don't tell</div>
-          <h2 class="h2">The method runs live. Go poke at it.</h2>
-          <p class="body">This site is ordinary hand-written web pages; the pipeline it describes runs elsewhere, in public. Two deployments regenerate their dashboards and badges from their documents on every push: <strong style="font-weight:600;color:var(--ink);">Aurora</strong>, the reference portfolio, and <strong style="font-weight:600;color:var(--ink);">Refuge for Humans</strong>, a real product spec converted from a Word BRD.</p>
+          <div class="eyebrow">Live proof</div>
+          <h2 class="h2">The method is running in public right now.</h2>
+          <p class="body">This site is ordinary hand-written web pages. The pipeline it describes runs in public, in two deployments that regenerate their dashboards and badges from their documents on every push. <strong style="font-weight:600;color:var(--ink);">Aurora</strong> is the reference portfolio, and <strong style="font-weight:600;color:var(--ink);">Refuge for Humans</strong> is a real product spec converted from a Word BRD.</p>
           <div class="grid-2">
             <div class="card">
               <div class="card-title" style="display:flex;align-items:center;gap:10px;">Reference portfolio <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fc4g-john.github.io%2Fpmo-as-code-pipeline%2Fbadge.json" alt="live derived status" height="18"></div>
@@ -178,7 +178,7 @@ Cut onboarding from 14 days to under 2.
             </div>
             <div class="card">
               <div class="card-title" style="display:flex;align-items:center;gap:10px;">Refuge for Humans <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fc4g-john.github.io%2Frefuge-for-humans-pmo%2Fbadge.json" alt="live derived status" height="18"></div>
-              <div class="card-body" style="margin-top:6px;">A real 14-section BRD converted faithfully, gaps showing. Read the <a href="#/case-study" style="color:var(--accent);text-decoration:none;">case study</a> for what the audit found.</div>
+              <div class="card-body" style="margin-top:6px;">A real 14-section BRD converted faithfully, with its gaps on display. The <a href="#/case-study" style="color:var(--accent);text-decoration:none;">case study</a> covers what the audit found.</div>
               <div style="margin-top:12px;"><a href="https://c4g-john.github.io/refuge-for-humans-pmo/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Dashboard →</a>&nbsp;&nbsp;<a href="https://github.com/c4g-john/refuge-for-humans-pmo" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Repo →</a></div>
             </div>
           </div>

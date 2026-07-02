@@ -7,14 +7,14 @@ export function renderGuides() {
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Guides.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Task-focused walkthroughs. Start from any guide. They're independent.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Task-focused walkthroughs that stand alone, so start wherever the need is.</p>
 
     <div style="display:grid;gap:10px;margin-bottom:48px;">
       ${[
-        ['Convert a Word document', 'guide-convert', 'Bring an existing doc in with the doc-to-pmo skill — gaps flagged, not invented.'],
+        ['Convert a Word document', 'guide-convert', 'Bring an existing document in with the doc-to-pmo skill, which marks gaps as TODOs.'],
         ['Author linked requirements', 'guide-trace', 'Write BR → PR → AC → TC as items, and let consistency check the chain.'],
         ['Gate documents in CI', 'guide-gate', 'Run the audit and consistency jobs on every PR; make the gate binding.'],
-        ['Add a new document kind', 'guide-kind', 'A template + schema + criteria trio — usually no code at all.'],
+        ['Add a new document kind', 'guide-kind', 'A template, a schema, and a criteria file, usually with no code at all.'],
         ['Start a new project', 'guide-project', 'Give a project a unique ID, a folder, and its own derived status page.'],
       ].map(([title, id, desc]) => `
         <a href="#${id}" data-anchor="${id}" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
@@ -36,7 +36,7 @@ export function renderGuides() {
 docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md / .txt → plain text</span>`)}
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Let the skill map it</h3>
-      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source, and <em>flags what the source didn't supply rather than inventing it</em>.</p>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source and marks anything the source didn't supply as a TODO.</p>
       ${cb('documents/PRJ-001-AUR/charter.md (first pass)', `<span class="cv">## Success Criteria</span>
 - TODO: source says "faster onboarding" — add a measurable target.
 
@@ -44,7 +44,7 @@ docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md /
 - Migration may slip. (TODO: assign an Owner and a Mitigation.)`)}
       <div class="card" style="margin-top:14px;border-left:3px solid var(--warn);">
         <div class="card-title">Faithful over passing</div>
-        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that fails the audit, with the exact gaps to fill. That is the pipeline working, not a bug.</div>
+        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that fails the audit and lists the exact gaps to fill, which is the outcome a faithful conversion should produce.</div>
       </div>
     </div>
 
@@ -73,9 +73,15 @@ docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md /
       ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span> }]
+    <span class="ck">steps</span>:
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span>, <span class="ck">with</span>: { <span class="ck">fetch-depth</span>: 0 } }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cv">validate</span>, <span class="ck">changed-only</span>: <span class="cv">'true'</span> }
   <span class="ck">consistency</span>:  <span class="cc"># check the whole traceability graph</span>
-    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert consistency</span> }]`)}
+    <span class="ck">steps</span>:
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span> }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cs">consistency</span> }`)}
       ${cb('terminal', `<span class="cc"># require both checks before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'
 { <span class="ck">"required_status_checks"</span>: { <span class="ck">"strict"</span>: true, <span class="ck">"contexts"</span>: [<span class="cs">"audit"</span>, <span class="cs">"consistency"</span>] } }
@@ -119,13 +125,13 @@ JSON`)}
 <span class="cv">## Scope</span>`)}
 
       <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Register it and see its page</h3>
-      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Every document you add under <span class="mono" style="font-size:13px;">documents/PRJ-002-ATL/</span> uses the <span class="mono" style="font-size:13px;">ATL-</span> code — so its items (<span class="mono" style="font-size:13px;">ATL-BR-001</span>) never collide with any other project's.</p>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Every document you add under <span class="mono" style="font-size:13px;">documents/PRJ-002-ATL/</span> uses the <span class="mono" style="font-size:13px;">ATL-</span> code, so its items (<span class="mono" style="font-size:13px;">ATL-BR-001</span>) never collide with any other project's.</p>
       ${cb('terminal', `docassert projects --out projects.yaml     <span class="cc"># regenerate the registry</span>
 docassert status --project PRJ-002-ATL      <span class="cc"># this project's derived RAG</span>
 docassert pages --out _site                 <span class="cc"># adds PRJ-002-ATL.html to the portfolio</span>`)}
       <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
         <div class="card-title">Unique by construction</div>
-        <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code — so identity stays unambiguous as the portfolio grows.</div>
+        <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code, keeping identity unambiguous as the portfolio grows.</div>
       </div>
     </div>
 

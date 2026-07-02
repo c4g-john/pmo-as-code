@@ -8,7 +8,7 @@ export function renderVs() {
     { traditional: 'Charter in Word, v47_FINAL.docx', ascode: 'charter.md, versioned, schema-validated', win: 'ascode' },
     { traditional: 'RAID log in Excel, shared drive', ascode: 'Risk register in Git, reviewed by PR', win: 'ascode' },
     { traditional: 'Requirements drifting across 6 docs', ascode: 'One traceability graph, checked in CI', win: 'ascode' },
-    { traditional: '"Who approved this?" — email search', ascode: 'git log + the merged PR reviewer', win: 'ascode' },
+    { traditional: '"Who approved this?" means an email search', ascode: 'git log + the merged PR reviewer', win: 'ascode' },
     { traditional: 'PM headcount for the reporting layer', ascode: 'One docassert run per pull request', win: 'ascode' },
     { traditional: 'Human signature required (regulatory)', ascode: 'A required reviewer, recorded in Git', win: 'tie' },
     { traditional: 'Tool-trained PMs, high switching cost', ascode: 'Any compliant tool, vendor-neutral standard', win: 'ascode' },
@@ -40,15 +40,15 @@ export function renderVs() {
 
     <div id="where-wins" style="margin-bottom:48px;">
       <h2 class="h2-sm">Where as-code wins clearly.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Any situation where the cost of stale data is higher than the cost of learning YAML. Portfolios with more than ~5 projects. Organisations where audit and traceability matter. Teams that already use Git.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">It wins wherever stale data costs more than learning YAML, which in practice means portfolios beyond about five projects, organisations where audit and traceability matter, and teams already working in Git.</p>
       <div class="grid-2">
         <div class="card" style="border-left:3px solid var(--ok);">
           <div class="card-title">Engineering-led orgs</div>
-          <div class="card-body" style="margin-top:4px;">Git is already the source of truth for code. Extending it to the portfolio is a small step, not a cultural revolution.</div>
+          <div class="card-body" style="margin-top:4px;">Git is already the source of truth for code. Extending it to the portfolio is a small step for a team that already lives there.</div>
         </div>
         <div class="card" style="border-left:3px solid var(--ok);">
           <div class="card-title">Regulated industries</div>
-          <div class="card-body" style="margin-top:4px;">An immutable audit trail in Git — who changed what, when, and who approved it — satisfies most audit requirements better than email threads can.</div>
+          <div class="card-body" style="margin-top:4px;">An audit trail in Git records who changed what, when, and who approved it, and it satisfies most audit requirements better than email threads can.</div>
         </div>
       </div>
     </div>

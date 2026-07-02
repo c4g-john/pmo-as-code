@@ -72,22 +72,22 @@
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Composable, named bundles.</h1>
     <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A profile is a named bundle of expectations for a project: which document kinds it must carry, which are merely recommended, and how strict the gate is. Point a project at one, and its status page tells you what's still missing.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Think: Agile Manifesto → Scrum / Kanban / SAFe. The manifesto doesn't change. The implementations diverge.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Profiles are to this standard what Scrum and Kanban are to the Agile Manifesto, in that the manifesto holds still while implementations diverge.</p>
 
     <div id="what-profile" style="margin-bottom:52px;">
       <h2 class="h2-sm">What a profile is.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A small YAML file that lists the kinds a project is expected to carry, at two levels — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">required</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">recommended</code>. A project opts in with one line of frontmatter.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A small YAML file that lists the kinds a project is expected to carry, at two levels, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">required</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">recommended</code>. A project opts in with one line of frontmatter.</p>
       <div class="code-block">
     <div class="code-titlebar">
       <span class="traffic-light" style="background:#ff5f57;"></span>
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">profiles/regulated-industry.yaml</span>
-      <button class="copy-btn" data-copy-id="cb-xfdcwosz2u" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-2uuo3siy7yd" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-xfdcwosz2u"><span class="ck">name</span>: <span class="cv">regulated-industry</span>
+    <pre class="code-pre" id="cb-2uuo3siy7yd"><span class="ck">name</span>: <span class="cv">regulated-industry</span>
 <span class="ck">enforce_when</span>: <span class="cv">active</span>          <span class="cc"># gaps block CI only once the project is active</span>
 <span class="ck">expects</span>:
   <span class="ck">required</span>:    [charter, business-case, brd, prd, frnfr,
@@ -101,18 +101,18 @@
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">documents/PRJ-001-AUR/project.md</span>
-      <button class="copy-btn" data-copy-id="cb-ohkpzmv2il" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-vm9udcb9oh" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-ohkpzmv2il"><span class="ck">kind</span>: <span class="cv">project</span>
+    <pre class="code-pre" id="cb-vm9udcb9oh"><span class="ck">kind</span>: <span class="cv">project</span>
 <span class="ck">id</span>: <span class="cv">PRJ-001-AUR</span>
 <span class="ck">status</span>: <span class="cv">active</span>
 <span class="ck">profile</span>: <span class="cv">regulated-industry</span>   <span class="cc"># opt in</span></pre>
   </div>
       <div class="card" style="margin-top:16px;">
         <div class="card-title">Complete · incomplete · missing</div>
-        <div class="card-body" style="margin-top:4px;line-height:1.6;">The project page classifies each expected kind: <strong style="color:var(--ok);font-weight:600;">complete</strong> (present, approved, passing), <strong style="color:var(--warn);font-weight:600;">incomplete</strong> (present but still draft), or <strong style="color:var(--bad);font-weight:600;">missing</strong>. A <em style="font-style:normal;color:var(--ink);">required</em> kind that's missing blocks the merge — but only once the project reaches <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">enforce_when</code>; a proposed project shows the same gaps as advisory amber and never blocks.</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">The project page classifies each expected kind: <strong style="color:var(--ok);font-weight:600;">complete</strong> (present, approved, passing), <strong style="color:var(--warn);font-weight:600;">incomplete</strong> (present but still draft), or <strong style="color:var(--bad);font-weight:600;">missing</strong>. A missing <em style="font-style:normal;color:var(--ink);">required</em> kind blocks the merge once the project reaches its <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">enforce_when</code> stage. Before that, a proposed project shows the same gaps as advisory amber.</div>
       </div>
     </div>
 
@@ -125,7 +125,7 @@
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
               <span class="mono" style="font-size:13px;font-weight:600;color:var(--accent);">regulated-industry</span>
             </div>
-            <div class="card-body" style="margin-bottom:10px;">The full governance spine — for finance, healthcare, or government.</div>
+            <div class="card-body" style="margin-bottom:10px;">The full governance spine for finance, healthcare, or government.</div>
             <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.8;">
               <div><span style="display:inline-block;width:92px;color:var(--faint);">required</span>charter, business-case, brd, prd, frnfr, test-cases, risk-register, raci-stakeholder, qa-test-plan</div>
               <div><span style="display:inline-block;width:92px;color:var(--faint);">recommended</span>adr, runbook, status-report, benefits-realization</div>
@@ -156,18 +156,18 @@
 
     <div id="author-profile" style="margin-bottom:48px;">
       <h2 class="h2-sm">Author your own.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Drop a new file in <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profiles/</code> and point projects at it. For deeper changes — extra required sections, stricter checks — edit the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> trio the kinds share.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Drop a new file in <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profiles/</code> and point projects at it. For deeper changes, such as extra required sections or stricter checks, edit the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> trio the kinds share.</p>
       <div class="code-block">
     <div class="code-titlebar">
       <span class="traffic-light" style="background:#ff5f57;"></span>
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">profiles/our-org.yaml</span>
-      <button class="copy-btn" data-copy-id="cb-lhrsb96md4i" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-liypc792ld" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-lhrsb96md4i"><span class="ck">name</span>: <span class="cv">our-org</span>
+    <pre class="code-pre" id="cb-liypc792ld"><span class="ck">name</span>: <span class="cv">our-org</span>
 <span class="ck">enforce_when</span>: <span class="cv">active</span>
 <span class="ck">expects</span>:
   <span class="ck">required</span>:    [charter, brd, prd, test-cases, risk-register]

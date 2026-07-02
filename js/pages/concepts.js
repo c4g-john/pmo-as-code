@@ -11,7 +11,7 @@ export function renderConcepts() {
       <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Everything is a Markdown document with YAML frontmatter and defined sections. Requirements are authored as linked items, which is what makes the whole set testable and traceable.</p>
 
       <div id="model" style="margin-bottom:52px;">
-        <h2 class="h2-sm">A document, not a database.</h2>
+        <h2 class="h2-sm">One shape for every document.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind shares one shape: <strong style="font-weight:600;color:var(--ink);">frontmatter</strong> (typed metadata a JSON Schema checks) and <strong style="font-weight:600;color:var(--ink);">required sections</strong> (the audit checks they're present and complete). Plain Markdown a person can read and a diff can review. Examples use Aurora, the fictional sample project; its people are invented.</p>
         ${cb('documents/PRJ-001-AUR/charter.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">charter</span>
@@ -31,13 +31,13 @@ Cut median onboarding time from 14 days to under 2 days.
 
       <div id="identity" style="margin-bottom:52px;">
         <h2 class="h2-sm">Every document belongs to a project.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents are organized <strong style="font-weight:600;color:var(--ink);">project-first</strong>, and each project has a unique, self-identifying id — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-001-AUR</code>: a unique sequence <em style="font-style:normal;color:var(--ink);">and</em> a short code. A <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> anchors each folder.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents are organized <strong style="font-weight:600;color:var(--ink);">project-first</strong>, and each project has a self-identifying id such as <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-001-AUR</code>, which pairs a unique sequence with a short code. A <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> anchors each folder.</p>
         ${cb('documents/PRJ-001-AUR/', `<span class="cv">project.md</span>       <span class="cc"># id: PRJ-001-AUR · code: AUR · sponsor</span>
 <span class="cv">charter.md</span>       <span class="cc"># id: AUR-charter</span>
 <span class="cv">brd.md</span>           <span class="cc"># items: AUR-BR-001, AUR-BR-002</span>
 <span class="cv">prd.md</span>           <span class="cc"># items: AUR-PR-014 (traces: AUR-BR-001)</span>
 <span class="cc">…</span>`)}
-        <p class="caption">The <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-</code> code namespaces every id, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code> and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">ATL-BR-001</code> are different requirements in different projects — globally unique, and each item declares its own project. A generated <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> registers them all.</p>
+        <p class="caption">The <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-</code> code namespaces every id, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code> and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">ATL-BR-001</code> are different requirements in different projects, each globally unique and each declaring its own project. A generated <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> registers them all.</p>
       </div>
 
       <div id="items" style="margin-bottom:52px;">
@@ -55,22 +55,22 @@ Cut median onboarding time from 14 days to under 2 days.
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The same split runs on every document and across the whole graph.</p>
         <div class="grid-2">
           <div class="card" style="border-left:3px solid var(--ok);">
-            <div class="card-title">Structural — deterministic, blocking</div>
+            <div class="card-title">Structural: deterministic and blocking</div>
             <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed.</div>
           </div>
           <div class="card" style="border-left:3px solid var(--l2);">
-            <div class="card-title">Semantic — AI-graded, advisory</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API and posted to the PR — but never blocking.</div>
+            <div class="card-title">Semantic: AI-graded and advisory</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API and posted to the PR, and it never blocks.</div>
           </div>
         </div>
       </div>
 
       <div id="kinds" style="margin-bottom:52px;">
         <h2 class="h2-sm">Twenty kinds, one pattern.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind is a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">template</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">schema</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">criteria</code> trio. Adding one is adding a trio — no code for the common cases.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind is a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">template</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">schema</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">criteria</code> trio. Adding a kind means adding a trio, with no new code for the common cases.</p>
         <div class="kind-grid">
           ${[
-            ['project', 'The project anchor — unique id, code, sponsor, status.'],
+            ['project', 'The project anchor, with unique id, code, sponsor, and status.'],
             ['charter', 'Objective, measurable success criteria, sponsor, budget.'],
             ['business-case', 'Problem, options, recommendation, costs, benefits.'],
             ['brd', 'Business requirements as BR items.'],
@@ -80,7 +80,7 @@ Cut median onboarding time from 14 days to under 2 days.
             ['test-cases', 'Test cases (TC) that verify acceptance criteria.'],
             ['adr', 'Architecture decisions with a recorded status.'],
             ['risk-register', 'Risks with probability, impact, owner, response.'],
-            ['raci-stakeholder', 'Roles matrix — one Accountable per activity.'],
+            ['raci-stakeholder', 'Roles matrix with one Accountable per activity.'],
             ['qa-test-plan', 'Scope, environments, measurable exit criteria.'],
             ['data-migration-plan', 'Sources, field mapping, validation, cutover.'],
             ['release-cutover-plan', 'Ordered cutover steps and a rollback trigger.'],

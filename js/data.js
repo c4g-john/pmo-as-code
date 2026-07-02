@@ -83,7 +83,7 @@ export const ROSETTA_ROWS = [
   { before: 'Steering approval email', after: 'A merged PR with a named reviewer',
     yaml: `<span class="cc"># branch protection</span>\n<span class="ck">required_status_checks</span>:\n  <span class="ck">contexts</span>:\n    - <span class="cs">audit</span>\n    - <span class="cs">consistency</span>`,
     output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ merged · reviewer on record</div><div style="font-size:13px;color:var(--muted);">audit ✓ · consistency ✓</div>` },
-  { before: 'Manual RAG status', after: 'Deterministic checks, not opinions',
+  { before: 'Manual RAG status', after: 'Deterministic checks with reasons',
     yaml: `<span class="cv">## Success Criteria</span>\n- Onboarding p50 below 48 hours.\n- Support tickets fall by at least 80%.\n- CSAT rises above 4.5 / 5.`,
     output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Pass or fail comes from the checks,<br>with the reason attached.</div>` },
   { before: 'Requirements that drift across docs', after: 'One generated traceability matrix',
@@ -101,11 +101,11 @@ export const REVEAL_PASS = `
         <span style="color:var(--ok);">All checks passed</span>
       </div>
       <div class="signal-list">
-        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Schema</strong> — frontmatter valid, all sections present</div></div>
-        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Criteria</strong> — every success criterion is measurable</div></div>
-        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>Links</strong> — every requirement traces to a test</div></div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>frontmatter-schema</strong> · valid, all required sections present</div></div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>measurable-success-criteria</strong> · every criterion states a threshold</div></div>
+        <div class="signal-item"><span class="signal-dot" style="background:var(--ok);"></span><div class="signal-text"><strong>risks-have-owner-and-mitigation</strong> · every risk names both</div></div>
       </div>
-      <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;">6 checks → <span style="color:var(--ok);">clear to merge</span></div>
+      <div class="mono" style="font-size:11.5px;color:var(--muted);margin-top:14px;"><span style="color:var(--ok);">clear to merge</span></div>
     </div>`;
 
 export const REVEAL_COMPUTING = `

@@ -72,17 +72,17 @@
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Manifesto · Explainer 02</span>
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Traceability over dense documentation.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">The unit of value is the link, not the document. Thin artifacts, richly connected.</p>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">Value lives in the links between thin, richly connected artifacts.</p>
 
       <div id="unit" style="margin-bottom:48px;">
         <h2 class="h2-sm">The unit of value is the link.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Dense documentation is a trap. A 40-page Word doc describes a project in exhaustive detail, but it can't tell you <em>why</em> a status is red or which decision accepted the risk that caused it. You have to read everything to find anything.</p>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceability replaces density with linkage. Thin artifacts — a charter, a RAID entry, a decision record — each with a stable ID and typed references to each other. A reader can walk from any status to the root cause in five hops, without opening a deck.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Dense documentation defeats its own purpose. A 40-page Word document describes a project in exhaustive detail, yet it cannot tell you <em style="font-style:italic;color:var(--ink);">why</em> a status is red or which decision accepted the risk that caused it, so you read everything to find anything.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceability replaces density with linkage. Each thin artifact (a charter, a RAID entry, a decision record) carries a stable ID and typed references to the others, so a reader can walk from any status to its root cause in five hops without opening a deck.</p>
       </div>
 
       <div id="thread-ex" style="margin-bottom:48px;">
-        <h2 class="h2-sm">The thread, made concrete.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question: "does every requirement get tested?" Every hop is a typed link, checked on every pull request.</p>
+        <h2 class="h2-sm">The thread in practice.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question is whether every requirement gets tested. Every hop below is a typed link that CI checks on every pull request.</p>
         <div style="position:relative;padding-left:28px;border-left:2px solid var(--accent-line);display:grid;gap:2px;">
           
             <div style="position:relative;padding:10px 0 6px;">
@@ -129,7 +129,7 @@
       </div>
 
       <div id="schema" style="margin-bottom:48px;">
-        <h2 class="h2-sm">This is a schema requirement, not a writing style.</h2>
+        <h2 class="h2-sm">The schema enforces this.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links, so the lineage is a queryable graph that CI checks. Ask "which requirements have no test?" and the tool answers.</p>
         <div class="code-block">
           <div class="code-titlebar">

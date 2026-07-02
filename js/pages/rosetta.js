@@ -31,7 +31,7 @@ export function renderRosetta() {
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The Rosetta Stone.</h1>
       <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;" id="intro">A mapping from the world people know to the world we're selling. Click any row to see the YAML definition and the artifact it generates.</p>
-      <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Each row pairs the YAML you write with the artifact it generates. The output panels are illustrations of the real tool's output format.</p>
+      <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">The output panels illustrate the tool's output format.</p>
 
       <div id="rows" style="margin-top:8px;">
         <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px;padding:10px 18px;margin-bottom:6px;">

@@ -7,8 +7,8 @@ export function renderManifesto() {
         <span class="layer-badge" style="background:var(--l1);">1</span>
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · The Manifesto</span>
       </div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Five value-pairs. The philosophy.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one. It mirrors the Agile Manifesto: strong enough to be opinionated, open enough to implement many ways.</p>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The five value-pairs.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one. It mirrors the Agile Manifesto, opinionated in its values and open in how you implement them.</p>
 
       <div id="values" style="margin-top:40px;">
         <div class="eyebrow">We value</div>
@@ -29,21 +29,21 @@ export function renderManifesto() {
           <a class="explainer-card" href="#/manifesto/automation">
             <div class="explainer-num">01 · explainer</div>
             <div class="explainer-title">Automation &amp; audit over gates &amp; approvals</div>
-            <div class="explainer-body">Shift from prevention to flow + accountability. The gate gets demoted to policy as code.</div>
+            <div class="explainer-body">The posture shifts from prevention to flow, and the gate becomes policy as code.</div>
             <div class="explainer-cta">Read →</div>
           </a>
           <a class="explainer-card" href="#/manifesto/traceability">
             <div class="explainer-num">02 · explainer</div>
             <div class="explainer-title">Traceability over dense documentation</div>
-            <div class="explainer-body">The unit of value is the link, not the document. Thin artifacts, richly connected.</div>
+            <div class="explainer-body">Value lives in the links between thin, richly connected artifacts.</div>
             <div class="explainer-cta">Read →</div>
           </a>
         </div>
       </div>
 
       <div id="layers" style="margin-top:54px;">
-        <h2 class="h2-sm">Three layers, always legible.</h2>
-        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;max-width:58ch;">How we are strongly opinionated <em style="font-style:italic;color:var(--ink-2);">and</em> genuinely open. A reader should always know which layer they're standing on.</p>
+        <h2 class="h2-sm">Three layers, each clearly owned.</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;max-width:58ch;">The structure keeps strong opinions and open implementation from blurring together, so a reader always knows which layer they're standing on.</p>
         <div style="display:grid;gap:11px;">
           <div class="layer-card" style="border-left:3px solid var(--l1);">
             <span class="layer-num" style="background:var(--l1);">1</span>
@@ -79,26 +79,26 @@ export function renderAutomation() {
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Manifesto · Explainer 01</span>
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Automation and audit over gates and approvals.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">Gates assume people misbehave unless blocked; audit assumes good faith and lets the record keep everyone honest.</p>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">A gate assumes people will misbehave unless someone blocks them. Audit starts from good faith and relies on the record to keep everyone accountable.</p>
 
       <div id="shift" style="margin-bottom:48px;">
         <h2 class="h2-sm">The shift: from prevention to flow.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate is a friction point: a human in the loop who must approve before work proceeds. The gate slows the work and produces an inbox full of decisions that no one can later audit. The default posture becomes <em>stop until told otherwise</em>.</p>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts the posture. The default is <em>flow</em>, and the record keeps everyone accountable: every change and every decision is captured in Git history. The record supplies the accountability, so the work keeps moving.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate puts a human in the loop who must approve before work proceeds. It slows the work and fills an inbox with decisions that no one can audit later, and the default posture becomes <em>stop until told otherwise</em>.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts that default. Every change and every decision lands in Git history, the record supplies the accountability, and the work keeps moving.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--bad);">
             <div class="card-title" style="color:var(--bad);">Gates</div>
-            <div class="card-body">An email in an inbox. A human bottleneck. An unauditable approval. Default posture: stop.</div>
+            <div class="card-body">An approval email in an inbox that nobody can audit later. The default is stop.</div>
           </div>
           <div class="card" style="border-top:2px solid var(--ok);">
             <div class="card-title" style="color:var(--ok);">Audit</div>
-            <div class="card-body">Git history and merged pull requests. Every decision traceable. Default posture: flow.</div>
+            <div class="card-body">Git history and merged pull requests, with every decision traceable. The default is flow.</div>
           </div>
         </div>
       </div>
 
       <div id="policy" style="margin-bottom:48px;">
-        <h2 class="h2-sm">Gates don't vanish. They become policy as code.</h2>
+        <h2 class="h2-sm">The gate becomes policy as code.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate becomes an automated, auditable check that runs in CI, and the result lands in the repository's history alongside the change it judged.</p>
         <div class="code-block">
           <div class="code-titlebar">
@@ -109,21 +109,25 @@ export function renderAutomation() {
           </div>
           <pre class="code-pre"><span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
-  <span class="ck">audit</span>:
+  <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span>
-  <span class="ck">consistency</span>:
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span>, <span class="ck">with</span>: { <span class="ck">fetch-depth</span>: 0 } }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cv">validate</span>, <span class="ck">changed-only</span>: <span class="cv">'true'</span> }
+  <span class="ck">consistency</span>:  <span class="cc"># broken traces block the merge</span>
     <span class="ck">steps</span>:
-      - <span class="ck">run</span>: <span class="cs">docassert consistency</span>   <span class="cc"># broken traces block the merge</span></pre>
+      - { <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span> }
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: { <span class="ck">command</span>: <span class="cs">consistency</span> }</pre>
         </div>
       </div>
 
       <div id="tension" style="margin-bottom:48px;">
         <h2 class="h2-sm">Where gates still belong.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a person's signature, and the framework accommodates them. Human approvals don't disappear; they become the documented exception rather than the default.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a person's signature, and the framework accommodates them. A human approval stays available for the cases that need one, as a documented exception.</p>
         <div class="card" style="border-left:3px solid var(--warn);">
           <div class="card-title">When a human signature is required</div>
-          <div class="card-body" style="margin-top:6px;">Model it explicitly: branch protection that requires a named reviewer on the pull request. The approval lands in the merge record with the rest of the history. One of the signals is now a person's explicit sign-off, and the trail is the same trail.</div>
+          <div class="card-body" style="margin-top:6px;">Model it explicitly with branch protection that requires a named reviewer on the pull request. The approval lands in the merge record with the rest of the history, and one of the gate's signals is now a person's explicit sign-off.</div>
         </div>
       </div>
 
@@ -140,17 +144,17 @@ export function renderTraceability() {
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Manifesto · Explainer 02</span>
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Traceability over dense documentation.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">The unit of value is the link, not the document. Thin artifacts, richly connected.</p>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">Value lives in the links between thin, richly connected artifacts.</p>
 
       <div id="unit" style="margin-bottom:48px;">
         <h2 class="h2-sm">The unit of value is the link.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Dense documentation is a trap. A 40-page Word doc describes a project in exhaustive detail, but it can't tell you <em>why</em> a status is red or which decision accepted the risk that caused it. You have to read everything to find anything.</p>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceability replaces density with linkage. Thin artifacts — a charter, a RAID entry, a decision record — each with a stable ID and typed references to each other. A reader can walk from any status to the root cause in five hops, without opening a deck.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Dense documentation defeats its own purpose. A 40-page Word document describes a project in exhaustive detail, yet it cannot tell you <em style="font-style:italic;color:var(--ink);">why</em> a status is red or which decision accepted the risk that caused it, so you read everything to find anything.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceability replaces density with linkage. Each thin artifact (a charter, a RAID entry, a decision record) carries a stable ID and typed references to the others, so a reader can walk from any status to its root cause in five hops without opening a deck.</p>
       </div>
 
       <div id="thread-ex" style="margin-bottom:48px;">
-        <h2 class="h2-sm">The thread, made concrete.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question: "does every requirement get tested?" Every hop is a typed link, checked on every pull request.</p>
+        <h2 class="h2-sm">The thread in practice.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question is whether every requirement gets tested. Every hop below is a typed link that CI checks on every pull request.</p>
         <div style="position:relative;padding-left:28px;border-left:2px solid var(--accent-line);display:grid;gap:2px;">
           ${[
             ['Test Case', 'AUR-TC-001', 'wizard → account active, zero tickets', 'tests →'],
@@ -171,7 +175,7 @@ export function renderTraceability() {
       </div>
 
       <div id="schema" style="margin-bottom:48px;">
-        <h2 class="h2-sm">This is a schema requirement, not a writing style.</h2>
+        <h2 class="h2-sm">The schema enforces this.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links, so the lineage is a queryable graph that CI checks. Ask "which requirements have no test?" and the tool answers.</p>
         <div class="code-block">
           <div class="code-titlebar">

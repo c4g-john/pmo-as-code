@@ -61,7 +61,7 @@ export function renderQuickstartClaude() {
     <div id="cc-prompt" style="margin-bottom:52px;">
       <h2 class="h2-sm" style="margin-bottom:14px;">The prompt.</h2>
       ${promptCard('cc-prompt-text', 'set up the whole pipeline', HERO_PROMPT, { primary: true })}
-      <p style="font-size:13.5px;color:var(--muted);margin:12px 2px 0;">The button copies the prompt and opens <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">claude.ai/code</a> — paste and send. Or run <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">claude</code> in your terminal and paste.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin:12px 2px 0;">The button copies the prompt and opens <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">claude.ai/code</a>, where you paste and send. Or run <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">claude</code> in your terminal and paste.</p>
     </div>
 
     <div id="cc-need" style="margin-bottom:52px;">
@@ -73,14 +73,14 @@ export function renderQuickstartClaude() {
         </div>
         <div class="card">
           <div class="card-title">A GitHub repo</div>
-          <div class="card-body" style="margin-top:4px;line-height:1.6;">New or existing. Claude adds the pipeline and workflows in a branch and opens a pull request — nothing lands on <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code> until you approve it.</div>
+          <div class="card-body" style="margin-top:4px;line-height:1.6;">New or existing. Claude adds the pipeline and workflows in a branch and opens a pull request, so nothing lands on <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code> until you approve it.</div>
         </div>
       </div>
     </div>
 
     <div id="cc-does" style="margin-bottom:52px;">
       <h2 class="h2-sm">What Claude will do.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The same path as the manual quickstart — just driven for you, and it stops to ask whenever a decision is yours.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">It follows the same path as the manual quickstart, drives it for you, and stops to ask whenever a decision is yours.</p>
       <div style="display:grid;gap:8px;">
         ${[
           ['Add docassert + the CI workflows', 'the tool, plus audit / consistency / status-pages'],
@@ -88,7 +88,7 @@ export function renderQuickstartClaude() {
           ['Convert your documents', 'into the standard templates, with gaps marked as TODOs'],
           ['Validate and check consistency', 'and fix whatever blocks a merge'],
           ['Derive the status page', 'RAG, coverage, and the required-document set'],
-          ['Explain the repo setup', 'branch protection and Pages — the manual one-time bits'],
+          ['Explain the repo setup', 'branch protection and Pages, the one-time manual settings'],
         ].map(([t, d], i) => `
           <div style="display:flex;align-items:baseline;gap:12px;padding:12px 15px;background:var(--panel);border:1px solid var(--border);border-radius:11px;">
             <span class="mono" style="font-size:12px;color:var(--accent);flex:none;">${String(i + 1).padStart(2, '0')}</span>

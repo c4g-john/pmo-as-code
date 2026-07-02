@@ -8,11 +8,11 @@ export function renderProfiles() {
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Composable, named bundles.</h1>
     <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A profile is a named bundle of expectations for a project: which document kinds it must carry, which are merely recommended, and how strict the gate is. Point a project at one, and its status page tells you what's still missing.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Think: Agile Manifesto → Scrum / Kanban / SAFe. The manifesto doesn't change. The implementations diverge.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Profiles are to this standard what Scrum and Kanban are to the Agile Manifesto, in that the manifesto holds still while implementations diverge.</p>
 
     <div id="what-profile" style="margin-bottom:52px;">
       <h2 class="h2-sm">What a profile is.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A small YAML file that lists the kinds a project is expected to carry, at two levels — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">required</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">recommended</code>. A project opts in with one line of frontmatter.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A small YAML file that lists the kinds a project is expected to carry, at two levels, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">required</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">recommended</code>. A project opts in with one line of frontmatter.</p>
       ${cb('profiles/regulated-industry.yaml', `<span class="ck">name</span>: <span class="cv">regulated-industry</span>
 <span class="ck">enforce_when</span>: <span class="cv">active</span>          <span class="cc"># gaps block CI only once the project is active</span>
 <span class="ck">expects</span>:
@@ -26,7 +26,7 @@ export function renderProfiles() {
 <span class="ck">profile</span>: <span class="cv">regulated-industry</span>   <span class="cc"># opt in</span>`)}
       <div class="card" style="margin-top:16px;">
         <div class="card-title">Complete · incomplete · missing</div>
-        <div class="card-body" style="margin-top:4px;line-height:1.6;">The project page classifies each expected kind: <strong style="color:var(--ok);font-weight:600;">complete</strong> (present, approved, passing), <strong style="color:var(--warn);font-weight:600;">incomplete</strong> (present but still draft), or <strong style="color:var(--bad);font-weight:600;">missing</strong>. A <em style="font-style:normal;color:var(--ink);">required</em> kind that's missing blocks the merge — but only once the project reaches <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">enforce_when</code>; a proposed project shows the same gaps as advisory amber and never blocks.</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">The project page classifies each expected kind: <strong style="color:var(--ok);font-weight:600;">complete</strong> (present, approved, passing), <strong style="color:var(--warn);font-weight:600;">incomplete</strong> (present but still draft), or <strong style="color:var(--bad);font-weight:600;">missing</strong>. A missing <em style="font-style:normal;color:var(--ink);">required</em> kind blocks the merge once the project reaches its <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">enforce_when</code> stage. Before that, a proposed project shows the same gaps as advisory amber.</div>
       </div>
     </div>
 
@@ -35,7 +35,7 @@ export function renderProfiles() {
       <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Three profiles live in the reference library today. Point a project at one, or copy it as a starting point.</p>
       <div style="display:grid;gap:12px;">
         ${[
-          { color: 'var(--warn)', title: 'regulated-industry', note: 'The full governance spine — for finance, healthcare, or government.',
+          { color: 'var(--warn)', title: 'regulated-industry', note: 'The full governance spine for finance, healthcare, or government.',
             required: 'charter, business-case, brd, prd, frnfr, test-cases, risk-register, raci-stakeholder, qa-test-plan',
             recommended: 'adr, runbook, status-report, benefits-realization' },
           { color: 'var(--ok)', title: 'lean-startup', note: 'The minimum spine. Gaps stay advisory until the project goes active, so a small team is never blocked for unfinished docs.',
@@ -58,7 +58,7 @@ export function renderProfiles() {
 
     <div id="author-profile" style="margin-bottom:48px;">
       <h2 class="h2-sm">Author your own.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Drop a new file in <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profiles/</code> and point projects at it. For deeper changes — extra required sections, stricter checks — edit the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> trio the kinds share.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Drop a new file in <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profiles/</code> and point projects at it. For deeper changes, such as extra required sections or stricter checks, edit the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> trio the kinds share.</p>
       ${cb('profiles/our-org.yaml', `<span class="ck">name</span>: <span class="cv">our-org</span>
 <span class="ck">enforce_when</span>: <span class="cv">active</span>
 <span class="ck">expects</span>:

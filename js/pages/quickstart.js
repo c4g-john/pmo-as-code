@@ -6,11 +6,11 @@ export function renderQuickstart() {
       <span class="layer-badge" style="background:var(--l2);">2</span>
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
-    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Anchor a project. Author a document. Merge it.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docassert</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions — no other tools.</p>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">From an empty repo to a merged, validated document.</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">This walkthrough uses <code class="mono" style="font-size:15px;background:var(--panel-2);padding:1px 6px;border-radius:4px;">docassert</code>, the reference implementation. Everything is Git, Markdown, and GitHub Actions, with no other tools.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 20px;">Time to complete: ~20 minutes. Requires: git, Python 3.10+, a terminal, and a GitHub repo.</p>
     <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px;">Prefer to let Claude do it? See <a href="#/quickstart-claude" style="color:var(--accent);text-decoration:none;font-weight:600;">Quickstart with Claude Code →</a></p>
-    <p style="font-size:14px;color:var(--ink-2);margin:0 0 36px;">Starting a fresh repo? <a href="https://github.com/c4g-john/pmo-as-code-template" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">Use the template →</a> — steps 1–2 and 8 come pre-wired.</p>
+    <p style="font-size:14px;color:var(--ink-2);margin:0 0 36px;">Starting a fresh repo? The <a href="https://github.com/c4g-john/pmo-as-code-template" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">template</a> pre-wires steps 1–2 and 8.</p>
 
     <div class="thread-rail">
 
@@ -28,7 +28,7 @@ docassert --version
         <span class="thread-node"></span>
         <div class="eyebrow">Step 2</div>
         <h2 class="h2-sm">Anchor a project.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Everything is organized by project. A <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.md</code> anchor gives it a unique id (<code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">PRJ-001-AUR</code>), a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">code</code> that namespaces every document and item, and — optionally — a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profile</code> that declares the documents it should carry.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Everything is organized by project. A <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.md</code> anchor gives it a unique id (<code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">PRJ-001-AUR</code>), a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">code</code> that namespaces every document and item, and, optionally, a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profile</code> that declares the documents it should carry.</p>
         ${cb('documents/PRJ-001-AUR/project.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">project</span>
 <span class="ck">id</span>: <span class="cv">PRJ-001-AUR</span>            <span class="cc"># PRJ-&lt;seq&gt;-&lt;CODE&gt;, unique across all projects</span>
@@ -47,7 +47,7 @@ docassert projects --out projects.yaml   <span class="cc"># generate the registr
 <span class="cs"># docassert: wrote projects.yaml (1 project)</span>`)}
         <div class="card" style="margin-top:14px;">
           <div class="card-title">Tip</div>
-          <div class="card-body" style="margin-top:4px;">Keep a brand-new project <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> while you fill it in — its profile gaps stay advisory. Flip it to <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code> when you're ready for missing required docs to block.</div>
+          <div class="card-body" style="margin-top:4px;">Keep a brand-new project <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> while you fill it in, so its profile gaps stay advisory, and flip it to <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code> when you want missing required documents to block.</div>
         </div>
       </section>
 
@@ -55,7 +55,7 @@ docassert projects --out projects.yaml   <span class="cc"># generate the registr
         <span class="thread-node"></span>
         <div class="eyebrow">Step 3</div>
         <h2 class="h2-sm">Author a document.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Scaffold a document into the project folder — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert new</code> fills in the identity (and suggests the next free item ids). Then write the content. Here's a completed charter. (Or convert an existing Word doc — see the guides.)</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Scaffold a document into the project folder with <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert new</code>, which fills in the identity and suggests the next free item ids, then write the content. Below is a completed charter, and the guides cover converting an existing Word document.</p>
         ${cb('terminal', `docassert new charter --project PRJ-001-AUR
 <span class="cs"># docassert: created documents/PRJ-001-AUR/charter.md</span>`)}
         <div style="height:12px;"></div>
@@ -86,7 +86,7 @@ manual setup with a self-serve flow.
         <span class="thread-node"></span>
         <div class="eyebrow">Step 4</div>
         <h2 class="h2-sm">Unit-test it.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge; AI checks (with a key) advise. The output below is what the tool prints.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge; AI checks (with a key) advise. The output below is abridged from a real run.</p>
         ${cb('terminal', `docassert validate documents/PRJ-001-AUR/charter.md
 
 <span class="cs">documents/PRJ-001-AUR/charter.md
@@ -101,7 +101,7 @@ manual setup with a self-serve flow.
 ✓ All structural checks passed — clear to merge.</span>`)}
         <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
           <div class="card-title">Why it fails when it should</div>
-          <div class="card-body" style="margin-top:4px;">A vague "make customers happier" success criterion has no measurable threshold, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable-success-criteria</code> blocks — with the exact reason. The gate is specific, not vibes. (Completeness checks like this are advisory while a document is <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">draft</code> — they gate from <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> onward, so WIP is never punished.)</div>
+          <div class="card-body" style="margin-top:4px;">A vague "make customers happier" success criterion has no measurable threshold, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable-success-criteria</code> blocks and cites the exact criterion that failed. Completeness checks like this stay advisory while a document is a <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">draft</code> and begin to gate once it is <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code>, so work in progress is never punished.</div>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ manual setup with a self-serve flow.
         <span class="thread-node"></span>
         <div class="eyebrow">Step 5</div>
         <h2 class="h2-sm">Check consistency across documents.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The differentiator. Requirements trace end to end, the registry stays fresh, and each profiled project carries its required documents. Broken links block; the AI judges whether each child fulfils its parent.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">This is where the model pays off. Requirements trace end to end, the registry stays fresh, and each profiled project carries its required documents. Broken links block; the AI judges whether each child fulfils its parent.</p>
         ${cb('terminal', `docassert consistency
 
 <span class="cs">consistency (cross-document)
@@ -127,7 +127,7 @@ manual setup with a self-serve flow.
         <span class="thread-node"></span>
         <div class="eyebrow">Step 6</div>
         <h2 class="h2-sm">Generate the traceability matrix.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Derived from the links, never authored by hand. Traceability you can see.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The matrix is derived from the links on every change, so it is always current and nobody maintains it.</p>
         ${cb('terminal', `docassert rtm --project PRJ-001-AUR
 
 <span class="cs"># Requirements Traceability Matrix — AUR
@@ -140,7 +140,7 @@ manual setup with a self-serve flow.
       <section class="thread-section" id="qs-pages">
         <span class="thread-node"></span>
         <div class="eyebrow">Step 7</div>
-        <h2 class="h2-sm">Derive status — and see what's missing.</h2>
+        <h2 class="h2-sm">Derive status and see what's missing.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Status is derived, never typed. Scope it to one project, roll up the portfolio, or build the whole site. Because Aurora is on a profile, its page also shows which required documents are complete, incomplete, or missing.</p>
         ${cb('terminal', `docassert status --project PRJ-001-AUR   <span class="cc"># one project's RAG + document set</span>
 docassert status --index                  <span class="cc"># the portfolio table</span>
@@ -153,14 +153,14 @@ docassert pages --out _site               <span class="cc"># index.html + a page
 | Atlas — Partner Portal | ATL  | AMBER | 5    | 0/4      | 0          |</span>`)}
         <div class="card" style="margin-top:14px;border-left:3px solid var(--warn);">
           <div class="card-title">The document set</div>
-          <div class="card-body" style="margin-top:4px;">Aurora is <strong style="color:var(--ok);font-weight:600;">9/9 required complete</strong>. A project still filling in shows each required kind as <strong style="color:var(--ok);font-weight:600;">complete</strong> / <strong style="color:var(--warn);font-weight:600;">incomplete</strong> / <strong style="color:var(--bad);font-weight:600;">missing</strong> — and a missing required doc turns the page red and blocks the merge once the project is <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code>.</div>
+          <div class="card-body" style="margin-top:4px;">Aurora is <strong style="color:var(--ok);font-weight:600;">9/9 required complete</strong>. A project still filling in shows each required kind as <strong style="color:var(--ok);font-weight:600;">complete</strong> / <strong style="color:var(--warn);font-weight:600;">incomplete</strong> / <strong style="color:var(--bad);font-weight:600;">missing</strong>, and a missing required document turns the page red and blocks the merge once the project is <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code>.</div>
         </div>
       </section>
 
       <section class="thread-section" id="qs-gate">
         <span class="thread-node"></span>
         <div class="eyebrow">Step 8</div>
-        <h2 class="h2-sm">Gate it in CI — and make it binding.</h2>
+        <h2 class="h2-sm">Gate it in CI and make it binding.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Two jobs run on every pull request, but GitHub only <em style="font-style:normal;color:var(--ink);">blocks</em> a merge when branch protection requires them. That setting is what turns advisory checks into a real gate.</p>
         ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
@@ -182,9 +182,9 @@ JSON`)}
         <div class="card" style="margin-top:16px;">
           <div class="card-title">One-time repo setup</div>
           <div class="card-body" style="margin-top:6px;line-height:1.7;">
-            <div>· <strong style="font-weight:600;">Branch protection</strong> — require <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">audit</code> and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">consistency</code> on <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code> (above). Without it, the checks run but never block.</div>
-            <div>· <strong style="font-weight:600;">GitHub Pages</strong> — Settings → Pages → Source: <strong style="font-weight:600;">GitHub Actions</strong>, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status-pages.yml</code> can publish the live dashboard. One-time, and manual.</div>
-            <div>· <strong style="font-weight:600;">AI advisory (optional)</strong> — add <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">ANTHROPIC_API_KEY</code> as an Actions secret. Structural checks gate without it; this just adds the AI scoring.</div>
+            <div>· <strong style="font-weight:600;">Branch protection</strong>: require <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">audit</code> and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">consistency</code> on <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">main</code> (above). Without it, the checks run but never block.</div>
+            <div>· <strong style="font-weight:600;">GitHub Pages</strong>: Settings → Pages → Source: <strong style="font-weight:600;">GitHub Actions</strong>, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">status-pages.yml</code> can publish the live dashboard. It is one-time and manual.</div>
+            <div>· <strong style="font-weight:600;">AI advisory (optional)</strong>: add <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">ANTHROPIC_API_KEY</code> as an Actions secret. Structural checks gate without it; this just adds the AI scoring.</div>
           </div>
         </div>
       </section>
