@@ -37,8 +37,12 @@ export function pageNavHtml(route) {
   return `<div class="page-nav">${prev}${next}</div>`;
 }
 
+let _cbSeq = 0;
 export function cb(filename, code) {
-  const id = 'cb-' + Math.random().toString(36).slice(2);
+  // Monotonic, not random: unique within the DOM (old ids vanish when #content
+  // is replaced on navigation) and deterministic, so prerendered snapshots stay
+  // byte-stable across machines.
+  const id = 'cb-' + (_cbSeq++);
   return `<div class="code-block">
     <div class="code-titlebar">
       <span class="traffic-light" style="background:#ff5f57;"></span>
