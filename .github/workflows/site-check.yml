@@ -1,0 +1,27 @@
+name: site check
+
+# The site is a hand-bundled SPA with prerendered per-route snapshots. This
+# runs the prerenderer (which executes every page module, so a JS syntax error
+# fails the build) and confirms the committed snapshots match the source.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  prerender:
+    runs-on: macos-latest   # prerender.py renders via JavaScriptCore (osascript)
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Render every route
+        run: python3 scripts/prerender.py
+      - name: Fail if snapshots drifted from source
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::Prerendered snapshots are stale. Run 'python3 scripts/prerender.py' and commit."
+            git diff --stat
+            exit 1
+          fi
