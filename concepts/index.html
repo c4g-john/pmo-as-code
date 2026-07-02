@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core Concepts · PMO as Code</title>
+<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Core Concepts · PMO as Code">
+<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:url" content="https://pmoascode.com/concepts/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/concepts/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/concepts">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+        <span class="layer-badge" style="background:var(--l2);">2</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Core Concepts.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Everything is a Markdown document with YAML frontmatter and defined sections. Requirements are authored as linked items — which is what makes the whole set testable and traceable.</p>
+
+      <div id="model" style="margin-bottom:52px;">
+        <h2 class="h2-sm">A document, not a database.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind shares one shape: <strong style="font-weight:600;color:var(--ink);">frontmatter</strong> (typed metadata a JSON Schema checks) and <strong style="font-weight:600;color:var(--ink);">required sections</strong> (the audit checks they're present and complete). Plain Markdown a person can read and a diff can review.</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">documents/PRJ-001-AUR/charter.md</span>
+      <button class="copy-btn" data-copy-id="cb-ckfocesp2v7" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-ckfocesp2v7"><span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
+<span class="ck">id</span>: <span class="cv">AUR-charter</span>
+<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
+<span class="ck">status</span>: <span class="cv">approved</span>
+<span class="cc">---</span>
+
+<span class="cv">## Objective</span>
+Cut median onboarding time from 14 days to under 2 days.
+
+<span class="cv">## Success Criteria</span>
+- Median onboarding time drops below 48 hours.
+- Manual setup tickets fall by at least 80%.</pre>
+  </div>
+      </div>
+
+      <div id="identity" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Every document belongs to a project.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents are organized <strong style="font-weight:600;color:var(--ink);">project-first</strong>, and each project has a unique, self-identifying id — <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-001-AUR</code>: a unique sequence <em style="font-style:normal;color:var(--ink);">and</em> a short code. A <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> anchors each folder.</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">documents/PRJ-001-AUR/</span>
+      <button class="copy-btn" data-copy-id="cb-ojggu4u9nz" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-ojggu4u9nz"><span class="cv">project.md</span>       <span class="cc"># id: PRJ-001-AUR · code: AUR · sponsor</span>
+<span class="cv">charter.md</span>       <span class="cc"># id: AUR-charter</span>
+<span class="cv">brd.md</span>           <span class="cc"># items: AUR-BR-001, AUR-BR-002</span>
+<span class="cv">prd.md</span>           <span class="cc"># items: AUR-PR-014 (traces: AUR-BR-001)</span>
+<span class="cc">…</span></pre>
+  </div>
+        <p class="caption">The <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-</code> code namespaces every id, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code> and <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">ATL-BR-001</code> are different requirements in different projects — globally unique, and each item declares its own project. A generated <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> registers them all.</p>
+      </div>
+
+      <div id="items" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Requirements are linked items.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The unit of traceability is the <em style="font-style:normal;color:var(--ink);">item</em>: a bullet with a stable ID and typed links to what it depends on. That turns a pile of documents into a queryable graph.</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">the chain, across four documents</span>
+      <button class="copy-btn" data-copy-id="cb-ay5s1wg2wcb" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-ay5s1wg2wcb"><span class="ck">**AUR-BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+<span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): The product shall provide a self-serve flow.
+<span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): Given a new customer…, then an active account exists.
+<span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): Complete the wizard → account active, zero tickets.</pre>
+  </div>
+        <p class="caption">BR → PR → FR/NFR → AC → TC. Every hop is a typed link the pipeline checks: broken references block, and the matrix is generated from them.</p>
+      </div>
+
+      <div id="checks" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Two tiers of checks.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The same split runs on every document and across the whole graph.</p>
+        <div class="grid-2">
+          <div class="card" style="border-left:3px solid var(--ok);">
+            <div class="card-title">Structural — deterministic, blocking</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed.</div>
+          </div>
+          <div class="card" style="border-left:3px solid var(--l2);">
+            <div class="card-title">Semantic — AI-graded, advisory</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API and posted to the PR — but never blocking.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="kinds" style="margin-bottom:52px;">
+        <h2 class="h2-sm">Twenty kinds, one pattern.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind is a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">template</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">schema</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">criteria</code> trio. Adding one is adding a trio — no code for the common cases.</p>
+        <div class="kind-grid">
+          
+            <div class="kind-card">
+              <div class="kind-name">project</div>
+              <div class="kind-desc">The project anchor — unique id, code, sponsor, status.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">charter</div>
+              <div class="kind-desc">Objective, measurable success criteria, sponsor, budget.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">business-case</div>
+              <div class="kind-desc">Problem, options, recommendation, costs, benefits.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">brd</div>
+              <div class="kind-desc">Business requirements as BR items.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">prd</div>
+              <div class="kind-desc">Product requirements (PR) + acceptance criteria (AC).</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">frnfr</div>
+              <div class="kind-desc">Functional (FR) & non-functional (NFR) requirements.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">user-story</div>
+              <div class="kind-desc">Stories (US) in "As a… I want…" form.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">test-cases</div>
+              <div class="kind-desc">Test cases (TC) that verify acceptance criteria.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">adr</div>
+              <div class="kind-desc">Architecture decisions with a recorded status.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">risk-register</div>
+              <div class="kind-desc">Risks with probability, impact, owner, response.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">raci-stakeholder</div>
+              <div class="kind-desc">Roles matrix — one Accountable per activity.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">qa-test-plan</div>
+              <div class="kind-desc">Scope, environments, measurable exit criteria.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">data-migration-plan</div>
+              <div class="kind-desc">Sources, field mapping, validation, cutover.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">release-cutover-plan</div>
+              <div class="kind-desc">Ordered cutover steps and a rollback trigger.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">rollback-plan</div>
+              <div class="kind-desc">Trigger conditions and ordered rollback steps.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">hypercare-plan</div>
+              <div class="kind-desc">Support window, severities, measurable exit.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">runbook</div>
+              <div class="kind-desc">Operational procedures, monitoring, escalation.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">status-report</div>
+              <div class="kind-desc">Period, RAG, cites risks from the register.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">post-implementation-review</div>
+              <div class="kind-desc">Outcomes vs objectives, lessons, actions.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">benefits-realization</div>
+              <div class="kind-desc">Measurable benefits vs the business case.</div>
+            </div>
+        </div>
+      </div>
+
+      <div class="page-nav"><a class="page-nav-link" href="#/rosetta"><div class="page-nav-label">← previous</div><div class="page-nav-title">The Rosetta Stone</div></a><a class="page-nav-link next" href="#/quickstart"><div class="page-nav-label">next →</div><div class="page-nav-title">Quickstart</div></a></div>
+      <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span style="color:var(--ink-2);">content/concepts.mdx</span>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
+    <span class="prov-sep">|</span>
+    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
+    <a class="prov-edit" href="#">Edit on Git →</a>
+  </footer>
+    </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

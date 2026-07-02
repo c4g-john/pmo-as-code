@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study: Refuge for Humans · PMO as Code</title>
+<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Case study: Refuge for Humans · PMO as Code">
+<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:url" content="https://pmoascode.com/case-study/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/case-study/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/case-study">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content"><div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      A real conversion — public repo, live dashboard, honest ambers
+    </div>
+    <h1 class="h1">One Word document in. A gated, traceable, self-reporting project out.</h1>
+    <p class="lead">Refuge for Humans is a real C4G product: a 14-section business requirements document written in Word. This is what happened when we ran it through the pipeline — including the parts that failed, because those are the point.</p>
+
+    <div class="thread-rail" style="margin-top:56px;">
+
+      <section class="thread-section" id="cs-source">
+        <span class="thread-node"></span>
+        <div class="eyebrow">The source</div>
+        <h2 class="h2">A dense, well-written BRD — with invisible gaps.</h2>
+        <p class="body">The document was good by Word-document standards: an executive summary, strategic goals, a success-metrics table, detailed signal specifications, NFRs, and a risk table. Fourteen sections of real product thinking. What nobody could see from the prose: which requirements had no test, which risks had no owner, and what a reviewer would still have to chase down.</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">terminal</span>
+      <button class="copy-btn" data-copy-id="cb-mf8ibqdtm3" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-mf8ibqdtm3">pip install "docassert[convert]"
+docassert extract "Refuge for Humans BRD.docx"   <span class="cc"># .docx → plain text, tables included</span></pre>
+  </div>
+      </section>
+
+      <section class="thread-section" id="cs-convert">
+        <span class="thread-node"></span>
+        <div class="eyebrow">The conversion</div>
+        <h2 class="h2">Mapped faithfully — never padded to pass.</h2>
+        <p class="body">The doc-to-pmo skill split the BRD into a proper spine: a project anchor, charter, BRD, PRD, functional &amp; non-functional requirements, a risk register, and test cases — <strong style="font-weight:600;color:var(--ink);">49 traceable items</strong>, every reference resolving, all seven business requirements covered by product requirements. Where the source stated a threshold, it became a measurable criterion. Where it didn't, nothing was invented.</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">documents/PRJ-001-RFH/brd.md (excerpt)</span>
+      <button class="copy-btn" data-copy-id="cb-ljcm2nniw6o" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-ljcm2nniw6o">- <span class="ck">**RFH-BR-001**</span>: The business shall block AI-generated posts before
+  publication at a rate above 95% at steady state.
+- <span class="ck">**RFH-BR-002**</span>: The business shall keep false positives below 2%
+  of genuine human posts.</pre>
+  </div>
+      </section>
+
+      <section class="thread-section" id="cs-findings">
+        <span class="thread-node"></span>
+        <div class="eyebrow">The findings</div>
+        <h2 class="h2">The audit produced the PM's to-do list.</h2>
+        <p class="body">Run the checks and the invisible gaps become named, linkable findings — not tooling noise, the actual state of the spec:</p>
+        <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">docassert validate · docassert status</span>
+      <button class="copy-btn" data-copy-id="cb-xleyebu85hf" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-xleyebu85hf"><span class="cs">✗ Missing required frontmatter: 'budget'; dates: 'target'</span>   <span class="cc"># the BRD names neither</span>
+<span class="cs">✗ RFH-RISK-001…005 missing Probability, Impact, Owner</span>        <span class="cc"># 5 risks, descriptions only</span>
+<span class="cs">🟠 product requirement covered by an acceptance criterion: 4/10</span> <span class="cc"># six PRs untested</span></pre>
+  </div>
+        <div class="grid-2" style="margin-top:16px;">
+          <div class="card" style="border-left:3px solid var(--warn);">
+            <div class="card-title">No budget, no target date, no named sponsor</div>
+            <div class="card-body" style="margin-top:4px;">The charter carries the gaps as TODOs. Nobody typed a plausible number to quiet the tool.</div>
+          </div>
+          <div class="card" style="border-left:3px solid var(--warn);">
+            <div class="card-title">6 of 10 product requirements had no acceptance criterion</div>
+            <div class="card-body" style="margin-top:4px;">Surfaced by the traceability graph in seconds — the kind of gap a prose review reliably misses.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thread-section" id="cs-loop">
+        <span class="thread-node"></span>
+        <div class="eyebrow">The feedback loop</div>
+        <h2 class="h2">The deployment improved the standard itself.</h2>
+        <p class="body">The first audit blocked the draft charter for its missing budget — but "budget unknown yet" is a legitimate state for a <em style="font-style:normal;color:var(--ink);">draft</em>. That tension went upstream the same day: the specification (v0.2) and docassert (0.7.0) now distinguish <strong style="font-weight:600;color:var(--ink);">integrity</strong> checks, which always block, from <strong style="font-weight:600;color:var(--ink);">completeness</strong> checks, which are advisory for drafts and gate the moment a document is proposed. Real use → design finding → spec change → shipped back. That's how a standard should evolve.</p>
+      </section>
+
+      <section class="thread-section" id="cs-live">
+        <span class="thread-node"></span>
+        <div class="eyebrow">Live now</div>
+        <h2 class="h2">See it running — ambers and all.</h2>
+        <p class="body">The repo is public, the gate is binding, and the dashboard derives its status from the documents on every push. The badge below is live — it turns green when the work does, and no human can set it by hand.</p>
+        <p style="margin:0 0 18px;"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fc4g-john.github.io%2Frefuge-for-humans-pmo%2Fbadge.json" alt="Refuge for Humans — live derived status" height="20"></p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <a class="btn-primary" href="https://c4g-john.github.io/refuge-for-humans-pmo/PRJ-001-RFH.html" target="_blank" rel="noopener">The live project page →</a>
+          <a class="btn-secondary" href="https://github.com/c4g-john/refuge-for-humans-pmo" target="_blank" rel="noopener">The repo →</a>
+        </div>
+      </section>
+
+    </div>
+
+    <div style="margin-top:48px;padding:22px 24px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
+      <div class="eyebrow" style="margin-bottom:8px;">Do this to your documents</div>
+      <p style="font-size:16px;color:var(--ink);margin:0 0 16px;max-width:60ch;">One template click gives you the gate and the dashboard; one prompt lets Claude convert your existing Word docs the same way.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <a class="btn-primary" href="https://github.com/c4g-john/pmo-as-code-template" target="_blank" rel="noopener">Use the template →</a>
+        <a class="btn-secondary" href="#/quickstart-claude">Quickstart with Claude Code →</a>
+      </div>
+    </div>
+
+    <div class="page-nav"><a class="page-nav-link" href="#/why"><div class="page-nav-label">← previous</div><div class="page-nav-title">Why PMO as Code</div></a><a class="page-nav-link next" href="#/manifesto"><div class="page-nav-label">next →</div><div class="page-nav-title">The Manifesto</div></a></div>
+    <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span style="color:var(--ink-2);">content/case-study.mdx</span>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
+    <span class="prov-sep">|</span>
+    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
+    <a class="prov-edit" href="#">Edit on Git →</a>
+  </footer>
+  </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

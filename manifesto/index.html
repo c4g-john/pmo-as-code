@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Manifesto · PMO as Code</title>
+<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Manifesto · PMO as Code">
+<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:url" content="https://pmoascode.com/manifesto/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/manifesto/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/manifesto">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+        <span class="layer-badge" style="background:var(--l1);">1</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · The Manifesto</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Five value-pairs. The philosophy.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one. It mirrors the Agile Manifesto: strong enough to be opinionated, open enough to implement many ways.</p>
+
+      <div id="values" style="margin-top:40px;">
+        <div class="eyebrow">We value</div>
+        <div style="display:grid;gap:9px;">
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Declarative sources of truth</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">hand-maintained artifacts</span></div>
+          <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Automation and audit</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">gates and approvals</span></div>
+          <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Traceability</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">dense documentation</span></div>
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Derived status</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">self-reported status</span></div>
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Composable definitions</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">bespoke, siloed tools</span></div>
+        </div>
+        <p style="font-style:italic;color:var(--ink-2);font-size:15px;margin:18px 2px 0;">That is: while there is value in the items on the right, we value the items on the left more.</p>
+      </div>
+
+      <div id="deepdives" style="margin-top:54px;">
+        <h2 class="h2-sm">Two carry the most weight.</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;">Each gets its own explainer.</p>
+        <div class="explainer-grid">
+          <a class="explainer-card" href="#/manifesto/automation">
+            <div class="explainer-num">01 · explainer</div>
+            <div class="explainer-title">Automation &amp; audit over gates &amp; approvals</div>
+            <div class="explainer-body">Shift from prevention to flow + accountability. The gate gets demoted to policy as code.</div>
+            <div class="explainer-cta">Read →</div>
+          </a>
+          <a class="explainer-card" href="#/manifesto/traceability">
+            <div class="explainer-num">02 · explainer</div>
+            <div class="explainer-title">Traceability over dense documentation</div>
+            <div class="explainer-body">The unit of value is the link, not the document. Thin artifacts, richly connected.</div>
+            <div class="explainer-cta">Read →</div>
+          </a>
+        </div>
+      </div>
+
+      <div id="layers" style="margin-top:54px;">
+        <h2 class="h2-sm">Three layers, always legible.</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;max-width:58ch;">How we are strongly opinionated <em style="font-style:italic;color:var(--ink-2);">and</em> genuinely open. A reader should always know which layer they're standing on.</p>
+        <div style="display:grid;gap:11px;">
+          <div class="layer-card" style="border-left:3px solid var(--l1);">
+            <span class="layer-num" style="background:var(--l1);">1</span>
+            <div><div class="layer-card-title">The Manifesto</div><div class="layer-card-body">Five value-pairs · rarely changes · owned by no one.</div></div>
+          </div>
+          <div class="layer-card" style="border-left:3px solid var(--l2);">
+            <span class="layer-num" style="background:var(--l2);">2</span>
+            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: object model, conventions, schema · versioned · owned by us.</div></div>
+          </div>
+          <div class="layer-card" style="border-left:3px solid var(--l3);">
+            <span class="layer-num" style="background:var(--l3);">3</span>
+            <div><div class="layer-card-title">Profiles</div><div class="layer-card-body">Named bundles others compose or fork: regulated-industry, lean-startup, agile-portfolio · independent · owned by the community.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding:20px 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
+        <div class="eyebrow" style="margin-bottom:8px;">The standard is written down</div>
+        <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 isn't just prose — it's a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification (v0.1) →</a>
+      </div>
+
+      <div class="page-nav"><a class="page-nav-link" href="#/case-study"><div class="page-nav-label">← previous</div><div class="page-nav-title">Case study: Refuge for Humans</div></a><a class="page-nav-link next" href="#/manifesto/automation"><div class="page-nav-label">next →</div><div class="page-nav-title">Automation & audit</div></a></div>
+      <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span style="color:var(--ink-2);">content/manifesto.mdx</span>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
+    <span class="prov-sep">|</span>
+    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
+    <a class="prov-edit" href="#">Edit on Git →</a>
+  </footer>
+    </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

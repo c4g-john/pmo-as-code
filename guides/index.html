@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guides · PMO as Code</title>
+<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guides · PMO as Code">
+<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:url" content="https://pmoascode.com/guides/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/guides/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/guides">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content"><div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+      <span class="layer-badge" style="background:var(--l2);">2</span>
+      <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Guides.</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Task-focused walkthroughs. Start from any guide. They're independent.</p>
+
+    <div style="display:grid;gap:10px;margin-bottom:48px;">
+      
+        <a href="#guide-convert" data-anchor="guide-convert" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:16px;margin-bottom:3px;">Convert a Word document</div>
+            <div style="font-size:14px;color:var(--muted);">Bring an existing doc in with the doc-to-pmo skill — gaps flagged, not invented.</div>
+          </div>
+          <span class="mono" style="color:var(--accent);">↓</span>
+        </a>
+        <a href="#guide-trace" data-anchor="guide-trace" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:16px;margin-bottom:3px;">Author linked requirements</div>
+            <div style="font-size:14px;color:var(--muted);">Write BR → PR → AC → TC as items, and let consistency check the chain.</div>
+          </div>
+          <span class="mono" style="color:var(--accent);">↓</span>
+        </a>
+        <a href="#guide-gate" data-anchor="guide-gate" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:16px;margin-bottom:3px;">Gate documents in CI</div>
+            <div style="font-size:14px;color:var(--muted);">Run the audit and consistency jobs on every PR; make the gate binding.</div>
+          </div>
+          <span class="mono" style="color:var(--accent);">↓</span>
+        </a>
+        <a href="#guide-kind" data-anchor="guide-kind" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:16px;margin-bottom:3px;">Add a new document kind</div>
+            <div style="font-size:14px;color:var(--muted);">A template + schema + criteria trio — usually no code at all.</div>
+          </div>
+          <span class="mono" style="color:var(--accent);">↓</span>
+        </a>
+        <a href="#guide-project" data-anchor="guide-project" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:16px;margin-bottom:3px;">Start a new project</div>
+            <div style="font-size:14px;color:var(--muted);">Give a project a unique ID, a folder, and its own derived status page.</div>
+          </div>
+          <span class="mono" style="color:var(--accent);">↓</span>
+        </a>
+    </div>
+
+    <div id="guide-convert" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 01</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Convert a Word document.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Bring an existing charter, business case, or BRD into the pipeline without retyping it.</p>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Extract the source text</h3>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">terminal</span>
+      <button class="copy-btn" data-copy-id="cb-tggay033hq" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-tggay033hq">pip install "docassert[convert]"
+docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md / .txt → plain text</span></pre>
+  </div>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Let the skill map it</h3>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">doc-to-pmo</code> skill fills the standard template from the source, and <em>flags what the source didn't supply rather than inventing it</em>.</p>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">documents/PRJ-001-AUR/charter.md (first pass)</span>
+      <button class="copy-btn" data-copy-id="cb-d2kkuio43zk" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-d2kkuio43zk"><span class="cv">## Success Criteria</span>
+- TODO: source says "faster onboarding" — add a measurable target.
+
+<span class="cv">## Risks</span>
+- Migration may slip. (TODO: assign an Owner and a Mitigation.)</pre>
+  </div>
+      <div class="card" style="margin-top:14px;border-left:3px solid var(--warn);">
+        <div class="card-title">Faithful over passing</div>
+        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that honestly fails the audit — with the exact gaps to fill. That is the pipeline working, not a bug.</div>
+      </div>
+    </div>
+
+    <div id="guide-trace" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 02</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Author linked requirements.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Write each requirement as an item with a stable ID and a typed link to what it refines.</p>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">across four documents in documents/PRJ-001-AUR/</span>
+      <button class="copy-btn" data-copy-id="cb-akodk87x7ka" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-akodk87x7ka"><span class="cc"># brd.md</span>
+- <span class="ck">**AUR-BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+<span class="cc"># prd.md</span>
+- <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): The product shall provide a self-serve flow.
+- <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): Given a new customer…, then an active account exists.
+<span class="cc"># test-cases.md</span>
+- <span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): Complete the wizard → account active, zero tickets.</pre>
+  </div>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">terminal</span>
+      <button class="copy-btn" data-copy-id="cb-x7k48n0766e" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-x7k48n0766e">docassert consistency
+
+<span class="cs">  ✓ referential-integrity: all references resolve
+  ✓ coverage: all approved items are covered</span>
+  <span class="cc"># broken links block; the AI advises on whether each link truly holds</span></pre>
+  </div>
+    </div>
+
+    <div id="guide-gate" style="margin-bottom:60px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 03</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Gate documents in CI.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Two jobs run on every pull request; branch protection makes them binding.</p>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">.github/workflows/audit.yml</span>
+      <button class="copy-btn" data-copy-id="cb-vt4kvfvfa1" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-vt4kvfvfa1"><span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert validate documents/**/*.md</span> }]
+  <span class="ck">consistency</span>:  <span class="cc"># check the whole traceability graph</span>
+    <span class="ck">steps</span>: [{ <span class="ck">run</span>: <span class="cs">docassert consistency</span> }]</pre>
+  </div>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">terminal</span>
+      <button class="copy-btn" data-copy-id="cb-i761ufs4ed" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-i761ufs4ed"><span class="cc"># require both checks before a PR can merge</span>
+gh api -X PUT repos/OWNER/REPO/branches/main/protection --input - &lt;&lt;'JSON'
+{ <span class="ck">"required_status_checks"</span>: { <span class="ck">"strict"</span>: true, <span class="ck">"contexts"</span>: [<span class="cs">"audit"</span>, <span class="cs">"consistency"</span>] } }
+JSON</pre>
+  </div>
+    </div>
+
+    <div id="guide-kind" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 04</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Add a new document kind.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">A kind is a trio: a template, a JSON Schema for its frontmatter, and a criteria file listing the checks. Most kinds need no new code.</p>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">criteria/decision-log.criteria.yaml</span>
+      <button class="copy-btn" data-copy-id="cb-nyhtpvak2si" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-nyhtpvak2si"><span class="ck">kind</span>: <span class="cv">decision-log</span>
+<span class="ck">required_sections</span>: [Overview, Decisions]
+<span class="ck">item_sections</span>:
+  - { <span class="ck">section</span>: Decisions, <span class="ck">prefix</span>: <span class="cv">DEC</span> }
+<span class="ck">checks</span>:
+  - { <span class="ck">id</span>: frontmatter-schema, <span class="ck">blocking</span>: true }
+  - { <span class="ck">id</span>: required-sections, <span class="ck">blocking</span>: true }
+  - { <span class="ck">id</span>: items-well-formed, <span class="ck">blocking</span>: true }</pre>
+  </div>
+      <div class="card" style="margin-top:14px;">
+        <div class="card-title">Config-driven checks</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">Some checks are reusable via config: <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable_sections</code> makes bullets in a section require a threshold; <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">steps_sections</code> requires an ordered list. New kinds reuse them with zero code.</div>
+      </div>
+    </div>
+
+    <div id="guide-project" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow" style="margin-top:20px;">Guide 05</div>
+      <h2 class="h2-sm" style="margin-top:8px;">Start a new project.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">Give a project a unique identity, a folder, and its own always-current status page. Pick the next sequence number and a short code, and drop a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.md</code> anchor in its folder.</p>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;">Anchor the project</h3>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">documents/PRJ-002-ATL/project.md</span>
+      <button class="copy-btn" data-copy-id="cb-oor2qr7uye" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-oor2qr7uye"><span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">project</span>
+<span class="ck">id</span>: <span class="cv">PRJ-002-ATL</span>
+<span class="ck">code</span>: <span class="cv">ATL</span>
+<span class="ck">name</span>: Atlas — Partner Portal Modernization
+<span class="ck">sponsor</span>: <span class="cs">mia.chen</span>
+<span class="ck">status</span>: <span class="cv">proposed</span>
+<span class="cc">---</span>
+
+<span class="cv">## Overview</span>
+<span class="cv">## Scope</span></pre>
+  </div>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px;">Register it and see its page</h3>
+      <p style="font-size:15px;color:var(--ink-2);max-width:60ch;margin:0 0 14px;">Every document you add under <span class="mono" style="font-size:13px;">documents/PRJ-002-ATL/</span> uses the <span class="mono" style="font-size:13px;">ATL-</span> code — so its items (<span class="mono" style="font-size:13px;">ATL-BR-001</span>) never collide with any other project's.</p>
+      <div class="code-block">
+    <div class="code-titlebar">
+      <span class="traffic-light" style="background:#ff5f57;"></span>
+      <span class="traffic-light" style="background:#febc2e;"></span>
+      <span class="traffic-light" style="background:#28c840;"></span>
+      <span class="code-filename">terminal</span>
+      <button class="copy-btn" data-copy-id="cb-y41rqzqi9l" title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <pre class="code-pre" id="cb-y41rqzqi9l">docassert projects --out projects.yaml     <span class="cc"># regenerate the registry</span>
+docassert status --project PRJ-002-ATL      <span class="cc"># this project's derived RAG</span>
+docassert pages --out _site                 <span class="cc"># adds PRJ-002-ATL.html to the portfolio</span></pre>
+  </div>
+      <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
+        <div class="card-title">Unique by construction</div>
+        <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code — so identity stays unambiguous as the portfolio grows.</div>
+      </div>
+    </div>
+
+    <div class="page-nav"><a class="page-nav-link" href="#/quickstart-claude"><div class="page-nav-label">← previous</div><div class="page-nav-title">Quickstart with Claude Code</div></a><a class="page-nav-link next" href="#/reference"><div class="page-nav-label">next →</div><div class="page-nav-title">Reference</div></a></div>
+    <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span style="color:var(--ink-2);">content/guides/index.mdx</span>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
+    <span class="prov-sep">|</span>
+    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
+    <a class="prov-edit" href="#">Edit on Git →</a>
+  </footer>
+  </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

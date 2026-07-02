@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rosetta Stone · PMO as Code</title>
+<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Rosetta Stone · PMO as Code">
+<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:url" content="https://pmoascode.com/rosetta/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/rosetta/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/rosetta">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+        <span class="layer-badge" style="background:var(--l2);">2</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The Rosetta Stone.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;" id="intro">A mapping from the world people know to the world we're selling. Click any row to see the YAML definition and the artifact it generates.</p>
+      <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">The YAML→artifact transformation is the core visual beat of the whole framework. This page is where it gets most explicit.</p>
+
+      <div id="rows" style="margin-top:8px;">
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px;padding:10px 18px;margin-bottom:6px;">
+          <span class="mono" style="font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);">Traditional PMO</span>
+          <span></span>
+          <span class="mono" style="font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);">PMO as Code</span>
+        </div>
+        
+    <div class="rosetta-row" id="row-0">
+      <div class="rosetta-summary" id="summary-0" data-row="0">
+        <span class="rosetta-before">Status deck</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">Audit result, posted on every PR</span>
+      </div>
+      <div class="rosetta-detail" id="detail-0" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
+<span class="ck">id</span>: <span class="cv">AUR-charter</span>
+<span class="cc">---</span>
+<span class="cv">## Objective</span>
+Onboarding 14d → under 2d</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ all checks passed</div><div style="font-size:13px;color:var(--muted);">frontmatter · sections · criteria<br>clear to merge</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-1">
+      <div class="rosetta-summary" id="summary-1" data-row="1">
+        <span class="rosetta-before">RAID log in Excel</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">Risk register in Git, checked on PR</span>
+      </div>
+      <div class="rosetta-detail" id="detail-1" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="ck">kind</span>: <span class="cv">risk-register</span>
+<span class="cv">## Risks</span>
+- <span class="ck">**AUR-RISK-001**</span> (<span class="cv">threatens</span>: AUR-BR-001):
+  … Probability: High. Impact: High.
+  Owner: alex.kim. Response: dual-run.</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ risk-items-complete</div><div style="font-size:13px;color:var(--muted);">PR #42 · reviewed by jordan.lee<br>threatens AUR-BR-001</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-2">
+      <div class="rosetta-summary" id="summary-2" data-row="2">
+        <span class="rosetta-before">Charter in Word</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">charter.md validated on every change</span>
+      </div>
+      <div class="rosetta-detail" id="detail-2" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="cc">---</span>
+<span class="ck">kind</span>: <span class="cv">charter</span>
+<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
+<span class="cc">---</span>
+<span class="cv">## Success Criteria</span>
+- p50 onboarding below 48h</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · 6 sections</div><div style="font-size:13px;color:var(--muted);">measurable criteria ✓<br>signed off in PR #12</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-3">
+      <div class="rosetta-summary" id="summary-3" data-row="3">
+        <span class="rosetta-before">Steering approval email</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">A merged PR with a named reviewer</span>
+      </div>
+      <div class="rosetta-detail" id="detail-3" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="cc"># branch protection</span>
+<span class="ck">required_status_checks</span>:
+  <span class="ck">contexts</span>:
+    - <span class="cs">audit</span>
+    - <span class="cs">consistency</span></pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ PR #12 · approved</div><div style="font-size:13px;color:var(--muted);">reviewer: jordan.lee<br>audit ✓ · consistency ✓</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-4">
+      <div class="rosetta-summary" id="summary-4" data-row="4">
+        <span class="rosetta-before">Manual RAG status</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">Deterministic checks, not opinions</span>
+      </div>
+      <div class="rosetta-detail" id="detail-4" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="cv">## Success Criteria</span>
+- Onboarding p50 below 48 hours.
+- Support tickets fall by at least 80%.
+- CSAT rises above 4.5 / 5.</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Nobody argues about "done".<br>The checks decide.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-5">
+      <div class="rosetta-summary" id="summary-5" data-row="5">
+        <span class="rosetta-before">Requirements that drift across docs</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">One generated traceability matrix</span>
+      </div>
+      <div class="rosetta-detail" id="detail-5" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="ck">**AUR-BR-001**</span>: reduce onboarding time
+<span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): self-serve flow
+<span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): …
+<span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): …</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;">Requirements Traceability Matrix</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);">AUR-BR-001 → AUR-PR-014 → AUR-AC-001 → AUR-TC-001</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">generated from the links</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rosetta-row" id="row-6">
+      <div class="rosetta-summary" id="summary-6" data-row="6">
+        <span class="rosetta-before">Stage-gate checklist</span>
+        <span class="rosetta-arrow">→</span>
+        <span class="rosetta-after">A required check in CI</span>
+      </div>
+      <div class="rosetta-detail" id="detail-6" style="display:none;">
+        <div>
+          <div class="rosetta-yaml-label">YAML definition</div>
+          <div class="code-block">
+            <pre class="code-pre" style="font-size:12px;"><span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>: docassert validate
+  <span class="ck">consistency</span>: docassert consistency</pre>
+          </div>
+        </div>
+        <div>
+          <div class="rosetta-yaml-label">Generated output</div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">CI · audit ✓ · consistency ✓</div><div style="font-size:12px;color:var(--muted);">merge blocked until green<br>on every pull request</div></div>
+        </div>
+      </div>
+    </div>
+      </div>
+
+      <div class="page-nav"><a class="page-nav-link" href="#/manifesto/traceability"><div class="page-nav-label">← previous</div><div class="page-nav-title">Traceability</div></a><a class="page-nav-link next" href="#/concepts"><div class="page-nav-label">next →</div><div class="page-nav-title">Core Concepts</div></a></div>
+      <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span style="color:var(--ink-2);">content/rosetta.mdx</span>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
+    <span class="prov-sep">|</span>
+    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
+    <a class="prov-edit" href="#">Edit on Git →</a>
+  </footer>
+    </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
