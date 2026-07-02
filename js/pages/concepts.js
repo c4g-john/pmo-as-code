@@ -56,7 +56,7 @@ Cut median onboarding time from 14 days to under 2 days.
         <div class="grid-2">
           <div class="card" style="border-left:3px solid var(--ok);">
             <div class="card-title">Structural — deterministic, blocking</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed.</div>
           </div>
           <div class="card" style="border-left:3px solid var(--l2);">
             <div class="card-title">Semantic — AI-graded, advisory</div>

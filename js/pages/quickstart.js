@@ -101,7 +101,7 @@ manual setup with a self-serve flow.
 ✓ All structural checks passed — clear to merge.</span>`)}
         <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
           <div class="card-title">Why it fails when it should</div>
-          <div class="card-body" style="margin-top:4px;">A vague "make customers happier" success criterion has no measurable threshold, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable-success-criteria</code> blocks — with the exact reason. The gate is specific, not vibes.</div>
+          <div class="card-body" style="margin-top:4px;">A vague "make customers happier" success criterion has no measurable threshold, so <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">measurable-success-criteria</code> blocks — with the exact reason. The gate is specific, not vibes. (Completeness checks like this are advisory while a document is <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">draft</code> — they gate from <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> onward, so WIP is never punished.)</div>
         </div>
       </section>
 
