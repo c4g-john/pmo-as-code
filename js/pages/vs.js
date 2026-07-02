@@ -17,7 +17,7 @@ export function renderVs() {
   return `<div>
     <div class="eyebrow">Compare</div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">vs Traditional PPM.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">An honest comparison. We make strong claims and show our work, including where traditional approaches still win.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">We make strong claims and show our work, including the rows where traditional approaches still hold.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">PPM = Project & Portfolio Management (tools like MS Project, Planview, Clarity, Smartsheet).</p>
 
     <div id="comparison" style="margin-bottom:52px;">
@@ -55,10 +55,10 @@ export function renderVs() {
 
     <div id="where-gates" style="margin-bottom:48px;">
       <h2 class="h2-sm">Where traditional gates still belong.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">We are not arguing that human judgment disappears. Some decisions genuinely require a named individual's sign-off: a legal filing, a board resolution, a contractual milestone payment. PMO as Code holds these gracefully: require a named reviewer on the pull request, recorded immutably in the Git history — a stronger record than an approval email that no one can find later.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some decisions require a named individual's sign-off: a legal filing, a board resolution, a contractual milestone payment. PMO as Code accommodates them by requiring a named reviewer on the pull request, recorded in the Git history. That is a stronger record than an approval email nobody can find later.</p>
       <div class="card" style="border-left:3px solid var(--warn);">
-        <div class="card-title">The honest position</div>
-        <div class="card-body" style="margin-top:4px;line-height:1.6;">Gates don't vanish. They get demoted from default to exception. The default posture is flow. The gate is the documented exception. When a human signature is genuinely required, it belongs in the framework as a first-class construct, not as an email chain that falls outside the audit trail.</div>
+        <div class="card-title">Our position</div>
+        <div class="card-body" style="margin-top:4px;line-height:1.6;">Gates move from the default to the documented exception. When a signature is genuinely required, it becomes a required reviewer inside the audit trail instead of an email chain outside it.</div>
       </div>
     </div>
 

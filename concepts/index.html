@@ -72,22 +72,22 @@
         <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Core Concepts.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Everything is a Markdown document with YAML frontmatter and defined sections. Requirements are authored as linked items — which is what makes the whole set testable and traceable.</p>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 36px;">Everything is a Markdown document with YAML frontmatter and defined sections. Requirements are authored as linked items, which is what makes the whole set testable and traceable.</p>
 
       <div id="model" style="margin-bottom:52px;">
         <h2 class="h2-sm">A document, not a database.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind shares one shape: <strong style="font-weight:600;color:var(--ink);">frontmatter</strong> (typed metadata a JSON Schema checks) and <strong style="font-weight:600;color:var(--ink);">required sections</strong> (the audit checks they're present and complete). Plain Markdown a person can read and a diff can review.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every kind shares one shape: <strong style="font-weight:600;color:var(--ink);">frontmatter</strong> (typed metadata a JSON Schema checks) and <strong style="font-weight:600;color:var(--ink);">required sections</strong> (the audit checks they're present and complete). Plain Markdown a person can read and a diff can review. Examples use Aurora, the fictional sample project; its people are invented.</p>
         <div class="code-block">
     <div class="code-titlebar">
       <span class="traffic-light" style="background:#ff5f57;"></span>
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">documents/PRJ-001-AUR/charter.md</span>
-      <button class="copy-btn" data-copy-id="cb-frmr497v058" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-iphtp13te59" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-frmr497v058"><span class="cc">---</span>
+    <pre class="code-pre" id="cb-iphtp13te59"><span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">charter</span>
 <span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>
 <span class="ck">id</span>: <span class="cv">AUR-charter</span>
@@ -113,11 +113,11 @@ Cut median onboarding time from 14 days to under 2 days.
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">documents/PRJ-001-AUR/</span>
-      <button class="copy-btn" data-copy-id="cb-srwme4f1qre" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-w14srcolf2" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-srwme4f1qre"><span class="cv">project.md</span>       <span class="cc"># id: PRJ-001-AUR · code: AUR · sponsor</span>
+    <pre class="code-pre" id="cb-w14srcolf2"><span class="cv">project.md</span>       <span class="cc"># id: PRJ-001-AUR · code: AUR · sponsor</span>
 <span class="cv">charter.md</span>       <span class="cc"># id: AUR-charter</span>
 <span class="cv">brd.md</span>           <span class="cc"># items: AUR-BR-001, AUR-BR-002</span>
 <span class="cv">prd.md</span>           <span class="cc"># items: AUR-PR-014 (traces: AUR-BR-001)</span>
@@ -135,11 +135,11 @@ Cut median onboarding time from 14 days to under 2 days.
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">the chain, across four documents</span>
-      <button class="copy-btn" data-copy-id="cb-9pdul9favy" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-hfd0mss7lkk" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-9pdul9favy"><span class="ck">**AUR-BR-001**</span>: The business shall reduce onboarding time to under 2 days.
+    <pre class="code-pre" id="cb-hfd0mss7lkk"><span class="ck">**AUR-BR-001**</span>: The business shall reduce onboarding time to under 2 days.
 <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): The product shall provide a self-serve flow.
 <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): Given a new customer…, then an active account exists.
 <span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): Complete the wizard → account active, zero tickets.</pre>
@@ -254,13 +254,11 @@ Cut median onboarding time from 14 days to under 2 days.
       <footer class="provenance">
     <span style="display:inline-flex;align-items:center;gap:7px;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-      <span style="color:var(--ink-2);">content/concepts.mdx</span>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/concepts.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/concepts.js</a>
     </span>
     <span class="prov-sep">|</span>
-    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
-    <span class="prov-sep">|</span>
-    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
-    <a class="prov-edit" href="#">Edit on Git →</a>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/concepts.js" target="_blank" rel="noopener">Edit on GitHub →</a>
   </footer>
     </div></main>
       <nav id="on-this-page"></nav>

@@ -44,7 +44,7 @@ docassert extract path/to/charter.docx   <span class="cc"># .docx / .pdf / .md /
 - Migration may slip. (TODO: assign an Owner and a Mitigation.)`)}
       <div class="card" style="margin-top:14px;border-left:3px solid var(--warn);">
         <div class="card-title">Faithful over passing</div>
-        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that honestly fails the audit — with the exact gaps to fill. That is the pipeline working, not a bug.</div>
+        <div class="card-body" style="margin-top:4px;">An incomplete source produces a document that fails the audit, with the exact gaps to fill. That is the pipeline working, not a bug.</div>
       </div>
     </div>
 

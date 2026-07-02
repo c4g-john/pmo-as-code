@@ -71,7 +71,7 @@
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">GitHub-native by design.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">There are no connectors to build or maintain. The whole pipeline is Git, GitHub Actions, and — only for the advisory layer — the Anthropic API. Nothing else to wire up, nothing else to break.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">There are no connectors to build or maintain. The whole pipeline is Git, GitHub Actions, and (only for the advisory layer) the Anthropic API. Nothing else to wire up, nothing else to break.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Feed Claude any source document; it maps it to the standard templates. From there it's version control the whole way down.</p>
 
     <div id="int-actions" style="margin-bottom:52px;">
@@ -83,11 +83,11 @@
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">.github/workflows/audit.yml</span>
-      <button class="copy-btn" data-copy-id="cb-if39mkqx7g" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-di9l1zt5mhh" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-if39mkqx7g"><span class="ck">on</span>: [pull_request]
+    <pre class="code-pre" id="cb-di9l1zt5mhh"><span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:          <span class="cc"># validate each changed document</span>
     <span class="ck">runs-on</span>: ubuntu-latest
@@ -109,11 +109,11 @@
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">terminal</span>
-      <button class="copy-btn" data-copy-id="cb-24vikkxjlsh" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-xalmrfgnyuj" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-24vikkxjlsh"><span class="cc"># require both checks before a PR can merge</span>
+    <pre class="code-pre" id="cb-xalmrfgnyuj"><span class="cc"># require both checks before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection \
   --input - &lt;&lt;'JSON'
 { <span class="ck">"required_status_checks"</span>:
@@ -124,18 +124,18 @@ JSON</pre>
 
     <div id="int-ai" style="margin-bottom:52px;">
       <h2 class="h2-sm">The Anthropic API.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The one external service, and only for the <em>advisory</em> layer: the AI reads a document (or a traceability link) and scores it. Set one repo secret to switch it on. It fails safe — no key, and the advisory checks simply skip; the deterministic gate is unaffected.</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The one external service, and only for the <em>advisory</em> layer: the AI reads a document (or a traceability link) and scores it. Set one repo secret to switch it on. It fails safe: with no key, the advisory checks skip and the deterministic gate is unaffected.</p>
       <div class="code-block">
     <div class="code-titlebar">
       <span class="traffic-light" style="background:#ff5f57;"></span>
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">terminal</span>
-      <button class="copy-btn" data-copy-id="cb-pdn8q9ddu7d" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-7ompxvjh2b" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-pdn8q9ddu7d"><span class="cc"># enable AI advisory scoring (optional)</span>
+    <pre class="code-pre" id="cb-7ompxvjh2b"><span class="cc"># enable AI advisory scoring (optional)</span>
 gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
 
 <span class="cc"># without it, advisory checks report:</span>
@@ -159,13 +159,11 @@ gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
     <footer class="provenance">
     <span style="display:inline-flex;align-items:center;gap:7px;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-      <span style="color:var(--ink-2);">content/integrations.mdx</span>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/integrations.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/integrations.js</a>
     </span>
     <span class="prov-sep">|</span>
-    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
-    <span class="prov-sep">|</span>
-    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
-    <a class="prov-edit" href="#">Edit on Git →</a>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/integrations.js" target="_blank" rel="noopener">Edit on GitHub →</a>
   </footer>
   </div></main>
       <nav id="on-this-page"></nav>

@@ -73,7 +73,7 @@
       </div>
       <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The Rosetta Stone.</h1>
       <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;" id="intro">A mapping from the world people know to the world we're selling. Click any row to see the YAML definition and the artifact it generates.</p>
-      <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">The YAML→artifact transformation is the core visual beat of the whole framework. This page is where it gets most explicit.</p>
+      <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Each row pairs the YAML you write with the artifact it generates. The output panels are illustrations of the real tool's output format.</p>
 
       <div id="rows" style="margin-top:8px;">
         <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px;padding:10px 18px;margin-bottom:6px;">
@@ -126,7 +126,7 @@ Onboarding 14d → under 2d</pre>
         </div>
         <div>
           <div class="rosetta-yaml-label">Generated output</div>
-          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ risk-items-complete</div><div style="font-size:13px;color:var(--muted);">PR #42 · reviewed by jordan.lee<br>threatens AUR-BR-001</div></div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ risk-items-complete</div><div style="font-size:13px;color:var(--muted);">merged by pull request, reviewer on record<br>threatens AUR-BR-001</div></div>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@ Onboarding 14d → under 2d</pre>
         </div>
         <div>
           <div class="rosetta-yaml-label">Generated output</div>
-          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · 6 sections</div><div style="font-size:13px;color:var(--muted);">measurable criteria ✓<br>signed off in PR #12</div></div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · 6 sections</div><div style="font-size:13px;color:var(--muted);">measurable criteria ✓<br>approved by merged pull request</div></div>
         </div>
       </div>
     </div>
@@ -173,7 +173,7 @@ Onboarding 14d → under 2d</pre>
         </div>
         <div>
           <div class="rosetta-yaml-label">Generated output</div>
-          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ PR #12 · approved</div><div style="font-size:13px;color:var(--muted);">reviewer: jordan.lee<br>audit ✓ · consistency ✓</div></div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ merged · reviewer on record</div><div style="font-size:13px;color:var(--muted);">audit ✓ · consistency ✓</div></div>
         </div>
       </div>
     </div>
@@ -195,7 +195,7 @@ Onboarding 14d → under 2d</pre>
         </div>
         <div>
           <div class="rosetta-yaml-label">Generated output</div>
-          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Nobody argues about "done".<br>The checks decide.</div></div>
+          <div class="rosetta-output"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Pass or fail comes from the checks,<br>with the reason attached.</div></div>
         </div>
       </div>
     </div>
@@ -249,13 +249,11 @@ Onboarding 14d → under 2d</pre>
       <footer class="provenance">
     <span style="display:inline-flex;align-items:center;gap:7px;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-      <span style="color:var(--ink-2);">content/rosetta.mdx</span>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/rosetta.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/rosetta.js</a>
     </span>
     <span class="prov-sep">|</span>
-    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
-    <span class="prov-sep">|</span>
-    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
-    <a class="prov-edit" href="#">Edit on Git →</a>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/rosetta.js" target="_blank" rel="noopener">Edit on GitHub →</a>
   </footer>
     </div></main>
       <nav id="on-this-page"></nav>

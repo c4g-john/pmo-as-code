@@ -44,7 +44,7 @@ docassert --version
         ${cb('terminal', `docassert new project --code AUR --name "Aurora — Customer Onboarding Overhaul"
 <span class="cs"># docassert: created documents/PRJ-001-AUR/project.md</span>   <span class="cc"># id auto-numbered</span>
 docassert projects --out projects.yaml   <span class="cc"># generate the registry from the anchors</span>
-<span class="cs"># docassert: wrote projects.yaml (4 projects)</span>`)}
+<span class="cs"># docassert: wrote projects.yaml (1 project)</span>`)}
         <div class="card" style="margin-top:14px;">
           <div class="card-title">Tip</div>
           <div class="card-body" style="margin-top:4px;">Keep a brand-new project <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">proposed</code> while you fill it in — its profile gaps stay advisory. Flip it to <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">active</code> when you're ready for missing required docs to block.</div>
@@ -86,7 +86,7 @@ manual setup with a self-serve flow.
         <span class="thread-node"></span>
         <div class="eyebrow">Step 4</div>
         <h2 class="h2-sm">Unit-test it.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge. AI checks (with a key) advise. This is the real output.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Structural checks are deterministic and block a merge; AI checks (with a key) advise. The output below is what the tool prints.</p>
         ${cb('terminal', `docassert validate documents/PRJ-001-AUR/charter.md
 
 <span class="cs">documents/PRJ-001-AUR/charter.md
@@ -109,7 +109,7 @@ manual setup with a self-serve flow.
         <span class="thread-node"></span>
         <div class="eyebrow">Step 5</div>
         <h2 class="h2-sm">Check consistency across documents.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The differentiator. Requirements trace end to end, the registry stays fresh, and each profiled project carries its required documents. Broken links block; the AI judges whether each child genuinely fulfils its parent.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">The differentiator. Requirements trace end to end, the registry stays fresh, and each profiled project carries its required documents. Broken links block; the AI judges whether each child fulfils its parent.</p>
         ${cb('terminal', `docassert consistency
 
 <span class="cs">consistency (cross-document)
@@ -161,7 +161,7 @@ docassert pages --out _site               <span class="cc"># index.html + a page
         <span class="thread-node"></span>
         <div class="eyebrow">Step 8</div>
         <h2 class="h2-sm">Gate it in CI — and make it binding.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Two jobs run on every pull request. But GitHub only <em style="font-style:normal;color:var(--ink);">blocks</em> a merge when branch protection requires them — that's what turns advisory checks into a real gate.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Two jobs run on every pull request, but GitHub only <em style="font-style:normal;color:var(--ink);">blocks</em> a merge when branch protection requires them. That setting is what turns advisory checks into a real gate.</p>
         ${cb('.github/workflows/audit.yml', `<span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>

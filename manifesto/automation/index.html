@@ -76,8 +76,8 @@
 
       <div id="shift" style="margin-bottom:48px;">
         <h2 class="h2-sm">The shift: from prevention to flow.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate is a friction point: a human in the loop who must approve before work proceeds. The gate slows flow, creates bottlenecks, and produces an inbox full of decisions that no one can later audit. The default posture becomes <em>stop until told otherwise</em>.</p>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts the posture. The default is <em>flow</em>. The record keeps everyone honest: every change, every decision, every signal is captured in Git history and the Event Log. Accountability is a result of the record, not a precondition of work.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate is a friction point: a human in the loop who must approve before work proceeds. The gate slows the work and produces an inbox full of decisions that no one can later audit. The default posture becomes <em>stop until told otherwise</em>.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts the posture. The default is <em>flow</em>, and the record keeps everyone accountable: every change and every decision is captured in Git history. The record supplies the accountability, so the work keeps moving.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--bad);">
             <div class="card-title" style="color:var(--bad);">Gates</div>
@@ -85,14 +85,14 @@
           </div>
           <div class="card" style="border-top:2px solid var(--ok);">
             <div class="card-title" style="color:var(--ok);">Audit</div>
-            <div class="card-body">Git history + Event Log. Every decision traceable. Default posture: flow.</div>
+            <div class="card-body">Git history and merged pull requests. Every decision traceable. Default posture: flow.</div>
           </div>
         </div>
       </div>
 
       <div id="policy" style="margin-bottom:48px;">
         <h2 class="h2-sm">Gates don't vanish. They become policy as code.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate is demoted to an automated, auditable check, not an email in an inbox. When the check runs in CI, the result is in the commit log. When it passes, the audit trail writes itself.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate becomes an automated, auditable check that runs in CI, and the result lands in the repository's history alongside the change it judged.</p>
         <div class="code-block">
           <div class="code-titlebar">
             <span class="traffic-light" style="background:#ff5f57;"></span>
@@ -113,10 +113,10 @@
 
       <div id="tension" style="margin-bottom:48px;">
         <h2 class="h2-sm">Where gates still belong.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a human signature. A regulatory filing, a board resolution, a contractual approval — these are real requirements that the framework holds gracefully. The PMO as Code position is not that human approvals should disappear. It's that they should be the documented exception, not the default.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a person's signature, and the framework accommodates them. Human approvals don't disappear; they become the documented exception rather than the default.</p>
         <div class="card" style="border-left:3px solid var(--warn);">
           <div class="card-title">When a human signature is required</div>
-          <div class="card-body" style="margin-top:6px;">Model it explicitly: a <code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">Policy</code> kind with <code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">requires: [human-signature]</code>. The signature event lands in the Event Log. The audit trail still writes itself. The difference is that one of the signals is a person's explicit approval, not just a CI check.</div>
+          <div class="card-body" style="margin-top:6px;">Model it explicitly: branch protection that requires a named reviewer on the pull request. The approval lands in the merge record with the rest of the history. One of the signals is now a person's explicit sign-off, and the trail is the same trail.</div>
         </div>
       </div>
 
@@ -124,13 +124,11 @@
       <footer class="provenance">
     <span style="display:inline-flex;align-items:center;gap:7px;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-      <span style="color:var(--ink-2);">content/manifesto/automation.mdx</span>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/manifesto.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/manifesto.js</a>
     </span>
     <span class="prov-sep">|</span>
-    <span>commit <span style="color:var(--ink-2);">a1f3c9d</span></span>
-    <span class="prov-sep">|</span>
-    <span class="prov-ok"><span class="prov-ok-dot"></span><span style="color:var(--ok);">passing</span></span>
-    <a class="prov-edit" href="#">Edit on Git →</a>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/manifesto.js" target="_blank" rel="noopener">Edit on GitHub →</a>
   </footer>
     </div></main>
       <nav id="on-this-page"></nav>

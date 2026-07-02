@@ -55,7 +55,7 @@ export function renderQuickstartClaude() {
       <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Quickstart with Claude Code.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Skip the manual steps. Copy one prompt, paste it into Claude Code, and it scaffolds the pipeline, converts your documents, and wires the gate — asking you for the specifics as it goes.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">Skip the manual steps. Copy one prompt, paste it into Claude Code, and it scaffolds the pipeline, converts your documents, and wires the gate, asking you for the specifics as it goes.</p>
     <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Prefer to do it by hand? See the <a href="#/quickstart" style="color:var(--accent);text-decoration:none;">manual quickstart →</a></p>
 
     <div id="cc-prompt" style="margin-bottom:52px;">
@@ -85,7 +85,7 @@ export function renderQuickstartClaude() {
         ${[
           ['Add docassert + the CI workflows', 'the tool, plus audit / consistency / status-pages'],
           ['Anchor your project', 'project.md with a unique id, code, and a profile'],
-          ['Convert your documents', 'into the standard templates — gaps flagged, not invented'],
+          ['Convert your documents', 'into the standard templates, with gaps marked as TODOs'],
           ['Validate and check consistency', 'and fix whatever blocks a merge'],
           ['Derive the status page', 'RAG, coverage, and the required-document set'],
           ['Explain the repo setup', 'branch protection and Pages — the manual one-time bits'],

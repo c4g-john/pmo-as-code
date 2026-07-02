@@ -9,7 +9,7 @@ export function renderHome() {
     <div>
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        A vendor-neutral standard · this site is a running instance of it
+        A vendor-neutral standard · running live in two public deployments
       </div>
       <h1 class="h1">Run the PMO from version-controlled, declarative files.</h1>
       <p class="lead">Define a portfolio's governance, structure, and operating model as declarative, version-controlled files, so status, roadmaps, risks, and decisions are <em style="color:var(--ink);font-style:normal;border-bottom:1px solid var(--accent-line);">generated from a single source of truth</em> instead of hand-maintained in slides and spreadsheets.</p>
@@ -25,7 +25,7 @@ export function renderHome() {
           <span class="thread-node"></span>
           <div class="eyebrow">The problem it answers</div>
           <h2 class="h2">Stale on arrival, and no record of why.</h2>
-          <p class="body">Today's PMO runs on PowerPoint, Excel, SharePoint, and email. There's no single source of truth and no history of <em style="font-style:italic;color:var(--ink);">why</em> decisions were made.</p>
+          <p class="body">Today's PMO runs on PowerPoint, Excel, SharePoint, and email. Nothing is authoritative, and nobody records <em style="font-style:italic;color:var(--ink);">why</em> decisions were made.</p>
           <div class="grid-2">
             <div class="card"><div class="card-title">Stale artifacts</div><div class="card-body">A deck is out of date the moment it's shared.</div></div>
             <div class="card"><div class="card-title">RAG fiction</div><div class="card-body">Red / amber / green is self-reported, not measured.</div></div>
@@ -56,7 +56,7 @@ export function renderHome() {
           <span class="thread-node"></span>
           <div class="eyebrow">The core beat</div>
           <h2 class="h2">Declared, then checked.</h2>
-          <p class="body">You author the <em style="font-style:normal;color:var(--ink);">document</em>. The pipeline checks it — every field, every section, every requirement link — on every change. Watch it run:</p>
+          <p class="body">You author the <em style="font-style:normal;color:var(--ink);">document</em>; the pipeline checks its fields, sections, and requirement links on every change. Watch it run:</p>
           <div class="reveal-grid">
             <div class="code-block">
               <div class="code-titlebar">
@@ -84,7 +84,7 @@ Cut onboarding from 14 days to under 2.
               <div id="reveal-output">${revealedHtml}</div>
             </div>
           </div>
-          <p class="caption">Nobody argues about whether it's "done". The checks decide — the same way, every time.</p>
+          <p class="caption">Nobody argues about whether it's "done". The checks decide, the same way every time.</p>
         </section>
 
         <section class="thread-section" id="thread">
@@ -134,14 +134,14 @@ Cut onboarding from 14 days to under 2.
               </div>
             </div>
           </div>
-          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. And this walk is generated from the links, not drawn by hand — it's the traceability matrix the pipeline builds.</p>
+          <p style="font-size:14px;color:var(--muted);margin:22px 2px 0;max-width:60ch;">Five hops, no slide-hunting. The pipeline generates this walk from the links; it is the same graph behind the traceability matrix. (Aurora is the fictional sample project used in examples across this site — its people are invented. The deployments below are real.)</p>
         </section>
 
         <section class="thread-section" id="portfolio">
           <span class="thread-node"></span>
           <div class="eyebrow">From one document to a portfolio</div>
           <h2 class="h2">Every project has a unique ID — and its own live page.</h2>
-          <p class="body">Each project carries a stable identity — <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span> — that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides; every item says which project it belongs to. The pipeline then publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em> — one derived RAG card per project, each linking to its own always-current status page.</p>
+          <p class="body">Each project carries a stable identity, <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span>, that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides, and every item says which project it belongs to. The pipeline publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em>: one derived RAG card per project, each linking to that project's status page.</p>
           <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--panel-2);">
               <span class="mono" style="font-size:12px;color:var(--muted);">docassert pages · portfolio</span>
@@ -162,23 +162,24 @@ Cut onboarding from 14 days to under 2.
                 <span class="mono" style="font-size:11px;color:${color};flex:none;">${rag}</span>
               </div>`).join('')}
           </div>
-          <p class="caption">Each RAG is <em style="font-style:normal;color:var(--ink);">computed</em> from that project's own documents — coverage, open risks, failing audits — not typed in. <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">See the live dashboard →</a></p>
+          <p class="caption">Each RAG is <em style="font-style:normal;color:var(--ink);">computed</em> from that project's own documents: coverage, open risks, failing audits. <a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">See the live dashboard →</a></p>
         </section>
 
         <section class="thread-section" id="proof">
           <span class="thread-node"></span>
           <div class="eyebrow">Show, don't tell</div>
-          <h2 class="h2">This site is a running instance.</h2>
-          <p class="body">The page you're reading is Markdown and YAML in Git, validated against the schema and rendered by a pipeline. Every page traces back to its source. The provenance footer below is wired to real commit and build metadata.</p>
-          <div class="build-bar">
-            <div class="build-header">
-              <span class="build-file">content/home.mdx</span>
-              <span class="build-status"><span class="build-status-dot"></span>build passing</span>
+          <h2 class="h2">The method runs live. Go poke at it.</h2>
+          <p class="body">This site is ordinary hand-written web pages; the pipeline it describes runs elsewhere, in public. Two deployments regenerate their dashboards and badges from their documents on every push: <strong style="font-weight:600;color:var(--ink);">Aurora</strong>, the reference portfolio, and <strong style="font-weight:600;color:var(--ink);">Refuge for Humans</strong>, a real product spec converted from a Word BRD.</p>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title" style="display:flex;align-items:center;gap:10px;">Reference portfolio <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fc4g-john.github.io%2Fpmo-as-code-pipeline%2Fbadge.json" alt="live derived status" height="18"></div>
+              <div class="card-body" style="margin-top:6px;">Four sample projects, the gate on every pull request, a published traceability matrix. The badge above is the live derived status.</div>
+              <div style="margin-top:12px;"><a href="https://c4g-john.github.io/pmo-as-code-pipeline/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Dashboard →</a>&nbsp;&nbsp;<a href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Repo →</a></div>
             </div>
-            <div class="build-meta">
-              <div class="build-cell"><div class="build-cell-label">commit</div><div class="build-cell-val">a1f3c9d</div></div>
-              <div class="build-cell"><div class="build-cell-label">authored</div><div class="build-cell-val">jordan.lee</div></div>
-              <div class="build-cell"><div class="build-cell-label">pipeline</div><div class="build-cell-val">validate → render → deploy</div></div>
+            <div class="card">
+              <div class="card-title" style="display:flex;align-items:center;gap:10px;">Refuge for Humans <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fc4g-john.github.io%2Frefuge-for-humans-pmo%2Fbadge.json" alt="live derived status" height="18"></div>
+              <div class="card-body" style="margin-top:6px;">A real 14-section BRD converted faithfully, gaps showing. Read the <a href="#/case-study" style="color:var(--accent);text-decoration:none;">case study</a> for what the audit found.</div>
+              <div style="margin-top:12px;"><a href="https://c4g-john.github.io/refuge-for-humans-pmo/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Dashboard →</a>&nbsp;&nbsp;<a href="https://github.com/c4g-john/refuge-for-humans-pmo" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;">Repo →</a></div>
             </div>
           </div>
         </section>

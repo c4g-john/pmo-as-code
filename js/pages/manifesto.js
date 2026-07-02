@@ -51,19 +51,19 @@ export function renderManifesto() {
           </div>
           <div class="layer-card" style="border-left:3px solid var(--l2);">
             <span class="layer-num" style="background:var(--l2);">2</span>
-            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: object model, conventions, schema · versioned · owned by us.</div></div>
+            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: object model, conventions, schema · versioned · maintained by John Tanner at C4G.</div></div>
           </div>
           <div class="layer-card" style="border-left:3px solid var(--l3);">
             <span class="layer-num" style="background:var(--l3);">3</span>
-            <div><div class="layer-card-title">Profiles</div><div class="layer-card-body">Named bundles others compose or fork: regulated-industry, lean-startup, agile-portfolio · independent · owned by the community.</div></div>
+            <div><div class="layer-card-title">Profiles</div><div class="layer-card-body">Named bundles others compose or fork: regulated-industry, lean-startup, agile-delivery · independent · owned by the community.</div></div>
           </div>
         </div>
       </div>
 
       <div style="margin-top:40px;padding:20px 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
         <div class="eyebrow" style="margin-bottom:8px;">The standard is written down</div>
-        <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 isn't just prose — it's a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
-        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification (v0.1) →</a>
+        <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 is a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification (v0.2) →</a>
       </div>
 
       ${pageNavHtml('/manifesto')}
@@ -83,8 +83,8 @@ export function renderAutomation() {
 
       <div id="shift" style="margin-bottom:48px;">
         <h2 class="h2-sm">The shift: from prevention to flow.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate is a friction point: a human in the loop who must approve before work proceeds. The gate slows flow, creates bottlenecks, and produces an inbox full of decisions that no one can later audit. The default posture becomes <em>stop until told otherwise</em>.</p>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts the posture. The default is <em>flow</em>. The record keeps everyone honest: every change, every decision, every signal is captured in Git history and the Event Log. Accountability is a result of the record, not a precondition of work.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate is a friction point: a human in the loop who must approve before work proceeds. The gate slows the work and produces an inbox full of decisions that no one can later audit. The default posture becomes <em>stop until told otherwise</em>.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts the posture. The default is <em>flow</em>, and the record keeps everyone accountable: every change and every decision is captured in Git history. The record supplies the accountability, so the work keeps moving.</p>
         <div class="grid-2">
           <div class="card" style="border-top:2px solid var(--bad);">
             <div class="card-title" style="color:var(--bad);">Gates</div>
@@ -92,14 +92,14 @@ export function renderAutomation() {
           </div>
           <div class="card" style="border-top:2px solid var(--ok);">
             <div class="card-title" style="color:var(--ok);">Audit</div>
-            <div class="card-body">Git history + Event Log. Every decision traceable. Default posture: flow.</div>
+            <div class="card-body">Git history and merged pull requests. Every decision traceable. Default posture: flow.</div>
           </div>
         </div>
       </div>
 
       <div id="policy" style="margin-bottom:48px;">
         <h2 class="h2-sm">Gates don't vanish. They become policy as code.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate is demoted to an automated, auditable check, not an email in an inbox. When the check runs in CI, the result is in the commit log. When it passes, the audit trail writes itself.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate becomes an automated, auditable check that runs in CI, and the result lands in the repository's history alongside the change it judged.</p>
         <div class="code-block">
           <div class="code-titlebar">
             <span class="traffic-light" style="background:#ff5f57;"></span>
@@ -120,10 +120,10 @@ export function renderAutomation() {
 
       <div id="tension" style="margin-bottom:48px;">
         <h2 class="h2-sm">Where gates still belong.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a human signature. A regulatory filing, a board resolution, a contractual approval — these are real requirements that the framework holds gracefully. The PMO as Code position is not that human approvals should disappear. It's that they should be the documented exception, not the default.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a person's signature, and the framework accommodates them. Human approvals don't disappear; they become the documented exception rather than the default.</p>
         <div class="card" style="border-left:3px solid var(--warn);">
           <div class="card-title">When a human signature is required</div>
-          <div class="card-body" style="margin-top:6px;">Model it explicitly: a <code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">Policy</code> kind with <code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">requires: [human-signature]</code>. The signature event lands in the Event Log. The audit trail still writes itself. The difference is that one of the signals is a person's explicit approval, not just a CI check.</div>
+          <div class="card-body" style="margin-top:6px;">Model it explicitly: branch protection that requires a named reviewer on the pull request. The approval lands in the merge record with the rest of the history. One of the signals is now a person's explicit sign-off, and the trail is the same trail.</div>
         </div>
       </div>
 
@@ -172,7 +172,7 @@ export function renderTraceability() {
 
       <div id="schema" style="margin-bottom:48px;">
         <h2 class="h2-sm">This is a schema requirement, not a writing style.</h2>
-        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links. The lineage is a queryable graph, checked in CI, not a convention buried in prose. You can ask "which requirements have no test?" and get an answer from the tool, not a person who has read every document.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links, so the lineage is a queryable graph that CI checks. Ask "which requirements have no test?" and the tool answers.</p>
         <div class="code-block">
           <div class="code-titlebar">
             <span class="traffic-light" style="background:#ff5f57;"></span>
