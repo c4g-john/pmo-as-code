@@ -83,11 +83,11 @@
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">.github/workflows/audit.yml</span>
-      <button class="copy-btn" data-copy-id="cb-d7aalez5x47" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-if39mkqx7g" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-d7aalez5x47"><span class="ck">on</span>: [pull_request]
+    <pre class="code-pre" id="cb-if39mkqx7g"><span class="ck">on</span>: [pull_request]
 <span class="ck">jobs</span>:
   <span class="ck">audit</span>:          <span class="cc"># validate each changed document</span>
     <span class="ck">runs-on</span>: ubuntu-latest
@@ -109,11 +109,11 @@
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">terminal</span>
-      <button class="copy-btn" data-copy-id="cb-n1cv7ljwj9k" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-24vikkxjlsh" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-n1cv7ljwj9k"><span class="cc"># require both checks before a PR can merge</span>
+    <pre class="code-pre" id="cb-24vikkxjlsh"><span class="cc"># require both checks before a PR can merge</span>
 gh api -X PUT repos/OWNER/REPO/branches/main/protection \
   --input - &lt;&lt;'JSON'
 { <span class="ck">"required_status_checks"</span>:
@@ -131,11 +131,11 @@ JSON</pre>
       <span class="traffic-light" style="background:#febc2e;"></span>
       <span class="traffic-light" style="background:#28c840;"></span>
       <span class="code-filename">terminal</span>
-      <button class="copy-btn" data-copy-id="cb-zq9au6muaz" title="Copy">
+      <button class="copy-btn" data-copy-id="cb-pdn8q9ddu7d" title="Copy">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
     </div>
-    <pre class="code-pre" id="cb-zq9au6muaz"><span class="cc"># enable AI advisory scoring (optional)</span>
+    <pre class="code-pre" id="cb-pdn8q9ddu7d"><span class="cc"># enable AI advisory scoring (optional)</span>
 gh secret set ANTHROPIC_API_KEY --repo OWNER/REPO
 
 <span class="cc"># without it, advisory checks report:</span>
