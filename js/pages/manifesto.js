@@ -60,6 +60,12 @@ export function renderManifesto() {
         </div>
       </div>
 
+      <div style="margin-top:40px;padding:20px 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
+        <div class="eyebrow" style="margin-bottom:8px;">The standard is written down</div>
+        <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 isn't just prose — it's a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification (v0.1) →</a>
+      </div>
+
       ${pageNavHtml('/manifesto')}
       ${provenanceFooter('/manifesto')}
     </div>`;
