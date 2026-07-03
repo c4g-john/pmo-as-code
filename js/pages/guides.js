@@ -16,6 +16,7 @@ export function renderGuides() {
         ['Gate documents in CI', 'guide-gate', 'Run the audit and consistency jobs on every PR; make the gate binding.'],
         ['Add a new document kind', 'guide-kind', 'A template, a schema, and a criteria file, usually with no code at all.'],
         ['Start a new project', 'guide-project', 'Give a project a unique ID, a folder, and its own derived status page.'],
+        ['Bridge to GitHub Projects', 'guide-bridge', 'Turn approved stories into Features, sub-issue Stories, and a governed board.'],
       ].map(([title, id, desc]) => `
         <a href="#${id}" data-anchor="${id}" style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);border-radius:11px;text-decoration:none;color:var(--ink);">
           <div style="flex:1;">
@@ -132,6 +133,24 @@ docassert pages --out _site                 <span class="cc"># adds PRJ-002-ATL.
       <div class="card" style="margin-top:14px;border-left:3px solid var(--ok);">
         <div class="card-title">Unique by construction</div>
         <div class="card-body" style="margin-top:4px;">A CI check fails if <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> drifts from the anchors or two projects claim the same id or code, keeping identity unambiguous as the portfolio grows.</div>
+      </div>
+    </div>
+
+    <div id="guide-bridge" style="margin-bottom:48px;padding-top:10px;border-top:2px solid var(--accent-line);">
+      <div class="eyebrow">Guide 06</div>
+      <h2 class="h2-sm">Bridge to GitHub Projects.</h2>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 16px;">Once user stories are approved, the bridge runs delivery from them. Each product requirement becomes a Feature issue, each story becomes a sub-issue of its Feature, and a scope guard flags any issue that lacks a matching item in the documents. Scope flows from documents to GitHub, and execution state flows back only into the dashboards.</p>
+      ${cb('terminal', `docassert bridge scaffold --repo OWNER/REPO   <span class="cc"># Features + Story sub-issues, idempotent</span>
+docassert bridge reconcile --repo OWNER/REPO  <span class="cc"># police the board; non-zero exit on drift</span>
+docassert bridge status --repo OWNER/REPO     <span class="cc"># delivery figures per feature</span>`)}
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:16px 0;">The template ships three dormant workflows for this. Set the repository variable <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">BRIDGE_ENABLED</code> to <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">true</code> and they scaffold on document merges, reconcile on issue activity, and close a Feature when its last story lands. Everything runs on the built-in token.</p>
+      <div class="card" style="border-left:3px solid var(--warn);">
+        <div class="card-title">Boards need one extra token</div>
+        <div class="card-body" style="margin-top:4px;">Mirroring items onto a Projects v2 board requires a classic personal access token with only the <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project</code> scope, stored as the <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">PROJECTS_TOKEN</code> secret. Fine-grained tokens cannot reach personal-account boards. Then <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert bridge create-board</code> and the scaffold's <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">--project-number</code> flag do the rest, filling Type, Doc, and PMO Project fields on every item.</div>
+      </div>
+      <div class="card" style="margin-top:12px;border-left:3px solid var(--ok);">
+        <div class="card-title">The documents stay in charge</div>
+        <div class="card-body" style="margin-top:4px;">An issue typed straight onto the board gets a <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">scope:unverified</code> label and an alert within seconds, and the Delivery panel on the status page reads from the board without ever changing the document-derived RAG.</div>
       </div>
     </div>
 
