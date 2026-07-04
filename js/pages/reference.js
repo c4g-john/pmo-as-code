@@ -10,7 +10,7 @@ export function renderReference() {
     { name: 'user-story', desc: 'User stories.', extra: 'owner', sections: 'Overview · User Stories', items: 'US (traces PR)', checks: 'story-format' },
     { name: 'test-cases', desc: 'Test cases.', extra: 'owner', sections: 'Overview · Test Cases', items: 'TC (tests AC)', checks: 'items-well-formed' },
     { name: 'adr', desc: 'Architecture decision log.', extra: 'owner', sections: 'Overview · Decisions', items: 'ADR (affects FR/NFR)', checks: 'adr-items-have-status' },
-    { name: 'risk-register', desc: 'The risk register.', extra: 'owner', sections: 'Overview · Risks', items: 'RISK (threatens BR/PR)', checks: 'risk-items-complete' },
+    { name: 'risk-register', desc: 'The risk register. Risks carry a disposition (open, mitigated, accepted, closed); only open risks hold derived status at amber.', extra: 'owner', sections: 'Overview · Risks', items: 'RISK (threatens BR/PR)', checks: 'risk-items-complete · risk-disposition-valid' },
     { name: 'raci-stakeholder', desc: 'Roles and responsibilities.', extra: 'owner', sections: 'Stakeholders · RACI Matrix', items: '', checks: 'raci-one-accountable' },
     { name: 'qa-test-plan', desc: 'Test strategy and gates.', extra: 'owner', sections: 'Scope · Test Approach · Environments · Entry Criteria · Exit Criteria', items: '', checks: 'measurable-exit-criteria' },
     { name: 'data-migration-plan', desc: 'How data moves and is verified.', extra: 'owner', sections: 'Scope · Source Systems · Field Mapping · Validation · Cutover · Rollback', items: '', checks: 'mapping-table' },
@@ -18,6 +18,7 @@ export function renderReference() {
     { name: 'rollback-plan', desc: 'The abort path.', extra: 'owner', sections: 'Overview · Trigger Conditions · Rollback Steps · Verification', items: '', checks: 'numbered-steps (Rollback Steps)' },
     { name: 'hypercare-plan', desc: 'Heightened post-go-live support.', extra: 'owner', sections: 'Overview · Support Window · Severity Levels · Escalation · Exit Criteria', items: '', checks: 'measurable-exit-criteria' },
     { name: 'runbook', desc: 'Operational procedures.', extra: 'owner', sections: 'Overview · Prerequisites · Procedures · Monitoring · Escalation', items: '', checks: 'numbered-steps (Procedures)' },
+    { name: 'operations', desc: 'A governed service catalog for ongoing work, chartered per period.', extra: 'owner, review_by', sections: 'Overview · Services', items: 'SVC', checks: 'svc-items-complete · ops-review-fresh (advisory; a stale review turns derived status amber)' },
     { name: 'status-report', desc: 'A point-in-time status.', extra: 'owner, period, rag', sections: 'Summary · Progress · Risks & Issues · Next Steps', items: '', checks: 'references-risk' },
     { name: 'post-implementation-review', desc: 'Closure and lessons.', extra: 'owner', sections: 'Summary · Outcomes vs Objectives · What Went Well · What Could Improve · Lessons Learned · Follow-up Actions', items: '', checks: 'required-sections' },
     { name: 'benefits-realization', desc: 'Benefits vs the business case.', extra: 'owner', sections: 'Overview · Benefits · Measurement · Realized Value', items: '', checks: 'measurable-items (Benefits)' },
@@ -55,7 +56,7 @@ Content — and, where the kind defines them, traceable items.`)}
 
     <div id="ref-identity" style="margin-bottom:44px;">
       <h2 class="h2-sm">Project identity.</h2>
-      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents live in per-project folders. Each project is anchored by a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> (the 20th kind, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project</code>) whose id is the canonical <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-NNN-CODE</code>. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">CODE</code> namespaces every document id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-brd</code>) and item id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code>).</p>
+      <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Documents live in per-project folders. Each project is anchored by a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project.md</code> (the 21st kind, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">project</code>) whose id is the canonical <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">PRJ-NNN-CODE</code>. The <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">CODE</code> namespaces every document id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-brd</code>) and item id (<code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">AUR-BR-001</code>).</p>
       ${cb('documents/PRJ-001-AUR/project.md', `<span class="cc">---</span>
 <span class="ck">kind</span>: <span class="cv">project</span>
 <span class="ck">id</span>: <span class="cv">PRJ-001-AUR</span>    <span class="cc"># PRJ-&lt;NNN&gt;-&lt;CODE&gt;, unique across all projects</span>
@@ -64,7 +65,7 @@ Content — and, where the kind defines them, traceable items.`)}
 <span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>
 <span class="ck">status</span>: <span class="cv">active</span>         <span class="cc"># proposed | active | on-hold | closed</span>
 <span class="cc">---</span>`)}
-      <p style="font-size:14px;color:var(--muted);margin:14px 0 0;"><code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert projects</code> generates <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> from these anchors, and a CI check fails if it drifts or an id/code is duplicated. Checks: <span class="mono" style="font-size:12px;color:var(--muted);">project-id-format</span>.</p>
+      <p style="font-size:14px;color:var(--muted);margin:14px 0 0;">An optional <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">repo: OWNER/NAME</code> on the anchor maps the project to its code repository for the execution bridge. <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">docassert projects</code> generates <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">projects.yaml</code> from these anchors, and a CI check fails if it drifts or an id/code is duplicated. Checks: <span class="mono" style="font-size:12px;color:var(--muted);">project-id-format</span>.</p>
     </div>
 
     <div id="ref-items" style="margin-bottom:44px;">
@@ -85,7 +86,7 @@ Content — and, where the kind defines them, traceable items.`)}
     </div>
 
     <div id="ref-kinds" style="margin-bottom:24px;">
-      <h2 class="h2-sm">The nineteen document kinds.</h2>
+      <h2 class="h2-sm">The twenty document kinds.</h2>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 22px;">
         ${kinds.map(k => `<a href="#ref-${k.name}" data-anchor="ref-${k.name}" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;background:var(--panel);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink-2);">${k.name}</a>`).join('')}
       </div>

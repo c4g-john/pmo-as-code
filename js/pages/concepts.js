@@ -60,7 +60,7 @@ Cut median onboarding time from 14 days to under 2 days.
           </div>
           <div class="card" style="border-left:3px solid var(--l2);">
             <div class="card-title">Semantic: AI-graded and advisory</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API and posted to the PR, and it never blocks.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API with rubrics calibrated per relation (a mechanism contributing to a KPI is judged differently from a story implementing a requirement), cached by content hash so unchanged links are never re-billed, and the per-run budget spends only on ungraded links. Posted to the PR, and it never blocks.</div>
           </div>
         </div>
       </div>
