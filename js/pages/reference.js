@@ -2,6 +2,7 @@ import { cb, pageNavHtml, provenanceFooter } from '../ui.js';
 
 export function renderReference() {
   const kinds = [
+    { name: 'project', desc: 'The identity anchor: one per project folder, declaring the canonical id (PRJ-NNN-CODE), code, sponsor, lifecycle status, delivery profile, and the repo its execution bridges to.', frontmatter: 'id · code · name · sponsor · status · profile · repo', items: '', checks: 'project-id-format' },
     { name: 'charter', desc: 'The contract for a piece of work.', extra: 'sponsor, budget, dates', sections: 'Objective · Success Criteria · Scope · Milestones (dated bullets draw the timeline; the target date is an implicit milestone) · Risks · Approval', items: '', checks: 'milestones-dated · measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent' },
     { name: 'business-case', desc: 'The justification, upstream of the BRD.', extra: 'sponsor', sections: 'Problem Statement · Options Considered · Recommendation · Costs · Benefits', items: '', checks: 'required-sections' },
     { name: 'brd', desc: 'Business requirements.', extra: 'owner', sections: 'Purpose · Business Requirements · Out of Scope', items: 'BR', checks: 'items-well-formed' },
@@ -86,7 +87,7 @@ Content — and, where the kind defines them, traceable items.`)}
     </div>
 
     <div id="ref-kinds" style="margin-bottom:24px;">
-      <h2 class="h2-sm">The twenty document kinds.</h2>
+      <h2 class="h2-sm">The twenty-one document kinds.</h2>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 22px;">
         ${kinds.map(k => `<a href="#ref-${k.name}" data-anchor="ref-${k.name}" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;background:var(--panel);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink-2);">${k.name}</a>`).join('')}
       </div>
