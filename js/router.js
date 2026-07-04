@@ -15,6 +15,7 @@ import { renderProfiles } from './pages/profiles.js';
 import { renderAdoption } from './pages/adoption.js';
 import { renderVs } from './pages/vs.js';
 import { renderFAQ } from './pages/faq.js';
+import { renderPress } from './pages/press.js';
 
 function renderShell(route) {
   const shell = SHELLS[route];
@@ -59,6 +60,7 @@ export function getPageHtml(route) {
   if (route === '/adoption') return renderAdoption();
   if (route === '/vs') return renderVs();
   if (route === '/faq') return renderFAQ();
+  if (route === '/press') return renderPress();
   if (SHELLS[route]) return renderShell(route);
   return `<div><div class="eyebrow">404</div><h1 class="h1">Page not found.</h1><a href="#/" style="color:var(--accent);">← Home</a></div>`;
 }
