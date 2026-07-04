@@ -1,48 +1,44 @@
 # PMO as Code
 
-A documentation and framework site for **PMO as Code**, the practice of defining a portfolio's governance, structure, and operating model as declarative, version-controlled files, so status, roadmaps, risks, and decisions are *generated from a single source of truth* instead of hand-maintained in slides and spreadsheets.
+The documentation site for **PMO as Code** — extending the
+Infrastructure-as-Code / DevOps playbook to the PMO: business documents are
+structured, version-controlled Markdown, validated like code on every change;
+requirements trace end to end through typed links; and project status is
+**derived from the documents**, never self-reported.
 
-It takes the Infrastructure-as-Code / GitOps playbook and points it at the PMO.
+**Live site: [pmoascode.com](https://pmoascode.com)**
 
-The site is intentionally a **running instance** of the idea it describes: content authored as structured data, rendered by a single build, every page traceable to its source.
+## The stack this site documents
 
-## The three-layer model
+| Layer | Where it lives |
+|---|---|
+| **The Manifesto** — five value-pairs, the philosophy | [pmoascode.com/manifesto](https://pmoascode.com/manifesto/) |
+| **The specification** — document model, item grammar, checks, conformance suite | [pmo-as-code-spec](https://github.com/c4g-john/pmo-as-code-spec) |
+| **The reference implementation** — `docassert` (stable 1.x, [SemVer-bound](https://github.com/c4g-john/docassert/blob/main/STABILITY.md)) | [docassert](https://github.com/c4g-john/docassert) · `pip install docassert` |
+| **Delivery profiles** — lean-startup, agile-delivery, regulated-industry, operations | shipped inside docassert · [pmoascode.com/profiles](https://pmoascode.com/profiles/) |
 
-| Layer | What it is | Owned by |
-|---|---|---|
-| **1. The Manifesto** | Five value-pairs. The philosophy. | No one |
-| **2. The Reference Approach** | An opinionated implementation: object model, conventions, schema | This project |
-| **3. Profiles** | Named bundles others compose or fork (regulated-industry, lean-startup, agile-portfolio) | Community |
+Twenty-one document kinds (charter → benefits realization, plus the `project`
+anchor), two tiers of checks (deterministic structural checks that gate a
+merge; AI-graded semantic checks that only advise), an execution bridge to
+GitHub issues, and derived dashboards.
 
-## The object model
+## Proof it runs on itself
 
-Modeled Kubernetes-style. Ten kinds — `Portfolio`, `Program`, `Project`, `Charter`, `Milestone`, `RAID`, `Decision`, `Policy`, `Status`, `EventLog` — sharing one envelope:
+- **The portfolio that governs PMO as Code** is run as PMO as Code:
+  [pmo-as-code-pmo](https://github.com/c4g-john/pmo-as-code-pmo) · [live derived dashboard](https://c4g-john.github.io/pmo-as-code-pmo/).
+- **A real project** converted from a Word BRD and governed end to end:
+  [refuge-for-humans-pmo](https://github.com/c4g-john/refuge-for-humans-pmo) — the site's [case study](https://pmoascode.com/case-study/).
+- **A reference deployment** with sample projects: [pmo-as-code-pipeline](https://github.com/c4g-john/pmo-as-code-pipeline).
+- **A starter template**: [pmo-as-code-template](https://github.com/c4g-john/pmo-as-code-template).
 
-```yaml
-apiVersion: pmo/v1
-kind: Project
-metadata:
-  id: proj-aurora
-  portfolio: digital-transformation
-spec:
-  charter:
-    objective: Cut customer onboarding from 14 days to 2
-    successCriteria: [onboarding-p50 < 48h, csat > 4.5]
-    sponsor: jordan.lee
-  budget: { approved: 1200000, currency: USD }
-  milestones:
-    - { id: m1, name: MVP, due: 2026-09-30 }
-status:        # GENERATED — never typed by hand
-  health: derived
-  source: jira://CUST-PLATFORM
-```
-
-The `spec` is authored. The `status` block is always **derived** from real signals, never typed by hand.
+Content rule: **never lie to the reader.** No fabricated numbers, no invented
+customers; the one fictional sample project (Aurora) is disclosed as such
+wherever it appears.
 
 ## Running locally
 
-The site is plain HTML + CSS + native ES modules — **no build step**. Serve the
-folder with any static file server (ES modules need HTTP, not `file://`):
+Plain HTML + CSS + native ES modules. Serve the folder with any static file
+server (ES modules need HTTP, not `file://`):
 
 ```bash
 python3 -m http.server 3131
@@ -51,7 +47,8 @@ python3 -m http.server 3131
 
 ## Project structure
 
-Hash-based SPA, split into discrete files for maintainability:
+Hash-based SPA, prerendered to static HTML per route for crawlers and no-JS
+readers:
 
 ```
 index.html          # shell: <link> styles.css + <script type="module"> js/app.js
@@ -63,18 +60,12 @@ js/
   state.js          # the mutable app state object
   ui.js             # shared render helpers (cb, pageNav, sidebar, on-this-page)
   pages/            # one module per page (home, concepts, reference, …)
+scripts/prerender.py  # renders every route to <route>/index.html + sitemap
 ```
 
-To edit a page, open its file in `js/pages/`. To add a page: create the module,
-add its route to `js/router.js`, and add nav/anchors in `js/data.js`.
+To edit a page: change its module in `js/pages/`, then **run
+`python3 scripts/prerender.py`** so the static copies and sitemap stay in
+sync. To add a page: create the module, add its route to `js/router.js`,
+nav/anchors in `js/data.js`, and prerender.
 
-Pages covered: Home · Why · The Manifesto (+ Automation & Audit, Traceability) ·
-Rosetta Stone · Core Concepts · Quickstart · Guides · Reference · Integrations ·
-Profiles · Adoption & Maturity · vs Traditional PPM · FAQ.
-
-## Roadmap
-
-- [x] Full content across all 13 pages
-- [x] Copy-to-clipboard on code blocks, light/dark theme, mobile navigation
-- [ ] Client-side search (⌘K)
-- [ ] Provenance footer wired to live Git/CI metadata
+© 2026 C4G Enterprises Inc. · Site content and code by John Tanner.
