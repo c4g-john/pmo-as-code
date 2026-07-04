@@ -17,7 +17,7 @@ export function renderManifesto() {
           <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Automation and audit</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">gates and approvals</span></div>
           <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Traceability</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">dense documentation</span></div>
           <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Derived status</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">self-reported status</span></div>
-          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Composable definitions</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">bespoke, siloed tools</span></div>
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Composable definitions</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">one-off, siloed tools</span></div>
         </div>
         <p style="font-style:italic;color:var(--ink-2);font-size:15px;margin:18px 2px 0;">That is: while there is value in the items on the right, we value the items on the left more.</p>
       </div>

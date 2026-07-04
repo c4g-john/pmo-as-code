@@ -46,7 +46,7 @@ export function renderHome() {
             <div class="value-pair"><span class="value-left">Automation and audit</span><span class="value-over">over</span><span class="value-right">gates and approvals</span></div>
             <div class="value-pair"><span class="value-left">Traceability</span><span class="value-over">over</span><span class="value-right">dense documentation</span></div>
             <div class="value-pair"><span class="value-left">Derived status</span><span class="value-over">over</span><span class="value-right">self-reported status</span></div>
-            <div class="value-pair"><span class="value-left">Composable definitions</span><span class="value-over">over</span><span class="value-right">bespoke, siloed tools</span></div>
+            <div class="value-pair"><span class="value-left">Composable definitions</span><span class="value-over">over</span><span class="value-right">one-off, siloed tools</span></div>
           </div>
           <p style="font-style:italic;color:var(--ink-2);font-size:14.5px;margin:16px 2px 0;">That is: while there is value in the items on the right, we value the items on the left more.</p>
           <a href="#/manifesto" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:var(--accent);text-decoration:none;font-weight:600;font-size:14.5px;">Read the manifesto <span class="mono">→</span></a>
@@ -54,7 +54,7 @@ export function renderHome() {
 
         <section class="thread-section" id="reveal">
           <span class="thread-node"></span>
-          <div class="eyebrow">The core beat</div>
+          <div class="eyebrow">Validation</div>
           <h2 class="h2">Declared, then checked.</h2>
           <p class="body">You author the <em style="font-style:normal;color:var(--ink);">document</em>; the pipeline checks its fields, sections, and requirement links on every change. Watch it run:</p>
           <div class="reveal-grid">
@@ -89,7 +89,7 @@ Cut onboarding from 14 days to under 2.
 
         <section class="thread-section" id="thread">
           <span class="thread-node"></span>
-          <div class="eyebrow">The signature concept</div>
+          <div class="eyebrow">Traceability</div>
           <h2 class="h2">Follow the thread: <span style="color:var(--accent);">why does this test exist?</span></h2>
           <p class="body">The links carry the value. Documents stay thin and richly connected, so any test walks back to the business reason it exists.</p>
 

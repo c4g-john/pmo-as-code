@@ -52,7 +52,7 @@ export function renderReference() {
 <span class="cc">---</span>
 
 <span class="cv">## A Required Section</span>
-Content — and, where the kind defines them, traceable items.`)}
+Content, plus traceable items where the kind defines them.`)}
     </div>
 
     <div id="ref-identity" style="margin-bottom:44px;">
