@@ -51,7 +51,7 @@ export function renderManifesto() {
           </div>
           <div class="layer-card" style="border-left:3px solid var(--l2);">
             <span class="layer-num" style="background:var(--l2);">2</span>
-            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: object model, conventions, schema · versioned · maintained by John Tanner at C4G.</div></div>
+            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: document model, kinds, checks · versioned · maintained by John Tanner at C4G.</div></div>
           </div>
           <div class="layer-card" style="border-left:3px solid var(--l3);">
             <span class="layer-num" style="background:var(--l3);">3</span>
@@ -63,7 +63,7 @@ export function renderManifesto() {
       <div style="margin-top:40px;padding:20px 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
         <div class="eyebrow" style="margin-bottom:8px;">The standard is written down</div>
         <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 is a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
-        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification (v0.3) →</a>
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification →</a>
       </div>
 
       ${pageNavHtml('/manifesto')}

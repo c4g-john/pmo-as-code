@@ -6,7 +6,8 @@
   from version-controlled files: business documents are structured Markdown,
   validated like code on every change; requirements trace end to end; project
   status is derived from the documents, never self-reported.
-- **One-liner:** "Unit testing for business documents."
+- **One-liner:** "Project status is a build artifact."
+- **The tool's tagline:** docassert is "unit testing for business documents."
 - **The concept:** extends the Infrastructure-as-Code / DevOps playbook to the
   PMO — declared truth in Git, gates as admission control, derived status.
 - **The tool:** docassert — stable 1.x (since 2026-07-04), SemVer-bound per

@@ -1,10 +1,11 @@
 # PMO as Code
 
-The documentation site for **PMO as Code** — extending the
-Infrastructure-as-Code / DevOps playbook to the PMO: business documents are
-structured, version-controlled Markdown, validated like code on every change;
-requirements trace end to end through typed links; and project status is
-**derived from the documents**, never self-reported.
+The documentation site for **PMO as Code**, the standard whose one-liner is:
+**project status is a build artifact.** Business documents live in Git as
+structured Markdown, every change is tested and gated before it merges, and
+the pipeline compiles the documents into dashboards, roadmaps, and RAG status.
+Nobody types a status anywhere. It is the Infrastructure-as-Code / DevOps
+playbook, pointed at the PMO.
 
 **Live site: [pmoascode.com](https://pmoascode.com)**
 
