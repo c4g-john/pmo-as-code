@@ -186,9 +186,9 @@ Content — and, where the kind defines them, traceable items.</pre>
         </div>
         <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.85;">
           <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, project, title, status, sponsor, budget, dates</div>
-          <div><span style="display:inline-block;width:74px;color:var(--faint);">sections</span>Objective · Success Criteria · Scope · Milestones · Risks · Approval</div>
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">sections</span>Objective · Success Criteria · Scope · Milestones (dated bullets draw the timeline; the target date is an implicit milestone) · Risks · Approval</div>
           
-          <div><span style="display:inline-block;width:74px;color:var(--faint);">checks</span>measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent</div>
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">checks</span>milestones-dated · measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent</div>
         </div>
       </div>
       <div id="ref-business-case" style="border:1px solid var(--border);border-radius:11px;padding:13px 16px;margin-bottom:9px;">
@@ -223,7 +223,7 @@ Content — and, where the kind defines them, traceable items.</pre>
         <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.85;">
           <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, project, title, status, owner</div>
           <div><span style="display:inline-block;width:74px;color:var(--faint);">sections</span>Overview · Product Requirements · Acceptance Criteria</div>
-          <div><span style="display:inline-block;width:74px;color:var(--faint);">items</span>PR (traces BR) · AC (verifies PR)</div>
+          <div><span style="display:inline-block;width:74px;color:var(--faint);">items</span>PR (traces BR, optionally after another PR for sequencing) · AC (verifies PR)</div>
           <div><span style="display:inline-block;width:74px;color:var(--faint);">checks</span>items-well-formed</div>
         </div>
       </div>
@@ -278,7 +278,7 @@ Content — and, where the kind defines them, traceable items.</pre>
       <div id="ref-risk-register" style="border:1px solid var(--border);border-radius:11px;padding:13px 16px;margin-bottom:9px;">
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
           <span class="mono" style="font-size:13px;font-weight:600;color:var(--accent);">risk-register</span>
-          <span style="font-size:13.5px;color:var(--ink-2);">The risk register. Risks carry a disposition (open, mitigated, accepted, closed); only open risks hold derived status at amber.</span>
+          <span style="font-size:13.5px;color:var(--ink-2);">The risk register. Risks carry a disposition (open, mitigated, accepted, closed); open risks hold derived status at amber only at or above the configurable risk appetite (probability × impact ≥ 6 by default), so honest registers are never punished.</span>
         </div>
         <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.85;">
           <div><span style="display:inline-block;width:74px;color:var(--faint);">frontmatter</span>kind, id, project, title, status, owner</div>

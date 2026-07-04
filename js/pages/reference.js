@@ -2,15 +2,15 @@ import { cb, pageNavHtml, provenanceFooter } from '../ui.js';
 
 export function renderReference() {
   const kinds = [
-    { name: 'charter', desc: 'The contract for a piece of work.', extra: 'sponsor, budget, dates', sections: 'Objective · Success Criteria · Scope · Milestones · Risks · Approval', items: '', checks: 'measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent' },
+    { name: 'charter', desc: 'The contract for a piece of work.', extra: 'sponsor, budget, dates', sections: 'Objective · Success Criteria · Scope · Milestones (dated bullets draw the timeline; the target date is an implicit milestone) · Risks · Approval', items: '', checks: 'milestones-dated · measurable-success-criteria · risks-have-owner-and-mitigation · dates-consistent' },
     { name: 'business-case', desc: 'The justification, upstream of the BRD.', extra: 'sponsor', sections: 'Problem Statement · Options Considered · Recommendation · Costs · Benefits', items: '', checks: 'required-sections' },
     { name: 'brd', desc: 'Business requirements.', extra: 'owner', sections: 'Purpose · Business Requirements · Out of Scope', items: 'BR', checks: 'items-well-formed' },
-    { name: 'prd', desc: 'Product requirements and acceptance criteria.', extra: 'owner', sections: 'Overview · Product Requirements · Acceptance Criteria', items: 'PR (traces BR) · AC (verifies PR)', checks: 'items-well-formed' },
+    { name: 'prd', desc: 'Product requirements and acceptance criteria.', extra: 'owner', sections: 'Overview · Product Requirements · Acceptance Criteria', items: 'PR (traces BR, optionally after another PR for sequencing) · AC (verifies PR)', checks: 'items-well-formed' },
     { name: 'frnfr', desc: 'Functional & non-functional requirements.', extra: 'owner', sections: 'Overview · Functional Requirements · Non-Functional Requirements', items: 'FR · NFR (trace PR)', checks: 'items-well-formed' },
     { name: 'user-story', desc: 'User stories.', extra: 'owner', sections: 'Overview · User Stories', items: 'US (traces PR)', checks: 'story-format' },
     { name: 'test-cases', desc: 'Test cases.', extra: 'owner', sections: 'Overview · Test Cases', items: 'TC (tests AC)', checks: 'items-well-formed' },
     { name: 'adr', desc: 'Architecture decision log.', extra: 'owner', sections: 'Overview · Decisions', items: 'ADR (affects FR/NFR)', checks: 'adr-items-have-status' },
-    { name: 'risk-register', desc: 'The risk register. Risks carry a disposition (open, mitigated, accepted, closed); only open risks hold derived status at amber.', extra: 'owner', sections: 'Overview · Risks', items: 'RISK (threatens BR/PR)', checks: 'risk-items-complete · risk-disposition-valid' },
+    { name: 'risk-register', desc: 'The risk register. Risks carry a disposition (open, mitigated, accepted, closed); open risks hold derived status at amber only at or above the configurable risk appetite (probability × impact ≥ 6 by default), so honest registers are never punished.', extra: 'owner', sections: 'Overview · Risks', items: 'RISK (threatens BR/PR)', checks: 'risk-items-complete · risk-disposition-valid' },
     { name: 'raci-stakeholder', desc: 'Roles and responsibilities.', extra: 'owner', sections: 'Stakeholders · RACI Matrix', items: '', checks: 'raci-one-accountable' },
     { name: 'qa-test-plan', desc: 'Test strategy and gates.', extra: 'owner', sections: 'Scope · Test Approach · Environments · Entry Criteria · Exit Criteria', items: '', checks: 'measurable-exit-criteria' },
     { name: 'data-migration-plan', desc: 'How data moves and is verified.', extra: 'owner', sections: 'Scope · Source Systems · Field Mapping · Validation · Cutover · Rollback', items: '', checks: 'mapping-table' },
