@@ -1,116 +1,174 @@
-import { cb, pageNavHtml, provenanceFooter } from '../ui.js';
+import { pageNavHtml, provenanceFooter } from '../ui.js';
 
-// Every number on this page is verifiable against a shipped artifact
-// (ADO-PR-006). If a figure here can drift, link the living source instead.
+// The press & share kit (ADO-PR-006, presentation bar per ADO-AC-007):
+// every visual asset previewed on the page, prose copy wrapped with one-click
+// copy, announcements presented in the form of their destination. Every
+// factual claim links to the shipped artifact that proves it.
+
+const MONO = "font-family:'JetBrains Mono',monospace;";
+
+function chip(label, href) {
+  return `<a href="${href}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;${MONO}font-size:12px;color:var(--ink);background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:7px 14px;text-decoration:none;white-space:nowrap;">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--l2);flex-shrink:0;"></span>${label}</a>`;
+}
+
+// A quotable prose block: wrapped text + the site's standard copy button.
+function quote(id, label, text) {
+  return `<div style="position:relative;border:1px solid var(--border);border-left:3px solid var(--l2);border-radius:11px;background:var(--panel);padding:18px 52px 16px 20px;">
+    <div style="${MONO}font-size:11px;color:var(--muted);margin-bottom:9px;letter-spacing:.06em;text-transform:uppercase;">${label}</div>
+    <div id="${id}" style="font-size:15px;line-height:1.65;color:var(--ink);">${text}</div>
+    <button class="copy-btn" data-copy-id="${id}" title="Copy" style="position:absolute;top:12px;right:12px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>
+  </div>`;
+}
+
+function assetCard(preview, name, meta, href) {
+  return `<div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column;">
+    <div style="background:var(--panel-2);border-bottom:1px solid var(--border);">${preview}</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 15px;">
+      <div><div style="font-weight:600;font-size:13.5px;">${name}</div>
+        <div style="${MONO}font-size:11px;color:var(--muted);margin-top:2px;">${meta}</div></div>
+      <a href="${href}" download style="${MONO}font-size:12px;white-space:nowrap;">↓ file</a>
+    </div>
+  </div>`;
+}
+
 export function renderPress() {
-  const fact = (k, v) => `<div style="display:grid;grid-template-columns:180px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);padding-top:2px;">${k}</span>
-    <span style="font-size:14.5px;color:var(--ink);">${v}</span></div>`;
+  const factRow = (k, v) => `<div style="display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);">
+    <span style="${MONO}font-size:12px;color:var(--muted);padding-top:2px;">${k}</span>
+    <span style="font-size:14.5px;line-height:1.6;color:var(--ink);">${v}</span></div>`;
 
-  const angle = (t, body, link, label) => `<div style="border:1px solid var(--border);border-radius:11px;padding:18px 20px;background:var(--panel);">
-    <div style="font-weight:600;font-size:15.5px;margin-bottom:8px;">${t}</div>
-    <p style="font-size:14px;line-height:1.6;color:var(--ink-2);margin:0 0 10px;">${body}</p>
-    <a href="${link}" target="_blank" rel="noopener" style="font-size:13px;">${label} →</a></div>`;
+  const angle = (n, t, body, link, label) => `<div style="border:1px solid var(--border);border-radius:12px;padding:20px 22px;background:var(--panel);">
+    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:9px;">
+      <span style="${MONO}font-size:12px;color:var(--l2);">0${n}</span>
+      <span style="font-weight:600;font-size:16px;">${t}</span></div>
+    <p style="font-size:14px;line-height:1.65;color:var(--ink-2);margin:0 0 12px;">${body}</p>
+    <a href="${link}" target="_blank" rel="noopener" style="font-size:13.5px;">${label} →</a></div>`;
+
+  // ── ready-to-post bodies (the id'd element's innerText is what copies) ──
+  const liBody = `I recently took a 14-section product BRD — a Word document like every BRD you've ever seen — and ran it through something I've been building.<br><br>Out the other side came a Git repository where every requirement is a traceable item, every document is unit-tested on each pull request, and project status is derived from the documents instead of typed into a slide.<br><br>The interesting part was what failed at import:<br><br>· The charter had no budget and no target date, and the audit said so.<br>· All five risks had descriptions but no probability, impact, or owner — each flagged with its missing fields.<br>· 6 of 10 product requirements had no acceptance criterion. The traceability graph found that in seconds, after every prose review had missed it.<br><br>Every one of those gaps was closed the only way the repo allows: pull requests the gate re-checked. The dashboard shows the whole story, ambers included.<br><br>That's the idea behind PMO as Code. Business documents get the treatment engineers give code — versioned, tested on every change, gated before merge — with a red/amber/green nobody can hand-set because it's computed.<br><br>It's open source (Apache-2.0), and the tool just hit a stability-guaranteed 1.0:<br><br>· The standard: pmoascode.com<br>· The tool: pipx install docassert (github.com/c4g-john/docassert)<br>· A one-click starter template, and live dashboards you can poke at<br><br>If you run a PMO, write BRDs, or have ever argued about whether a status is *really* green — I'd love your critique.<br><br>#PMO #ProjectManagement #DevOps #OpenSource #DocsAsCode`;
+
+  const hnBody = `Business documents (charters, BRDs, risk registers) are usually prose in Word, which leaves them unversioned, unvalidated, and impossible to audit at scale. docassert treats them like code: documents are structured Markdown, unit-tested on every pull request, and unable to merge until they pass.<br><br>There are two tiers of checks by design. Structural checks are deterministic Python and block the merge (measurable success criteria, risks with owners, resolving references, schema-valid frontmatter). Semantic checks are LLM-graded and only advise, because a model shouldn't gate a merge.<br><br>The part I find most useful in practice: requirements are bullets with stable ids and typed links (**AUR-PR-014** (traces: AUR-BR-001): ...), so the whole repo becomes a graph. "Which requirements have no test?" becomes a query. Project status (red/amber/green) is derived from the documents, and the dashboard and README badge can't be hand-set.<br><br>As a test, I converted a real 14-section BRD from Word. The audit immediately found a charter with no budget, five risks without owners, and six requirements with no acceptance criteria. It also blocked a draft for a budget that legitimately didn't exist yet — which forced a spec change (drafts now get advisories; the gate arms when you mark a document "proposed"). The whole loop is public, including a live dashboard with the ambers showing.<br><br>There's a spec so it isn't tool-locked (73-case conformance suite), a GitHub Action, a Homebrew tap, and a template repo. Python, Apache-2.0, stable 1.x. pipx install docassert<br><br>Two things I'd value critique on: whether item-id grammars in Markdown bullets are too fussy for non-engineers, and whether "LLM checks never block" stays tenable as models get better.`;
+
+  const shortBody = `Your project charter should fail CI.<br><br>PMO as Code: business documents as version-controlled Markdown, unit-tested on every PR, status derived — never typed. The tool (docassert) just hit stable 1.0. Apache-2.0.<br><br>pmoascode.com`;
 
   return `<div>
     <div class="eyebrow">Share</div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Press &amp; share kit.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0 0 12px;">Everything needed to cover or share PMO as Code accurately: verified facts, approved copy, story angles, assets, and a contact. Every claim on this page traces to a shipped artifact you can click.</p>
-    <p style="font-size:13.5px;color:var(--muted);max-width:62ch;margin:0 0 36px;">Assets and copy here are free to use when writing about the project. Names: “PMO as Code” (the standard), lowercase “docassert” (the tool).</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0 0 22px;">Cover it or share it without asking permission: verified facts, quotable copy, real product images, and announcements ready to post. Every claim traces to a shipped artifact — the chips below are links.</p>
 
-    <div id="press-facts" style="margin-bottom:44px;">
-      <h2 class="h2-sm">Fact sheet.</h2>
-      <div style="margin-top:14px;">
-        ${fact('What it is', 'PMO as Code — a vendor-neutral standard for running a project management office from version-controlled files: business documents are structured Markdown, validated like code on every change; requirements trace end to end; project status is derived from the documents, never self-reported.')}
-        ${fact('The one-liner', '“Unit testing for business documents.”')}
-        ${fact('The concept', 'Extends the Infrastructure-as-Code / DevOps playbook to the PMO: declared truth in Git, gates as admission control, derived (never hand-set) status.')}
-        ${fact('The tool', '<a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">docassert</a> — stable 1.x since 2026-07-04, <a href="https://github.com/c4g-john/docassert/blob/main/STABILITY.md" target="_blank" rel="noopener">SemVer-bound</a>. Apache-2.0. Python 3.10–3.14. <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">pipx install docassert</code> · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">brew install c4g-john/tap/docassert</code>')}
-        ${fact('The standard', '<a href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">PMO as Code specification</a> v0.8 (draft), with a 73-case conformance suite the tool passes in CI.')}
-        ${fact('The scope', 'Twenty-one document kinds (charter → benefits realization), two tiers of checks — deterministic structural checks that gate a merge, AI-graded semantic checks that only advise — an execution bridge to GitHub issues, and derived dashboards.')}
-        ${fact('Proof', 'The project governs itself with its own tool: <a href="https://c4g-john.github.io/pmo-as-code-pmo/" target="_blank" rel="noopener">the live portfolio dashboard</a> is derived from the governing documents on every merge.')}
-        ${fact('Who', 'John Tanner, C4G Enterprises Inc. — <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a>')}
-        ${fact('Press contact', '<a href="mailto:press@c4genterprises.com">press@c4genterprises.com</a>')}
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 46px;">
+      ${chip('docassert 1.0 · stable', 'https://github.com/c4g-john/docassert/releases/tag/v1.0.0')}
+      ${chip('SemVer-bound', 'https://github.com/c4g-john/docassert/blob/main/STABILITY.md')}
+      ${chip('Apache-2.0', 'https://github.com/c4g-john/docassert/blob/main/LICENSE')}
+      ${chip('spec v0.8', 'https://github.com/c4g-john/pmo-as-code-spec')}
+      ${chip('73 conformance cases', 'https://github.com/c4g-john/pmo-as-code-spec/tree/main/conformance')}
+      ${chip('21 document kinds', '/reference/')}
+      ${chip('live dashboard', 'https://c4g-john.github.io/pmo-as-code-pmo/')}
+    </div>
+
+    <div id="press-tensec" style="margin-bottom:52px;">
+      <h2 class="h2-sm">The ten-second version.</h2>
+      <div style="display:grid;gap:12px;margin-top:16px;">
+        <div style="border:1px solid var(--border);border-radius:12px;background:var(--panel);padding:26px 28px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,27px);line-height:1.25;letter-spacing:-.015em;">“Unit testing for business documents.”</div>
+          <div style="font-size:13.5px;color:var(--muted);margin-top:10px;">PMO as Code extends the Infrastructure-as-Code / DevOps playbook to the PMO: declared truth in Git, gates as admission control, derived — never hand-set — status.</div>
+        </div>
+        ${quote('press-q50', 'Boilerplate · 50 words', `PMO as Code treats business documents the way engineers treat code: charters, BRDs, and risk registers live in Git as structured Markdown, are unit-tested on every change, and cannot merge until they pass. Project status is derived from the documents — red, amber, green that nobody can hand-set.`)}
+        ${quote('press-q100', 'Boilerplate · 100 words', `PMO as Code is an open standard for running a project management office from version-controlled files. Business documents — charters, BRDs, PRDs, risk registers — are structured Markdown with schemas and audit criteria, validated on every pull request by docassert, the Apache-licensed reference implementation. Requirements are traceable items with typed links, so “which requirements have no test?” is a query, not a meeting. Project status is derived from the documents and published as a live dashboard nobody can hand-edit. The project practices what it preaches: its own portfolio is governed by the standard, gates and all, in public repositories.`)}
       </div>
     </div>
 
-    <div id="press-boiler" style="margin-bottom:44px;">
-      <h2 class="h2-sm">Boilerplate.</h2>
-      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 14px;max-width:60ch;">Quote these verbatim or edit freely.</p>
-      ${cb('50 words', `PMO as Code treats business documents the way engineers treat code: charters, BRDs, and risk registers live in Git as structured Markdown, are unit-tested on every change, and cannot merge until they pass. Project status is derived from the documents — red, amber, green that nobody can hand-set.`)}
-      ${cb('100 words', `PMO as Code is an open standard for running a project management office from version-controlled files. Business documents — charters, BRDs, PRDs, risk registers — are structured Markdown with schemas and audit criteria, validated on every pull request by docassert, the Apache-licensed reference implementation. Requirements are traceable items with typed links, so “which requirements have no test?” is a query, not a meeting. Project status is derived from the documents and published as a live dashboard nobody can hand-edit. The project practices what it preaches: its own portfolio is governed by the standard, gates and all, in public repositories.`)}
+    <div id="press-assets" style="margin-bottom:52px;">
+      <h2 class="h2-sm">Assets.</h2>
+      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 4px;max-width:62ch;">Free to use when covering the project. The dashboards are the product — screenshots below are real captures of live pages with real (honest) states.</p>
+      <p style="margin:0 0 18px;"><a class="btn-secondary" href="/assets/press/pmo-as-code-press-kit.zip" download style="display:inline-block;margin-top:12px;">Download everything (zip, ~0.5 MB) ↓</a></p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;">
+        ${assetCard(`<a href="/assets/press/dashboard-portfolio.png" target="_blank" rel="noopener"><img src="/assets/press/dashboard-portfolio.png" alt="The live portfolio dashboard — five projects, derived health" loading="lazy" style="display:block;width:100%;height:auto;"></a>`,
+          'Portfolio dashboard', 'PNG · 2880×1800 · live capture', '/assets/press/dashboard-portfolio.png')}
+        ${assetCard(`<a href="/assets/press/dashboard-project.png" target="_blank" rel="noopener"><img src="/assets/press/dashboard-project.png" alt="A project status page — verdict, coverage, risk matrix, sequence chart" loading="lazy" style="display:block;width:100%;height:auto;"></a>`,
+          'Project dashboard', 'PNG · 2880×1800 · live capture', '/assets/press/dashboard-project.png')}
+        ${assetCard(`<a href="/assets/press/social-card.png" target="_blank" rel="noopener"><img src="/assets/press/social-card.png" alt="PMO as Code social card" loading="lazy" style="display:block;width:100%;height:auto;"></a>`,
+          'Social card', 'PNG · 1200×630', '/assets/press/social-card.png')}
+        ${assetCard(`<div style="display:grid;grid-template-columns:1fr 1fr;min-height:150px;"><div style="display:flex;align-items:center;justify-content:center;background:#0b0d10;"><img src="/assets/press/logo.svg" alt="PMO as Code logomark on dark" style="width:56px;height:56px;"></div><div style="display:flex;align-items:center;justify-content:center;background:#f4f6f8;"><img src="/assets/press/logo.svg" alt="PMO as Code logomark on light" style="width:56px;height:56px;"></div></div>`,
+          'Logomark', 'SVG · scales to any size', '/assets/press/logo.svg')}
+        ${assetCard(`<div style="padding:14px;background:#0d1117;"><img src="/assets/press/demo.svg" alt="Animated demo: a weak charter is blocked, fixed, and cleared" loading="lazy" style="display:block;width:100%;height:auto;"></div>`,
+          'Demo animation', 'SVG · animates in-place', '/assets/press/demo.svg')}
+        ${assetCard(`<div style="padding:18px 20px;${MONO}font-size:12px;line-height:1.9;color:var(--ink-2);"># PMO as Code — fact sheet<br>- What: unit testing for business documents<br>- Tool: docassert, stable 1.x, Apache-2.0<br>- Spec: v0.8 · 73 conformance cases<br>- Contact: press@c4genterprises.com …</div>`,
+          'Fact sheet', 'Markdown · plain text', '/assets/press/fact-sheet.md')}
+      </div>
     </div>
 
-    <div id="press-angles" style="margin-bottom:44px;">
+    <div id="press-angles" style="margin-bottom:52px;">
       <h2 class="h2-sm">Three story angles.</h2>
-      <div style="display:grid;gap:12px;margin-top:14px;">
-        ${angle('Infrastructure-as-Code, pointed at the PMO',
+      <div style="display:grid;gap:12px;margin-top:16px;">
+        ${angle(1, 'Infrastructure-as-Code, pointed at the PMO',
           'DevOps solved “the wiki is stale and the spreadsheet lies” for infrastructure a decade ago: declare truth in files, validate on every change, derive state instead of reporting it. PMO as Code applies the same playbook to project governance — same Git, same gates, same convergence loops.',
           'https://pmoascode.com/manifesto/', 'The manifesto')}
-        ${angle('It governs itself — and you can check',
+        ${angle(2, 'It governs itself — and you can check',
           'The portfolio that builds PMO as Code is run as PMO as Code: five projects, every scope change through a gated pull request, and a public dashboard derived from the governing documents on every merge. Every claim is a click away from its evidence.',
           'https://c4g-john.github.io/pmo-as-code-pmo/', 'The live portfolio dashboard')}
-        ${angle('Dashboards that can’t lie',
+        ${angle(3, 'Dashboards that can’t lie',
           'Status is computed, not typed: coverage from the traceability graph, risk from a scored register with an explicit appetite, delivery from real issue states. Amber pages state their causes. A real project converted from a Word BRD shows the whole loop, ambers included.',
           'https://c4g-john.github.io/refuge-for-humans-pmo/', 'The case-study dashboard')}
       </div>
     </div>
 
-    <div id="press-assets" style="margin-bottom:44px;">
-      <h2 class="h2-sm">Assets.</h2>
-      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 14px;max-width:62ch;">Logo, social card, the demo animation, and this page's facts as files — or grab the bundle. Dashboards change with reality, so screenshot them fresh from the live links above.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a class="btn-secondary" href="/assets/press/pmo-as-code-press-kit.zip" download>Download the kit (zip) ↓</a>
-        <a class="btn-secondary" href="/assets/press/logo.svg" target="_blank" rel="noopener">Logo (SVG)</a>
-        <a class="btn-secondary" href="/assets/press/social-card.png" target="_blank" rel="noopener">Social card (PNG)</a>
-        <a class="btn-secondary" href="/assets/press/demo.svg" target="_blank" rel="noopener">Demo animation (SVG)</a>
-        <a class="btn-secondary" href="/assets/press/fact-sheet.md" target="_blank" rel="noopener">Fact sheet (Markdown)</a>
+    <div id="press-share" style="margin-bottom:52px;">
+      <h2 class="h2-sm">Ready to post.</h2>
+      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 16px;max-width:60ch;">Personal-voice drafts, shown the way they'll look where they land. Every number in them is real. Copy, edit freely, post.</p>
+
+      <div style="display:grid;gap:16px;">
+        <!-- LinkedIn -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);">
+            <span style="${MONO}font-size:11.5px;color:var(--muted);letter-spacing:.06em;">LINKEDIN · ~1 MIN READ</span>
+            <button class="copy-btn" data-copy-id="press-li" title="Copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+          <div style="padding:18px 20px;">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+              <span style="width:42px;height:42px;border-radius:50%;background:var(--l2);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;">JT</span>
+              <span><span style="display:block;font-weight:600;font-size:14px;">John Tanner</span>
+              <span style="display:block;font-size:12px;color:var(--muted);">Founder, C4G Enterprises</span></span>
+            </div>
+            <div id="press-li" style="font-size:14px;line-height:1.65;color:var(--ink);max-width:66ch;">${liBody}</div>
+          </div>
+        </div>
+
+        <!-- Show HN -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);background:linear-gradient(to right, rgba(255,102,0,.14), transparent 60%);">
+            <span style="${MONO}font-size:11.5px;color:var(--muted);letter-spacing:.06em;"><span style="color:#ff6600;font-weight:700;">Y</span> · SHOW HN · TITLE + FIRST COMMENT</span>
+            <button class="copy-btn" data-copy-id="press-hn" title="Copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+          <div id="press-hn" style="padding:18px 20px;">
+            <div style="font-weight:600;font-size:15px;margin-bottom:12px;">Show HN: Docassert – unit testing for business documents</div>
+            <div style="font-size:13.5px;line-height:1.65;color:var(--ink-2);max-width:70ch;">${hnBody}</div>
+          </div>
+        </div>
+
+        <!-- Short -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);">
+            <span style="${MONO}font-size:11.5px;color:var(--muted);letter-spacing:.06em;">SHORT · X / MASTODON / BLUESKY</span>
+            <button class="copy-btn" data-copy-id="press-short" title="Copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+          <div id="press-short" style="padding:18px 20px;font-size:15px;line-height:1.6;max-width:60ch;">${shortBody}</div>
+        </div>
       </div>
     </div>
 
-    <div id="press-share" style="margin-bottom:24px;">
-      <h2 class="h2-sm">Ready-to-post copy.</h2>
-      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 14px;max-width:60ch;">Personal-voice drafts — every number in them is real. Edit freely.</p>
-      ${cb('LinkedIn (~1 min read)', `I recently took a 14-section product BRD — a Word document like every BRD you've ever seen — and ran it through something I've been building.
-
-Out the other side came a Git repository where every requirement is a traceable item, every document is unit-tested on each pull request, and project status is derived from the documents instead of typed into a slide.
-
-The interesting part was what failed at import:
-
-· The charter had no budget and no target date, and the audit said so.
-· All five risks had descriptions but no probability, impact, or owner — each flagged with its missing fields.
-· 6 of 10 product requirements had no acceptance criterion. The traceability graph found that in seconds, after every prose review had missed it.
-
-Every one of those gaps was closed the only way the repo allows: pull requests the gate re-checked. The dashboard shows the whole story, ambers included.
-
-That's the idea behind PMO as Code. Business documents get the treatment engineers give code — versioned, tested on every change, gated before merge — with a red/amber/green nobody can hand-set because it's computed.
-
-It's open source (Apache-2.0), and the tool just hit a stability-guaranteed 1.0:
-
-· The standard: pmoascode.com
-· The tool: pipx install docassert (github.com/c4g-john/docassert)
-· A one-click starter template, and live dashboards you can poke at
-
-If you run a PMO, write BRDs, or have ever argued about whether a status is *really* green — I'd love your critique.
-
-#PMO #ProjectManagement #DevOps #OpenSource #DocsAsCode`)}
-      ${cb('Show HN (title + first comment)', `Show HN: Docassert – unit testing for business documents
-
-Business documents (charters, BRDs, risk registers) are usually prose in Word, which leaves them unversioned, unvalidated, and impossible to audit at scale. docassert treats them like code: documents are structured Markdown, unit-tested on every pull request, and unable to merge until they pass.
-
-There are two tiers of checks by design. Structural checks are deterministic Python and block the merge (measurable success criteria, risks with owners, resolving references, schema-valid frontmatter). Semantic checks are LLM-graded and only advise, because a model shouldn't gate a merge.
-
-The part I find most useful in practice: requirements are bullets with stable ids and typed links (**AUR-PR-014** (traces: AUR-BR-001): ...), so the whole repo becomes a graph. "Which requirements have no test?" becomes a query. Project status (red/amber/green) is derived from the documents, and the dashboard and README badge can't be hand-set.
-
-As a test, I converted a real 14-section BRD from Word. The audit immediately found a charter with no budget, five risks without owners, and six requirements with no acceptance criteria. It also blocked a draft for a budget that legitimately didn't exist yet — which forced a spec change (drafts now get advisories; the gate arms when you mark a document "proposed"). The whole loop is public, including a live dashboard with the ambers showing.
-
-There's a spec so it isn't tool-locked (73-case conformance suite), a GitHub Action, a Homebrew tap, and a template repo. Python, Apache-2.0, stable 1.x. pipx install docassert
-
-Two things I'd value critique on: whether item-id grammars in Markdown bullets are too fussy for non-engineers, and whether "LLM checks never block" stays tenable as models get better.`)}
-      ${cb('Short (X / Mastodon)', `Your project charter should fail CI.
-
-PMO as Code: business documents as version-controlled Markdown, unit-tested on every PR, status derived — never typed. The tool (docassert) just hit stable 1.0. Apache-2.0.
-
-pmoascode.com`)}
+    <div id="press-facts" style="margin-bottom:44px;">
+      <h2 class="h2-sm">Fact sheet.</h2>
+      <div style="margin-top:8px;">
+        ${factRow('What it is', 'A vendor-neutral standard for running a PMO from version-controlled files: business documents are structured Markdown, validated like code on every change; requirements trace end to end; project status is derived from the documents, never self-reported.')}
+        ${factRow('The tool', '<a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">docassert</a> — Python 3.10–3.14 · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">pipx install docassert</code> · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">brew install c4g-john/tap/docassert</code>')}
+        ${factRow('The scope', 'Twenty-one document kinds, two tiers of checks (deterministic structural checks gate the merge; AI-graded semantic checks only advise), an execution bridge to GitHub issues, derived dashboards.')}
+        ${factRow('Who', 'John Tanner, C4G Enterprises Inc. — <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a>')}
+        ${factRow('Press contact', '<a href="mailto:press@c4genterprises.com">press@c4genterprises.com</a>')}
+        ${factRow('Names', '“PMO as Code” — the standard. Lowercase “docassert” — the tool.')}
+      </div>
     </div>
 
     ${pageNavHtml('/press')}

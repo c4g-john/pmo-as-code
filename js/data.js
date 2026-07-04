@@ -27,7 +27,7 @@ export const NAV = [
 export const PAGE_META = {
   '/':            { t: 'Home',                    src: 'js/pages/home.js' },
   '/why':         { t: 'Why PMO as Code',         src: 'js/pages/why.js' },
-  '/press': [['press-facts','Fact sheet'],['press-boiler','Boilerplate'],['press-angles','Story angles'],['press-assets','Assets'],['press-share','Ready-to-post copy']],
+  '/press': [['press-tensec','The ten-second version'],['press-assets','Assets'],['press-angles','Story angles'],['press-share','Ready to post'],['press-facts','Fact sheet']],
   '/case-study':  { t: 'Case study: Refuge for Humans', src: 'js/pages/case-study.js' },
   '/manifesto':   { t: 'The Manifesto',           src: 'js/pages/manifesto.js' },
   '/manifesto/automation':   { t: 'Automation & audit',   src: 'js/pages/manifesto.js' },
