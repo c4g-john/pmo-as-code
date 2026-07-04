@@ -24,7 +24,7 @@ docassert extract "Refuge for Humans BRD.docx"   <span class="cc"># .docx → pl
         <span class="thread-node"></span>
         <div class="eyebrow">The conversion</div>
         <h2 class="h2">Mapped faithfully, with nothing padded to pass.</h2>
-        <p class="body">The doc-to-pmo skill split the BRD into a proper spine: a project anchor, charter, BRD, PRD, functional &amp; non-functional requirements, a risk register, and test cases. At import that came to <strong style="font-weight:600;color:var(--ink);">49 traceable items</strong>, every reference resolving, all seven business requirements covered — and the set has grown since, as new scope arrived through document PRs, which is the point. Where the source stated a threshold, it became a measurable criterion. Where it didn't, nothing was invented.</p>
+        <p class="body">The doc-to-pmo skill split the BRD into a proper spine: a project anchor, charter, BRD, PRD, functional &amp; non-functional requirements, a risk register, and test cases. At import that came to <strong style="font-weight:600;color:var(--ink);">49 traceable items</strong>, every reference resolving, all seven business requirements covered. The set has grown since; new scope arrives the same way everything else does here, through a pull request the gate re-checks. Where the source stated a threshold, it became a measurable criterion. Where it didn't, nothing was invented.</p>
         ${cb('documents/PRJ-001-RFH/brd.md (excerpt)', `- <span class="ck">**RFH-BR-001**</span>: The business shall block AI-generated posts before
   publication at a rate above 95% at steady state.
 - <span class="ck">**RFH-BR-002**</span>: The business shall keep false positives below 2%

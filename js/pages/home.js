@@ -11,8 +11,8 @@ export function renderHome() {
         <span class="hero-badge-dot"></span>
         A vendor-neutral standard · running live in two public deployments
       </div>
-      <h1 class="h1">Run the PMO from version-controlled, declarative files.</h1>
-      <p class="lead">Define a portfolio's governance, structure, and operating model as plain files in Git, so status, roadmaps, risks, and decisions are <em style="color:var(--ink);font-style:normal;border-bottom:1px solid var(--accent-line);">generated from a single source of truth</em> instead of hand-maintained in slides and spreadsheets.</p>
+      <h1 class="h1">Project status is a <em style="font-style:normal;border-bottom:2px solid var(--accent-line);">build artifact.</em></h1>
+      <p class="lead">Charters, requirements, and risk registers live in Git as plain files. Every change is tested and gated before it merges, and the pipeline compiles the documents into status, roadmaps, and dashboards. Nobody types a status <em style="color:var(--ink);font-style:normal;">anywhere</em>.</p>
       <p class="sub">It takes the Infrastructure-as-Code / GitOps playbook and points it at the PMO.</p>
       <div class="cta-row">
         <a class="btn-primary" href="#/rosetta">See the Rosetta Stone <span class="mono">→</span></a>
@@ -141,7 +141,7 @@ Cut onboarding from 14 days to under 2.
           <span class="thread-node"></span>
           <div class="eyebrow">From one document to a portfolio</div>
           <h2 class="h2">Every project has a unique ID and its own live page.</h2>
-          <p class="body">Each project carries a stable identity, <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span>, that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides, and every item says which project it belongs to. The pipeline publishes a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em>: a health distribution over every project, each opening a decision-grade status page — a verdict composed from the real status causes, milestone timelines as temporal facts, features charted by dependency sequence and scope size rather than time, an interactive risk matrix, and tooltips that explain every number's derivation.</p>
+          <p class="body">Each project carries a stable identity, <span class="mono" style="color:var(--accent);">PRJ-001-AUR</span>, that namespaces its documents (<span class="mono" style="font-size:13px;">documents/PRJ-001-AUR/</span>) and its items (<span class="mono" style="font-size:13px;">AUR-BR-001</span>). Nothing collides, and every item says which project it belongs to. The pipeline compiles all of it into a <em style="font-style:normal;color:var(--ink);">portfolio dashboard</em> with a page per project. Each page opens on a verdict sentence built from that project's recorded causes, then shows its milestones, its risk matrix, and its features charted by dependency order and scope size. Hover any number and a tooltip explains where it came from.</p>
           <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--panel-2);">
               <span class="mono" style="font-size:12px;color:var(--muted);">portfolio dashboard · illustrated</span>

@@ -56,11 +56,11 @@ Cut median onboarding time from 14 days to under 2 days.
         <div class="grid-2">
           <div class="card" style="border-left:3px solid var(--ok);">
             <div class="card-title">Structural: deterministic and blocking</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed. Open risks move derived status only at or above a configurable risk appetite, and everything the CLI promises is pinned by a published stability policy whose reference regenerates from the parser itself.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed. Open risks move the derived status only when they score at or above a configurable appetite. The CLI itself is covered by a published stability policy, and the policy's command reference is regenerated from the parser so it cannot drift.</div>
           </div>
           <div class="card" style="border-left:3px solid var(--l2);">
             <div class="card-title">Semantic: AI-graded and advisory</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API with rubrics calibrated per relation (a mechanism contributing to a KPI is judged differently from a story implementing a requirement), cached by content hash so unchanged links are never re-billed, and the per-run budget spends only on ungraded links. Posted to the PR, and it never blocks.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Each link is scored via the Anthropic API against a rubric chosen for its relation, since a mechanism contributing to a KPI deserves a different judgment than a story implementing a requirement. Grades are cached by content hash, so unchanged links are never re-billed and the per-run budget goes to new work. Results post to the PR. They never block.</div>
           </div>
         </div>
       </div>
@@ -87,6 +87,7 @@ Cut median onboarding time from 14 days to under 2 days.
             ['rollback-plan', 'Trigger conditions and ordered rollback steps.'],
             ['hypercare-plan', 'Support window, severities, measurable exit.'],
             ['runbook', 'Operational procedures, monitoring, escalation.'],
+            ['operations', 'Service catalog with levels, measures, review freshness.'],
             ['status-report', 'Period, RAG, cites risks from the register.'],
             ['post-implementation-review', 'Outcomes vs objectives, lessons, actions.'],
             ['benefits-realization', 'Measurable benefits vs the business case.'],

@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Core Concepts · PMO as Code</title>
-<meta name="description" content="Run the PMO from version-controlled, declarative files. Documents unit-tested on every pull request, requirements traced end to end, status derived — never typed.">
+<meta name="description" content="Project status is a build artifact. Business documents live in Git, are tested and gated on every change, and compile into dashboards nobody can hand-edit.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Core Concepts · PMO as Code">
-<meta property="og:description" content="Run the PMO from version-controlled files. Documents unit-tested on every PR, requirements traced end to end, status derived — never typed.">
+<meta property="og:description" content="Project status is a build artifact. Documents in Git, tested and gated on every change, compiled into dashboards nobody can hand-edit.">
 <meta property="og:url" content="https://pmoascode.com/concepts/">
 <meta property="og:image" content="https://pmoascode.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PMO as Code">
-<meta name="twitter:description" content="Documents unit-tested on every PR. Requirements traced end to end. Status derived, never typed.">
+<meta name="twitter:description" content="Project status is a build artifact. Documents in Git, tested on every change, compiled into dashboards nobody can hand-edit.">
 <meta name="twitter:image" content="https://pmoascode.com/og.png">
 <link rel="canonical" href="https://pmoascode.com/concepts/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -153,11 +153,11 @@ Cut median onboarding time from 14 days to under 2 days.
         <div class="grid-2">
           <div class="card" style="border-left:3px solid var(--ok);">
             <div class="card-title">Structural: deterministic and blocking</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed. Open risks move derived status only at or above a configurable risk appetite, and everything the CLI promises is pinned by a published stability policy whose reference regenerates from the parser itself.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Required fields and sections present, success criteria measurable, risks have owners, references resolve. Plain code, reliable enough to gate a merge. Integrity errors block at any status; completeness gaps are advisory for drafts and gate once a document is proposed. Open risks move the derived status only when they score at or above a configurable appetite. The CLI itself is covered by a published stability policy, and the policy's command reference is regenerated from the parser so it cannot drift.</div>
           </div>
           <div class="card" style="border-left:3px solid var(--l2);">
             <div class="card-title">Semantic: AI-graded and advisory</div>
-            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Scored via the Anthropic API with rubrics calibrated per relation (a mechanism contributing to a KPI is judged differently from a story implementing a requirement), cached by content hash so unchanged links are never re-billed, and the per-run budget spends only on ungraded links. Posted to the PR, and it never blocks.</div>
+            <div class="card-body" style="margin-top:4px;line-height:1.6;">Is the objective specific? Does AUR-PR-014 actually fulfil AUR-BR-001? Each link is scored via the Anthropic API against a rubric chosen for its relation, since a mechanism contributing to a KPI deserves a different judgment than a story implementing a requirement. Grades are cached by content hash, so unchanged links are never re-billed and the per-run budget goes to new work. Results post to the PR. They never block.</div>
           </div>
         </div>
       </div>
@@ -234,6 +234,10 @@ Cut median onboarding time from 14 days to under 2 days.
             <div class="kind-card">
               <div class="kind-name">runbook</div>
               <div class="kind-desc">Operational procedures, monitoring, escalation.</div>
+            </div>
+            <div class="kind-card">
+              <div class="kind-name">operations</div>
+              <div class="kind-desc">Service catalog with levels, measures, review freshness.</div>
             </div>
             <div class="kind-card">
               <div class="kind-name">status-report</div>
