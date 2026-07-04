@@ -27,6 +27,7 @@ export const NAV = [
 export const PAGE_META = {
   '/':            { t: 'Home',                    src: 'js/pages/home.js' },
   '/why':         { t: 'Why PMO as Code',         src: 'js/pages/why.js' },
+  '/press': [['press-facts','Fact sheet'],['press-boiler','Boilerplate'],['press-angles','Story angles'],['press-assets','Assets'],['press-share','Ready-to-post copy']],
   '/case-study':  { t: 'Case study: Refuge for Humans', src: 'js/pages/case-study.js' },
   '/manifesto':   { t: 'The Manifesto',           src: 'js/pages/manifesto.js' },
   '/manifesto/automation':   { t: 'Automation & audit',   src: 'js/pages/manifesto.js' },
@@ -42,11 +43,12 @@ export const PAGE_META = {
   '/adoption':    { t: 'Adoption & Maturity',     src: 'js/pages/adoption.js' },
   '/vs':          { t: 'vs Traditional PPM',      src: 'js/pages/vs.js' },
   '/faq':         { t: 'FAQ',                     src: 'js/pages/faq.js' },
+  '/press':       { t: 'Press & share kit',       src: 'js/pages/press.js' },
 };
 
 export const ORDER = ['/','/why','/case-study','/manifesto','/manifesto/automation','/manifesto/traceability',
   '/rosetta','/concepts','/quickstart','/quickstart-claude','/guides','/reference','/integrations',
-  '/profiles','/adoption','/vs','/faq'];
+  '/profiles','/adoption','/vs','/faq','/press'];
 
 export const SHELLS = {};
 
@@ -54,7 +56,7 @@ export const ANCHORS = {
   '/': [['thesis','Thesis'],['manifesto-strip','The manifesto'],['reveal','Declared → derived'],['thread','The traceability thread'],['portfolio','A page per project'],['proof','A running instance']],
   '/manifesto': [['values','The five value-pairs'],['deepdives','The two that carry weight'],['layers','Three layers']],
   '/rosetta': [['intro','The mapping'],['rows','Traditional → as-code']],
-  '/concepts': [['model','A document, not a database'],['identity','Projects & identity'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Twenty kinds']],
+  '/concepts': [['model','A document, not a database'],['identity','Projects & identity'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Twenty-one kinds']],
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
   '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/case-study': [['cs-source','The source'],['cs-convert','The conversion'],['cs-findings','The findings'],['cs-loop','The feedback loop'],['cs-live','Live now'],['cs-bridge','The execution bridge']],

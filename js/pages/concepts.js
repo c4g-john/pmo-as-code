@@ -66,7 +66,7 @@ Cut median onboarding time from 14 days to under 2 days.
       </div>
 
       <div id="kinds" style="margin-bottom:52px;">
-        <h2 class="h2-sm">Twenty kinds, one pattern.</h2>
+        <h2 class="h2-sm">Twenty-one kinds, one pattern.</h2>
         <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Each kind is a <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">template</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">schema</code> + <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">criteria</code> trio. Adding a kind means adding a trio, with no new code for the common cases.</p>
         <div class="kind-grid">
           ${[

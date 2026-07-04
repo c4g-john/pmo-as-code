@@ -19,6 +19,8 @@ export function provenanceFooter(route) {
     </span>
     <span class="prov-sep">|</span>
     <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <span class="prov-sep">|</span>
+    <a href="#/press" style="color:var(--ink-2);text-decoration:none;">Press &amp; share kit</a>
     <a class="prov-edit" href="${gh}" target="_blank" rel="noopener">Edit on GitHub →</a>
   </footer>`;
 }
