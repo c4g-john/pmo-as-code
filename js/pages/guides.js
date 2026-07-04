@@ -152,6 +152,10 @@ docassert bridge status --repo OWNER/REPO     <span class="cc"># delivery figure
         <div class="card-title">The documents stay in charge</div>
         <div class="card-body" style="margin-top:4px;">An issue typed straight onto the board gets a <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">scope:unverified</code> label and an alert within seconds, and the Delivery panel on the status page reads from the board without ever changing the document-derived RAG.</div>
       </div>
+      <div class="card" style="margin-top:12px;">
+        <div class="card-title">One documents repo, many code repos</div>
+        <div class="card-body" style="margin-top:4px;">Add <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">repo: OWNER/NAME</code> to a project's anchor and the bridge routes that project's Features and Stories to its own code repository; <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">--project</code> scopes any bridge command to one project. Projects sharing a repository reconcile as a union, racing scaffolds converge on one issue per marker, and an explicit <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">--repo</code> still applies the whole plan to one repository.
+      </div>
     </div>
 
     ${pageNavHtml('/guides')}

@@ -42,6 +42,8 @@ export function renderProfiles() {
             required: 'charter, brd, prd, test-cases', recommended: 'risk-register' },
           { color: 'var(--l2)', title: 'agile-delivery', note: 'Story-led: every story traces to a product requirement, every acceptance criterion to a test.',
             required: 'charter, prd, user-story, test-cases', recommended: 'brd, risk-register' },
+          { color: 'var(--muted)', title: 'operations', note: 'Period-chartered keep-the-lights-on: a governed service catalog with a review date that turns derived status amber by itself when it lapses.',
+            required: 'operations', recommended: 'risk-register, runbook' },
         ].map(p => `
           <div class="card" style="border-left:3px solid ${p.color};">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
