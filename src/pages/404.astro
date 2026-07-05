@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page not found"
+  description="That page does not exist. The sidebar has everything that does."
+  path="/404/"
+>
+  <div class="hero-badge"><span class="hero-badge-dot"></span>404</div>
+  <h1 class="h1">No document at this path.</h1>
+  <p class="lead">If a link brought you here, it predates the current site map. Old <code class="mono" style="font-size:14px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">#/page</code> links redirect automatically; anything else worth reading is one click away in the sidebar.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="/">Home →</a>
+    <a class="btn-secondary" href="/quickstart/">Quickstart</a>
+  </div>
+</Base>
