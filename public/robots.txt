@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pmoascode.com/sitemap.xml
+Sitemap: https://pmoascode.com/sitemap-index.xml
