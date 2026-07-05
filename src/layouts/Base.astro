@@ -5,6 +5,7 @@
 // search); every page is fully readable without it.
 import '../styles/global.css';
 import { NAV, pageFor, prevNext } from '../data/nav';
+import { lastModified } from '../lib/dates';
 
 interface Props {
   title: string;
@@ -22,6 +23,7 @@ const canonical = new URL(path, Astro.site).href;
 const fullTitle = path === '/' ? 'PMO as Code' : `${title} · PMO as Code`;
 const srcPath = page?.srcPath ?? 'src/pages/index.astro';
 const srcUrl = `https://github.com/c4g-john/pmo-as-code/blob/main/${srcPath}`;
+const updated = lastModified(srcPath);
 
 const siteGraph = [
   {
@@ -42,6 +44,15 @@ const siteGraph = [
     downloadUrl: 'https://pypi.org/project/docassert/',
     license: 'https://www.apache.org/licenses/LICENSE-2.0',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  },
+  {
+    '@type': 'TechArticle',
+    headline: fullTitle,
+    description,
+    url: canonical,
+    dateModified: updated,
+    author: { '@type': 'Person', name: 'John Tanner', sameAs: 'https://www.linkedin.com/in/tannerjs' },
+    isPartOf: { '@type': 'WebSite', url: 'https://pmoascode.com/' },
   },
   ...jsonLd,
 ];
@@ -136,7 +147,7 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': siteGrap
   <div id="main-wrap">
     <div id="main-inner">
       <main id="content">
-        <article>
+        <article data-pagefind-body={path === '/404/' ? undefined : ''}>
           <slot />
           {(prev || next) && (
             <div class="page-nav">
@@ -159,6 +170,8 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': siteGrap
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
               <a href={srcUrl} target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">{srcPath}</a>
             </span>
+            <span class="prov-sep">|</span>
+            <span>Updated <time datetime={updated}>{updated}</time></span>
             <span class="prov-sep">|</span>
             <span>written and maintained by John Tanner · C4G Enterprises</span>
             <span class="prov-sep">|</span>

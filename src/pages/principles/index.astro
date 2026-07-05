@@ -8,6 +8,17 @@ const anchors: [string, string][] = [
   ['layers', 'Three layers'],
   ['why-i-wrote', 'Why I wrote this'],
 ];
+
+// The author statement lives on this page, so the Person node does too.
+const jsonLd = [
+  {
+    '@type': 'Person',
+    name: 'John Tanner',
+    url: 'https://pmoascode.com/principles/#why-i-wrote',
+    sameAs: ['https://www.linkedin.com/in/tannerjs', 'https://github.com/c4g-john'],
+    affiliation: { '@type': 'Organization', name: 'C4G Enterprises' },
+  },
+];
 ---
 
 <Base
@@ -15,6 +26,7 @@ const anchors: [string, string][] = [
   description="The five defaults of PMO as Code, the three-layer ownership model, and why the author built it. The right-hand column is the exception, and exceptions get documented."
   path="/principles/"
   anchors={anchors}
+  jsonLd={jsonLd}
 >
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
     <span class="layer-badge" style="background:var(--l1);">1</span>

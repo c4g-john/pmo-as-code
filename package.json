@@ -10,12 +10,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "pagefind --site dist"
+    "postbuild": "node scripts/check-dist.mjs && pagefind --site dist"
   },
   "dependencies": {
     "astro": "^7.0.6"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "pagefind": "^1.5.2"
   }
 }
