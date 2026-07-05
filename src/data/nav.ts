@@ -118,7 +118,7 @@ export const EXTRA_PAGES: NavPage[] = [
   { title: 'News', path: '/news/', srcPath: 'src/pages/news/index.astro',
     summary: 'Release-tied announcements, dated and factual, with an RSS feed at /rss.xml.' },
   { title: 'Press & share kit', path: '/press/', srcPath: 'src/pages/press.astro',
-    summary: 'Press boilerplate, verified facts, quotable copy, real product images, and ready-to-post announcements.' },
+    summary: 'Press boilerplate, verified facts, quotable copy, real product images, and a shareable blurb.' },
 ];
 
 export const ORDER: NavPage[] = [...NAV.flatMap(g => g.pages), ...EXTRA_PAGES];
