@@ -61,6 +61,10 @@ export const NAV: NavGroup[] = [
         summary: 'A described process drifts; an executed process holds. The PMO procedures that run today.' },
       { title: 'Policy as Code', path: '/as-code/policy/', srcPath: 'src/content/pages/as-code-policy.md',
         summary: 'Rules evaluated on every change: branch protection as the everyday policy engine, governance made binding.' },
+      { title: 'Governance as Code', path: '/as-code/governance/', srcPath: 'src/content/pages/as-code-governance.md',
+        summary: 'The system around the rules: decision rights, recorded approvals, oversight loops, exceptions with a trail.' },
+      { title: 'Compliance as Code', path: '/as-code/compliance/', srcPath: 'src/content/pages/as-code-compliance.md',
+        summary: 'Machine-checked controls and evidence that accumulates as a by-product, so audits read the record.' },
     ],
   },
   {
