@@ -1,8 +1,8 @@
 name: site check
 
-# The site is a hand-bundled SPA with prerendered per-route snapshots. This
-# runs the prerenderer (which executes every page module, so a JS syntax error
-# fails the build) and confirms the committed snapshots match the source.
+# PR gate for the Astro build. The build itself runs the postbuild dist gate
+# (heading hierarchy, JSON-LD) and Pagefind indexing, so a structural
+# regression on any page fails this check before it can merge.
 on:
   pull_request:
   push:
@@ -12,16 +12,15 @@ permissions:
   contents: read
 
 jobs:
-  prerender:
-    runs-on: macos-latest   # prerender.py renders via JavaScriptCore (osascript)
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - name: Render every route
-        run: python3 scripts/prerender.py
-      - name: Fail if snapshots drifted from source
-        run: |
-          if ! git diff --quiet; then
-            echo "::error::Prerendered snapshots are stale. Run 'python3 scripts/prerender.py' and commit."
-            git diff --stat
-            exit 1
-          fi
+        with:
+          fetch-depth: 0 # page dateModified is derived from git history
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build

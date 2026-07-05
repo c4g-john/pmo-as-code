@@ -1,0 +1,26 @@
+---
+// Renders every Markdown prose page through the shared shell.
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    // '/why/' -> 'why'; '/principles/automation/' -> 'principles/automation'
+    params: { slug: page.data.path.replace(/^\/|\/$/g, '') },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Base
+  title={page.data.title}
+  description={page.data.description}
+  path={page.data.path}
+  anchors={page.data.anchors}
+>
+  <Content />
+</Base>

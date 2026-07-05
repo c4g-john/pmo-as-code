@@ -14,7 +14,7 @@
    The one fictional sample project (Aurora) is disclosed as fiction wherever
    it appears. Reader-facing claims must trace to a shipped artifact.
 
-## Build defaults (decided 2026-07-05, for the rewrite)
+## Build defaults
 
 - **Framework: Astro.** Prose pages are plain Markdown with schema-validated
   frontmatter (content collections). Repeatable content (document kinds,
@@ -35,18 +35,22 @@
 - **llms.txt and sitemap.xml are build outputs**, generated from the content
   collections. Never hand-edit either.
 
-## Current site (until the rewrite lands)
+## Working on the site
 
-Pages are JS modules in `js/pages/`, prerendered to static HTML. After
-editing any page module or `js/data.js`, run:
-
-```bash
-python3 scripts/prerender.py
-```
-
-and commit the regenerated HTML with your change. CI gates on `actionlint`
-and `prerender` freshness; `main` is branch-protected and PRs auto-merge
-when green.
+- `npm run build` builds to `dist/` and then runs the dist gate
+  (`scripts/check-dist.mjs`: one h1 per page, no skipped heading levels,
+  parsable JSON-LD) followed by Pagefind indexing. `npm run dev` for the
+  dev server.
+- Prose pages live in `src/content/pages/*.md` (schema-gated frontmatter);
+  structural pages are `.astro` files composing typed records from
+  `src/data/*.ts`. Nav, prev/next, provenance footers, and llms.txt all
+  derive from `src/data/nav.ts` — add a page there or it does not exist.
+- The one client script is `public/site.js` (theme, menu, copy buttons,
+  search dialog); everything must read fine without it.
+- CI gates on `actionlint` and `build`; `main` is branch-protected and PRs
+  auto-merge when green. Deploys go through `.github/workflows/deploy.yml`
+  (Pages artifact deploy with the fleet's jittered second attempt and the
+  `deploy retry` follower).
 
 ## Verification habits
 

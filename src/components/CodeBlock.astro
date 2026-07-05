@@ -1,0 +1,26 @@
+---
+// The terminal-chrome code block with a copy button. Children are the
+// highlighted content (span.ck/.cv/.cs/.cc markup carried over from the
+// old site's samples).
+interface Props {
+  title: string;
+  id: string;
+  copy?: boolean;
+}
+const { title, id, copy = true } = Astro.props;
+---
+
+<div class="code-block">
+  <div class="code-titlebar">
+    <span class="traffic-light" style="background:#ff5f57;"></span>
+    <span class="traffic-light" style="background:#febc2e;"></span>
+    <span class="traffic-light" style="background:#28c840;"></span>
+    <span class="code-filename">{title}</span>
+    {copy && (
+      <button class="copy-btn" data-copy-id={id} title="Copy">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    )}
+  </div>
+  <pre class="code-pre" id={id}><slot /></pre>
+</div>

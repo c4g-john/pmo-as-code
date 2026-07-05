@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { COMPARISON } from '../data/comparison';
+
+const anchors: [string, string][] = [
+  ['comparison', 'The comparison'],
+  ['where-wins', 'Where as-code wins'],
+  ['where-gates', 'Where gates still belong'],
+];
+---
+
+<Base
+  title="vs Traditional PPM"
+  description="Row-by-row comparison of PMO as Code against traditional PPM tools, including the honest rows where traditional approaches still hold."
+  path="/vs/"
+  anchors={anchors}
+>
+  <div class="eyebrow">Compare</div>
+  <h1 class="h1">vs Traditional PPM.</h1>
+  <p class="lead">We make strong claims and show our work, including the rows where traditional approaches still hold.</p>
+  <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">PPM = Project &amp; Portfolio Management (tools like MS Project, Planview, Clarity, Smartsheet).</p>
+
+  <div id="comparison" style="margin-bottom:52px;">
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px;padding:10px 18px;margin-bottom:6px;">
+      <span class="mono" style="font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);">Traditional PPM</span>
+      <span></span>
+      <span class="mono" style="font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);text-align:right;">PMO as Code</span>
+    </div>
+    {COMPARISON.map((r) => (
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:13px 18px;background:var(--panel);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;">
+        <span style={`font-size:14.5px;color:${r.win === 'ascode' ? 'var(--muted)' : 'var(--ink)'};`}>{r.traditional}</span>
+        <span style={`width:18px;height:18px;border-radius:50%;background:${r.win === 'ascode' ? 'var(--ok)' : 'var(--warn)'};display:flex;align-items:center;justify-content:center;font-size:10px;color:#000;font-weight:700;`}>{r.win === 'ascode' ? '→' : '≈'}</span>
+        <span style={`font-size:14.5px;font-weight:${r.win === 'ascode' ? '600' : '400'};color:${r.win === 'ascode' ? 'var(--ink)' : 'var(--muted)'};text-align:right;`}>{r.ascode}</span>
+      </div>
+    ))}
+    <div style="display:flex;align-items:center;gap:18px;margin-top:10px;font-size:13px;color:var(--muted);">
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--ok);display:inline-block;"></span> PMO as Code wins</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--warn);display:inline-block;"></span> Context-dependent</span>
+    </div>
+  </div>
+
+  <div id="where-wins" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Where as-code wins clearly.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">It wins wherever stale data costs more than learning YAML, which in practice means portfolios beyond about five projects, organisations where audit and traceability matter, and teams already working in Git.</p>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--ok);">
+        <div class="card-title">Engineering-led orgs</div>
+        <div class="card-body" style="margin-top:4px;">Git is already the source of truth for code. Extending it to the portfolio is a small step for a team that already lives there.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--ok);">
+        <div class="card-title">Regulated industries</div>
+        <div class="card-body" style="margin-top:4px;">An audit trail in Git records who changed what, when, and who approved it, and it satisfies most audit requirements better than email threads can.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="where-gates" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Where traditional gates still belong.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some decisions require a named individual's sign-off: a legal filing, a board resolution, a contractual milestone payment. PMO as Code accommodates them by requiring a named reviewer on the pull request, recorded in the Git history. That is a stronger record than an approval email nobody can find later.</p>
+    <div class="card" style="border-left:3px solid var(--warn);">
+      <div class="card-title">Our position</div>
+      <div class="card-body" style="margin-top:4px;line-height:1.6;">Gates move from the default to the documented exception. When a signature is genuinely required, it becomes a required reviewer inside the audit trail instead of an email chain outside it.</div>
+    </div>
+  </div>
+</Base>

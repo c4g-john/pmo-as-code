@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import { PROFILES } from '../data/profiles';
+
+const anchors: [string, string][] = [
+  ['what-profile', 'What a profile is'],
+  ['available-profiles', 'The profiles that ship'],
+  ['author-profile', 'Author your own'],
+];
+---
+
+<Base
+  title="Profiles"
+  description="A profile is a named bundle of document-set expectations: required and recommended kinds per project. Four ship today: regulated-industry, lean-startup, agile-delivery, operations."
+  path="/profiles/"
+  anchors={anchors}
+>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+    <span class="layer-badge" style="background:var(--l3);">3</span>
+    <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 3 · Profiles</span>
+  </div>
+  <h1 class="h1">Composable, named bundles.</h1>
+  <p class="lead">A profile is a named bundle of expectations for a project: which document kinds it must carry, which are merely recommended, and how strict the gate is. Point a project at one, and its status page tells you what's still missing.</p>
+  <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Profiles are to this standard what distributions are to a kernel: the principles hold still while implementations diverge.</p>
+
+  <div id="what-profile" style="margin-bottom:52px;">
+    <h2 class="h2-sm">What a profile is.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A small YAML file that lists the kinds a project is expected to carry, at two levels, <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">required</code> and <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">recommended</code>. A project opts in with one line of frontmatter.</p>
+    <CodeBlock title="profiles/regulated-industry.yaml" id="prof-reg"><span class="ck">name</span>: <span class="cv">regulated-industry</span>
+<span class="ck">enforce_when</span>: <span class="cv">active</span>          <span class="cc"># gaps block CI only once the project is active</span>
+<span class="ck">expects</span>:
+  <span class="ck">required</span>:    [charter, business-case, brd, prd, frnfr,
+                test-cases, risk-register, raci-stakeholder, qa-test-plan]
+  <span class="ck">recommended</span>: [adr, runbook, status-report, benefits-realization]</CodeBlock>
+    <div style="height:12px;"></div>
+    <CodeBlock title="documents/PRJ-001-AUR/project.md" id="prof-optin"><span class="ck">kind</span>: <span class="cv">project</span>
+<span class="ck">id</span>: <span class="cv">PRJ-001-AUR</span>
+<span class="ck">status</span>: <span class="cv">active</span>
+<span class="ck">profile</span>: <span class="cv">regulated-industry</span>   <span class="cc"># opt in</span></CodeBlock>
+    <div class="card" style="margin-top:16px;">
+      <div class="card-title">Complete · incomplete · missing</div>
+      <div class="card-body" style="margin-top:4px;line-height:1.6;">The project page classifies each expected kind: <strong style="color:var(--ok);font-weight:600;">complete</strong> (present, approved, passing), <strong style="color:var(--warn);font-weight:600;">incomplete</strong> (present but still draft), or <strong style="color:var(--bad);font-weight:600;">missing</strong>. A missing <em style="font-style:normal;color:var(--ink);">required</em> kind blocks the merge once the project reaches its <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">enforce_when</code> stage. Before that, a proposed project shows the same gaps as advisory amber.</div>
+    </div>
+  </div>
+
+  <div id="available-profiles" style="margin-bottom:52px;">
+    <h2 class="h2-sm">The profiles that ship.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Four profiles live in the reference library today. Point a project at one, or copy it as a starting point.</p>
+    <div style="display:grid;gap:12px;">
+      {PROFILES.map((p) => (
+        <div class="card" style={`border-left:3px solid ${p.color};`}>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <span class="mono" style="font-size:13px;font-weight:600;color:var(--accent);">{p.title}</span>
+          </div>
+          <div class="card-body" style="margin-bottom:10px;">{p.note}</div>
+          <div class="mono" style="font-size:11.5px;color:var(--muted);line-height:1.8;">
+            <div><span style="display:inline-block;width:92px;color:var(--faint);">required</span>{p.required}</div>
+            <div><span style="display:inline-block;width:92px;color:var(--faint);">recommended</span>{p.recommended}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div id="author-profile" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Author your own.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Drop a new file in <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profiles/</code> and point projects at it. For deeper changes, such as extra required sections or stricter checks, edit the <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">criteria/</code> trio the kinds share.</p>
+    <CodeBlock title="profiles/our-org.yaml" id="prof-own"><span class="ck">name</span>: <span class="cv">our-org</span>
+<span class="ck">enforce_when</span>: <span class="cv">active</span>
+<span class="ck">expects</span>:
+  <span class="ck">required</span>:    [charter, brd, prd, test-cases, risk-register]
+  <span class="ck">recommended</span>: [adr, runbook]</CodeBlock>
+    <p style="font-size:14px;color:var(--muted);margin:14px 0 0;">Then <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">profile: our-org</code> in each project's <code class="mono" style="font-size:13px;background:var(--panel-2);padding:1px 4px;border-radius:3px;">project.md</code>. A CI check flags an unknown profile, so a typo can't slip through.</p>
+  </div>
+</Base>

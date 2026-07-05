@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const anchors: [string, string][] = [
+  ['shift', 'The shift'],
+  ['policy', 'Policy as code'],
+  ['tension', 'Where gates still belong'],
+];
+---
+
+<Base
+  title="Automation & audit"
+  description="A gate assumes people will misbehave unless someone blocks them. Audit starts from good faith and relies on the record: Git history, merged pull requests, policy as code."
+  path="/principles/automation/"
+  anchors={anchors}
+>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+    <span class="layer-badge" style="background:var(--l1);">1</span>
+    <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles · Explainer 01</span>
+  </div>
+  <h1 class="h1" style="font-size:clamp(28px,4vw,42px);">Automation and audit over gates and approvals.</h1>
+  <p class="lead">A gate assumes people will misbehave unless someone blocks them. Audit starts from good faith and relies on the record to keep everyone accountable.</p>
+
+  <div id="shift" style="margin:32px 0 48px;">
+    <h2 class="h2-sm">The shift: from prevention to flow.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A gate puts a human in the loop who must approve before work proceeds. It slows the work and fills an inbox with decisions that no one can audit later, and the default posture becomes <em>stop until told otherwise</em>.</p>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Audit inverts that default. Every change and every decision lands in Git history, the record supplies the accountability, and the work keeps moving.</p>
+    <div class="grid-2">
+      <div class="card" style="border-top:2px solid var(--bad);">
+        <div class="card-title" style="color:var(--bad);">Gates</div>
+        <div class="card-body">An approval email in an inbox that nobody can audit later. The default is stop.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--ok);">
+        <div class="card-title" style="color:var(--ok);">Audit</div>
+        <div class="card-body">Git history and merged pull requests, with every decision traceable. The default is flow.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="policy" style="margin-bottom:48px;">
+    <h2 class="h2-sm">The gate becomes policy as code.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The gate becomes an automated, auditable check that runs in CI, and the result lands in the repository's history alongside the change it judged.</p>
+    <div class="code-block">
+      <div class="code-titlebar">
+        <span class="traffic-light" style="background:#ff5f57;"></span>
+        <span class="traffic-light" style="background:#febc2e;"></span>
+        <span class="traffic-light" style="background:#28c840;"></span>
+        <span class="code-filename">.github/workflows/audit.yml</span>
+      </div>
+      <pre class="code-pre"><span class="ck">on</span>: [pull_request]
+<span class="ck">jobs</span>:
+  <span class="ck">audit</span>:        <span class="cc"># validate each changed document</span>
+    <span class="ck">steps</span>:
+      - &lbrace; <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span>, <span class="ck">with</span>: &lbrace; <span class="ck">fetch-depth</span>: 0 &rbrace; &rbrace;
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: &lbrace; <span class="ck">command</span>: <span class="cv">validate</span>, <span class="ck">changed-only</span>: <span class="cv">'true'</span> &rbrace;
+  <span class="ck">consistency</span>:  <span class="cc"># broken traces block the merge</span>
+    <span class="ck">steps</span>:
+      - &lbrace; <span class="ck">uses</span>: <span class="cs">actions/checkout@v4</span> &rbrace;
+      - <span class="ck">uses</span>: <span class="cs">c4g-john/docassert-action@v1</span>
+        <span class="ck">with</span>: &lbrace; <span class="ck">command</span>: <span class="cs">consistency</span> &rbrace;</pre>
+    </div>
+  </div>
+
+  <div id="tension" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Where gates still belong.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Some contexts legally require a person's signature, and the framework accommodates them. A human approval stays available for the cases that need one, as a documented exception.</p>
+    <div class="card" style="border-left:3px solid var(--warn);">
+      <div class="card-title">When a human signature is required</div>
+      <div class="card-body" style="margin-top:6px;">Model it explicitly with branch protection that requires a named reviewer on the pull request. The approval lands in the merge record with the rest of the history, and one of the gate's signals is now a person's explicit sign-off.</div>
+    </div>
+  </div>
+</Base>
