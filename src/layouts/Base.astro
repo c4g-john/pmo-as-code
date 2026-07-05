@@ -78,7 +78,8 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': siteGrap
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
-<link rel="canonical" href={canonical} />
+{path !== '/404/' && <link rel="canonical" href={canonical} />}
+{path === '/404/' && <meta name="robots" content="noindex" />}
 <link rel="alternate" type="application/rss+xml" title="PMO as Code news" href="/rss.xml" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
