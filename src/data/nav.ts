@@ -34,10 +34,16 @@ export const NAV: NavGroup[] = [
     pages: [
       { title: 'Principles', path: '/principles/', srcPath: 'src/pages/principles/index.astro',
         summary: 'The five defaults, and why the right-hand column is an exception rather than a ban.' },
+      { title: 'Declarative sources of truth', path: '/principles/declarative/', srcPath: 'src/pages/principles/declarative.astro',
+        summary: 'Declare once in the documents; matrices, dashboards, and registries become build outputs.' },
       { title: 'Automation & audit', path: '/principles/automation/', srcPath: 'src/pages/principles/automation.astro',
         summary: 'Gates move from the default to the documented exception; policy becomes code.' },
       { title: 'Traceability', path: '/principles/traceability/', srcPath: 'src/pages/principles/traceability.astro',
         summary: 'Value lives in typed links between thin documents; every test walks back to a business reason.' },
+      { title: 'Derived status', path: '/principles/derived-status/', srcPath: 'src/pages/principles/derived-status.astro',
+        summary: 'Nobody types a color: RAG is computed, every verdict names its causes, and reports can only lower it.' },
+      { title: 'Composable definitions', path: '/principles/composable/', srcPath: 'src/pages/principles/composable.astro',
+        summary: 'One grammar across twenty-one kinds, profiles as named bundles, a versioned spec at the boundary.' },
     ],
   },
   {

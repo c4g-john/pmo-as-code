@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const anchors: [string, string][] = [
+  ['grammar', 'One grammar'],
+  ['profiles', 'Profiles compose kinds'],
+  ['boundaries', 'Composition at the boundaries'],
+];
+---
+
+<Base
+  title="Composable definitions"
+  description="Every document kind shares one grammar, so a tool written once works on all of them, profiles bundle kinds into named expectations, and a new kind is data rather than code."
+  path="/principles/composable/"
+  anchors={anchors}
+>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+    <span class="layer-badge" style="background:var(--l1);">1</span>
+    <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles · Explainer 05</span>
+  </div>
+  <h1 class="h1" style="font-size:clamp(28px,4vw,42px);">Composable definitions over one-off, siloed tools.</h1>
+  <p class="lead">Every document kind shares one grammar, so a tool written once works on all of them, and a capability added once applies everywhere.</p>
+
+  <div id="grammar" style="margin:32px 0 48px;">
+    <h2 class="h2-sm">One grammar, twenty-one kinds.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A charter, a risk register, and a test-case document look different to a reader, and identical to the machine: frontmatter, required sections, typed items, link clauses. The validator, the consistency checker, the traceability matrix, and the dashboards each get written once against that shape.</p>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Adding a kind starts with data, a trio of files, and the shared machinery applies to it from day one: validation, audit, links, the matrix. When the operations kind shipped, only its genuinely new behavior needed engine work (a review date that ambers the project when it lapses); everything the other twenty kinds already had came free.</p>
+    <div class="code-block">
+      <div class="code-titlebar">
+        <span class="traffic-light" style="background:#ff5f57;"></span>
+        <span class="traffic-light" style="background:#febc2e;"></span>
+        <span class="traffic-light" style="background:#28c840;"></span>
+        <span class="code-filename">a kind is three files</span>
+      </div>
+      <pre class="code-pre"><span class="cs">schema/</span>operations.schema.json      <span class="cc"># what the frontmatter must declare</span>
+<span class="cs">criteria/</span>operations.criteria.yaml  <span class="cc"># what the audit checks</span>
+<span class="cs">templates/</span>operations.template.md  <span class="cc"># what an author starts from</span></pre>
+    </div>
+  </div>
+
+  <div id="profiles" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Profiles compose kinds into expectations.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">A profile is a named bundle: which kinds a project of this type is expected to carry. Lean-startup expects a lighter set than regulated-industry, and operations expects a service catalog with a review date. Because profiles are definitions rather than tooling, adopting one, forking one, or publishing your own is an edit, and the same audit enforces whichever set you name.</p>
+    <p style="margin:0;"><a class="btn-secondary" href="/profiles/">The four shipped profiles →</a></p>
+  </div>
+
+  <div id="boundaries" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Composition at the boundaries.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">The definitions compose outward as well. The standard is a versioned specification with a conformance suite, so an implementation other than docassert can exist and prove itself against the same cases. The execution bridge maps each project to a delivery repo through its anchor document, so one portfolio can fan out across many codebases. Checks stack in two tiers, a deterministic gate that blocks and an AI advisory layer that flags, and either runs without the other.</p>
+    <div class="card" style="border-left:3px solid var(--warn);">
+      <div class="card-title">One-off tools at the edges</div>
+      <div class="card-body" style="margin-top:6px;">Teams will always write private glue, and that is fine. The line this principle draws: glue may consume the documents, and it may not become the place where a definition lives that the shared tooling can't see.</div>
+    </div>
+  </div>
+</Base>
