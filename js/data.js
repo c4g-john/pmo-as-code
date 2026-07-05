@@ -54,7 +54,7 @@ export const SHELLS = {};
 
 export const ANCHORS = {
   '/': [['thesis','Thesis'],['manifesto-strip','The manifesto'],['reveal','Declared → derived'],['thread','The traceability thread'],['portfolio','A page per project'],['proof','A running instance']],
-  '/manifesto': [['values','The five value-pairs'],['deepdives','The two that carry weight'],['layers','Three layers']],
+  '/manifesto': [['values','The five value-pairs'],['deepdives','The two that carry weight'],['layers','Three layers'],['why-i-wrote','Why I wrote this']],
   '/rosetta': [['intro','The mapping'],['rows','Traditional → as-code']],
   '/concepts': [['model','A document, not a database'],['identity','Projects & identity'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Twenty-one kinds']],
   '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
