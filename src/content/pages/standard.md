@@ -14,7 +14,7 @@ anchors:
   <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
 </div>
 
-# The standard is written down.
+# The standard: a versioned, testable specification.
 
 <p class="lead">PMO as Code is specified, versioned, and testable, so that implementing it never requires reading the reference implementation's source code. The current version is <a href="https://github.com/c4g-john/pmo-as-code-spec/blob/main/SPEC.md" target="_blank" rel="noopener">v0.8.1</a>, still marked draft while it hardens toward a 1.0 of its own.</p>
 

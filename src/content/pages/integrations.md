@@ -14,7 +14,7 @@ anchors:
   <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 2 · Reference Approach</span>
 </div>
 
-# GitHub-native by design.
+# Integrations: GitHub-native by design.
 
 <p class="lead">There are no connectors to build or maintain. The whole pipeline runs on Git, GitHub Actions, and, for the advisory layer only, the Anthropic API, so there is nothing else to wire up or break.</p>
 

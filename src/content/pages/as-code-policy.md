@@ -26,7 +26,7 @@ The property that matters is binding-ness. A written policy depends on everyone 
 
 <section id="everyday">
 
-## The everyday version.
+## The everyday version: branch protection.
 
 Branch protection is policy as code without the branding, and most engineering teams already run it: these checks must pass, this many reviewers must approve, this branch cannot be pushed to directly. The rules are configuration, they are evaluated on every merge, and the enforcement leaves a record.
 

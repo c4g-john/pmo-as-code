@@ -16,7 +16,7 @@ anchors:
 
 <section id="practice">
 
-## The practice.
+## The practice: controls as executable tests.
 
 Infrastructure teams turned compliance baselines into executable tests: Chef's InSpec expressed entire compliance profiles as code that runs against real systems, and OpenSCAP did the same for hardening standards. A control stopped being a sentence in a binder and became a check with a pass or a fail and a timestamp.
 

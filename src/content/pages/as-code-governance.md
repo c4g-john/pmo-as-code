@@ -16,7 +16,7 @@ anchors:
 
 <section id="beyond">
 
-## Beyond the rules.
+## Beyond the rules: who decides, and where it's recorded.
 
 Platform teams reached this layer after policy as code proved itself. A single rule that blocks an unencrypted bucket is policy; the account-vending machinery, the org-wide guardrails, the review boards replaced by codified escalation paths, all of that is governance expressed as configuration rather than as a committee's habits.
 

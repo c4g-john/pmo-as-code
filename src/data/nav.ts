@@ -72,8 +72,8 @@ export const NAV: NavGroup[] = [
     layer: 2,
     color: 'var(--l2)',
     pages: [
-      { title: 'The Rosetta Stone', path: '/rosetta/', srcPath: 'src/pages/rosetta.astro',
-        summary: 'Traditional PMO artifacts mapped to their as-code equivalents, row by row.' },
+      { title: 'Artifact Crosswalk', path: '/crosswalk/', srcPath: 'src/pages/crosswalk.astro',
+        summary: 'Traditional PMO artifacts and their as-code equivalents, row by row.' },
       { title: 'Core Concepts', path: '/concepts/', srcPath: 'src/pages/concepts.astro',
         summary: 'Documents with frontmatter and sections, project identity, linked items, two check tiers, twenty-one kinds.' },
       { title: 'Quickstart', path: '/quickstart/', srcPath: 'src/pages/quickstart.astro',

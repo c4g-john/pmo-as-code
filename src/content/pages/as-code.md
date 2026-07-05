@@ -10,7 +10,7 @@ anchors:
 
 <div class="eyebrow">The as-code family</div>
 
-# The pattern has a family tree.
+# The as-code family.
 
 <p class="lead">PMO as Code did not invent its pattern. It applies a discipline that infrastructure, documentation, process, and policy each adopted first, one practice at a time, over the last two decades.</p>
 
