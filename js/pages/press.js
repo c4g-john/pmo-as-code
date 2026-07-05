@@ -166,7 +166,7 @@ export function renderPress() {
         ${factRow('The tool', '<a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">docassert</a> · Python 3.10–3.14 · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">pipx install docassert</code> · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">brew install c4g-john/tap/docassert</code>')}
         ${factRow('The scope', 'Twenty-one document kinds. Two tiers of checks: deterministic structural checks gate the merge, and AI-graded semantic checks only advise. An execution bridge turns approved stories into GitHub issues, and the dashboards are compiled from the documents.')}
         ${factRow('The caveat', 'The tool is stable at 1.0. The specification is v0.8 and still a draft; its conformance rules may tighten before a spec 1.0.')}
-        ${factRow('Who', 'John Tanner, C4G Enterprises Inc. · <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a>')}
+        ${factRow('Who', 'John Tanner, C4G Enterprises Inc. · <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a> · <a href="/manifesto/#why-i-wrote">why he wrote this</a>')}
         ${factRow('Press contact', '<a href="mailto:press@c4genterprises.com">press@c4genterprises.com</a>')}
         ${factRow('Names', '“PMO as Code” is the standard. The tool is lowercase “docassert”, tagline “unit testing for business documents”.')}
       </div>
