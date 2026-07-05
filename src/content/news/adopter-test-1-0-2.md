@@ -11,8 +11,8 @@ The run is public:
 [the gated pull request](https://github.com/c4g-john/template-adoption-2026-07/pull/1)
 with its checks, and
 [the live dashboard](https://c4g-john.github.io/template-adoption-2026-07/)
-it produced. Repository creation to merged, gate-checked pull request took
-about seven minutes.
+it produced. Repository creation to a merged, gate-checked pull request
+took just over five minutes, with the dashboard live inside seven.
 
 The first command also surfaced a real bug: a freshly scaffolded project
 anchor failed its own validation, because the packaged template's required
