@@ -14,6 +14,18 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content } = await render(page);
+
+const jsonLd = page.data.authorStatement
+  ? [
+      {
+        '@type': 'Person',
+        name: 'John Tanner',
+        url: `https://pmoascode.com${page.data.path}#why-i-wrote`,
+        sameAs: ['https://www.linkedin.com/in/tannerjs', 'https://github.com/c4g-john'],
+        affiliation: { '@type': 'Organization', name: 'C4G Enterprises' },
+      },
+    ]
+  : [];
 ---
 
 <Base
@@ -21,6 +33,7 @@ const { Content } = await render(page);
   description={page.data.description}
   path={page.data.path}
   anchors={page.data.anchors}
+  jsonLd={jsonLd}
 >
   <Content />
 </Base>

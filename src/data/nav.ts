@@ -22,7 +22,7 @@ export const NAV: NavGroup[] = [
       { title: 'Home', path: '/', srcPath: 'src/pages/index.astro',
         summary: 'Project status is a build artifact: the thesis, the five defaults, and the live deployments.' },
       { title: 'Why PMO as Code', path: '/why/', srcPath: 'src/content/pages/why.md',
-        summary: 'Why the PowerPoint-Excel-SharePoint-email PMO fails: stale artifacts, self-reported RAG, unauditable approvals.' },
+        summary: 'Why the PowerPoint-Excel-SharePoint-email PMO fails: stale artifacts, self-reported RAG, unauditable approvals. Includes the author statement.' },
       { title: 'Case study: Refuge', path: '/case-study/', srcPath: 'src/pages/case-study.astro',
         summary: 'A real 14-section Word BRD converted to a gated, traceable, self-reporting project, failures included.' },
     ],
@@ -33,7 +33,7 @@ export const NAV: NavGroup[] = [
     color: 'var(--l1)',
     pages: [
       { title: 'Principles', path: '/principles/', srcPath: 'src/pages/principles/index.astro',
-        summary: 'The five defaults, and why the right-hand column is an exception rather than a ban. Includes the author statement.' },
+        summary: 'The five defaults, and why the right-hand column is an exception rather than a ban.' },
       { title: 'Automation & audit', path: '/principles/automation/', srcPath: 'src/pages/principles/automation.astro',
         summary: 'Gates move from the default to the documented exception; policy becomes code.' },
       { title: 'Traceability', path: '/principles/traceability/', srcPath: 'src/pages/principles/traceability.astro',
