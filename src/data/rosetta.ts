@@ -1,0 +1,32 @@
+// The Rosetta rows, verbatim from the pre-rewrite data module. The yaml
+// and output fields are trusted HTML fragments rendered inside code chrome.
+export interface RosettaRow {
+  before: string;
+  after: string;
+  yaml: string;
+  output: string;
+}
+
+export const ROSETTA_ROWS: RosettaRow[] = [
+  { before: 'Status deck', after: 'Audit result, posted on every PR',
+    yaml: `<span class="cc">---</span>\n<span class="ck">kind</span>: <span class="cv">charter</span>\n<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>\n<span class="ck">id</span>: <span class="cv">AUR-charter</span>\n<span class="cc">---</span>\n<span class="cv">## Objective</span>\nOnboarding 14d → under 2d`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ all checks passed</div><div style="font-size:13px;color:var(--muted);">frontmatter · sections · criteria<br>clear to merge</div>` },
+  { before: 'RAID log in Excel', after: 'Risk register in Git, checked on PR',
+    yaml: `<span class="ck">kind</span>: <span class="cv">risk-register</span>\n<span class="cv">## Risks</span>\n- <span class="ck">**AUR-RISK-001**</span> (<span class="cv">threatens</span>: AUR-BR-001):\n  … Probability: High. Impact: High.\n  Owner: alex.kim. Response: dual-run.`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ risk-items-complete</div><div style="font-size:13px;color:var(--muted);">merged by pull request, reviewer on record<br>threatens AUR-BR-001</div>` },
+  { before: 'Charter in Word', after: 'charter.md validated on every change',
+    yaml: `<span class="cc">---</span>\n<span class="ck">kind</span>: <span class="cv">charter</span>\n<span class="ck">sponsor</span>: <span class="cs">jordan.lee</span>\n<span class="cc">---</span>\n<span class="cv">## Success Criteria</span>\n- p50 onboarding below 48h`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ schema valid · 6 sections</div><div style="font-size:13px;color:var(--muted);">measurable criteria ✓<br>approved by merged pull request</div>` },
+  { before: 'Steering approval email', after: 'A merged PR with a named reviewer',
+    yaml: `<span class="cc"># branch protection</span>\n<span class="ck">required_status_checks</span>:\n  <span class="ck">contexts</span>:\n    - <span class="cs">audit</span>\n    - <span class="cs">consistency</span>`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ merged · reviewer on record</div><div style="font-size:13px;color:var(--muted);">audit ✓ · consistency ✓</div>` },
+  { before: 'Manual RAG status', after: 'Deterministic checks with reasons',
+    yaml: `<span class="cv">## Success Criteria</span>\n- Onboarding p50 below 48 hours.\n- Support tickets fall by at least 80%.\n- CSAT rises above 4.5 / 5.`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ measurable-success-criteria (3/3)</div><div style="font-size:13px;color:var(--muted);">Pass or fail comes from the checks,<br>with the reason attached.</div>` },
+  { before: 'Requirements that drift across docs', after: 'One generated traceability matrix',
+    yaml: `<span class="ck">**AUR-BR-001**</span>: reduce onboarding time\n<span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): self-serve flow\n<span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): …\n<span class="ck">**AUR-TC-001**</span> (<span class="cv">tests</span>: AUR-AC-001): …`,
+    output: `<div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;">Requirements Traceability Matrix</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);">AUR-BR-001 → AUR-PR-014 → AUR-AC-001 → AUR-TC-001</div><div style="font-size:12px;color:var(--muted);margin-top:6px;">generated from the links</div>` },
+  { before: 'Stage-gate checklist', after: 'A required check in CI',
+    yaml: `<span class="ck">on</span>: [pull_request]\n<span class="ck">jobs</span>:\n  <span class="ck">audit</span>: docassert validate\n  <span class="ck">consistency</span>: docassert consistency`,
+    output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">CI · audit ✓ · consistency ✓</div><div style="font-size:12px;color:var(--muted);">merge blocked until green<br>on every pull request</div>` },
+];

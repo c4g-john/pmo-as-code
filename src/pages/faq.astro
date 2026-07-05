@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { FAQ } from '../data/faq';
+
+const anchors: [string, string][] = [['faq-list', 'Questions']];
+---
+
+<Base
+  title="FAQ"
+  description="The questions every audience asks first: is this a tool, can AI block a merge, what about regulators, who owns the standard, and how it differs from a strict spreadsheet."
+  path="/faq/"
+  anchors={anchors}
+>
+  <div class="eyebrow">Compare</div>
+  <h1 class="h1">FAQ.</h1>
+  <p class="lead">The questions every audience asks first.</p>
+
+  <div id="faq-list" style="display:grid;gap:3px;margin-top:36px;">
+    {FAQ.map((f) => (
+      <details class="acc faq-item" style="border:1px solid var(--border);border-radius:11px;overflow:hidden;">
+        <summary style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;background:var(--panel);color:var(--ink);">
+          <span style="font-weight:600;font-size:16px;">{f.q}</span>
+          <span class="acc-chevron mono" style="flex-shrink:0;font-size:13px;color:var(--muted);">+</span>
+        </summary>
+        <div style="padding:4px 18px 16px;font-size:15px;line-height:1.65;color:var(--ink-2);">{f.a}</div>
+      </details>
+    ))}
+  </div>
+</Base>
