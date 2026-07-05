@@ -1,7 +1,7 @@
 import { SHELLS } from './data.js';
 import { pageNavHtml, provenanceFooter } from './ui.js';
 import { renderHome } from './pages/home.js';
-import { renderManifesto, renderAutomation, renderTraceability } from './pages/manifesto.js';
+import { renderManifesto, renderAutomation, renderTraceability } from './pages/principles.js';
 import { renderRosetta } from './pages/rosetta.js';
 import { renderConcepts } from './pages/concepts.js';
 import { renderWhy } from './pages/why.js';
@@ -44,9 +44,9 @@ function renderShell(route) {
 
 export function getPageHtml(route) {
   if (route === '/') return renderHome();
-  if (route === '/manifesto') return renderManifesto();
-  if (route === '/manifesto/automation') return renderAutomation();
-  if (route === '/manifesto/traceability') return renderTraceability();
+  if (route === '/manifesto' || route === '/principles') return renderManifesto();
+  if (route === '/manifesto/automation' || route === '/principles/automation') return renderAutomation();
+  if (route === '/manifesto/traceability' || route === '/principles/traceability') return renderTraceability();
   if (route === '/rosetta') return renderRosetta();
   if (route === '/concepts') return renderConcepts();
   if (route === '/why') return renderWhy();

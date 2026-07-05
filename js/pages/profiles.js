@@ -8,7 +8,7 @@ export function renderProfiles() {
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Composable, named bundles.</h1>
     <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">A profile is a named bundle of expectations for a project: which document kinds it must carry, which are merely recommended, and how strict the gate is. Point a project at one, and its status page tells you what's still missing.</p>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Profiles are to this standard what Scrum and Kanban are to the Agile Manifesto, in that the manifesto holds still while implementations diverge.</p>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 36px;">Profiles are to this standard what distributions are to a kernel: the principles hold still while implementations diverge.</p>
 
     <div id="what-profile" style="margin-bottom:52px;">
       <h2 class="h2-sm">What a profile is.</h2>

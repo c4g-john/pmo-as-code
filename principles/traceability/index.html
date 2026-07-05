@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traceability · PMO as Code</title>
+<meta name="description" content="Project status is a build artifact. Business documents live in Git, are tested and gated on every change, and compile into dashboards nobody can hand-edit.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Traceability · PMO as Code">
+<meta property="og:description" content="Project status is a build artifact. Documents in Git, tested and gated on every change, compiled into dashboards nobody can hand-edit.">
+<meta property="og:url" content="https://pmoascode.com/principles/traceability/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Project status is a build artifact. Documents in Git, tested on every change, compiled into dashboards nobody can hand-edit.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/principles/traceability/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/principles/traceability">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+        <span class="layer-badge" style="background:var(--l1);">1</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Manifesto · Explainer 02</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Traceability over dense documentation.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 32px;">Value lives in the links between thin, richly connected artifacts.</p>
+
+      <div id="unit" style="margin-bottom:48px;">
+        <h2 class="h2-sm">The unit of value is the link.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Dense documentation defeats its own purpose. A 40-page Word document describes a project in exhaustive detail, yet it cannot tell you <em style="font-style:italic;color:var(--ink);">why</em> a status is red or which decision accepted the risk that caused it, so you read everything to find anything.</p>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Traceability replaces density with linkage. Each thin artifact (a charter, a RAID entry, a decision record) carries a stable ID and typed references to the others, so a reader can walk from any status to its root cause in five hops without opening a deck.</p>
+      </div>
+
+      <div id="thread-ex" style="margin-bottom:48px;">
+        <h2 class="h2-sm">The thread in practice.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 22px;">The canonical question is whether every requirement gets tested. Every hop below is a typed link that CI checks on every pull request.</p>
+        <div style="position:relative;padding-left:28px;border-left:2px solid var(--accent-line);display:grid;gap:2px;">
+          
+            <div style="position:relative;padding:10px 0 6px;">
+              <span style="position:absolute;left:-36px;top:14px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:0;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent-soft);"></span>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span class="kind-badge">Test Case</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-TC-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">wizard → account active, zero tickets</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted);margin:6px 0 0 2px;">tests →</div>
+            </div>
+            <div style="position:relative;padding:10px 0 6px;">
+              <span style="position:absolute;left:-36px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:none;"></span>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span class="kind-badge">Acceptance Criterion</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-AC-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">new customer set up, no support ticket</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted);margin:6px 0 0 2px;">verifies →</div>
+            </div>
+            <div style="position:relative;padding:10px 0 6px;">
+              <span style="position:absolute;left:-36px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:none;"></span>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span class="kind-badge">Product Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-PR-014</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">self-serve onboarding flow</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted);margin:6px 0 0 2px;">traces to →</div>
+            </div>
+            <div style="position:relative;padding:10px 0 6px;">
+              <span style="position:absolute;left:-36px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:none;"></span>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span class="kind-badge">Business Requirement</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-BR-001</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">onboarding under 2 days</div>
+              </div>
+              <div class="mono" style="font-size:11px;color:var(--muted);margin:6px 0 0 2px;">which serves →</div>
+            </div>
+            <div style="position:relative;padding:10px 0 0;">
+              <span style="position:absolute;left:-36px;top:14px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:0;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent-soft);"></span>
+              <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span class="kind-badge">Charter</span><span class="mono" style="font-size:11px;color:var(--muted);">AUR-charter</span></div>
+                <div style="font-size:14px;color:var(--ink-2);">objective: 14 days → under 2</div>
+              </div>
+              
+            </div>
+        </div>
+      </div>
+
+      <div id="schema" style="margin-bottom:48px;">
+        <h2 class="h2-sm">The schema enforces this.</h2>
+        <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Every requirement is an item with a stable ID and typed links, so the lineage is a queryable graph that CI checks. Ask "which requirements have no test?" and the tool answers.</p>
+        <div class="code-block">
+          <div class="code-titlebar">
+            <span class="traffic-light" style="background:#ff5f57;"></span>
+            <span class="traffic-light" style="background:#febc2e;"></span>
+            <span class="traffic-light" style="background:#28c840;"></span>
+            <span class="code-filename">documents/PRJ-001-AUR/prd.md</span>
+          </div>
+          <pre class="code-pre"><span class="cv">## Product Requirements</span>
+- <span class="ck">**AUR-PR-014**</span> (<span class="cv">traces</span>: AUR-BR-001): the product shall
+  provide a self-serve onboarding flow.
+
+<span class="cv">## Acceptance Criteria</span>
+- <span class="ck">**AUR-AC-001**</span> (<span class="cv">verifies</span>: AUR-PR-014): a new customer
+  completes setup with no support ticket created.</pre>
+        </div>
+      </div>
+
+      <div class="page-nav"><a class="page-nav-link" href="#/principles/automation"><div class="page-nav-label">← previous</div><div class="page-nav-title">Automation & audit</div></a><a class="page-nav-link next" href="#/rosetta"><div class="page-nav-label">next →</div><div class="page-nav-title">The Rosetta Stone</div></a></div>
+      <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/principles.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/principles.js</a>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <span class="prov-sep">|</span>
+    <a href="#/press" style="color:var(--ink-2);text-decoration:none;">Press &amp; share kit</a>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/principles.js" target="_blank" rel="noopener">Edit on GitHub →</a>
+  </footer>
+    </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

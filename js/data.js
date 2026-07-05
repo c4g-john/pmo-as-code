@@ -1,9 +1,9 @@
 export const NAV = [
   { title: 'Start here', items: [['Home', '/'], ['Why PMO as Code', '/why'], ['Case study: Refuge', '/case-study']] },
-  { title: 'The Manifesto', layer: 1, color: 'var(--l1)', items: [
-    ['The Manifesto', '/manifesto'],
-    ['Automation & audit', '/manifesto/automation'],
-    ['Traceability', '/manifesto/traceability'],
+  { title: 'Principles', layer: 1, color: 'var(--l1)', items: [
+    ['Principles', '/principles'],
+    ['Automation & audit', '/principles/automation'],
+    ['Traceability', '/principles/traceability'],
   ]},
   { title: 'Reference Approach', layer: 2, color: 'var(--l2)', items: [
     ['The Rosetta Stone', '/rosetta'],
@@ -29,9 +29,9 @@ export const PAGE_META = {
   '/why':         { t: 'Why PMO as Code',         src: 'js/pages/why.js' },
   '/press': [['press-tensec','The ten-second version'],['press-assets','Assets'],['press-angles','Story angles'],['press-share','Ready to post'],['press-facts','Fact sheet']],
   '/case-study':  { t: 'Case study: Refuge for Humans', src: 'js/pages/case-study.js' },
-  '/manifesto':   { t: 'The Manifesto',           src: 'js/pages/manifesto.js' },
-  '/manifesto/automation':   { t: 'Automation & audit',   src: 'js/pages/manifesto.js' },
-  '/manifesto/traceability': { t: 'Traceability',         src: 'js/pages/manifesto.js' },
+  '/principles':  { t: 'Principles',              src: 'js/pages/principles.js' },
+  '/principles/automation':   { t: 'Automation & audit',   src: 'js/pages/principles.js' },
+  '/principles/traceability': { t: 'Traceability',         src: 'js/pages/principles.js' },
   '/rosetta':     { t: 'The Rosetta Stone',       src: 'js/pages/rosetta.js' },
   '/concepts':    { t: 'Core Concepts',           src: 'js/pages/concepts.js' },
   '/quickstart':  { t: 'Quickstart',              src: 'js/pages/quickstart.js' },
@@ -46,19 +46,19 @@ export const PAGE_META = {
   '/press':       { t: 'Press & share kit',       src: 'js/pages/press.js' },
 };
 
-export const ORDER = ['/','/why','/case-study','/manifesto','/manifesto/automation','/manifesto/traceability',
+export const ORDER = ['/','/why','/case-study','/principles','/principles/automation','/principles/traceability',
   '/rosetta','/concepts','/quickstart','/quickstart-claude','/guides','/reference','/integrations',
   '/profiles','/adoption','/vs','/faq','/press'];
 
 export const SHELLS = {};
 
 export const ANCHORS = {
-  '/': [['thesis','Thesis'],['manifesto-strip','The manifesto'],['reveal','Declared → derived'],['thread','The traceability thread'],['portfolio','A page per project'],['proof','A running instance']],
-  '/manifesto': [['values','The five value-pairs'],['deepdives','The two that carry weight'],['layers','Three layers'],['why-i-wrote','Why I wrote this']],
+  '/': [['thesis','Thesis'],['principles-strip','The principles'],['reveal','Declared → derived'],['thread','The traceability thread'],['portfolio','A page per project'],['proof','A running instance']],
+  '/principles': [['values','The five defaults'],['deepdives','The two that carry weight'],['layers','Three layers'],['why-i-wrote','Why I wrote this']],
   '/rosetta': [['intro','The mapping'],['rows','Traditional → as-code']],
   '/concepts': [['model','A document, not a database'],['identity','Projects & identity'],['items','Linked items'],['checks','Two tiers of checks'],['kinds','Twenty-one kinds']],
-  '/manifesto/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
-  '/manifesto/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
+  '/principles/automation': [['shift','The shift'],['policy','Policy as code'],['tension','Where gates still belong']],
+  '/principles/traceability': [['unit','The unit of value'],['thread-ex','The thread example'],['schema','Schema requirement']],
   '/case-study': [['cs-source','The source'],['cs-convert','The conversion'],['cs-findings','The findings'],['cs-loop','The feedback loop'],['cs-live','Live now'],['cs-bridge','The execution bridge']],
   '/why': [['status-quo','The status quo'],['stale','Stale on arrival'],['rag','RAG is fiction'],['governance','Unauditable governance'],['army','The army-of-PMs tax']],
   '/quickstart': [['qs-install','1 · Get docassert'],['qs-project','2 · Anchor a project'],['qs-author','3 · Author a document'],['qs-test','4 · Unit-test'],['qs-consistency','5 · Consistency'],['qs-rtm','6 · Traceability matrix'],['qs-pages','7 · Status & completeness'],['qs-gate','8 · Gate in CI']],
