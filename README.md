@@ -38,35 +38,31 @@ wherever it appears.
 
 ## Running locally
 
-Plain HTML + CSS + native ES modules. Serve the folder with any static file
-server (ES modules need HTTP, not `file://`):
+The site is a fully static [Astro](https://astro.build) build with zero
+client-side JavaScript beyond one progressive-enhancement script:
 
 ```bash
-python3 -m http.server 3131
-# then open http://localhost:3131
+npm ci
+npm run dev     # dev server
+npm run build   # dist/ + structural gate + Pagefind search index
 ```
 
 ## Project structure
 
-Hash-based SPA, prerendered to static HTML per route for crawlers and no-JS
-readers:
-
 ```
-index.html          # shell: <link> styles.css + <script type="module"> js/app.js
-styles.css          # all styles (design tokens, components, responsive)
-js/
-  app.js            # entry: state wiring, render(), events, boot
-  router.js         # getPageHtml(route) → the right page renderer
-  data.js           # NAV, PAGE_META, ANCHORS, ROSETTA_ROWS, shared constants
-  state.js          # the mutable app state object
-  ui.js             # shared render helpers (cb, pageNav, sidebar, on-this-page)
-  pages/            # one module per page (home, concepts, reference, …)
-scripts/prerender.py  # renders every route to <route>/index.html + sitemap
+src/content/pages/   # prose pages: Markdown with schema-gated frontmatter
+src/pages/           # structural pages: .astro composing typed data records
+src/data/            # the records (nav, document kinds, FAQ, profiles, …);
+                     #   one record feeds every surface that states the fact
+src/layouts/Base.astro   # the one shell: nav, JSON-LD, provenance footer
+public/site.js       # theme, menu, copy buttons, search (site works without it)
+scripts/check-dist.mjs   # postbuild gate: headings + JSON-LD on every page
 ```
 
-To edit a page: change its module in `js/pages/`, then **run
-`python3 scripts/prerender.py`** so the static copies and sitemap stay in
-sync. To add a page: create the module, add its route to `js/router.js`,
-nav/anchors in `js/data.js`, and prerender.
+To edit a page, edit its file under `src/`; the provenance footer on every
+page links to it. To add a page, create it and register it in
+`src/data/nav.ts` — the sidebar, prev/next rail, sitemap, and llms.txt all
+derive from that one record. `dateModified` comes from git history at build
+time; nothing about freshness is typed by hand.
 
 © 2026 C4G Enterprises Inc. · Site content and code by John Tanner.

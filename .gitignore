@@ -14,3 +14,5 @@ pmo-as-code-design-brief.md
 human-authorship-standard.md
 node_modules/
 dist/
+.astro/
+__pycache__/
