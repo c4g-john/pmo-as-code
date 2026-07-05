@@ -14,6 +14,7 @@ interface Props {
   anchors?: [string, string][];      // [id, label] for the on-this-page rail
   ogImage?: string;
   jsonLd?: object[];                 // page-specific blocks (task: delivery checklist)
+  srcPath?: string;                  // override for pages outside the nav record (news entries)
 }
 
 const { title, description, path, anchors = [], ogImage = '/og.png', jsonLd = [] } = Astro.props;
@@ -21,7 +22,7 @@ const page = pageFor(path);
 const { prev, next } = prevNext(path);
 const canonical = new URL(path, Astro.site).href;
 const fullTitle = path === '/' ? 'PMO as Code' : `${title} · PMO as Code`;
-const srcPath = page?.srcPath ?? 'src/pages/index.astro';
+const srcPath = Astro.props.srcPath ?? page?.srcPath ?? 'src/pages/index.astro';
 const srcUrl = `https://github.com/c4g-john/pmo-as-code/blob/main/${srcPath}`;
 const updated = lastModified(srcPath);
 
@@ -78,6 +79,7 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': siteGrap
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" type="application/rss+xml" title="PMO as Code news" href="/rss.xml" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta name="theme-color" content="#0d1117" />
@@ -173,6 +175,8 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': siteGrap
             <span>Updated <time datetime={updated}>{updated}</time></span>
             <span class="prov-sep">|</span>
             <span>written and maintained by John Tanner · C4G Enterprises</span>
+            <span class="prov-sep">|</span>
+            <a href="/news/" style="color:var(--ink-2);text-decoration:none;">News</a>
             <span class="prov-sep">|</span>
             <a href="/press/" style="color:var(--ink-2);text-decoration:none;">Press &amp; share kit</a>
             <a class="prov-edit" href={srcUrl} target="_blank" rel="noopener">Edit on GitHub →</a>

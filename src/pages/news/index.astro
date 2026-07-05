@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const entries = (await getCollection('news')).sort((a, b) =>
+  b.data.date.localeCompare(a.data.date)
+);
+---
+
+<Base
+  title="News"
+  description="Release-tied announcements for PMO as Code: every entry is a dated, factual account of something that shipped, and the whole feed is available as RSS."
+  path="/news/"
+>
+  <div class="eyebrow">News</div>
+  <h1 class="h1">What shipped, when.</h1>
+  <p class="lead">One entry per release or milestone, dated, with the artifacts linked so every claim can be checked. Subscribe via <a href="/rss.xml" style="color:var(--accent);text-decoration:none;">RSS</a>.</p>
+
+  <div style="display:grid;gap:14px;margin-top:36px;">
+    {entries.map((e) => (
+      <a href={`/news/${e.id.replace(/\.md$/, '')}/`} class="card" style="text-decoration:none;color:inherit;display:block;">
+        <div class="mono" style="font-size:12px;color:var(--muted);margin-bottom:6px;"><time datetime={e.data.date}>{e.data.date}</time></div>
+        <div class="card-title" style="font-size:17px;">{e.data.title}</div>
+        <div class="card-body" style="margin-top:6px;">{e.data.description}</div>
+      </a>
+    ))}
+  </div>
+</Base>

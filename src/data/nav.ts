@@ -112,10 +112,13 @@ export const NAV: NavGroup[] = [
   },
 ];
 
-// Press kit is footer-linked, not in the main nav, but part of the page order.
+// Press kit and news are footer/feed surfaces, not part of the reading
+// order's sidebar, but they belong in llms.txt and the page order.
 export const EXTRA_PAGES: NavPage[] = [
+  { title: 'News', path: '/news/', srcPath: 'src/pages/news/index.astro',
+    summary: 'Release-tied announcements, dated and factual, with an RSS feed at /rss.xml.' },
   { title: 'Press & share kit', path: '/press/', srcPath: 'src/pages/press.astro',
-    summary: 'Verified facts, quotable copy, real product images, and ready-to-post announcements.' },
+    summary: 'Press boilerplate, verified facts, quotable copy, real product images, and ready-to-post announcements.' },
 ];
 
 export const ORDER: NavPage[] = [...NAV.flatMap(g => g.pages), ...EXTRA_PAGES];
