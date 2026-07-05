@@ -12,3 +12,5 @@ pmo-as-code-design-brief.md
 *.swp
 *~
 human-authorship-standard.md
+node_modules/
+dist/
