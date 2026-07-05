@@ -25,6 +25,8 @@ export const NAV: NavGroup[] = [
         summary: 'Why the PowerPoint-Excel-SharePoint-email PMO fails: stale artifacts, self-reported RAG, unauditable approvals. Includes the author statement.' },
       { title: 'Case study: Refuge', path: '/case-study/', srcPath: 'src/pages/case-study.astro',
         summary: 'A real 14-section Word BRD converted to a gated, traceable, self-reporting project, failures included.' },
+      { title: 'Runs on itself', path: '/self-governance/', srcPath: 'src/content/pages/self-governance.md',
+        summary: 'The portfolio that builds PMO as Code is run as PMO as Code: live dashboards, governing documents, observable gates.' },
     ],
   },
   {
@@ -78,6 +80,8 @@ export const NAV: NavGroup[] = [
         summary: 'Task-oriented guides: converting documents, wiring CI, bridging execution to GitHub.' },
       { title: 'Reference', path: '/reference/', srcPath: 'src/pages/reference.astro',
         summary: 'The twenty-one document kinds with their frontmatter, sections, items, and checks.' },
+      { title: 'The standard', path: '/standard/', srcPath: 'src/content/pages/standard.md',
+        summary: 'The normative spec: what it covers, how it versions, and the 73-case conformance suite that makes "implements PMO as Code" checkable.' },
       { title: 'Integrations', path: '/integrations/', srcPath: 'src/content/pages/integrations.md',
         summary: 'GitHub Actions, badges, Pages dashboards, and the execution bridge.' },
     ],
