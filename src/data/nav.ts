@@ -47,6 +47,21 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: 'The as-code family',
+    pages: [
+      { title: 'The as-code family', path: '/as-code/', srcPath: 'src/content/pages/as-code.md',
+        summary: 'The shared pattern and the family tree: what infrastructure, documents, process, and policy each proved first.' },
+      { title: 'Infrastructure as Code', path: '/as-code/infrastructure/', srcPath: 'src/content/pages/as-code-infrastructure.md',
+        summary: 'The ancestor: declared state, convergence, drift detection, and review for operations.' },
+      { title: 'Documents as Code', path: '/as-code/documents/', srcPath: 'src/content/pages/as-code-documents.md',
+        summary: 'From the docs-as-code movement to business documents, where validation must reach into structure.' },
+      { title: 'Process as Code', path: '/as-code/process/', srcPath: 'src/content/pages/as-code-process.md',
+        summary: 'A described process drifts; an executed process holds. The PMO procedures that run today.' },
+      { title: 'Policy as Code', path: '/as-code/policy/', srcPath: 'src/content/pages/as-code-policy.md',
+        summary: 'Rules evaluated on every change: branch protection as the everyday policy engine, governance made binding.' },
+    ],
+  },
+  {
     title: 'Reference approach',
     layer: 2,
     color: 'var(--l2)',
