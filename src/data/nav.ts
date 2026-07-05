@@ -25,7 +25,7 @@ export const NAV: NavGroup[] = [
         summary: 'Why the PowerPoint-Excel-SharePoint-email PMO fails: stale artifacts, self-reported RAG, unauditable approvals. Includes the author statement.' },
       { title: 'Case study: Refuge', path: '/case-study/', srcPath: 'src/pages/case-study.astro',
         summary: 'A real 14-section Word BRD converted to a gated, traceable, self-reporting project, failures included.' },
-      { title: 'Runs on itself', path: '/self-governance/', srcPath: 'src/content/pages/self-governance.md',
+      { title: 'Runs on itself', path: '/self-governance/', srcPath: 'src/pages/self-governance.astro',
         summary: 'The portfolio that builds PMO as Code is run as PMO as Code: live dashboards, governing documents, observable gates.' },
     ],
   },
