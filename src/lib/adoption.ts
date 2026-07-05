@@ -17,12 +17,15 @@ async function getJson(url: string, headers: Record<string, string> = {}) {
 }
 
 async function tryGet<T>(fn: () => Promise<T>): Promise<T | null> {
-  try {
-    return await fn();
-  } catch (e) {
-    console.warn(`adoption source unavailable this build: ${e}`);
-    return null;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      return await fn();
+    } catch (e) {
+      if (attempt === 2) console.warn(`adoption source unavailable this build: ${e}`);
+      else await new Promise((r) => setTimeout(r, 4000));
+    }
   }
+  return null;
 }
 
 export async function fetchAdoption(): Promise<AdoptionCounts> {
