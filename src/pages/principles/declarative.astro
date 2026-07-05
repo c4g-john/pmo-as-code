@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const anchors: [string, string][] = [
+  ['shift', 'The shift'],
+  ['derive', 'Everything else derives'],
+  ['exception', 'Where hand-made belongs'],
+];
+---
+
+<Base
+  title="Declarative sources of truth"
+  description="A declarative source states what is true in one authoritative place. A hand-maintained artifact restates it, and the two begin to disagree the moment the copy is saved."
+  path="/principles/declarative/"
+  anchors={anchors}
+>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+    <span class="layer-badge" style="background:var(--l1);">1</span>
+    <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles · Explainer 01</span>
+  </div>
+  <h1 class="h1" style="font-size:clamp(28px,4vw,42px);">Declarative sources of truth over hand-maintained artifacts.</h1>
+  <p class="lead">A declarative source states what is true in one authoritative place. A hand-maintained artifact restates it, and the two begin to disagree the moment the copy is saved.</p>
+
+  <div id="shift" style="margin:32px 0 48px;">
+    <h2 class="h2-sm">The shift: declare once, converge everywhere.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Infrastructure as Code settled this argument for servers years ago: you declare the state you want, and tooling makes the world match. PMO as Code applies the same posture to the portfolio. The documents declare what is true, and every other surface is computed from them.</p>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Frontmatter declares a document's identity, status, and dates. Items declare the requirements, risks, and tests. Typed links declare the reasoning between them. None of it is prose that a reader must interpret; all of it is structure that a pipeline can check.</p>
+    <div class="code-block">
+      <div class="code-titlebar">
+        <span class="traffic-light" style="background:#ff5f57;"></span>
+        <span class="traffic-light" style="background:#febc2e;"></span>
+        <span class="traffic-light" style="background:#28c840;"></span>
+        <span class="code-filename">documents/PRJ-001-AUR/charter.md</span>
+      </div>
+      <pre class="code-pre"><span class="cc"># frontmatter declares; nothing downstream is typed by hand</span>
+<span class="ck">id</span>: <span class="cs">AUR-charter</span>
+<span class="ck">kind</span>: <span class="cs">charter</span>
+<span class="ck">project</span>: <span class="cs">PRJ-001-AUR</span>
+<span class="ck">status</span>: <span class="cs">approved</span>
+<span class="ck">dates</span>:
+  <span class="ck">target</span>: <span class="cv">2026-12-31</span></pre>
+    </div>
+  </div>
+
+  <div id="derive" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Everything else derives.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Once the sources are declarative, the artifacts people used to maintain become build outputs. Each of these is live in the reference deployments today:</p>
+    <div class="grid-2">
+      <div class="card"><div class="card-title">The traceability matrix</div><div class="card-body">Regenerated from the link graph on every change. Nobody reconciles a spreadsheet against the requirements.</div></div>
+      <div class="card"><div class="card-title">Status pages and RAG</div><div class="card-body">Computed from the documents and their check results, rebuilt when the documents change.</div></div>
+      <div class="card"><div class="card-title">The project registry</div><div class="card-body">Generated from each project's anchor document, with a CI job that fails if the registry goes stale.</div></div>
+      <div class="card"><div class="card-title">This site's metadata</div><div class="card-body">Page dates come from git history at build time, and the sitemap and llms.txt are generated from the same records that render the pages.</div></div>
+    </div>
+  </div>
+
+  <div id="exception" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Where hand-made artifacts still belong.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Judgment is authored, and it should be. A charter's objective, a risk's mitigation, a post-implementation review's lessons: people write those, in the documents, where the history lives.</p>
+    <div class="card" style="border-left:3px solid var(--warn);">
+      <div class="card-title">When a deck is required anyway</div>
+      <div class="card-body" style="margin-top:6px;">Some forums demand a slide. Make it an export of the sources, dated, and treat it as a snapshot. The failure mode this principle exists to prevent is the copy becoming the place where truth gets edited.</div>
+    </div>
+  </div>
+</Base>

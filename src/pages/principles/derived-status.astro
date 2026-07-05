@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const anchors: [string, string][] = [
+  ['color', 'Who picks the color'],
+  ['causes', 'Every color has causes'],
+  ['floor', 'People can lower it, never raise it'],
+];
+---
+
+<Base
+  title="Derived status"
+  description="Nobody types a color. RAG is computed from the documents and their checks, every verdict names its causes, and a person can pull the color down but never talk it back up."
+  path="/principles/derived-status/"
+  anchors={anchors}
+>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+    <span class="layer-badge" style="background:var(--l1);">1</span>
+    <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles · Explainer 04</span>
+  </div>
+  <h1 class="h1" style="font-size:clamp(28px,4vw,42px);">Derived status over self-reported status.</h1>
+  <p class="lead">Nobody types a color. Status is computed from the documents and their check results, the same way a build result is computed from the code.</p>
+
+  <div id="color" style="margin:32px 0 48px;">
+    <h2 class="h2-sm">Who picks the color.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Self-reported RAG asks the person with the most at stake to grade their own work, under an incentive to stay green. The grade drifts toward calm long before the project does.</p>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Derived status removes the question. The checks look at the document set and pick the color from what they find:</p>
+    <div class="grid-2">
+      <div class="card"><div class="card-title">Audit results</div><div class="card-body">An approved document that no longer passes its audit pulls the project off green.</div></div>
+      <div class="card"><div class="card-title">Coverage</div><div class="card-body">Requirements with no verifying test are a named, counted cause.</div></div>
+      <div class="card"><div class="card-title">Risk against appetite</div><div class="card-body">Open risks amber the project only at or above a declared severity threshold, so writing risks down is never punished.</div></div>
+      <div class="card"><div class="card-title">Freshness</div><div class="card-body">An operations catalog past its review date ambers itself. Nobody has to notice.</div></div>
+    </div>
+  </div>
+
+  <div id="causes" style="margin-bottom:48px;">
+    <h2 class="h2-sm">Every color has causes.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">An amber page lists the findings that made it amber, each one pointing back to a document. A green page states what was verified rather than presenting silence as health. When the reader asks why, the answer is on the page, and fixing the cause is the only way to change the color.</p>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">This is running in public. The <a href="https://c4g-john.github.io/pmo-as-code-pmo/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">portfolio that governs PMO as Code</a> and the <a href="https://c4g-john.github.io/refuge-for-humans-pmo/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Refuge for Humans project</a> derive their dashboards this way, including when the answer is amber.</p>
+  </div>
+
+  <div id="floor" style="margin-bottom:48px;">
+    <h2 class="h2-sm">People can lower the color. They can never raise it.</h2>
+    <p style="font-size:16px;color:var(--ink-2);max-width:60ch;margin:0 0 18px;">Human judgment still counts, in one direction. A project lead who sees trouble the checks can't see yet flags it in a status report, and the derivation honors the flag as one of its causes.</p>
+    <div class="card" style="border-left:3px solid var(--warn);">
+      <div class="card-title">The asymmetry is the point</div>
+      <div class="card-body" style="margin-top:6px;">A written report can pull a green project to amber. Nothing a person types can turn a failing derivation green. The pressure to soften a color for a stakeholder meeting has nowhere to land.</div>
+    </div>
+  </div>
+</Base>

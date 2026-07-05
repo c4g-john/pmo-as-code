@@ -11,6 +11,8 @@ const pages = defineCollection({
     description: z.string().min(20).max(300),
     path: z.string().regex(/^\/[a-z0-9\-\/]*\/$/),
     anchors: z.array(z.tuple([z.string(), z.string()])).default([]),
+    // The page hosting the author statement also carries the Person node.
+    authorStatement: z.boolean().default(false),
   }),
 });
 
