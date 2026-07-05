@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "node scripts/check-dist.mjs && pagefind --site dist"
+    "postbuild": "node scripts/check-dist.mjs && node scripts/build-llms-full.mjs && pagefind --site dist"
   },
   "dependencies": {
     "astro": "^7.0.6"

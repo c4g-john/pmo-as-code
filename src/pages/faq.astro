@@ -3,6 +3,18 @@ import Base from '../layouts/Base.astro';
 import { FAQ } from '../data/faq';
 
 const anchors: [string, string][] = [['faq-list', 'Questions']];
+
+// The same record that renders the accordions feeds the FAQPage schema.
+const jsonLd = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
 <Base
@@ -10,6 +22,7 @@ const anchors: [string, string][] = [['faq-list', 'Questions']];
   description="The questions every audience asks first: is this a tool, can AI block a merge, what about regulators, who owns the standard, and how it differs from a strict spreadsheet."
   path="/faq/"
   anchors={anchors}
+  jsonLd={jsonLd}
 >
   <div class="eyebrow">Compare</div>
   <h1 class="h1">FAQ.</h1>
