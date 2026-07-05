@@ -1,0 +1,5 @@
+Contact: mailto:press@c4genterprises.com
+Expires: 2027-07-05T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://pmoascode.com/.well-known/security.txt
+Policy: https://github.com/c4g-john/docassert/blob/main/SECURITY.md
