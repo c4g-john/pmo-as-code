@@ -38,6 +38,8 @@ Every member of the family makes the same move: take a practice that lived in ha
   <div class="card"><div class="card-title"><a href="/as-code/documents/">Documents as Code →</a></div><div class="card-body">Technical writers moved documentation into Git and CI. Business documents raise the stakes: they carry commitments, so validation has to reach into structure.</div></div>
   <div class="card"><div class="card-title"><a href="/as-code/process/">Process as Code →</a></div><div class="card-body">A process written in a wiki describes; a process written as automation executes. The gap between the two is where procedures rot.</div></div>
   <div class="card"><div class="card-title"><a href="/as-code/policy/">Policy as Code →</a></div><div class="card-body">Rules that machines evaluate against every change. Branch protection is the version most teams already run without naming it.</div></div>
+  <div class="card"><div class="card-title"><a href="/as-code/governance/">Governance as Code →</a></div><div class="card-body">The system around the rules: decision rights, recorded approvals, oversight loops, and exceptions with a trail.</div></div>
+  <div class="card"><div class="card-title"><a href="/as-code/compliance/">Compliance as Code →</a></div><div class="card-body">Controls checked by machines, evidence accumulating as a by-product, audits that read the record instead of reconstructing it.</div></div>
 </div>
 
 GitOps deserves a mention alongside these: the practice of keeping a system converged with its declared sources through automated reconciliation loops. PMO as Code leans on it directly, since the delivery boards are reconciled against the documents the same way a cluster is reconciled against its manifests.
