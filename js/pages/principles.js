@@ -5,13 +5,13 @@ export function renderManifesto() {
     <div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
         <span class="layer-badge" style="background:var(--l1);">1</span>
-        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · The Manifesto</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles</span>
       </div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The five value-pairs.</h1>
-      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one. It mirrors the Agile Manifesto, opinionated in its values and open in how you implement them.</p>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The five defaults.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one: what the standard defaults to, and what needs a documented reason to deviate.</p>
 
       <div id="values" style="margin-top:40px;">
-        <div class="eyebrow">We value</div>
+        <div class="eyebrow">Default over exception</div>
         <div style="display:grid;gap:9px;">
           <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Declarative sources of truth</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">hand-maintained artifacts</span></div>
           <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Automation and audit</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">gates and approvals</span></div>
@@ -19,20 +19,20 @@ export function renderManifesto() {
           <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Derived status</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">self-reported status</span></div>
           <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Composable definitions</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">one-off, siloed tools</span></div>
         </div>
-        <p style="font-style:italic;color:var(--ink-2);font-size:15px;margin:18px 2px 0;">That is: while there is value in the items on the right, we value the items on the left more.</p>
+        <p style="font-style:italic;color:var(--ink-2);font-size:15px;margin:18px 2px 0;">The right-hand column is not banned. It is the exception, and exceptions get documented.</p>
       </div>
 
       <div id="deepdives" style="margin-top:54px;">
         <h2 class="h2-sm">Two carry the most weight.</h2>
         <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;">Each gets its own explainer.</p>
         <div class="explainer-grid">
-          <a class="explainer-card" href="#/manifesto/automation">
+          <a class="explainer-card" href="#/principles/automation">
             <div class="explainer-num">01 · explainer</div>
             <div class="explainer-title">Automation &amp; audit over gates &amp; approvals</div>
             <div class="explainer-body">The posture shifts from prevention to flow, and the gate becomes policy as code.</div>
             <div class="explainer-cta">Read →</div>
           </a>
-          <a class="explainer-card" href="#/manifesto/traceability">
+          <a class="explainer-card" href="#/principles/traceability">
             <div class="explainer-num">02 · explainer</div>
             <div class="explainer-title">Traceability over dense documentation</div>
             <div class="explainer-body">Value lives in the links between thin, richly connected artifacts.</div>
@@ -47,7 +47,7 @@ export function renderManifesto() {
         <div style="display:grid;gap:11px;">
           <div class="layer-card" style="border-left:3px solid var(--l1);">
             <span class="layer-num" style="background:var(--l1);">1</span>
-            <div><div class="layer-card-title">The Manifesto</div><div class="layer-card-body">Five value-pairs · rarely changes · owned by no one.</div></div>
+            <div><div class="layer-card-title">Principles</div><div class="layer-card-body">Five defaults · rarely changes · owned by no one.</div></div>
           </div>
           <div class="layer-card" style="border-left:3px solid var(--l2);">
             <span class="layer-num" style="background:var(--l2);">2</span>
@@ -84,8 +84,8 @@ export function renderManifesto() {
       </div>
     </div>
 
-      ${pageNavHtml('/manifesto')}
-      ${provenanceFooter('/manifesto')}
+      ${pageNavHtml('/principles')}
+      ${provenanceFooter('/principles')}
     </div>`;
 }
 
@@ -149,8 +149,8 @@ export function renderAutomation() {
         </div>
       </div>
 
-      ${pageNavHtml('/manifesto/automation')}
-      ${provenanceFooter('/manifesto/automation')}
+      ${pageNavHtml('/principles/automation')}
+      ${provenanceFooter('/principles/automation')}
     </div>`;
 }
 
@@ -212,7 +212,7 @@ export function renderTraceability() {
         </div>
       </div>
 
-      ${pageNavHtml('/manifesto/traceability')}
-      ${provenanceFooter('/manifesto/traceability')}
+      ${pageNavHtml('/principles/traceability')}
+      ${provenanceFooter('/principles/traceability')}
     </div>`;
 }

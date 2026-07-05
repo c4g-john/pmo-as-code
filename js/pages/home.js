@@ -34,13 +34,13 @@ export function renderHome() {
           </div>
         </section>
 
-        <section class="thread-section" id="manifesto-strip">
+        <section class="thread-section" id="principles-strip">
           <span class="thread-node"></span>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;">
             <span class="layer-badge" style="background:var(--l1);">1</span>
-            <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">The Manifesto</span>
+            <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Principles</span>
           </div>
-          <h2 class="h2">We value the items on the left more.</h2>
+          <h2 class="h2">The five defaults.</h2>
           <div style="display:grid;gap:9px;">
             <div class="value-pair"><span class="value-left">Declarative sources of truth</span><span class="value-over">over</span><span class="value-right">hand-maintained artifacts</span></div>
             <div class="value-pair"><span class="value-left">Automation and audit</span><span class="value-over">over</span><span class="value-right">gates and approvals</span></div>
@@ -48,8 +48,8 @@ export function renderHome() {
             <div class="value-pair"><span class="value-left">Derived status</span><span class="value-over">over</span><span class="value-right">self-reported status</span></div>
             <div class="value-pair"><span class="value-left">Composable definitions</span><span class="value-over">over</span><span class="value-right">one-off, siloed tools</span></div>
           </div>
-          <p style="font-style:italic;color:var(--ink-2);font-size:14.5px;margin:16px 2px 0;">That is: while there is value in the items on the right, we value the items on the left more.</p>
-          <a href="#/manifesto" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:var(--accent);text-decoration:none;font-weight:600;font-size:14.5px;">Read the manifesto <span class="mono">→</span></a>
+          <p style="font-style:italic;color:var(--ink-2);font-size:14.5px;margin:16px 2px 0;">The right-hand column is not banned. It is the exception, and exceptions get documented.</p>
+          <a href="#/principles" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:var(--accent);text-decoration:none;font-weight:600;font-size:14.5px;">Read the principles <span class="mono">→</span></a>
         </section>
 
         <section class="thread-section" id="reveal">

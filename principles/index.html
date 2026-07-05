@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Principles · PMO as Code</title>
+<meta name="description" content="Project status is a build artifact. Business documents live in Git, are tested and gated on every change, and compile into dashboards nobody can hand-edit.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Principles · PMO as Code">
+<meta property="og:description" content="Project status is a build artifact. Documents in Git, tested and gated on every change, compiled into dashboards nobody can hand-edit.">
+<meta property="og:url" content="https://pmoascode.com/principles/">
+<meta property="og:image" content="https://pmoascode.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PMO as Code">
+<meta name="twitter:description" content="Project status is a build artifact. Documents in Git, tested on every change, compiled into dashboards nobody can hand-edit.">
+<meta name="twitter:image" content="https://pmoascode.com/og.png">
+<link rel="canonical" href="https://pmoascode.com/principles/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d1117">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"PMO as Code","url":"https://pmoascode.com/",
+  "description":"A vendor-neutral standard for running a PMO from version-controlled, testable documents."},
+ {"@type":"SoftwareApplication","name":"docassert","operatingSystem":"macOS, Linux, Windows",
+  "applicationCategory":"DeveloperApplication",
+  "description":"Unit testing for business documents — the PMO as Code reference implementation.",
+  "url":"https://docassert.com","downloadUrl":"https://pypi.org/project/docassert/",
+  "license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-route="/principles">
+
+<header id="app-header">
+  <button id="mobile-menu-btn" aria-label="Toggle navigation" title="Menu">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a class="logo" href="#/" id="logo-link">
+    <span class="logo-icon"><span class="logo-dot"></span></span>
+    <span class="logo-text">PMO<span class="logo-sep">·</span>as<span class="logo-sep">·</span>Code</span>
+  </a>
+  <span class="version-badge mono">v1</span>
+  <div class="spacer"></div>
+  <div class="search-box" id="search-box">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <span>Search docs</span>
+    <span class="kbd">⌘K</span>
+  </div>
+  <button class="icon-btn" id="theme-btn" title="Toggle theme">
+    <span class="theme-glyph" id="theme-glyph">☾</span>
+  </button>
+  <a class="icon-btn" href="https://github.com/c4g-john/pmo-as-code-pipeline" target="_blank" rel="noopener" title="The pipeline repo">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22.4c.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A11 11 0 0 0 12 1Z"/></svg>
+  </a>
+</header>
+
+<div id="app-body">
+  <aside id="sidebar"></aside>
+  <div id="main-wrap">
+    <div id="main-inner">
+      <main id="content">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:13px;">
+        <span class="layer-badge" style="background:var(--l1);">1</span>
+        <span class="mono" style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Layer 1 · Principles</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">The five defaults.</h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 8px;">The layer that rarely changes and is owned by no one: what the standard defaults to, and what needs a documented reason to deviate.</p>
+
+      <div id="values" style="margin-top:40px;">
+        <div class="eyebrow">Default over exception</div>
+        <div style="display:grid;gap:9px;">
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Declarative sources of truth</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">hand-maintained artifacts</span></div>
+          <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Automation and audit</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">gates and approvals</span></div>
+          <div class="value-pair featured" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Traceability</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">dense documentation</span></div>
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Derived status</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">self-reported status</span></div>
+          <div class="value-pair" style="padding:16px 18px;"><span class="value-left" style="font-size:16.5px;">Composable definitions</span><span class="value-over">over</span><span class="value-right" style="font-size:15.5px;">one-off, siloed tools</span></div>
+        </div>
+        <p style="font-style:italic;color:var(--ink-2);font-size:15px;margin:18px 2px 0;">The right-hand column is not banned. It is the exception, and exceptions get documented.</p>
+      </div>
+
+      <div id="deepdives" style="margin-top:54px;">
+        <h2 class="h2-sm">Two carry the most weight.</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;">Each gets its own explainer.</p>
+        <div class="explainer-grid">
+          <a class="explainer-card" href="#/principles/automation">
+            <div class="explainer-num">01 · explainer</div>
+            <div class="explainer-title">Automation &amp; audit over gates &amp; approvals</div>
+            <div class="explainer-body">The posture shifts from prevention to flow, and the gate becomes policy as code.</div>
+            <div class="explainer-cta">Read →</div>
+          </a>
+          <a class="explainer-card" href="#/principles/traceability">
+            <div class="explainer-num">02 · explainer</div>
+            <div class="explainer-title">Traceability over dense documentation</div>
+            <div class="explainer-body">Value lives in the links between thin, richly connected artifacts.</div>
+            <div class="explainer-cta">Read →</div>
+          </a>
+        </div>
+      </div>
+
+      <div id="layers" style="margin-top:54px;">
+        <h2 class="h2-sm">Three layers, each clearly owned.</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin:0 0 18px;max-width:58ch;">The structure keeps strong opinions and open implementation from blurring together, so a reader always knows which layer they're standing on.</p>
+        <div style="display:grid;gap:11px;">
+          <div class="layer-card" style="border-left:3px solid var(--l1);">
+            <span class="layer-num" style="background:var(--l1);">1</span>
+            <div><div class="layer-card-title">Principles</div><div class="layer-card-body">Five defaults · rarely changes · owned by no one.</div></div>
+          </div>
+          <div class="layer-card" style="border-left:3px solid var(--l2);">
+            <span class="layer-num" style="background:var(--l2);">2</span>
+            <div><div class="layer-card-title">The Reference Approach</div><div class="layer-card-body">Our opinionated implementation: document model, kinds, checks · versioned · maintained by John Tanner at C4G.</div></div>
+          </div>
+          <div class="layer-card" style="border-left:3px solid var(--l3);">
+            <span class="layer-num" style="background:var(--l3);">3</span>
+            <div><div class="layer-card-title">Profiles</div><div class="layer-card-body">Named bundles others compose or fork: regulated-industry, lean-startup, agile-delivery · independent · owned by the community.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding:20px 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:13px;">
+        <div class="eyebrow" style="margin-bottom:8px;">The standard is written down</div>
+        <p style="font-size:15.5px;color:var(--ink);margin:0 0 14px;max-width:60ch;">Layer 2 is a versioned specification with conformance language, precise grammars, and blocking semantics. Anyone can implement it; <a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">docassert</a> is the reference implementation.</p>
+        <a class="btn-secondary" href="https://github.com/c4g-john/pmo-as-code-spec" target="_blank" rel="noopener">Read the specification →</a>
+      </div>
+
+
+    <div id="why-i-wrote" style="margin:64px 0 8px;border-top:1px solid var(--border);padding-top:44px;">
+      <div class="eyebrow">From the author</div>
+      <h2 class="h2" style="margin-bottom:22px;">Why I wrote this.</h2>
+      <div style="max-width:66ch;display:grid;gap:18px;font-size:16px;line-height:1.7;color:var(--ink-2);">
+        <p style="margin:0;">My career began in development. I did some interesting things in the non-profit sector, corporate media, and then federal space. I eventually wound up kicking off a DevOps movement at the White House Communications Agency, before spending the next several years consulting with Fortune 500s around the world on their development practices. That path led me to a position over delivery modernization at Freddie Mac, and on to running my own company teaching others how to get on top of AI readiness.</p>
+        <p style="margin:0;">Now, I lead the PMO at a Fortune 200, and I bring a lot of expectations with me.</p>
+        <p style="margin:0;">In engineering, the truth always lives in the source. Every change is tested multiple times before it is deployed, and real-time monitoring shows the state of the whole as it truly is. Nobody ever has to ask the deployment how it feels about the way things are going. Stuff is either working or it isn't, and when done properly, the stuff not working never makes it out to the customer.</p>
+        <p style="margin:0;">Project and portfolio management, on the other hand, have always been much more subjective. Numbers are usually collected by hand, entered into a Gantt chart or pointed to a backlog, and invariably make their way into some status deck to hand off to leadership. The insights that may be garnered are usually out of date by the time anyone reviews them, and inaccuracy is almost treated as a feature. Why show red when green is such a more calming color, right?</p>
+        <p style="margin:0;">The automated development discipline I spent twenty years helping install around the world always seemed to stop just outside of the PMO's door. PMO as Code is an answer to that problem.</p>
+        <p style="margin:0;">If you view documents as the source for the PMO system, a lot of engineering practices and parallels begin to apply. Document pipelines can test every structural change just like code is unit tested. Modern LLMs can judge whether a requirement actually serves the goal it claims to, just like infrastructure monitoring judges a service against its thresholds. Project status can be derived from core documents the way a binary is built from code. And reconciliation loops keep the delivery boards converged with the documents, the same way GitOps keeps a cluster converged with its manifests. When something drifts, the system notices before I do.</p>
+        <p style="margin:0;">On my own portfolio, when an automation flags a project amber, the public dashboard says amber, and nobody gets to change it for a slide deck.</p>
+        <p style="margin:0;">The world going AI native is what makes this approach an urgent need instead of merely the right way to do things. AI-assisted delivery moves faster than any hand-assembled report can describe, so the choice is a reporting layer that compiles in seconds or outdated insights that were overtaken by events before they even got manually updated.</p>
+        <p style="margin:0;">Whether PMs will trade away their curated plans and polished decks for raw Git and Markdown is a question yet to be answered, but I'm providing the thoughts and tools necessary to get started for free right here, and all feedback is welcome. I'm keeping it all public and open: the tool and the standard are Apache 2.0, free to adopt if you choose.</p>
+        <p style="margin:6px 0 0;font-style:italic;color:var(--ink);">John Tanner</p>
+      </div>
+    </div>
+
+      <div class="page-nav"><a class="page-nav-link" href="#/case-study"><div class="page-nav-label">← previous</div><div class="page-nav-title">Case study: Refuge for Humans</div></a><a class="page-nav-link next" href="#/principles/automation"><div class="page-nav-label">next →</div><div class="page-nav-title">Automation & audit</div></a></div>
+      <footer class="provenance">
+    <span style="display:inline-flex;align-items:center;gap:7px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <a href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/principles.js" target="_blank" rel="noopener" style="color:var(--ink-2);text-decoration:none;">js/pages/principles.js</a>
+    </span>
+    <span class="prov-sep">|</span>
+    <span>written and maintained by John Tanner · C4G Enterprises</span>
+    <span class="prov-sep">|</span>
+    <a href="#/press" style="color:var(--ink-2);text-decoration:none;">Press &amp; share kit</a>
+    <a class="prov-edit" href="https://github.com/c4g-john/pmo-as-code/blob/main/js/pages/principles.js" target="_blank" rel="noopener">Edit on GitHub →</a>
+  </footer>
+    </div></main>
+      <nav id="on-this-page"></nav>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

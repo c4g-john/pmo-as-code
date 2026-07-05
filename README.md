@@ -13,7 +13,7 @@ playbook, pointed at the PMO.
 
 | Layer | Where it lives |
 |---|---|
-| **The Manifesto** — five value-pairs, the philosophy | [pmoascode.com/manifesto](https://pmoascode.com/manifesto/) |
+| **The Principles** — five defaults, the philosophy | [pmoascode.com/principles](https://pmoascode.com/principles/) |
 | **The specification** — document model, item grammar, checks, conformance suite | [pmo-as-code-spec](https://github.com/c4g-john/pmo-as-code-spec) |
 | **The reference implementation** — `docassert` (stable 1.x, [SemVer-bound](https://github.com/c4g-john/docassert/blob/main/STABILITY.md)) | [docassert](https://github.com/c4g-john/docassert) · `pip install docassert` |
 | **Delivery profiles** — lean-startup, agile-delivery, regulated-industry, operations | shipped inside docassert · [pmoascode.com/profiles](https://pmoascode.com/profiles/) |

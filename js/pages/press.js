@@ -105,7 +105,7 @@ export function renderPress() {
       <div style="display:grid;gap:12px;margin-top:16px;">
         ${angle(1, 'Infrastructure-as-Code, pointed at the PMO',
           'DevOps solved “the wiki is stale and the spreadsheet lies” for infrastructure a decade ago. Declare truth in files, validate every change, derive state instead of reporting it. PMO as Code points that playbook at project governance, with the same Git and the same gates.',
-          'https://pmoascode.com/manifesto/', 'The manifesto')}
+          'https://pmoascode.com/principles/', 'The principles')}
         ${angle(2, 'It governs itself, and you can check',
           'The portfolio that builds PMO as Code is run as PMO as Code: five projects, every scope change through a gated pull request, a public dashboard rebuilt from the governing documents on every merge. A skeptical reader can audit any claim from their couch.',
           'https://c4g-john.github.io/pmo-as-code-pmo/', 'The live portfolio dashboard')}
@@ -166,7 +166,7 @@ export function renderPress() {
         ${factRow('The tool', '<a href="https://github.com/c4g-john/docassert" target="_blank" rel="noopener">docassert</a> · Python 3.10–3.14 · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">pipx install docassert</code> · <code class="mono" style="font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px;">brew install c4g-john/tap/docassert</code>')}
         ${factRow('The scope', 'Twenty-one document kinds. Two tiers of checks: deterministic structural checks gate the merge, and AI-graded semantic checks only advise. An execution bridge turns approved stories into GitHub issues, and the dashboards are compiled from the documents.')}
         ${factRow('The caveat', 'The tool is stable at 1.0. The specification is v0.8 and still a draft; its conformance rules may tighten before a spec 1.0.')}
-        ${factRow('Who', 'John Tanner, C4G Enterprises Inc. · <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a> · <a href="/manifesto/#why-i-wrote">why he wrote this</a>')}
+        ${factRow('Who', 'John Tanner, C4G Enterprises Inc. · <a href="https://linkedin.com/in/tannerjs" target="_blank" rel="noopener">linkedin.com/in/tannerjs</a> · <a href="/principles/#why-i-wrote">why he wrote this</a>')}
         ${factRow('Press contact', '<a href="mailto:press@c4genterprises.com">press@c4genterprises.com</a>')}
         ${factRow('Names', '“PMO as Code” is the standard. The tool is lowercase “docassert”, tagline “unit testing for business documents”.')}
       </div>
