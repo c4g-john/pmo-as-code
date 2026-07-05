@@ -8,7 +8,7 @@ The starter template's promise, that a fresh copy reaches a green gate and
 a live dashboard using only the README, was exercised end to end today.
 The run is public:
 [the repository](https://github.com/c4g-john/template-adoption-2026-07),
-[the gated pull request](https://github.com/c4g-john/template-adoption-2026-07/pull/1)
+[the gated pull request](https://github.com/c4g-john/template-adoption-2026-07/pull/3)
 with its checks, and
 [the live dashboard](https://c4g-john.github.io/template-adoption-2026-07/)
 it produced. Repository creation to a merged, gate-checked pull request
