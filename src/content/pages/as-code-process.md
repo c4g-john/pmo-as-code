@@ -16,7 +16,7 @@ anchors:
 
 <section id="gap">
 
-## The wiki gap.
+## The wiki gap: described processes drift.
 
 Most organizations document their processes and then operate from memory. The documented version and the operated version diverge, nobody notices because nothing checks, and the divergence surfaces during an incident or an audit.
 

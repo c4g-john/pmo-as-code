@@ -15,7 +15,7 @@ authorStatement: true
 
 <div class="eyebrow">Why PMO as Code</div>
 
-# Why the current model fails.
+# Why PMO as Code: the PowerPoint-and-email PMO fails.
 
 <p class="lead">Today's PMO runs on PowerPoint, Excel, SharePoint, and email. Every artifact is stale by the time anyone reads it, and the approval trail lives in inboxes.</p>
 
@@ -101,13 +101,13 @@ PMO as Code removes the collection step. Status is derived from the documents, s
 
 <section id="next">
 
-## What comes next
+## What comes next.
 
-The principles name the five defaults behind the response, and the Rosetta Stone maps each problem to its as-code equivalent. The case study shows the whole approach against a real document set.
+The principles name the five defaults behind the response, and the artifact crosswalk maps each problem to its as-code equivalent. The case study shows the whole approach against a real document set.
 
 <div class="cta-row">
   <a class="btn-primary" href="/principles/">Read the principles →</a>
-  <a class="btn-secondary" href="/rosetta/">The Rosetta Stone →</a>
+  <a class="btn-secondary" href="/crosswalk/">The artifact crosswalk →</a>
   <a class="btn-secondary" href="/case-study/">The case study →</a>
 </div>
 

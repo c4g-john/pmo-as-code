@@ -40,6 +40,7 @@ AI systems tokenize a page and lift the most relevant self-contained chunk. Writ
 - **Answer first (BLUF).** Lead with the direct answer, then the supporting detail. Do not bury the point under setup.
 - **Short paragraphs.** Two to four sentences. Dense blocks are harder to chunk.
 - **One idea per section.** A heading should introduce a self-contained unit that reads correctly out of context.
+- **Headers carry the subject.** The H1 leads with what the page is; any statement follows a colon. An eyebrow or kicker is a structural breadcrumb, never the only place the subject appears, and a header is never a "Gotcha!" whose meaning depends on the body. Plain conjunctions over comma-pairings.
 - **Be factually dense.** Concrete claims, numbers, dates, named entities. Vague copy gives a model nothing to ground on.
 - **State facts in the visible text.** Models rely on what a human sees on the page, not on hidden markup. If a fact matters, it belongs in the body copy.
 - **Q&A blocks where natural.** Clear question-and-answer pairs are the structure models quote most readily.

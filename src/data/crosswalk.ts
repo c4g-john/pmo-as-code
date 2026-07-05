@@ -1,13 +1,13 @@
-// The Rosetta rows, verbatim from the pre-rewrite data module. The yaml
+// The Crosswalk rows, verbatim from the pre-rewrite data module. The yaml
 // and output fields are trusted HTML fragments rendered inside code chrome.
-export interface RosettaRow {
+export interface CrosswalkRow {
   before: string;
   after: string;
   yaml: string;
   output: string;
 }
 
-export const ROSETTA_ROWS: RosettaRow[] = [
+export const CROSSWALK_ROWS: CrosswalkRow[] = [
   { before: 'Status deck', after: 'Audit result, posted on every PR',
     yaml: `<span class="cc">---</span>\n<span class="ck">kind</span>: <span class="cv">charter</span>\n<span class="ck">project</span>: <span class="cv">PRJ-001-AUR</span>\n<span class="ck">id</span>: <span class="cv">AUR-charter</span>\n<span class="cc">---</span>\n<span class="cv">## Objective</span>\nOnboarding 14d → under 2d`,
     output: `<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ok);margin-bottom:6px;">✓ all checks passed</div><div style="font-size:13px;color:var(--muted);">frontmatter · sections · criteria<br>clear to merge</div>` },

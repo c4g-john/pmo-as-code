@@ -17,8 +17,8 @@ const pages = [];
 
 const failures = [];
 for (const page of pages) {
-  if (page.includes('/manifesto/')) continue; // meta-refresh stubs, no article
   const html = readFileSync(page, 'utf-8');
+  if (html.includes('http-equiv="refresh"')) continue; // redirect stubs, no article
 
   const levels = [...html.matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]));
   const h1s = levels.filter((l) => l === 1).length;
