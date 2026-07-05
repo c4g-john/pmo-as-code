@@ -6,14 +6,14 @@ const anchors: [string, string][] = [
   ['press-assets', 'Assets'],
   ['press-angles', 'Story angles'],
   ['press-boilerplate', 'Press boilerplate'],
-  ['press-share', 'Ready to post'],
+  ['press-share', 'Share copy'],
   ['press-facts', 'Fact sheet'],
 ];
 ---
 
 <Base
   title="Press & share kit"
-  description="Verified facts, quotable copy, real product images, and ready-to-post announcements for covering or sharing PMO as Code. Every claim links to the artifact that backs it."
+  description="Press boilerplate, verified facts, quotable copy, real product images, and share copy for covering PMO as Code. Every claim links to the artifact that backs it."
   path="/press/"
   anchors={anchors}
   ogImage="/og-press.png"
@@ -21,7 +21,7 @@ const anchors: [string, string][] = [
 <div>
     <div class="eyebrow">Share</div>
     <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.5vw,46px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;">Press &amp; share kit.</h1>
-    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0 0 22px;">Facts you can verify, copy you can quote, images of the real product, and announcements ready to post. The chips below are claims; each one links to the artifact that backs it.</p>
+    <p style="font-size:18px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0 0 22px;">Facts you can verify, copy you can quote, boilerplate you can paste, and images of the real product. The chips below are claims; each one links to the artifact that backs it.</p>
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 46px;">
       <a href="https://github.com/c4g-john/docassert/releases/tag/v1.0.0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:7px 14px;text-decoration:none;white-space:nowrap;"><span style="width:6px;height:6px;border-radius:50%;background:var(--l2);flex-shrink:0;"></span>docassert 1.0 · stable</a>
@@ -79,38 +79,10 @@ const anchors: [string, string][] = [
     </div>
 
     <div id="press-share" style="margin-bottom:52px;">
-      <h2 class="h2-sm">Ready to post.</h2>
-      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 16px;max-width:60ch;">Drafts in a personal voice, shown the way they will look where they land. The numbers in them are real. Copy, edit, post.</p>
+      <h2 class="h2-sm">Share copy.</h2>
+      <p style="font-size:14px;color:var(--ink-2);margin:8px 0 16px;max-width:60ch;">A neutral blurb anyone may share as their own. The numbers in it are real.</p>
 
       <div style="display:grid;gap:16px;">
-        <!-- LinkedIn -->
-        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.06em;">LINKEDIN · ~1 MIN READ</span>
-            <button class="copy-btn" data-copy-id="press-li" title="Copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-          </div>
-          <div style="padding:18px 20px;">
-            <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
-              <span style="width:42px;height:42px;border-radius:50%;background:var(--l2);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;">JT</span>
-              <span><span style="display:block;font-weight:600;font-size:14px;">John Tanner</span>
-              <span style="display:block;font-size:12px;color:var(--muted);">Founder, C4G Enterprises</span></span>
-            </div>
-            <div id="press-li" style="font-size:14px;line-height:1.65;color:var(--ink);max-width:66ch;">I recently took a 14-section product BRD, a Word document like every BRD you've ever seen, and ran it through something I've been building.<br><br>Out the other side came a Git repository where every requirement is a traceable item, every document is unit-tested on each pull request, and project status is derived from the documents instead of typed into a slide.<br><br>The interesting part was what failed at import:<br><br>· The charter had no budget and no target date, and the audit said so.<br>· All five risks had descriptions but no probability, impact, or owner, so each one was flagged with its missing fields.<br>· 6 of 10 product requirements had no acceptance criterion. The traceability graph found that in seconds, after every prose review had missed it.<br><br>Every one of those gaps was closed the only way the repo allows: pull requests the gate re-checked. The dashboard shows the whole story, ambers included.<br><br>That's the idea behind PMO as Code. Business documents get the treatment engineers give code, meaning they are versioned, tested on every change, and gated before they merge, with a red/amber/green nobody can hand-set because it is computed.<br><br>It's open source (Apache-2.0), and the tool just hit a stability-guaranteed 1.0:<br><br>· The standard: pmoascode.com<br>· The tool: pipx install docassert (github.com/c4g-john/docassert)<br>· A one-click starter template, and live dashboards you can poke at<br><br>If you run a PMO, write BRDs, or have ever argued about whether a status is *really* green, I'd love your critique.<br><br>#PMO #ProjectManagement #DevOps #OpenSource #DocsAsCode</div>
-          </div>
-        </div>
-
-        <!-- Show HN -->
-        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);background:linear-gradient(to right, rgba(255,102,0,.14), transparent 60%);">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.06em;"><span style="color:#ff6600;font-weight:700;">Y</span> · SHOW HN · TITLE + FIRST COMMENT</span>
-            <button class="copy-btn" data-copy-id="press-hn" title="Copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-          </div>
-          <div id="press-hn" style="padding:18px 20px;">
-            <div style="font-weight:600;font-size:15px;margin-bottom:12px;">Show HN: Docassert – unit testing for business documents</div>
-            <div style="font-size:13.5px;line-height:1.65;color:var(--ink-2);max-width:70ch;">Business documents (charters, BRDs, risk registers) are usually prose in Word, which leaves them unversioned, unvalidated, and impossible to audit at scale. docassert treats them like code: documents are structured Markdown, unit-tested on every pull request, and unable to merge until they pass.<br><br>There are two tiers of checks by design. Structural checks are deterministic Python and block the merge (measurable success criteria, risks with owners, resolving references, schema-valid frontmatter). Semantic checks are LLM-graded and only advise, because a model shouldn't gate a merge.<br><br>The part I find most useful in practice: requirements are bullets with stable ids and typed links (**AUR-PR-014** (traces: AUR-BR-001): ...), so the whole repo becomes a graph. "Which requirements have no test?" becomes a query. Project status (red/amber/green) is derived from the documents, and the dashboard and README badge can't be hand-set.<br><br>As a test, I converted a real 14-section BRD from Word. The audit immediately found a charter with no budget, five risks without owners, and six requirements with no acceptance criteria. It also blocked a draft for a budget that legitimately didn't exist yet, which forced a spec change (drafts now get advisories; the gate arms when you mark a document "proposed"). The whole loop is public, including a live dashboard with the ambers showing.<br><br>There's a spec so it isn't tool-locked (73-case conformance suite), a GitHub Action, a Homebrew tap, and a template repo. Python, Apache-2.0, stable 1.x. pipx install docassert<br><br>Two things I'd value critique on: whether item-id grammars in Markdown bullets are too fussy for non-engineers, and whether "LLM checks never block" stays tenable as models get better.</div>
-          </div>
-        </div>
-
         <!-- Short -->
         <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);">
           <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);">
