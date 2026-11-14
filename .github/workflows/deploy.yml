@@ -4,10 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Monthly rebuild so the measured-adoption numbers on /self-governance/
-    # never go longer than a month without refreshing.
-    - cron: '41 7 1 * *'
 
 permissions:
   contents: read
